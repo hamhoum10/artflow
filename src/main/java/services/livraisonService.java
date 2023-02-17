@@ -24,7 +24,7 @@ public class livraisonService implements livraisonInterface {
             ps.setString(5,s.getUser_name());
             ps.executeUpdate();
 
-            System.out.println("stock Added Successfully!");
+            System.out.println("livraison Added Successfully!");
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -39,7 +39,6 @@ public class livraisonService implements livraisonInterface {
         try {String req = "select * FROM `livraison`   ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
-            System.out.println("152");
             while (rs.next()) {
                 livraison s = new livraison();
                 s.setId(rs.getInt(1));
