@@ -37,7 +37,8 @@ public class Main {
         Ligne_PanierService lps =new Ligne_PanierService();
         //lps.AjouterDansTableligne_Panier(lyessr,28);
         //lps.deleteFromLigne_panierByArticle(3,14);
-        lps.deleteAllFromLigne_panier(4);
+        //lps.deleteAllFromLigne_panier(4);
+        // just mesh njareb el git
 
 
         //lps.AjouterDansTableligne_Panier(lp2);
