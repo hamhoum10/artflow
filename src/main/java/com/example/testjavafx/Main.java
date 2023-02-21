@@ -6,8 +6,7 @@ import services.*;
 public class Main {
     public static void main(String[] args) {
         //FAMA PROB FI ID AUTO INCREM KIFEH NAMLOU RECUPERATION MTE3O ALKHTR WA9TLI ON PASSE EL INSTANCE MTA CLASS FI PARAMETREN GETID TE3O MAHESH EL AUTO GENERTATED
-
-
+        Client cboss=new Client("lotfi","la3meri","01/1/1922","ariana","9683025","lotfi@gmail.com","lotf","04451");
         Client c1 =new Client("leo","miaoui","04-12-2000","arian","9874563","med@gmail.com","medboss","0321545defz");
         ClientService cs=new ClientService();
         Categorie c=new Categorie();
@@ -15,13 +14,14 @@ public class Main {
         ArtisteService as =new ArtisteService();
         //as.saveArtiste(med);
         Article ps4 =new Article(50,10,950.0,"VideoGame","idk","console game","Playstation 4",c,med,50);
-        Article pc =new Article(2,10,2450.0,"VideoGame","idk","console game","Playstation 4",c,med,50);
-        Article yasser =new Article(5,10,2450.0,"yossri","idk","mechant","yossri_mechant",c,med,50);
-        ArticleService a =new ArticleService();
-        a.addArticle(yasser);
+        Article gun =new Article(9,5,5000,"weapon","vovodvds","a dangerous tool that allow u to protect you're self from intruders and kill them if needed ;)","AK47",c,med,14);
+        Article headphone =new Article(30,10,120,"electronics","idk","audio device that allow you to listen to a vast variety of shitty music and end up with ligma ","Airpods",c,med,50);
 
-        Client cboss=new Client("lotfi","la3meri","01/1/1922","ariana","9683025","lotfi@gmail.com","lotf","04451");
-        ClientService cl=new ClientService();
+        ArticleService a =new ArticleService();
+        //a.addArticle(yasser);
+        //a.addArticle(gun);
+        //a.addArticle(headphone);
+
         //cl.saveClient(cboss);
         //a.addArticle(pc);
         //cs.saveClient(c1);
@@ -32,13 +32,17 @@ public class Main {
         //psss.createPanier(panier);
        // Ligne_panier lp=new Ligne_panier(ps4,1,200.0,5);
         Ligne_panier ligne_panierps4=new Ligne_panier(ps4,3,5);
-        Ligne_panier ligne_panierpc=new Ligne_panier(pc, 4, 2);
-        Ligne_panier lyessr= new Ligne_panier(yasser,4,4);
+        Ligne_panier ligne_paniergun =new Ligne_panier(gun,4,2);
+        Ligne_panier ligne_panierheadphone =new Ligne_panier(headphone,4,1);
+
         Ligne_PanierService lps =new Ligne_PanierService();
-        //lps.AjouterDansTableligne_Panier(lyessr,28);
+        System.out.println(lps.readelementPanierbyiduser(3));
+        lps.AjouterDansTableligne_Panier(ligne_paniergun,32);
+        lps.AjouterDansTableligne_Panier(ligne_panierheadphone,33);
         //lps.deleteFromLigne_panierByArticle(3,14);
         //lps.deleteAllFromLigne_panier(4);
         // just mesh njareb el git
+        //System.out.println(psss.readelementPanierbyiduser(2));
 
 
         //lps.AjouterDansTableligne_Panier(lp2);

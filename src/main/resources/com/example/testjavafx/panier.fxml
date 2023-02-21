@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="575.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.PanierController">
+   <children>
+      <Button fx:id="showmycartBut" layoutX="259.0" layoutY="492.0" mnemonicParsing="false" onAction="#ShowcartAction" prefHeight="44.0" prefWidth="98.0" text="ShowMyCart" textFill="RED">
+         <font>
+            <Font name="Playbill" size="21.0" />
+         </font></Button>
+      <ListView fx:id="listView" editable="true" fixedCellSize="0.0" layoutX="14.0" layoutY="118.0" prefHeight="356.0" prefWidth="573.0" />
+      <Label layoutX="49.0" layoutY="32.0" prefHeight="74.0" prefWidth="138.0" text="Panier ">
+         <font>
+            <Font name="Playbill" size="72.0" />
+         </font>
+      </Label>
+      <TextField fx:id="total" alignment="CENTER" layoutX="602.0" layoutY="251.0" prefHeight="60.0" prefWidth="108.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></TextField>
+      <Label layoutX="628.0" layoutY="196.0" text="Total">
+         <font>
+            <Font name="Playbill" size="49.0" />
+         </font>
+      </Label>
+      <Button fx:id="comamanderbut" layoutX="610.0" layoutY="324.0" mnemonicParsing="false" onAction="#commandeAction" text="commander" textFill="#27ae1b">
+         <font>
+            <Font name="Playbill" size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="delete" layoutX="503.0" layoutY="69.0" mnemonicParsing="false" onAction="#deleteLignePanierAction" prefHeight="31.0" prefWidth="66.0" text="Delete" />
+      <Button fx:id="viderPanier" layoutX="379.0" layoutY="72.0" mnemonicParsing="false" onAction="#ViderPanierActionforuser" text="Button" />
+   </children>
+</AnchorPane>

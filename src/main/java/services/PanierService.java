@@ -37,33 +37,11 @@ public class PanierService {
         }
     }
 
-    // Lire tous les éléments de la ligne-panier  d'un userID (contenu de son panier)
-    public List<Ligne_panier> readelementPanierbyiduser(int id_client) {
-        List<Ligne_panier> ps = new ArrayList<>();
-        ArticleService as =new ArticleService();
-        try {
-            // Créer une requête pour lire toutes les entrées de la table
-            String sql = "SELECT p.id_panier, lp.id_article, lp.prix_unitaire, lp.quantity FROM panier p JOIN ligne_panier lp ON p.id_panier = lp.id_panier WHERE p.id_client ="+id_client  ;
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            // Boucler à travers les résultats et ajouter chaque entrée à la liste
-            while (rs.next()) {
-                Ligne_panier lp = new Ligne_panier();
-                lp.setId_panier(rs.getInt("p.id_panier"));
-                lp.setArticle((Article) as.fetchArticleById(rs.getInt("lp.id_article")));
-                //lp.setPrix(rs.getDouble("lp.prix"));
-                lp.setQuantity(rs.getInt("lp.quantity"));
-                ps.add(lp);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return ps;
-    }
+
     public double totalmontantPanier(int id_client){
         Double totalPrixPanier=0.0 ;
         try {
-            String sql = "SELECT SUM( prix * quantity) AS total FROM panier JOIN ligne_panier ON panier.id_panier = ligne_panier.id_panier WHERE panier.id_client = "+ id_client;
+            String sql = "SELECT SUM( prix_unitaire * quantity) AS total FROM panier JOIN ligne_panier ON panier.id_panier = ligne_panier.id_panier WHERE panier.id_client = "+ id_client;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
