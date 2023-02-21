@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterStockController">
+   <children>
+      <Label fx:id="titre" layoutX="234.0" layoutY="14.0" text="Ajouter Stock" textAlignment="CENTER" />
+      <Label layoutX="14.0" layoutY="68.0" text="Name Produit :" />
+      <Label layoutX="14.0" layoutY="130.0" text="Artiste :" />
+      <Label layoutX="14.0" layoutY="192.0" text="addres :" />
+      <Label layoutX="14.0" layoutY="250.0" text="ID Commende :" />
+      <Label layoutX="14.0" layoutY="300.0" text="User Name :" />
+      <TextField fx:id="np" layoutX="225.0" layoutY="64.0" promptText="name" AnchorPane.leftAnchor="225.00000000000003" AnchorPane.rightAnchor="225.4" />
+      <Button layoutX="260.0" layoutY="342.0" mnemonicParsing="false" onAction="#ajouterStock" text="Ajouter" />
+      <TextField fx:id="ar" layoutX="225.0" layoutY="126.0" promptText="Artiste" AnchorPane.leftAnchor="225.00000000000003" AnchorPane.rightAnchor="225.4" />
+      <TextField fx:id="ad" layoutX="225.0" layoutY="187.0" promptText="addres" AnchorPane.leftAnchor="225.00000000000003" AnchorPane.rightAnchor="225.4" />
+      <TextField fx:id="ic" layoutX="187.0" layoutY="238.0" promptText="ID" AnchorPane.leftAnchor="225.00000000000003" AnchorPane.rightAnchor="225.4" />
+      <TextField fx:id="un" layoutX="188.0" layoutY="296.0" promptText="User" AnchorPane.leftAnchor="225.00000000000003" AnchorPane.rightAnchor="225.4" />
+   </children>
+</AnchorPane>
