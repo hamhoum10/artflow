@@ -43,7 +43,7 @@ try {
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, r.getNb_place());
             ps.setDouble(2, r.getPrice());
-            ps.setInt(3, r.getClient().getId_client());
+            ps.setInt(3, r.getClient());
             ps.executeUpdate();
             System.out.println("reservation a ete ajoutée avec Success!");
             
@@ -92,7 +92,7 @@ try {
            
             ps.setInt(1, r.getNb_place());
            ps.setDouble(2, r.getPrice());
-            ps.setInt(3, r.getClient().getId_client());
+            ps.setInt(3, r.getClient());
             ps.setInt(4, r.getId());
 
          

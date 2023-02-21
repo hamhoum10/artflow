@@ -13,7 +13,7 @@ public class Reservation {
     private int id;
     private int nb_place;
     private double price;
-    private Client client;
+    private int client;
 
    
     
@@ -27,8 +27,14 @@ public class Reservation {
         this.price = price;
     }
 
+    public Reservation(int nb_place, double price, int client) {
+        this.nb_place = nb_place;
+        this.price = price;
+        this.client = client;
+    }
+
    
-     public Client getClient() {
+     public int getClient() {
         return client;
     }
     
@@ -38,7 +44,7 @@ public class Reservation {
         return id;
     }
 
-    public void setClient(Client client) {
+    public void setClient(int client) {
         this.client = client;
     }
     

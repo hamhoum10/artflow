@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zombie;
+package GUI;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,25 +20,17 @@ import javafx.stage.Stage;
  *
  * @author Lenovo
  */
-public class Aissa extends Application {
+public class ReservationFXMain extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
-       
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("./GUI/FXML_Document.fxml"));
-            Scene scene = new Scene(root);
-            primaryStage.setTitle("Bonjour !");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(Aissa.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-    
+    public void start(Stage primaryStage) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/Reservation.fxml"));
+       Scene scene = new Scene(root, 600,400);
+       primaryStage.setTitle("Ajouter une reservation d'un evenement");
+       primaryStage.setScene(scene);
+       primaryStage.show();
     }
+
     /**
      * @param args the command line arguments
      */

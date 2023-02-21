@@ -47,7 +47,9 @@ public class EvenementService  implements EvenementInterface{
             ps.setString(4, e.getStart_hour());
              ps.setString(5, e.getLocation());
             ps.setString(6, e.getCapacity());
-            ps.setBytes(7,image);
+           ps.setBytes(7,image);
+           
+           
             
             ps.setString(8, e.getName());
             ps.setInt(9, e.getArtiste().getId_artiste());
