@@ -52,7 +52,7 @@ public class EnchereService implements EnchereParticipantInterface {
     }
 
     @Override
-    public boolean updateArticle(Enchere e) {
+    public boolean updateEnchere(Enchere e) {
     
        String req =" UPDATE `enchere` SET `titre`=?,`description`=?,`prixdepart`=?,`date_limite`=? WHERE `enchere`.`ide`=?;";
          try {
@@ -106,21 +106,19 @@ public class EnchereService implements EnchereParticipantInterface {
     }
 
     @Override
-    public boolean deleteEnchere(Enchere e) {
-        String req = "delete from `enchere` where`enchere`.`ide`=?;";
+    public void deleteEnchere(int id) {
+        String req = "delete from `enchere` where `ide`= "+id;
       
         try {
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1,e.getIde());
-            int n = pst.executeUpdate();
-            if (n >= 1) {
+            pst.executeUpdate(req);
+            
                 System.out.println("suppression réussie");
-            }
-            return true;
+            
+            
         } catch (SQLException ex) {
             System.out.println("problème de requête de suppression" + ex.getMessage());
-        }
-        return false;
+        }       
     }
 
     @Override
@@ -365,6 +363,10 @@ public class EnchereService implements EnchereParticipantInterface {
         return enchere;
  }
 */
+
+    public void updateArticle(Enchere en) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
     

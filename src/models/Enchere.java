@@ -84,6 +84,8 @@ public class Enchere {
     public String toString() {
         return "Enchere{" + "ide=" + ide + ", titre=" + titre + ", description=" + description + ", prixdepart=" + prixdepart + ", date_limite=" + date_limite + '}';
     }
+
+    
     
     
     

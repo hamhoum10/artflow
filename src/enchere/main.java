@@ -34,19 +34,19 @@ public class main {
         
         
 //AJOUT AUCTION   
-//    en.setTitre("THE INFO");
-//    en.setDescription("SECOP");
+//    en.setTitre("symfony");
+//    en.setDescription("today");
 //    en.setPrixdepart(5673);
 //    en.setDate_limite(d);
 //    es.AddEnchere(en);
 
 // UPDATE AUCTION     
-//    en.setTitre("nicholas");
+//    en.setTitre("ryyym");
 //    en.setDescription("haven");
 //    en.setPrixdepart(2341);
-//    en.setDate_limite(d);
-//    en.setIde(2);
-//    es.updateArticle(en);
+//    en.setDate_limite("23-06-2023");
+//    en.setIde(4);
+//    es.updateEnchere(en);
 
 // DELETE ENCHERE
 //en.setIde(2);

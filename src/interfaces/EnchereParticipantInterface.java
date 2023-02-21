@@ -19,9 +19,9 @@ public interface EnchereParticipantInterface {
     
      public Enchere fetchEnchereById(int ide);
     public List<Enchere> fetchEnchere();
-     public boolean updateArticle(Enchere e);
+     public boolean updateEnchere(Enchere e);
      
-     public  boolean deleteEnchere(Enchere e);
+     public  void deleteEnchere(int ide);
 
 public boolean enchereExist(Participant p);
 public void addParticipant(Participant p);
