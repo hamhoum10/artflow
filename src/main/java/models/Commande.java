@@ -6,10 +6,15 @@ public class Commande {
         //Player p =new Player();
 
         private int id;
-        //baed twali p.getcustomerID()
-        //private int customerId =3; //3 just pour tester ba3ed twali ki fama auth ytemlé el variable (forcit client b customer_id =3 fi bd heka wa3leh attribut = 3 mesh ybda andi acces al row te3o)
 
+        //private int customerId;
         private int id_panier; //baed twali panier
+
+        private String prénomClientCommande;
+
+        private String nomClientCommande;
+
+        private int numeroPhoneclient;
         private String status;
         private double totalAmount;
         private String createdAt;
@@ -23,11 +28,22 @@ public class Commande {
         }
 
 
-    public Commande(int id_panier, String status, double totalAmount, String createdAt, int codepostal, String adresse) {
+    public Commande(int id_panier, String prénomClientCommande, String nomClientCommande, int numeroPhoneclient, String status, double totalAmount, int codepostal, String adresse) {
+        this.id_panier = id_panier;
+        this.prénomClientCommande = prénomClientCommande;
+        this.nomClientCommande = nomClientCommande;
+        this.numeroPhoneclient = numeroPhoneclient;
+        this.status = status;
+        this.totalAmount = totalAmount;
+        this.codepostal = codepostal;
+        this.adresse = adresse;
+    }
+
+    public Commande(int id_panier, String status, double totalAmount /*String createdAt*/, int codepostal, String adresse) {
         this.id_panier=id_panier;
         this.status = status;
         this.totalAmount = totalAmount;
-        this.createdAt = createdAt;
+        /*this.createdAt = createdAt;*/
         this.codepostal = codepostal;
         this.adresse = adresse;
     }
@@ -40,7 +56,7 @@ public class Commande {
         public int getId_panier() {
         return id_panier;
         }
-            public void setId_panier(int id_panier) {
+        public void setId_panier(int id_panier) {
             this.id_panier = id_panier;
         }
 
@@ -100,17 +116,43 @@ public class Commande {
         this.createdAt = createdAt;
     }
 
+    public String getPrénomClientCommande() {
+        return prénomClientCommande;
+    }
+
+    public void setPrénomClientCommande(String prénomClientCommande) {
+        this.prénomClientCommande = prénomClientCommande;
+    }
+
+    public String getNomClientCommande() {
+        return nomClientCommande;
+    }
+
+    public void setNomClientCommande(String nomClientCommande) {
+        this.nomClientCommande = nomClientCommande;
+    }
+
+    public int getNumeroPhoneclient() {
+        return numeroPhoneclient;
+    }
+
+    public void setNumeroPhoneclient(int numeroPhoneclient) {
+        this.numeroPhoneclient = numeroPhoneclient;
+    }
+
     @Override
     public String toString() {
-        return "Orders{" +
-                "id=" + id +
-                ", id_panier=" + id_panier +
-                ", status='" + status + '\'' +
-                ", totalAmount=" + totalAmount +
-                ", createdAt='" + createdAt + '\'' +
-                ", codepostal=" + codepostal +
-                ", adresse='" + adresse + '\'' +
-                '}';
+        return  "id=" + id +
+                "id_panier=" + id_panier +System.lineSeparator()+
+                "prénomClientCommande='" + prénomClientCommande + System.lineSeparator()+
+                "nomClientCommande='" + nomClientCommande + System.lineSeparator()+
+                "numeroPhoneclient='" + numeroPhoneclient + System.lineSeparator()+
+                "status='" + status + System.lineSeparator()+
+                "totalAmount=" + totalAmount +System.lineSeparator()+
+                "createdAt='" + createdAt + System.lineSeparator()+
+                "codepostal=" + codepostal +System.lineSeparator()+
+                "adresse='" + adresse +System.lineSeparator();
+
     }
 }
 

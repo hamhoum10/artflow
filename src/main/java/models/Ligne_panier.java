@@ -129,7 +129,7 @@ public class Ligne_panier {
                 "Quantity=" + quantity+ System.lineSeparator();
     }*/
 
-    @Override
+    /*@Override
     public String toString() {
         return "Ligne_panier{" +
                 "article_name=" + article.getNom_article() +System.lineSeparator()+
@@ -139,5 +139,15 @@ public class Ligne_panier {
                 ", id_panier=" + id_panier +System.lineSeparator()+
                 ", quantity=" + quantity +System.lineSeparator()+
                 '}';
+    }*/
+    @Override
+    public String toString() {
+        return  "Article_name : " + article.getNom_article() +System.lineSeparator()+
+                "Article_type : " + article.getType() +System.lineSeparator()+
+                "Article_description : " + article.getDescription() +System.lineSeparator()+
+                "Article_price : " + article.getPrice() +System.lineSeparator()+
+                "Quantity : " + quantity +System.lineSeparator()+
+                "id_panier : " + id_panier +System.lineSeparator();
+
     }
 }

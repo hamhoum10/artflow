@@ -6,8 +6,8 @@ import services.*;
 public class Main {
     public static void main(String[] args) {
         //FAMA PROB FI ID AUTO INCREM KIFEH NAMLOU RECUPERATION MTE3O ALKHTR WA9TLI ON PASSE EL INSTANCE MTA CLASS FI PARAMETREN GETID TE3O MAHESH EL AUTO GENERTATED
-        Client cboss=new Client("lotfi","la3meri","01/1/1922","ariana","9683025","lotfi@gmail.com","lotf","04451");
-        Client c1 =new Client("leo","miaoui","04-12-2000","arian","9874563","med@gmail.com","medboss","0321545defz");
+        //Client cboss=new Client("lotfi","la3meri","01/1/1922","ariana","9683025","lotfi@gmail.com","lotf","04451");
+        //Client c1 =new Client("leo","miaoui","04-12-2000","arian","9874563","med@gmail.com","medboss","0321545defz");
         ClientService cs=new ClientService();
         Categorie c=new Categorie();
         Artiste med =new Artiste("Mohamed","Miaoui","ariana","04/12/2000","yasuo main","fdf","borjba","9684565","med","yasuo","med@gmail.com");
@@ -31,7 +31,7 @@ public class Main {
         //psss.createPanier(pmed);
         //psss.createPanier(panier);
        // Ligne_panier lp=new Ligne_panier(ps4,1,200.0,5);
-        Ligne_panier ligne_panierps4=new Ligne_panier(ps4,3,5);
+        Ligne_panier ligne_panierps4=new Ligne_panier(ps4,4,5);
         Ligne_panier ligne_paniergun =new Ligne_panier(gun,4,2);
         Ligne_panier ligne_panierheadphone =new Ligne_panier(headphone,4,1);
 
@@ -46,8 +46,8 @@ public class Main {
 
 
         //lps.AjouterDansTableligne_Panier(lp2);
-        Commande commande1 =new Commande(psss.getPanierIdForUser(1), "en attente",5000,"17/02/2023",2080,"ariana");
-        Commande c2 =new Commande(4,"done",411,"58/8455/260",2500,"sdzefz");
+        //Commande commande1 =new Commande(psss.getPanierIdForUser(1), "en attente",5000,"17/02/2023",2080,"ariana");
+        Commande c2 =new Commande(4,"med","mi",98554158,"done",psss.totalmontantPanier(3),2500,"sdzefz");
         CommandeService commandeService =new CommandeService();
         //commandeService.create(c2);
         //System.out.println(commandeService.readCommandesbyPanier(4));

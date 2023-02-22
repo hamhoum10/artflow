@@ -16,30 +16,38 @@ public class CommandeService {
     Connection cnx = MyConnection.getInstance().getCnx();
     Conditions c =new Conditions();
     // Créer une nouvelle commande
-    public void create(Commande o) {
+    public Boolean create(Commande o) {
+        Boolean exist =false;
         try {
 
             // Créer une requête préparée pour insérer une nouvelle entrée dans la table "commandes"
-            String sql = "insert into commande ( id_panier,status,total_amount, created_at, codepostal, adresse) values (?, ?, ?, ?, ?,?)";
+            String sql = "insert into commande ( id_panier,prenom,nom,numero,status,total_amount, created_at, codepostal, adresse) values (?, ?, ?, ?, ?,?,?,?,?)";
             PreparedStatement  p = cnx.prepareStatement(sql);
             if(c.DoPanierIdExistinCommande(o.getId_panier())==false){
                 p.setInt(1, o.getId_panier());
-                p.setString(2, o.getStatus());
-                p.setDouble(3, o.getTotalAmount());
-                p.setString(4, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-                p.setInt(5, o.getCodepostal());
-                p.setString(6, o.getAdresse());
+                p.setString(2, o.getPrénomClientCommande());
+                p.setString(3, o.getNomClientCommande());
+                p.setInt(4, o.getNumeroPhoneclient());
+                p.setString(5, o.getStatus());
+                p.setDouble(6, o.getTotalAmount());
+                p.setString(7, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                p.setInt(8, o.getCodepostal());
+                p.setString(9, o.getAdresse());
 
                 // Exécuter la requête
                 p.executeUpdate();
                 System.out.println("Commande is created");
+                System.out.println(exist);
             }else{
+                exist=true;
                 System.out.println("Commande  exist");
+                System.out.println(exist);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return exist;
     }
 
     // Lire toutes les commandes
@@ -102,13 +110,13 @@ public class CommandeService {
         return commandeList;
     }
     // Mettre à jour un élément dans la commande
-    public void updatestatus(int id, String status) {
+    public void updatestatus(int id_panier, String status) {
         try {
             // Créer une requête préparée pour mettre à jour une entrée dans la table "commandes"
-            String sql = "update commande set status = ? where id = ?";
+            String sql = "update commande set status = ? where id_panier = ?";
             PreparedStatement p = cnx.prepareStatement(sql);
             p.setString(1, status);
-            p.setInt(2, id);
+            p.setInt(2, id_panier);
 
             // Exécuter la requête
             p.executeUpdate();
@@ -119,13 +127,13 @@ public class CommandeService {
     }
 
     // Mettre à jour un élément dans la commande codepostalm
-    public void updatecodepostal(int id, int cpostal) {
+    public void updatecodepostal(int id_panier, int cpostal) {
         try {
             // Créer une requête préparée pour mettre à jour une entrée dans la table "commandes"
-            String sql = "update commande set codepostal = ? where id = ?";
+            String sql = "update commande set codepostal = ? where id_panier = ?";
             PreparedStatement p = cnx.prepareStatement(sql);
             p.setInt(1, cpostal);
-            p.setInt(2, id);
+            p.setInt(2, id_panier);
 
             // Exécuter la requête
             p.executeUpdate();
@@ -136,13 +144,13 @@ public class CommandeService {
     }
 
     // Mettre à jour un élément dans la commande codepostalm
-    public void updateadresse(int id, String addresse) {
+    public void updateadresse(int id_panier, String addresse) {
         try {
             // Créer une requête préparée pour mettre à jour une entrée dans la table "commandes"
-            String sql = "update commande set adresse = ? where id = ?";
+            String sql = "update commande set adresse = ? where id_panier = ?";
             PreparedStatement p = cnx.prepareStatement(sql);
             p.setString(1, addresse);
-            p.setInt(2, id);
+            p.setInt(2, id_panier);
 
             // Exécuter la requête
             p.executeUpdate();
@@ -153,22 +161,18 @@ public class CommandeService {
     }
 
     // Supprimer une commande
-    public void delete(int id) {
+    public void deleteCommande(int id_panier) {
         try {
-            // Créer une requête préparée pour supprimer une entrée de la table "commandes"
-            String sql ="delete from commandes where id = ?";
-                PreparedStatement p = cnx.prepareStatement("delete from commande where id = ?");
-            p.setInt(1, id);
+            String sql ="delete from commande where id_panier = "+id_panier;
+                PreparedStatement p = cnx.prepareStatement(sql);
 
             // Exécuter la requête
             p.executeUpdate();
-            System.out.println("order deleted");
+            System.out.println("La commande est annulé");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }//A MODIFIER JOINTURE TABLE LIGNEPANIER ET PANIER  ==> mawjouda fi lignepanier service
-    //methode t7ot el montant total eli fi panier mta user attribut totalAmount
-    //on passe le resultat de cette methode lors de la creation d'une commande  creat(.,., instanceOrderService.totalmonatantcommande(userID),.,)
+    }
     public double totalmontantCommande(int userid){
         Double totalPrixPanier=0.0 ;
         try {
