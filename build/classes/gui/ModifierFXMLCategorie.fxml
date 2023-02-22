@@ -12,9 +12,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="544.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifierFXMLCategorieController">
    <children>
-      <TextField fx:id="name" layoutX="128.0" layoutY="225.0" />
-      <TextField fx:id="des" layoutX="128.0" layoutY="299.0" />
-      <ComboBox fx:id="listq" layoutX="127.0" layoutY="377.0" onAction="#list_stock" prefWidth="150.0" />
+      <TextField fx:id="name" layoutX="128.0" layoutY="225.0" promptText="name" />
+      <TextField fx:id="des" layoutX="128.0" layoutY="299.0" promptText="description" />
+      <ComboBox fx:id="listq" layoutX="127.0" layoutY="377.0" onAction="#list_stock" prefWidth="150.0" promptText="choisir" />
       <Button layoutX="132.0" layoutY="449.0" mnemonicParsing="false" onAction="#modifier_categorie" prefHeight="26.0" prefWidth="141.0" text="modifier" />
       <Label layoutX="35.0" layoutY="225.0" text="name_categorie" />
       <Label layoutX="47.0" layoutY="299.0" text="description" />
