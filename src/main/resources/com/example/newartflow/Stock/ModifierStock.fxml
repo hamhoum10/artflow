@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifierStockControler">
+
+    <children>
+        <Label fx:id="titre" layoutX="225.0" layoutY="17.0" text="Modifier Stock" />
+        <Label layoutX="183.0" layoutY="101.0" text="Name Produit :" />
+        <TextField fx:id="np" layoutX="274.0" layoutY="97.0" promptText="name" AnchorPane.leftAnchor="274.0" AnchorPane.rightAnchor="176.39999999999998" />
+        <Label layoutX="183.0" layoutY="163.0" text="Artiste :" />
+        <TextField fx:id="ar" layoutX="274.0" layoutY="159.0" promptText="Artiste" AnchorPane.leftAnchor="274.0" AnchorPane.rightAnchor="176.39999999999998" />
+        <Label layoutX="182.0" layoutY="224.0" text="addres :" />
+        <TextField fx:id="ad" layoutX="274.0" layoutY="220.0" promptText="addres" AnchorPane.leftAnchor="274.0" AnchorPane.rightAnchor="176.39999999999998" />
+        <Label layoutX="182.0" layoutY="273.0" text="ID Commende :" />
+        <TextField fx:id="ic" layoutX="274.0" layoutY="271.0" promptText="ID" AnchorPane.leftAnchor="274.0" AnchorPane.rightAnchor="176.39999999999998" />
+        <Label layoutX="182.0" layoutY="334.0" text="User Name :" />
+        <TextField fx:id="un" layoutX="274.0" layoutY="329.0" promptText="User" AnchorPane.leftAnchor="274.0" AnchorPane.rightAnchor="176.39999999999998" />
+        <Button layoutX="309.0" layoutY="375.0" mnemonicParsing="false" onAction="#ModifierStock" text="Modifier" />
+      <Pane prefHeight="502.0" prefWidth="170.0" style="-fx-background-color: #C69186;">
+         <children>
+              <Button fx:id="re" layoutX="3.0" layoutY="-6.0" mnemonicParsing="false" onAction="#returnonClick" text="retur" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="118.0" fitWidth="135.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../image/Art_flow.png" />
+         </image>
+      </ImageView>
+    </children>
+
+</AnchorPane>

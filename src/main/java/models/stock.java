@@ -35,15 +35,15 @@ public class stock {
     public String toString() {
         return "stock{" +
                 "id= " + id +
-                ", date_entr= " + date_entr +
+                " date_entr= " + date_entr +
 
-                ", name = '" + name + '\'' +"\n"+
+                " name = '" + name + '\'' +"\n"+
 
-                ", user_name = '" + user_name + '\'' +"\n"+
+                " user_name = '" + user_name + '\'' +"\n"+
 
-                ", addres = '" + addres + '\'' +"\n"+
+                " addres = '" + addres + '\'' +"\n"+
 
-                ", artiste = '" + artiste + '\'' +"\n"+
+                " artiste = '" + artiste + '\'' +"\n"+
 
                 ", id_commende = " + id_commende +
                 '}';

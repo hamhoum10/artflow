@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="578.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterStockController">
+   <children>
+      <Label fx:id="titre" layoutX="234.0" layoutY="14.0" text="Ajouter Stock" textOverrun="LEADING_WORD_ELLIPSIS" />
+      <Label layoutX="127.0" layoutY="68.0" prefHeight="18.0" prefWidth="124.0" text="Name Produit :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="np" layoutX="225.0" layoutY="64.0" promptText="name" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.39999999999998" />
+      <Label layoutX="127.0" layoutY="129.0" prefHeight="18.0" prefWidth="82.0" text="Artiste :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="ar" layoutX="224.0" layoutY="125.0" promptText="Artiste" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="226.39999999999998" />
+      <Label layoutX="127.0" layoutY="178.0" prefHeight="18.0" prefWidth="82.0" text="addres :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="ad" layoutX="225.0" layoutY="187.0" promptText="addres" AnchorPane.leftAnchor="225.00000000000003" AnchorPane.rightAnchor="225.4" />
+      <Label layoutX="126.0" layoutY="238.0" text="ID Commende :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="ic" layoutX="187.0" layoutY="238.0" promptText="ID" AnchorPane.leftAnchor="225.00000000000003" AnchorPane.rightAnchor="225.4" />
+      <Label layoutX="126.0" layoutY="299.0" prefHeight="18.0" prefWidth="82.0" text="User Name :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="un" layoutX="188.0" layoutY="296.0" promptText="User" AnchorPane.leftAnchor="225.00000000000003" AnchorPane.rightAnchor="225.4" />
+      <Button layoutX="362.0" layoutY="344.0" mnemonicParsing="false" onAction="#ajouterStock" text="Ajouter" />
+      <Pane layoutY="-11.0" prefHeight="593.0" prefWidth="124.0" style="-fx-background-color: #C69186;">
+         <children>
+            <Button fx:id="re" layoutX="-2.0" layoutY="3.0" mnemonicParsing="false" onAction="#returnonClick" text="retour" />
+            <ImageView fitHeight="150.0" fitWidth="124.0" layoutX="-2.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../image/Art_flow.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
