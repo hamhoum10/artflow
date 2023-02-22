@@ -35,7 +35,7 @@ public interface CategorieInterface {
            public List<Categorie> fetchArticleTriByName();
                       public List<Categorie> fetchArticleTriBystock();
 
-
+public Categorie fetchCategorieByName(String name);
 
         
     

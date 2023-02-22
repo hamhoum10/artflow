@@ -63,6 +63,10 @@ public class Categorie {
         return "Categorie{" + "id_categorie=" + id_categorie + ", name_categorie=" + name_categorie + ", description=" + description + ", stock=" + stock + '}';
     }
 
+    public void getId_categorie(int parseInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
     
     

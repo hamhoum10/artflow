@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.DisplacementMap?>
+<?import javafx.scene.effect.FloatMap?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="610.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLafficherController">
+   <children>
+      <ListView fx:id="listaf" layoutX="7.0" layoutY="237.0" prefHeight="358.0" prefWidth="715.0" />
+      <Button fx:id="afficherlist" layoutX="42.0" layoutY="198.0" mnemonicParsing="false" onAction="#afficherlist" prefHeight="23.0" prefWidth="119.0" text="afficher" />
+      <Button layoutX="568.0" layoutY="198.0" mnemonicParsing="false" onAction="#supprimer_article" prefHeight="26.0" prefWidth="119.0" text="supprimer" />
+      <Button layoutX="393.0" layoutY="198.0" mnemonicParsing="false" onAction="#modify_list" prefHeight="26.0" prefWidth="119.0" text="modify" />
+      <Button layoutX="221.0" layoutY="198.0" mnemonicParsing="false" onAction="#ajouterArticle" prefHeight="26.0" prefWidth="119.0" text="Ajouter" />
+      <Pane layoutX="-3.0" prefHeight="113.0" prefWidth="750.0" style="-fx-background-color: #C69187;">
+         <children>
+            <ImageView fitHeight="207.0" fitWidth="394.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/flow.png" />
+               </image>
+               <effect>
+                  <Shadow />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="207.0" fitWidth="308.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../css/flow.png" />
+               </image>
+            </ImageView>
+         </children>
+         <effect>
+            <DisplacementMap>
+               <mapData>
+                  <FloatMap />
+               </mapData>
+               <input>
+                  <Glow level="0.05" />
+               </input>
+            </DisplacementMap>
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>

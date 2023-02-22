@@ -17,13 +17,11 @@ public class Article {
    Categorie categorie;
    Artiste artiste;
    int quantity;
-   Client client;
- 
 
     public Article() {
     }
 
-    public Article(int id_article, double price, String type, String image, String description, String Nom_article, Categorie categorie, Artiste artiste, int quantity, Client client) {
+    public Article(int id_article, double price, String type, String image, String description, String Nom_article, Categorie categorie, Artiste artiste, int quantity) {
         this.id_article = id_article;
         this.price = price;
         this.type = type;
@@ -33,7 +31,6 @@ public class Article {
         this.categorie = categorie;
         this.artiste = artiste;
         this.quantity = quantity;
-        this.client = client;
     }
 
     public int getId_article() {
@@ -108,20 +105,18 @@ public class Article {
         this.quantity = quantity;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
     @Override
     public String toString() {
-        return "Article{" + "id_article=" + id_article + ", price=" + price + ", type=" + type + ", image=" + image + ", description=" + description + ", Nom_article=" + Nom_article + ", categorie=" + categorie + ", artiste=" + artiste + ", quantity=" + quantity + ", client=" + client + '}';
+        return "Article{" + "id_article=" + id_article + ", price=" + price + ", type=" + type + ", image=" + image + ", description=" + description + ", Nom_article=" + Nom_article + ", categorie=" + categorie + ", artiste=" + artiste + ", quantity=" + quantity + '}';
     }
 
-    
+    public Object setArtiste() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+ 
+
+   
     
     
   }

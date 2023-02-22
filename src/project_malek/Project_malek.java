@@ -6,14 +6,20 @@
 package project_malek;
 
 import interfaces.ArticleInterface;
+import interfaces.ArtisteInterface;
 import interfaces.CategorieInterface;
+import interfaces.ClientInterface;
+import interfaces.StockInterface;
 import models.Article;
 import models.Artiste;
 import models.Categorie;
 import models.Client;
 import models.stock;
 import services.ArticleService;
+import services.ArtisteService;
 import services.CategorieService;
+import services.ClientService;
+import services.StockService;
 
 
 /**
@@ -30,11 +36,14 @@ public class Project_malek {
         Article a= new Article();
         CategorieInterface pi = new CategorieService();
         Categorie c = new Categorie(); 
+                ArtisteInterface al = new ArtisteService();
+           
         Artiste ar = new Artiste();
+        StockInterface ins = new StockService();
         stock st = new stock();
-        Client cl = new Client();
-  a.setId_article(35);
-        cl.setId_client(9);
+        
+        
+ a.setId_article(35);
         ar.setId_artiste(9);
         a.setNom_article("rym");
         a.setDescription("project");
@@ -45,23 +54,22 @@ public class Project_malek {
      c.setId_categorie(8);
      a.setCategorie(c);
      a.setArtiste(ar);
-     a.setClient(cl);
-////     ai.ModifyArticle(a);
+//    ai.ModifyArticle(a);
 ////        c.setDescription("nada");
 ////        c.setName_categorie("kanzari");
 //        
-//        ai.addArticle(a);
+//      ai.addArticle(a);
 ////     a.setCategorie(c);
 ////        a.setId_article(2);
 //ai.deleteArticle(37);
 //       
-//  ai.ModifyArticle(a);
+// ai.ModifyArticle(a);
 //   
-////System.out.println(ai.fetchArticleByPrice(19.0, 152.00));
-////System.err.println(ai.fetchArticleById(21));
-////System.out.println(ai.fetchArticleTriByPrice());
-////System.err.println(ai.fetchArticleTriByName());
-////System.out.println(ai.fetchArticleTriByCategorie());
+//System.out.println(ai.fetchArticleByPrice(19.0, 152.00));
+//System.err.println(ai.fetchArticleById(21));
+//System.out.println(ai.fetchArticleTriByPrice());
+//System.err.println(ai.fetchArticleTriByName());
+//System.out.println(ai.fetchArticleTriByCategorie());
 ////// TODO code application logic here
 //      
 //        c.setDescription("rym");
@@ -85,6 +93,17 @@ public class Project_malek {
 ////// //System.out.println(ai.fetchArticleById_categorie(1));
 ////System.out.println(pi.fetchArticleTriByName());
 ////System.out.println(pi.fetchArticleTriBystock());
+
+//  System.out.println(al.fetchArtisteByName("hello"));
+//        System.out.println(cli.fetchClientByName("rim"));
+//System.out.println(cli.fetchClient());
+
+//st.setArtiste("ryam");
+//st.setName("artist");
+//st.setId_commende(1);
+//        System.out.println(ins.fetchStockByName("picaso"));
+//System.out.println(ins.fetchStock());
+
     }
     
 }     

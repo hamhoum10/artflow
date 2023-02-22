@@ -227,6 +227,27 @@ Statement st = cnx.createStatement();
         
         return Categories;    }
 
+public Categorie fetchCategorieByName(String name) {
+        Categorie categorie = new Categorie();
+        try {
+            
+            String req = "SELECT * FROM Categorie WHERE Name_categorie = '"+name+"'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {                
+                categorie.setId_categorie(rs.getInt(1));
+                categorie.setName_categorie(rs.getString(2));
+                categorie.setDescription(rs.getString(3));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return categorie;
+    }   
+    
+
     
     
     

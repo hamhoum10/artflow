@@ -35,55 +35,45 @@ public class ArticleService implements ArticleInterface {
     @Override
     public void addArticle(Article a) {
         try {
-            
-            String req = "INSERT INTO `article`(`id_client`,`id_artiste`,`Nom_article`,`price`, `type`, `image`, `description`, `quantity`,`id_categorie`) VALUES (?,?,?,?,?,?,?,?,?)";
+            System.out.println("a"+a);
+//            String req = "INSERT INTO `article`(`id_client`,`id_artiste`,`Nom_article`,`price`, `type`, `image`, `description`, `quantity`,`id_categorie`) VALUES (?,?,?,?,?,?,?,?,?)";
+                       String req = "INSERT INTO `article`(`id_artiste`,`Nom_article`,`price`, `type`, `image`, `description`, `quantity`,`id_categorie`) VALUES (?,?,?,?,?,?,?,?)";
+
             PreparedStatement ps = cnx.prepareStatement(req);
-            FileInputStream videoFile = new FileInputStream(a.getImage());
-            byte[] png_Article = new byte[videoFile.available()];
-            videoFile.read(png_Article);
-            ps.setInt(1, a.getClient().getId_client());
-            ps.setInt(2,a.getArtiste().getId_artiste());
-            ps.setString(3, a.getNom_article());
-            ps.setDouble(4, a.getPrice());
-            ps.setString(5, a.getType());
-            ps.setBytes(6,png_Article);
-            ps.setString(7, a.getDescription());
-            ps.setInt(8, a.getQuantity());
-            ps.setInt(9, a.getCategorie().getId_categorie());
+            
+            ps.setInt(1,a.getArtiste().getId_artiste());
+            ps.setString(2, a.getNom_article());
+            ps.setDouble(3, a.getPrice());
+            ps.setString(4, a.getType());
+            ps.setString(5,a.getImage());
+            ps.setString(6, a.getDescription());
+            ps.setInt(7, a.getQuantity());
+            ps.setInt(8, a.getCategorie().getId_categorie());
             ps.executeUpdate();
             System.out.println("Article Added Successfully!");
             
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }   catch (FileNotFoundException ex) {
-                Logger.getLogger(ArticleService.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(ArticleService.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
+        }
 
     }
 
     @Override
     public void ModifyArticle(Article t) {
         try {    
-            String req = "update `article`  set `id_client`=?,`id_artiste`=?,`Nom_article`=?,`Price`=?,"
-                    + " `Type`=?,`Image`=?, `Description`=?,`Quantity`=? , `id_categorie`=? where `id_article`= ? ";
+            String req = "update `article`  set `id_artiste`=?,`Nom_article`=?,`Price`=?, `Type`=?,`Image`=?, `Description`=?,`Quantity`=? , `id_categorie`=? where `id_article`= ? ";
             PreparedStatement ps = cnx.prepareStatement(req);
-          FileInputStream videoFile = new FileInputStream(t.getImage());
-            byte[] png_Article = new byte[videoFile.available()];
-            videoFile.read(png_Article);
-            ps.setInt(1, t.getClient().getId_client());
-            ps.setInt(2, t.getArtiste().getId_artiste());
-            ps.setString(3, t.getNom_article());
+         
+            ps.setInt(1, t.getArtiste().getId_artiste());
+            ps.setString(2, t.getNom_article());
 
-            ps.setDouble(4, t.getPrice());
-            ps.setString(5, t.getType());
-            ps.setBytes(6,png_Article);
-            ps.setString(7, t.getDescription());
-            ps.setInt(8, t.getQuantity());
-            ps.setInt(9, t.getCategorie().getId_categorie());
-            ps.setInt(10, t.getId_article());
+            ps.setDouble(3, t.getPrice());
+            ps.setString(4, t.getType());
+            ps.setString(5,t.getImage());
+            ps.setString(6, t.getDescription());
+            ps.setInt(7, t.getQuantity());
+            ps.setInt(8, t.getCategorie().getId_categorie());
+            ps.setInt(9, t.getId_article());
             
 
             
@@ -92,11 +82,7 @@ public class ArticleService implements ArticleInterface {
             
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }   catch (FileNotFoundException ex) {
-                Logger.getLogger(ArticleService.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(ArticleService.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        }  
     }
 
     @Override
@@ -128,25 +114,26 @@ public class ArticleService implements ArticleInterface {
                 Article p = new Article();
                 Categorie c=new Categorie();
                 Artiste e = new Artiste();
-                Client h =new Client();
                 
-                p.setId_article(rs.getInt(1));
-                h.setId_client(rs.getInt(2));
-                e.setId_artiste(rs.getInt(3));
-                p.setNom_article(rs.getString(4));
-                p.setPrice(rs.getDouble(5));
-                p.setType(rs.getString(6));
-                p.setDescription(rs.getString(8));
-                p.setQuantity(rs.getInt(9));
                 
+                p.setId_article(rs.getInt("Id_article"));
+                
+                e.setId_artiste(rs.getInt("Id_artiste"));
+                p.setNom_article(rs.getString("Nom_article"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setType(rs.getString("Type"));
+                p.setDescription(rs.getString("Description"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setImage(rs.getString("image"));
+                c.setId_categorie(rs.getInt("Id_categorie"));
                
-                c.setName_categorie(rs.getString(11));
-                c.setDescription(rs.getString(12));
-                e.setNom_artiste(rs.getString(15));
-                e.setPrenom_artiste(rs.getNString(16));
+                c.setName_categorie(rs.getString("Name_categorie"));
+                c.setDescription(rs.getString("Description"));
+                e.setNom_artiste(rs.getString("Nom_artiste"));
+                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
                 p.setCategorie(c);
-                p.setArtiste(e);
-                p.setClient(h);
+               p.setArtiste(e);
+               
                 
                 Articles.add(p);
             }
@@ -171,22 +158,19 @@ public class ArticleService implements ArticleInterface {
                 Article v = new Article();
                 Categorie c=new Categorie();
                                 Artiste h = new Artiste();
-                                Client b =new Client();
                                 v.setId_article(rs.getInt(1));
-                                b.setId_client(rs.getInt(2));
-                                h.setId_artiste(rs.getInt(3));
-                v.setNom_article(rs.getString(4));
-                v.setPrice(rs.getDouble(5));
-                v.setType(rs.getString(6));
-               v.setDescription(rs.getString(8));
-               c.setId_categorie(rs.getInt(10));
-               c.setName_categorie(rs.getString(11));
-                c.setDescription(rs.getString(12));
+                                h.setId_artiste(rs.getInt(2));
+                v.setNom_article(rs.getString(3));
+                v.setPrice(rs.getDouble(4));
+                v.setType(rs.getString(5));
+               v.setDescription(rs.getString(7));
+               c.setId_categorie(rs.getInt(9));
+               c.setName_categorie(rs.getString(10));
+                c.setDescription(rs.getString(11));
                 v.setCategorie(c);
           h.setNom_artiste(rs.getString("Nom_artiste"));
                 h.setPrenom_artiste(rs.getString("Prenom_artiste"));
                 v.setArtiste(h);
-                v.setClient(b);
 
                  Articles.add(v);
                
@@ -211,21 +195,19 @@ public class ArticleService implements ArticleInterface {
                 Article a = new Article();
                 Categorie c=new Categorie();
                                 Artiste h = new Artiste();
-                                Client b =new Client();
+                                
 
                 a.setId_article(rs.getInt(1));
-                b.setId_client(rs.getInt(2));
-                h.setId_artiste(rs.getInt(3));
-                a.setNom_article(rs.getString(4));
-                a.setPrice(rs.getDouble(5));
-                a.setType(rs.getString(6));
-                a.setDescription(rs.getString(8));
-                c.setId_categorie(rs.getInt(10));
-                c.setName_categorie(rs.getString(11));
-                c.setDescription(rs.getString(12));
+                h.setId_artiste(rs.getInt(2));
+                a.setNom_article(rs.getString(3));
+                a.setPrice(rs.getDouble(4));
+                a.setType(rs.getString(5));
+                a.setDescription(rs.getString(7));
+                c.setId_categorie(rs.getInt(9));
+                c.setName_categorie(rs.getString(10));
+                c.setDescription(rs.getString(11));
                 a.setCategorie(c);
                 a.setArtiste(h);
-                a.setClient(b);
                  h.setNom_artiste(rs.getString("Nom_artiste"));
                 h.setPrenom_artiste(rs.getString("Prenom_artiste"));
           
@@ -252,10 +234,8 @@ public class ArticleService implements ArticleInterface {
                 Article a = new Article();
                 Categorie r=new Categorie();
                 Artiste h = new Artiste();
-                Client b =new Client();
 
                                a.setId_article(rs.getInt("Id_article"));
-                                b.setId_client(rs.getInt("Id_client"));
                                 h.setId_artiste(rs.getInt("Id_artiste"));
                                 a.setNom_article(rs.getString("Nom_article"));
 
@@ -265,7 +245,6 @@ public class ArticleService implements ArticleInterface {
                 a.setQuantity((int) rs.getDouble("Quantity"));
                 a.setCategorie(r);
                 a.setArtiste(h);
-                a.setClient(b);
                 r.setId_categorie(rs.getInt("Id_categorie"));
                 r.setDescription(rs.getString("Description"));
                 r.setName_categorie(rs.getString("Name_categorie"));
@@ -293,18 +272,16 @@ List<Article> Articles = new ArrayList<>();
             while (rs.next()) {                
                 Article a = new Article();
                 Categorie c=new Categorie();
-                Client b =new Client();
                 Artiste j = new Artiste();
-                a.setId_article(rs.getInt(1));
-                b.setId_client(rs.getInt(2));
-                j.setId_artiste(rs.getInt(3));
-                a.setNom_article(rs.getString(4));
-                a.setPrice(rs.getDouble(5));
-                a.setType(rs.getString(6));
-                a.setDescription(rs.getString(8));
-                c.setId_categorie(rs.getInt(10));
-                c.setName_categorie(rs.getString(11));
-                c.setDescription(rs.getString(12));
+                a.setId_article(rs.getInt("Id_article"));
+                j.setId_artiste(rs.getInt("Id_artiste"));
+                a.setNom_article(rs.getString("Nom_article"));
+                a.setPrice(rs.getDouble("Price"));
+                a.setType(rs.getString("Type"));
+                a.setDescription(rs.getString("Description"));
+                c.setId_categorie(rs.getInt("Id_categorie"));
+                c.setName_categorie(rs.getString("Name_categorie"));
+                c.setDescription(rs.getString("Description"));
                 a.setCategorie(c);
           
                 
@@ -333,25 +310,22 @@ List<Article> Articles = new ArrayList<>();
                 Article p = new Article();
                 Categorie c=new Categorie();
                 Artiste e = new Artiste();                                
-                Client b =new Client();
 
-                p.setId_article(rs.getInt(1));
-                b.setId_client(rs.getInt(2));
-                e.setId_artiste(rs.getInt(3));
-                p.setNom_article(rs.getString(4));
-                p.setPrice(rs.getDouble(5));
-                p.setType(rs.getString(6));
-                p.setDescription(rs.getString(8));
-                p.setQuantity(rs.getInt(9));
+                p.setId_article(rs.getInt("Id_article"));
+                e.setId_artiste(rs.getInt("Id_artiste"));
+                p.setNom_article(rs.getString("Nom_article"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setType(rs.getString("Type"));
+                p.setDescription(rs.getString("Description"));
+                p.setQuantity(rs.getInt("Quantity"));
                 c.setId_categorie(rs.getInt("Id_categorie"));
-                c.setName_categorie(rs.getString(11));
-                c.setDescription(rs.getString(12));
-                e.setId_artiste(rs.getInt(14));
-                e.setNom_artiste(rs.getString(15));
-                e.setPrenom_artiste(rs.getNString(16));
+                c.setName_categorie(rs.getString("Name_categorie"));
+                c.setDescription(rs.getString("Description"));
+                e.setId_artiste(rs.getInt("Id_artiste"));
+                e.setNom_artiste(rs.getString("Nom_artiste"));
+                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
                 p.setCategorie(c);
                 p.setArtiste(e);
-                p.setClient(b);
                 Articles.add(p);
             }
             
@@ -378,24 +352,21 @@ List<Article> Articles = new ArrayList<>();
                 Article p = new Article();
                 Categorie c=new Categorie();
                 Artiste e = new Artiste();
-                Client b =new Client();
-                p.setId_article(rs.getInt(1));
-                b.setId_client(rs.getInt(2));
-                e.setId_artiste(rs.getInt(3));
-                p.setNom_article(rs.getString(4));
-                p.setPrice(rs.getDouble(5));
-                p.setType(rs.getString(6));
-                p.setDescription(rs.getString(8));
+                p.setId_article(rs.getInt("Id_article"));
+                e.setId_artiste(rs.getInt("Id_artiste"));
+                p.setNom_article(rs.getString("Nom_article"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setType(rs.getString("Type"));
+                p.setDescription(rs.getString("Description"));
                 p.setQuantity(rs.getInt(9));
                 c.setId_categorie(rs.getInt("Id_categorie"));
-                c.setName_categorie(rs.getString(11));
-                c.setDescription(rs.getString(12));
-                e.setId_artiste(rs.getInt(14));
-                e.setNom_artiste(rs.getString(15));
-                e.setPrenom_artiste(rs.getNString(16));
+                c.setName_categorie(rs.getString("Name_categorie"));
+                c.setDescription(rs.getString("Description"));
+                e.setId_artiste(rs.getInt("Id_artiste"));
+                e.setNom_artiste(rs.getString("Nom_artiste"));
+                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
                 p.setCategorie(c);
                 p.setArtiste(e);
-                p.setClient(b);
                 Articles.add(p);
             }
             
@@ -422,24 +393,21 @@ List<Article> Articles = new ArrayList<>();
                 Article p = new Article();
                 Categorie c=new Categorie();
                 Artiste e = new Artiste();
-                Client b =new Client();
-                p.setId_article(rs.getInt(1));
-                b.setId_client(rs.getInt(2));
-                e.setId_artiste(rs.getInt(3));
-                p.setNom_article(rs.getString(4));
-                p.setPrice(rs.getDouble(5));
-                p.setType(rs.getString(6));
-                p.setDescription(rs.getString(8));
-                p.setQuantity(rs.getInt(9));
+                p.setId_article(rs.getInt("Id_article"));
+                e.setId_artiste(rs.getInt("Id_artiste"));
+                p.setNom_article(rs.getString("Nom_article"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setType(rs.getString("Type"));
+                p.setDescription(rs.getString("Description"));
+                p.setQuantity(rs.getInt("Quantity"));
                 c.setId_categorie(rs.getInt("Id_categorie"));
-                c.setName_categorie(rs.getString(11));
-                c.setDescription(rs.getString(12));
-                e.setId_artiste(rs.getInt(14));
-                e.setNom_artiste(rs.getString(15));
-                e.setPrenom_artiste(rs.getNString(16));
+                c.setName_categorie(rs.getString("Name_categorie"));
+                c.setDescription(rs.getString("Description"));
+                e.setId_artiste(rs.getInt("Id_artiste"));
+                e.setNom_artiste(rs.getString("Nom_artiste"));
+                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
                 p.setCategorie(c);
                 p.setArtiste(e);
-                p.setClient(b);
                 Articles.add(p);
             }
             
