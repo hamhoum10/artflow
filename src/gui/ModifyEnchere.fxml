@@ -4,10 +4,10 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="gui.ModifyEnchereController">
+<AnchorPane id="AnchorPane" prefHeight="523.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ModifyEnchereController">
    <children>
       <Label layoutX="142.0" layoutY="98.0" text="titre" />
       <Label layoutX="142.0" layoutY="143.0" text="description" />
@@ -17,6 +17,10 @@
       <TextField fx:id="desc" layoutX="242.0" layoutY="138.0" />
       <TextField fx:id="prixDepart" layoutX="242.0" layoutY="196.0" />
       <DatePicker fx:id="dateLimite" layoutX="242.0" layoutY="244.0" />
-      <Button layoutX="242.0" layoutY="322.0" mnemonicParsing="false" onAction="#modifyEnchere" text="modify" />
+      <Button layoutX="385.0" layoutY="441.0" mnemonicParsing="false" onAction="#modifyEnchere" text="modify" />
+      <Label layoutX="149.0" layoutY="324.0" text="image" />
+      <Button fx:id="image" layoutX="242.0" layoutY="330.0" mnemonicParsing="false" onAction="#takeImage" text="Button" />
+      <ImageView fx:id="image_view" fitHeight="156.0" fitWidth="212.0" layoutX="528.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="imagefield" layoutX="307.0" layoutY="330.0" />
    </children>
 </AnchorPane>

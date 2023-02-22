@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import models.Client;
 import models.Enchere;
 import models.Participant;
+import services.ClientService;
 import services.EnchereService;
 import utils.MyConnection;
 
@@ -25,6 +26,7 @@ public class main {
         // TODO code application logic here
         MyConnection c = MyConnection.getInstance();
         Enchere en = new Enchere();
+        ClientService cs = new ClientService ();
         Client cl = new Client();
         Participant p = new Participant();
         EnchereService es = new EnchereService();
@@ -33,11 +35,13 @@ public class main {
         d = d.valueOf(locald);
         
         
+        
 //AJOUT AUCTION   
 //    en.setTitre("symfony");
 //    en.setDescription("today");
 //    en.setPrixdepart(5673);
 //    en.setDate_limite(d);
+//    en.setImg("img/gh.hy");
 //    es.AddEnchere(en);
 
 // UPDATE AUCTION     
@@ -53,8 +57,11 @@ public class main {
 //es.deleteEnchere(en);
 
 //affichage enchere
- //System.out.println(es.fetchEnchere());
-
+ System.out.println(es.fetchEnchere());
+     //   System.out.println(es.fetchEnchereByname("NADA"));
+     
+   //     System.out.println(cs.fetchClient());
+       // System.out.println(cs.fetchClientByName("mzou"));
 
 // ADD PARTICIPANT TO THE AUCTION     
 //cl.setIdc(1);

@@ -7,8 +7,9 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherEnchereController">
    <children>
       <ListView fx:id="listEnchere" prefHeight="257.0" prefWidth="600.0" />
-      <Button fx:id="id_afficher" layoutX="264.0" layoutY="312.0" mnemonicParsing="false" onAction="#afficherEnchere" text="Afficher" />
-      <Button layoutX="392.0" layoutY="312.0" mnemonicParsing="false" onAction="#deleteEnchere" text="delete" />
-      <Button layoutX="127.0" layoutY="312.0" mnemonicParsing="false" onAction="#modifyEnchere" text="update" />
+      <Button fx:id="id_afficher" layoutX="208.0" layoutY="312.0" mnemonicParsing="false" onAction="#afficherEnchere" text="display" />
+      <Button layoutX="352.0" layoutY="312.0" mnemonicParsing="false" onAction="#deleteEnchere" text="delete" />
+      <Button layoutX="58.0" layoutY="312.0" mnemonicParsing="false" onAction="#modifyEnchere" text="update" />
+      <Button layoutX="501.0" layoutY="312.0" mnemonicParsing="false" onAction="#addEnchere" text="add" />
    </children>
 </AnchorPane>

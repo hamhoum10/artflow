@@ -17,6 +17,7 @@ public interface EnchereParticipantInterface {
     
     public void AddEnchere(Enchere e);
     
+    public Enchere fetchEnchereByname(String titre);
      public Enchere fetchEnchereById(int ide);
     public List<Enchere> fetchEnchere();
      public boolean updateEnchere(Enchere e);

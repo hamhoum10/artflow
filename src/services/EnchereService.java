@@ -31,12 +31,14 @@ public class EnchereService implements EnchereParticipantInterface {
     @Override
     public void AddEnchere(Enchere e) {
      try { 
-         String req = "INSERT INTO `enchere`(`titre`, `description`, `prixdepart`, `date_limite`) VALUES (?,?,?,?)"   ;
+         String req = "INSERT INTO `enchere`(`titre`, `description`, `prixdepart`, `date_limite`,`image`) VALUES (?,?,?,?,?)"   ;
              PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, e.getTitre());
             ps.setString(2, e.getDescription());
             ps.setDouble(3, e.getPrixdepart());
               ps.setDate(4, e.getDate_limite());
+             ps.setString(5, e.getImg());
+
             ps.executeUpdate();
             System.out.println("auction Added Successfully!");
          } catch (SQLException ex) {
@@ -48,20 +50,26 @@ public class EnchereService implements EnchereParticipantInterface {
      
      
      
+     
+     
+     
     
     }
+    
 
     @Override
     public boolean updateEnchere(Enchere e) {
     
-       String req =" UPDATE `enchere` SET `titre`=?,`description`=?,`prixdepart`=?,`date_limite`=? WHERE `enchere`.`ide`=?;";
+       String req =" UPDATE `enchere` SET `titre`=?,`description`=?,`prixdepart`=?,`date_limite`=? , `image`=? `WHERE `enchere`.`ide`=?;";
          try {
              PreparedStatement ps = cnx.prepareStatement(req);
              ps.setString(1, e.getTitre());
              ps.setString(2, e.getDescription());
              ps.setDouble(3, e.getPrixdepart());
              ps.setDate(4, e.getDate_limite());
-             ps.setInt(5, e.getIde());
+             ps.setString(5, e.getImg());
+
+             ps.setInt(6, e.getIde());
              int n = ps.executeUpdate();
              
             if (n >= 1) {
@@ -83,19 +91,20 @@ public class EnchereService implements EnchereParticipantInterface {
     public List<Enchere> fetchEnchere() {
        List<Enchere> enchere = new ArrayList<>();
         try {    
-            String req = "SELECT * FROM enchere";
+            String req = "SELECT * FROM enchere ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
          while (rs.next()) {                
-                Enchere e = new Enchere();
-                e.setIde(rs.getInt(1));
-                e.setTitre(rs.getString(2));
-                e.setDescription(rs.getString(3));
-                e.setPrixdepart(rs.getDouble(4));
-                e.setDate_limite(rs.getDate(5));
+                Enchere ene = new Enchere();
+                ene.setIde(rs.getInt("ide"));
+                ene.setTitre(rs.getString("titre"));
+                ene.setDescription(rs.getString("description"));
+                ene.setPrixdepart(rs.getDouble("prixdepart"));
+                ene.setDate_limite(rs.getDate("date_limite"));
+                 ene.setImg(rs.getString("image"));
                 
                 
-                enchere.add(e);
+                enchere.add(ene);
             }
             
         } catch (SQLException ex) {
@@ -154,7 +163,7 @@ public class EnchereService implements EnchereParticipantInterface {
            st.setInt(2,p.getEnchere().getIde());
            st.setInt(3, (int) p.getMontant());
            st.executeUpdate();
-            System.out.println("Echere added successfully!");
+            System.out.println("participation added successfully!");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -173,7 +182,7 @@ public class EnchereService implements EnchereParticipantInterface {
             int n = pst.executeUpdate();
             
             if (n >= 1) {
-                System.out.println("Modif réussi");
+                System.out.println("Modification réussi");
             }
             return true;
         } catch (SQLException ex) {
@@ -364,33 +373,44 @@ public class EnchereService implements EnchereParticipantInterface {
  }
 */
 
-    public void updateArticle(Enchere en) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    @Override
+    public Enchere fetchEnchereByname(String titre) {
+     Enchere c = new Enchere();
+        try {
+            
+            String req = "SELECT * FROM enchere WHERE `titre` = '"+titre+"' ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {                
+               c.setIde(rs.getInt("Ide"));
+                c.setTitre(rs.getString("titre"));
+                c.setDescription(rs.getString("description"));
+                 c.setPrixdepart(rs.getDouble("prixdepart"));
+                  c.setDate_limite(rs.getDate("date_limite"));
+
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return c ;
+    }    
+
 
 }
 
-
-
-
-
-
+    
+    
+    
+    
+    
+      
+    
+    
+   
 
 
 

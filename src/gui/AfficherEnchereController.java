@@ -54,9 +54,7 @@ public class AfficherEnchereController implements Initializable {
     @FXML
     private void afficherEnchere(ActionEvent event) {
     
-   // ObservableList<GarageC> g=FXCollections.observableArrayList(sg.readAll());
-     //  id_list.setItems(g);
-    
+ 
     ObservableList<Enchere> e= FXCollections.observableArrayList(es.fetchEnchere());
     listEnchere.setItems(e);
     }
@@ -64,9 +62,6 @@ public class AfficherEnchereController implements Initializable {
     @FXML
     private void deleteEnchere(ActionEvent event) {
         
-//        int selectedId= id_list.getSelectionModel().getSelectedItem().getId_garage();
-//        sg.delete(selectedId);
-//       afficher_garage(event);
     
     int selectedId =listEnchere.getSelectionModel().getSelectedItem().getIde();
     es.deleteEnchere(selectedId);
@@ -97,6 +92,18 @@ public class AfficherEnchereController implements Initializable {
         Logger.getLogger(AfficherEnchereController.class.getName()).log(Level.SEVERE, null, ex);
     }
    
+    }
+
+    @FXML
+    private void addEnchere(ActionEvent event) throws IOException {
+    
+      FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXML.fxml"));
+               Parent view_2=loader.load();
+               Scene scene = new Scene(view_2);
+               Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+               stage.setScene(scene);
+               stage.show();
+    
     }
     
     

@@ -17,24 +17,37 @@ public class Enchere {
     private String description;
     private double prixdepart;
     private Date date_limite;
+    private String img;
 
     public Enchere() {
     }
 
-    public Enchere(int ide, String titre, String description, double prixdepart, Date date_limite) {
+    public Enchere(int ide, String titre, String description, double prixdepart, Date date_limite, String img) {
         this.ide = ide;
         this.titre = titre;
         this.description = description;
         this.prixdepart = prixdepart;
         this.date_limite = date_limite;
+        this.img=img;
     }
 
-    public Enchere(String titre, String description, double prixdepart, Date date_limite) {
+    public Enchere(String titre, String description, double prixdepart, Date date_limite, String img) {
         this.titre = titre;
         this.description = description;
         this.prixdepart = prixdepart;
         this.date_limite = date_limite;
+        this.img = img;
     }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    
 
     
     
@@ -82,7 +95,27 @@ public class Enchere {
 
     @Override
     public String toString() {
-        return "Enchere{" + "ide=" + ide + ", titre=" + titre + ", description=" + description + ", prixdepart=" + prixdepart + ", date_limite=" + date_limite + '}';
+        return "Enchere: "
+                + "id enchere : " + ide +  ", titre=" + titre + ", description=" + description + ", prixdepart=" + prixdepart + ", date_limite=" + date_limite + ", img=" + img + '}';
+    }
+
+    /*
+    
+    
+    public String toString() {
+        return  "Article_name : " + article.getNom_article() +System.lineSeparator()+
+                "Article_type : " + article.getType() +System.lineSeparator()+
+                "Article_description : " + article.getDescription() +System.lineSeparator()+
+                "Article_price : " + article.getPrice() +System.lineSeparator()+
+                "Quantity : " + quantity +System.lineSeparator()+
+                "id_panier : " + id_panier +System.lineSeparator();
+
+    }
+    
+     */
+
+    public Object getItems() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
