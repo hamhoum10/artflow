@@ -36,9 +36,9 @@ public class EvenementService  implements EvenementInterface{
             
             String req = "INSERT INTO `evemt`(`date`, `description`,`finish_hour`,`start_hour`, `location`,`capacity`,`image`,`name`, `id_artiste`) VALUES (?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
-            FileInputStream videoFile = new FileInputStream(e.getImage());
-            byte[] image = new byte[videoFile.available()];
-            videoFile.read(image);
+//            FileInputStream videoFile = new FileInputStream(e.getImage());
+//            byte[] image = new byte[videoFile.available()];
+//            videoFile.read(image);
             
             ps.setString(1, e.getDate());
    
@@ -47,7 +47,7 @@ public class EvenementService  implements EvenementInterface{
             ps.setString(4, e.getStart_hour());
              ps.setString(5, e.getLocation());
             ps.setString(6, e.getCapacity());
-           ps.setBytes(7,image);
+           ps.setString(7,e.getImage());
            
            
             
@@ -58,11 +58,12 @@ public class EvenementService  implements EvenementInterface{
             
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
-        }   
+        }
+//        catch (FileNotFoundException ex) {
+//            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+//        }   
         
 
     }

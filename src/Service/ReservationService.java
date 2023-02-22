@@ -91,7 +91,7 @@ try {
             PreparedStatement ps = cnx.prepareStatement(req);
            
             ps.setInt(1, r.getNb_place());
-           ps.setDouble(2, r.getPrice());
+            ps.setDouble(2, r.getPrice());
             ps.setInt(3, r.getClient());
             ps.setInt(4, r.getId());
 

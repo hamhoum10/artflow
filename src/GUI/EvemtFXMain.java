@@ -35,19 +35,31 @@ import javafx.stage.Stage;
     @Override
     public void start(Stage primaryStage) throws IOException {
        Parent root = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
-       Scene scene = new Scene(root, 700,500);
+       Scene scene = new Scene(root);
        primaryStage.setTitle("Ajouter un evenement");
        primaryStage.setScene(scene);
        primaryStage.show();
     }
     
-//    public class EvemtFXMain extends Application {
-//    
+  //  public class EvemtFXMain extends Application {
+    
 //    @Override
 //    public void start(Stage primaryStage) throws IOException {
 //       Parent root = FXMLLoader.load(getClass().getResource("../GUI/ModifiEvemt.fxml"));
 //       Scene scene = new Scene(root, 700,500);
 //       primaryStage.setTitle("Veuillez les informations de l'evenement");
+//       primaryStage.setScene(scene);
+//       primaryStage.show();
+//    }
+
+
+//public class EvemtFXMain extends Application {
+//    
+//    @Override
+//    public void start(Stage primaryStage) throws IOException {
+//       Parent root = FXMLLoader.load(getClass().getResource(""));
+//       Scene scene = new Scene(root, 700,500);
+//       primaryStage.setTitle("Supprimer un evenement");
 //       primaryStage.setScene(scene);
 //       primaryStage.show();
 //    }

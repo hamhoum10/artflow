@@ -9,16 +9,25 @@ import Models.Artiste;
 import Models.Evenement;
 import Service.EvenementService;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -62,6 +71,43 @@ public class EvenementController implements Initializable {
 
     @FXML
     private void enregistrer(ActionEvent event) {
+         if (name.getText().length()==0||
+                 date.getText().length()==0||
+                 start_hour.getText().length()==0||
+                 finish_hour.getText().length()==0||
+                 capacity.getText().length()==0||
+                 description.getText().length()==0||
+                 capacity.getText().length()==0||
+                 image.getText().length()==0||
+                 location.getText().length()==0){
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur de saisie !");
+            alert.setContentText("Veuillez  remplir tous les champs"+ "");
+            alert.show();
+            return;
+    }
+        // Vérifier que le prix est un nombre valide
+//    float prixf;
+//        try {
+//        prixf = Float.parseFloat(prix.getText());
+//        if (prixf <= 0) {
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Erreur");
+//            alert.setHeaderText(null);
+//            alert.setContentText("L'evenement doit être supérieur à zéro.");
+//            alert.showAndWait();
+//            return;
+//        }
+//    } catch (NumberFormatException e) {
+//        Alert alert = new Alert(Alert.AlertType.ERROR);
+//        alert.setTitle("Erreur");
+//        alert.setHeaderText(null);
+//        alert.setContentText("Le prix doit être un nombre");
+//        alert.showAndWait();
+//        return;
+//    }
         
         Evenement e = new Evenement();
         Artiste a = new Artiste();
@@ -74,9 +120,10 @@ public class EvenementController implements Initializable {
         e.setImage(imagee.getText());
         e.setLocation(location.getText());
         a.setId_artiste(Integer.parseInt(artiste.getText()));
-         e.setArtiste(a);
+        e.setArtiste(a);
         
         Es.addEvenement(e);
+       
     }
 
     @FXML
@@ -98,10 +145,27 @@ public class EvenementController implements Initializable {
         
     }
     @FXML
-    private void afficher(ActionEvent event) {}
-    @FXML
-     private void modifier(ActionEvent event) {}
+    private void afficher(ActionEvent event) {
+      
+        try {
+            //bonPlanService.update(bonPlanService.readById(selectedId));
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("./View_Evemt.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(EvenementController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+   
+        
+    
+    }
     
     
-}
+    
+

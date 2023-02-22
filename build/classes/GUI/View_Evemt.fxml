@@ -8,5 +8,7 @@
    <children>
       <ListView fx:id="affiche" layoutX="15.0" layoutY="7.0" prefHeight="426.0" prefWidth="632.0" />
       <Button layoutX="269.0" layoutY="440.0" mnemonicParsing="false" onAction="#aff" text="Afficher" />
+      <Button fx:id="BOUTTONMOD" layoutX="383.0" layoutY="447.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+      <Button layoutX="506.0" layoutY="456.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
    </children>
 </AnchorPane>

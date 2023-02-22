@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Models.Evenement;
 import Models.Reservation;
 import Service.ReservationService;
 import java.io.IOException;
@@ -12,6 +13,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 /**
@@ -29,20 +30,11 @@ import javafx.stage.Stage;
  *
  * @author Lenovo
  */
-public class ReservationController implements Initializable {
-    
-    ReservationService Rs = new ReservationService();
-    
-
+public class View_ReservatiobController implements Initializable {
+    ReservationService  Rs = new ReservationService() ;
+    Reservation r=new Reservation();
     @FXML
-    private TextField nb_place;
-    @FXML
-    private TextField price;
-    @FXML
-    private Text id_client;
-    @FXML
-    private TextField client;
-
+    private ListView<Reservation> afficheres;
     /**
      * Initializes the controller class.
      */
@@ -52,35 +44,23 @@ public class ReservationController implements Initializable {
     }    
 
     @FXML
-    private void valider(ActionEvent event) {
-         if (nb_place.getText().length()==0||
-                 
-                 price.getText().length()==0){
-
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setHeaderText("Erreur de saisie !");
-            alert.setContentText("Veuillez  remplir tous les champs"+ "");
-            alert.show();
-            return;
-    }
-         
+    private void afficher(ActionEvent event) {
+         ObservableList<Reservation > e =FXCollections.observableArrayList(Rs.fetchReservations());
         
-        
-        Reservation r = new Reservation();
-        
-        r.setNb_place(Integer.parseInt(nb_place.getText()));
-        r.setPrice(Double.parseDouble(price.getText()));
-        r.setClient(Integer.parseInt(client.getText()));
-        Rs.addReservation(r);
+        afficheres.setItems(e);
     }
 
     @FXML
-    private void afficher(ActionEvent event) {
-        try {
-            FXMLLoader loader= new FXMLLoader(getClass().getResource("./View_Reservatiob.fxml"));
+    private void modifier(ActionEvent event) {
+        
+         try {
+             Reservation selectedEvent=afficheres.getSelectionModel().getSelectedItem();
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("./ModifierReservation.fxml"));
             Parent view_2=loader.load();
-            
+            ModifierReservationController ModifierEventController=loader.getController();
+        ModifierEventController.getEvent(selectedEvent);
+        ModifierEventController.r=selectedEvent;
+
             Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
             Scene scene = new Scene(view_2);
             stage.setScene(scene);
@@ -88,6 +68,20 @@ public class ReservationController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(ReservationController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+
+
+    }
+
+    @FXML
+    private void supprimer(ActionEvent event) {
+         int selectedId= afficheres.getSelectionModel().getSelectedItem().getId();
+        Rs.suppReservation(selectedId);
+        afficher(event);
+        
+        
+       
+    
     }
     
 }

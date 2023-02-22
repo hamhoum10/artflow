@@ -30,7 +30,18 @@ public class ReservationFXMain extends Application {
        primaryStage.setScene(scene);
        primaryStage.show();
     }
+//    public class ReservationFXMain extends Application {
+//    
+//    @Override
+//    public void start(Stage primaryStage) throws IOException {
+//        Parent root = FXMLLoader.load(getClass().getResource("../GUI/View_Reservation.fxml"));
+//       Scene scene = new Scene(root, 600,400);
+//       primaryStage.setTitle("Ajouter une reservation d'un evenement");
+//       primaryStage.setScene(scene);
+//       primaryStage.show();
+//    }
 
+    
     /**
      * @param args the command line arguments
      */

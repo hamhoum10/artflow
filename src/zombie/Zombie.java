@@ -68,7 +68,7 @@ public class Zombie {
 //        
 //        //add action
   //ps.addEvenement(e);
-   //System.out.println(ps.fetchEvenements());
+   System.out.println(ps.fetchEvenements());
  //ps.modEvenement(e);
   //ps.suppEvenement(16);
     
@@ -96,7 +96,7 @@ public class Zombie {
   r.setNb_place(145);
    r.setPrice(1500);
 r.setClient(1);
-     rs.addReservation(r);
+     //rs.addReservation(r);
    //System.out.println(rs.fetchReservations());
 //    r.setPrice(2023);
     

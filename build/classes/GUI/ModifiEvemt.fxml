@@ -20,9 +20,10 @@
       <Text layoutX="46.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation" />
       <TextField fx:id="location" layoutX="148.0" layoutY="230.0" />
       <Text layoutX="45.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
-      <TextField fx:id="image" layoutX="148.0" layoutY="275.0" />
-      <Text layoutX="60.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id_artiste" />
-      <TextField fx:id="artiste" layoutX="148.0" layoutY="313.0" />
-      <Button layoutX="209.0" layoutY="355.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+      <Button layoutX="63.0" layoutY="355.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+      <Text layoutX="185.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <TextField fx:id="description" layoutX="280.0" layoutY="355.0" />
+      <TextField fx:id="imagee" layoutX="374.0" layoutY="275.0" />
+      <Button layoutX="153.0" layoutY="275.0" mnemonicParsing="false" onAction="#image" prefHeight="31.0" prefWidth="163.0" text="Importer une image" />
    </children>
 </AnchorPane>

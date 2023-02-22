@@ -11,8 +11,9 @@
       <TextField fx:id="nb_place" layoutX="219.0" layoutY="54.0" promptText="Saisie le nombre de place" />
       <Text layoutX="63.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
       <TextField fx:id="price" layoutX="219.0" layoutY="99.0" promptText="Saisie le prix" />
-      <Button layoutX="262.0" layoutY="225.0" mnemonicParsing="false" onAction="#valider" text="Valider" />
+      <Button layoutX="171.0" layoutY="219.0" mnemonicParsing="false" onAction="#valider" text="Valider" />
       <TextField fx:id="client" layoutX="219.0" layoutY="154.0" promptText="Saisie le prix" />
       <Text fx:id="id_client" layoutX="75.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id client" />
+      <Button layoutX="313.0" layoutY="219.0" mnemonicParsing="false" onAction="#afficher" text="Afficher" />
    </children>
 </AnchorPane>
