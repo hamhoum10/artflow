@@ -25,32 +25,9 @@ import javafx.stage.Stage;
  */
 public class FXMain extends Application {
     
-    
-   
-    //AJOUTER UNE ENCHERE 
-    /*
-    @Override
-    public void start(Stage primaryStage) {
-       Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/gui/FXML.fxml"));
-            Scene scene = new Scene(root);
-           
-            
-            primaryStage.setTitle("Hello World!");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-    }
-    
-  */
-    
-    
+ 
     //AFFICHER MODIFIER ET SUPPRIMER UNE ENCHERE
-  /*   @Override
+   @Override
     public void start(Stage primaryStage) {
        Parent root;
         try {
@@ -58,7 +35,7 @@ public class FXMain extends Application {
             Scene scene = new Scene(root);
            
             
-            primaryStage.setTitle("Hello World!");
+            primaryStage.setTitle("home page");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
@@ -66,9 +43,9 @@ public class FXMain extends Application {
         }
        
     }
-    */
-     
-   
+    
+      
+    /*
     // PARTICIPER AUX ENCHERES 
      @Override
     public void start(Stage primaryStage) {
@@ -78,7 +55,7 @@ public class FXMain extends Application {
             Scene scene = new Scene(root);
            
             
-            primaryStage.setTitle("Hello World!");
+            primaryStage.setTitle("bienvenue aux ventes des encheres");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {
@@ -87,8 +64,7 @@ public class FXMain extends Application {
        
     }
     
-   
-    
+   */
     
     
    

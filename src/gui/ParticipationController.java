@@ -12,6 +12,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -63,10 +65,28 @@ public class ParticipationController implements Initializable {
     @FXML
     private void addParticipation(ActionEvent event) {
         p.setMontant(Double.parseDouble(mont.getText()));
-        es.addParticipant(p);
-        
-        
+        double amount = es.getHighestBidAmount(p);
+    if (p.getMontant() <= amount) {
+        // Display an error message if the bid amount is not higher than the current highest bid
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Invalid Bid Amount");
+        alert.setContentText("Bid must be superior to " + amount + " DT");
+        alert.showAndWait();
+    } else {
+        if (es.enchereExist(p)) {
+            // Update the participant if they have already placed a bid
+            es.updateParticipant(p);
+        } else {
+            // Add the participant to the auction if they are a new bidder
+            es.addParticipant(p);
+        }
     }
+}
+
+
+        
+    
 
     @FXML
     private void listeEnchere(ActionEvent event) {
