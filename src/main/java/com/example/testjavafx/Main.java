@@ -13,7 +13,7 @@ public class Main {
         Artiste med =new Artiste("Mohamed","Miaoui","ariana","04/12/2000","yasuo main","fdf","borjba","9684565","med","yasuo","med@gmail.com");
         ArtisteService as =new ArtisteService();
         //as.saveArtiste(med);
-        Article ps4 =new Article(50,10,950.0,"VideoGame","idk","console game","Playstation 4",c,med,50);
+        Article ps4 =new Article(50,10,950.0,"VideoGame","idk","Playstaion 4 is a Gaming console that allow the user to have an amazing adventure in a virtuelle world were joy and happiness have no limits","Playstation 4",c,med,50);
         Article gun =new Article(9,5,5000,"weapon","vovodvds","a dangerous tool that allow u to protect you're self from intruders and kill them if needed ;)","AK47",c,med,14);
         Article headphone =new Article(30,10,120,"electronics","idk","audio device that allow you to listen to a vast variety of shitty music and end up with ligma ","Airpods",c,med,50);
 
@@ -39,6 +39,7 @@ public class Main {
         System.out.println(lps.readelementPanierbyiduser(3));
         lps.AjouterDansTableligne_Panier(ligne_paniergun,32);
         lps.AjouterDansTableligne_Panier(ligne_panierheadphone,33);
+        lps.AjouterDansTableligne_Panier(ligne_panierps4,22);
         //lps.deleteFromLigne_panierByArticle(3,14);
         //lps.deleteAllFromLigne_panier(4);
         // just mesh njareb el git

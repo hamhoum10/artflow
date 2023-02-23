@@ -97,6 +97,8 @@ public class CommandeService {
                 Commande commande = new Commande();
                 commande.setId(rs.getInt("id"));
                 commande.setId_panier(rs.getInt("id_panier"));
+                commande.setNomClientCommande(rs.getString("nom"));
+                commande.setPrénomClientCommande(rs.getString("prenom"));
                 commande.setStatus("status");
                 commande.setTotalAmount( rs.getFloat("total_amount"));
                 commande.setCreatedAt(rs.getString("created_at"));
