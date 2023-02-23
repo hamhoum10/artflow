@@ -2,31 +2,28 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import models.livraison;
 import models.stock;
+import services.livraisonService;
 import services.stockService;
 
+import java.io.IOException;
 import java.net.URL;
-
 import java.util.ResourceBundle;
 
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-
-public class AjouterStockController   implements  Initializable {
-    stockService ss = new stockService();
+public class AjouterLivraisonController implements  Initializable {
+    livraisonService ss = new livraisonService();
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -55,7 +52,7 @@ public class AjouterStockController   implements  Initializable {
 
     @FXML
      public void returnonClick(ActionEvent event) throws  Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherStock.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherLivraison.fxml"));
         Stage window = (Stage) re.getScene().getWindow();
         window.setScene(new Scene(root));
 
@@ -66,7 +63,35 @@ public class AjouterStockController   implements  Initializable {
 
     }
     @FXML
-    void ajouterStock(ActionEvent event) throws IOException {
+//    void ajouterStock(ActionEvent event) throws IOException {
+//        livraison s = new livraison();
+//
+//        s.setName(np.getText());
+//        s.setArtiste(ar.getText());
+//        s.setAddres(ad.getText());
+//        s.setId_commende(Integer.parseInt(ic.getText()));
+//        s.setUser_name(un.getText());
+//        ss.addlivraison(s);
+//        titre.setText("Livraison Added Successfully! ");
+//
+//
+//        FXMLLoader loader= new FXMLLoader(getClass().getResource("/com/example/newartflow/Stock/AfficherLivraison.fxml"));
+//        Parent view_2=loader.load();
+//
+//        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+//        Scene scene = new Scene(view_2);
+//        stage.setScene(scene);
+//        stage.show();
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//
+//        alert.setTitle("Information Dialog");
+//
+//        alert.setHeaderText(null);
+//
+//        alert.setContentText("livraison insérée avec succés!");
+//
+//        alert.show();
+    public void ajouterStock(ActionEvent event) throws IOException {
         String name = np.getText().trim();
         String artiste = ar.getText().trim();
         String addres = ad.getText().trim();
@@ -104,16 +129,16 @@ public class AjouterStockController   implements  Initializable {
             return;
         }
 
-        stock s = new stock();
+        livraison s = new livraison();
         s.setName(name);
         s.setArtiste(artiste);
         s.setAddres(addres);
         s.setId_commende(idCommende);
         s.setUser_name(userName);
 
-        ss.addstock(s);
+        ss.addlivraison(s);
 
-        titre.setText("stock Added Successfully!");
+        titre.setText("Livraison Added Successfully!");
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/newartflow/Stock/AfficherLivraison.fxml"));
         Parent view_2 = loader.load();
@@ -128,41 +153,14 @@ public class AjouterStockController   implements  Initializable {
         alert.setContentText("Livraison insérée avec succès!");
         alert.showAndWait();
     }
-    }
-//        stock s = new stock();
-//        s.setName(np.getText());
-//        s.setArtiste(ar.getText());
-//        s.setAddres(ad.getText());
-//        s.setId_commende(Integer.parseInt(ic.getText()));
-//        s.setUser_name(un.getText());
-//        ss.addstock(s);
-//        titre.setText("Stock Added Successfully! ");
-//        //FXMLLoader loader= new FXMLLoader(getClass().getResource("FXMLafficher.fxml"));
-//        //Parent view_2=loader.load();
-//
-//        //Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-//        //Scene scene = new Scene(view_2);
-//        //stage.setScene(scene);
-//        //stage.show();
-//
-//        FXMLLoader loader= new FXMLLoader(getClass().getResource("AfficherStock.fxml"));
-//        Parent view_2=loader.load();
-//
-//        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-//        Scene scene = new Scene(view_2);
-//        stage.setScene(scene);
-//        stage.show();
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//
-//        alert.setTitle("Information Dialog");
-//
-//        alert.setHeaderText(null);
-//
-//        alert.setContentText("Stock insérée avec succés!");
-//
-//        alert.show();
-//
-//
-//    }
 
+
+
+
+
+
+
+
+
+    }
 

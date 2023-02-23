@@ -43,6 +43,8 @@ public class livraisonService implements livraisonInterface {
                 livraison s = new livraison();
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
+                s.setUser_name(rs.getString("User_name"));
+                s.setAddres(rs.getString(4));
                 s.setArtiste(rs.getString("artiste"));
                 s.setId_commende(rs.getInt("id_commende"));
 
@@ -61,15 +63,23 @@ public class livraisonService implements livraisonInterface {
     public void updateAlllivraison(livraison s) { try {
 
         String req = "UPDATE `livraison` SET `name_produit`=?,`artiste`=?,`addres`=?,`id_commende`=?,`user_name`=? WHERE id = ?; ";
+
         PreparedStatement ps = cnx.prepareStatement(req);
 
         ps.setString(1, s.getName());
+
         ps.setString(2, s.getArtiste());
+
         ps.setString(3, s.getAddres());
+
         ps.setInt(4,s.getId_commende());
+
         ps.setString(5, s.getUser_name());
+
         ps.setInt(6,s.getId());
+
         ps.executeUpdate();
+
         System.out.println("livraison updated Successfully!");
 
     } catch (SQLException ex) {
@@ -146,6 +156,7 @@ public class livraisonService implements livraisonInterface {
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
                 s.setId_commende(rs.getInt("id_commende"));
+
                 livraisons.add(s);
             }
 

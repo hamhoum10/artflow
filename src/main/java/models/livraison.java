@@ -34,14 +34,14 @@ public class livraison {
 
     @Override
     public String toString() {
-        return "stock{" +
+        return "Livraison{" +
                 "id=" + id +
-                ", date_entr=" + date_sort +
-                ", name='" + name + '\'' +
-                ", user_name='" + user_name + '\'' +
-                ", addres='" + addres + '\'' +
-                ", artiste='" + artiste + '\'' +
-                ", id_commende=" + id_commende +
+                ", date_entr=" + date_sort + System.lineSeparator()+
+                ", name='" + name + '\'' + System.lineSeparator()+
+                ", user_name='" + user_name + '\'' + System.lineSeparator()+
+                ", addres='" + addres + '\'' + System.lineSeparator()+
+                ", artiste='" + artiste + '\'' + System.lineSeparator()+
+                ", id_commende=" + id_commende + System.lineSeparator()+
                 '}';
     }
 

@@ -9,13 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import models.livraison;
 import models.stock;
+import services.livraisonService;
 import services.stockService;
 
 import java.io.IOException;
 
-public class ModifierStockControler {
-    stockService ss = new stockService();
+public class ModifierLivraisonControler {
+    livraisonService ss = new livraisonService();
     @FXML
     private TextField ad;
 
@@ -36,9 +38,9 @@ public class ModifierStockControler {
 
     @FXML
     private TextField un;
-    stock s;
+    livraison s;
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    public void getStock(stock s){
+    public void getLivraison(livraison s){
 
 
 
@@ -52,7 +54,8 @@ public class ModifierStockControler {
     }
 
     @FXML
-    void ModifierStock(ActionEvent event) {
+    void ModifierLivraison(ActionEvent event) {
+
 
 
         s.setName(np.getText());
@@ -90,7 +93,9 @@ public class ModifierStockControler {
             alert.showAndWait();
             return;
         }
-        ss.updateAllstock(s);
+
+
+        ss.updateAlllivraison(s);
         alert.setTitle("reuissi");
         alert.setHeaderText(null);
         alert.setContentText("modifier est reussite !");
@@ -101,9 +106,11 @@ public class ModifierStockControler {
 
     @FXML
     void returnonClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherStock.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherLivraison.fxml"));
         Stage window = (Stage) re.getScene().getWindow();
         window.setScene(new Scene(root));
 
     }
+
+
 }

@@ -35,17 +35,17 @@ public class stock {
     public String toString() {
         return "stock{" +
                 "id= " + id +
-                " date_entr= " + date_entr +
+                " date_entr= " + date_entr +System.lineSeparator()+
 
-                " name = '" + name + '\'' +"\n"+
+                " name = '" + name + '\'' +System.lineSeparator()+
 
-                " user_name = '" + user_name + '\'' +"\n"+
+                " user_name = '" + user_name + '\'' +System.lineSeparator()+
 
-                " addres = '" + addres + '\'' +"\n"+
+                " addres = '" + addres + '\'' +System.lineSeparator()+
 
-                " artiste = '" + artiste + '\'' +"\n"+
+                " artiste = '" + artiste + '\'' +System.lineSeparator()+
 
-                ", id_commende = " + id_commende +
+                ", id_commende = " + id_commende +System.lineSeparator()+
                 '}';
     }
 

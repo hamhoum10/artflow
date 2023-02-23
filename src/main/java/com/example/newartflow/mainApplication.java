@@ -8,25 +8,22 @@ import javafx.stage.Stage;
 
 
 public class mainApplication extends Application {
+//    @Override
+//    public void start(Stage stage) throws Exception {
+//
+//        Parent root =  FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherStock.fxml"));
+//        System.out.println(root);
+//        stage.setTitle("csd");
+//        stage.setScene(new Scene(root));
+//        stage.show();
+//    }
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root =  FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherStock.fxml"));
+        Parent root =  FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherLivraison.fxml"));
         System.out.println(root);
         stage.setTitle("csd");
         stage.setScene(new Scene(root));
         stage.show();
     }
-//        @Override
-//        public void start(Stage stage) throws Exception {
-//
-//            Parent root =  FXMLLoader.load(getClass().getResource("AjouterStock.fxml"));
-//            System.out.println(root);
-//            stage.setTitle("csd");
-//            stage.setScene(new Scene(root));
-//            stage.show();
-//        }
-//
-//
-//
     public static void main(String[] args) {        launch();    }}

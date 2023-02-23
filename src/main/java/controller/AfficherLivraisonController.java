@@ -9,27 +9,23 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import models.stock;
-import services.stockService;
+import models.livraison;
 
+import services.livraisonService;
 
-import javafx.scene.control.Button;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-
-import static javafx.beans.binding.Bindings.isEmpty;
-
-public class AfficherStockController implements Initializable  {
-    stockService ss = new stockService();
+public class AfficherLivraisonController implements Initializable  {
+    livraisonService ss = new livraisonService();
 
 
     @FXML
@@ -43,8 +39,8 @@ public class AfficherStockController implements Initializable  {
 
 
         @FXML
-        private ListView<stock> lst;
-    ObservableList<stock> e= FXCollections.observableArrayList(ss.fetchstock());
+        private ListView<livraison> lst;
+    ObservableList<livraison> e= FXCollections.observableArrayList(ss.fetchlivraison());
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     @FXML
@@ -52,13 +48,13 @@ public class AfficherStockController implements Initializable  {
 
 
         if (id.getText().isEmpty())
-        { e= FXCollections.observableArrayList(ss.fetchstock());
+        { e= FXCollections.observableArrayList(ss.fetchlivraison());
 
         lst.setItems(e);}
 
 
         else
-            e= FXCollections.observableArrayList(ss.SelectById(Integer.parseInt( id.getText())));
+            e= FXCollections.observableArrayList(ss.SelectByIdliv(Integer.parseInt( id.getText())));
             lst.setItems(e);
 
 
@@ -66,7 +62,7 @@ public class AfficherStockController implements Initializable  {
     @FXML
     public void ajouter(ActionEvent event) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/com/example/newartflow/Stock/AjouterStock.fxml"));
+        loader.setLocation(getClass().getResource("/com/example/newartflow/Stock/AjouterLivraison.fxml"));
 
         Parent view_2=loader.load();
 
@@ -81,13 +77,13 @@ public class AfficherStockController implements Initializable  {
 
     @FXML
     void modifier(ActionEvent event) throws IOException {
-        stock selectedStock = lst.getSelectionModel().getSelectedItem();
+        livraison selectedStock = lst.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/com/example/newartflow/Stock/ModifierStock.fxml"));
+        loader.setLocation(getClass().getResource("/com/example/newartflow/Stock/ModifierLivraison.fxml"));
 
         Parent view_2=loader.load();
-        ModifierStockControler ModifyStockController=loader.getController();
-        ModifyStockController.getStock(selectedStock);
+        ModifierLivraisonControler ModifyStockController=loader.getController();
+        ModifyStockController.getLivraison(selectedStock);
         ModifyStockController.s=selectedStock;
 
         Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -108,7 +104,7 @@ public class AfficherStockController implements Initializable  {
             alert.show();
         }
 
-        ss.deleatstockById(Integer.parseInt(id.getText()));
+        ss.deleatlivraisonById(Integer.parseInt(id.getText()));
 
 
 
@@ -116,10 +112,10 @@ public class AfficherStockController implements Initializable  {
 
         alert.setHeaderText(null);
 
-        alert.setContentText("Stock supprimer avec succés!");
+        alert.setContentText("livraison supprimer avec succés!");
 
         alert.show();
-        e= FXCollections.observableArrayList(ss.fetchstock());
+        e= FXCollections.observableArrayList(ss.fetchlivraison());
     }
 
 

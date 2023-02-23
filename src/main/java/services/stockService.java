@@ -93,9 +93,12 @@ public class stockService implements stockInterface {
             while (rs.next()) {
                 stock s = new stock();
                 s.setId(rs.getInt(1));
+
                 s.setName(rs.getString(2));
-                s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setArtiste(rs.getString(3));
+                s.setAddres(rs.getString(4));
+                s.setId_commende(rs.getInt(5));
+                s.setUser_name(rs.getString(6));
 
                 stocks.add(s);
             }
@@ -113,14 +116,21 @@ public class stockService implements stockInterface {
 
             String req = "UPDATE `stock` SET `name_produit`=?,`artiste`=?,`addres`=?,`id_commende`=?,`user_name`=? WHERE id = ?; ";
             PreparedStatement ps = cnx.prepareStatement(req);
-
+            System.out.println(1);
             ps.setString(1, s.getName());
+            System.out.println(2);
             ps.setString(2, s.getArtiste());
+            System.out.println(3);
             ps.setString(3, s.getAddres());
+            System.out.println(4);
             ps.setInt(4,s.getId_commende());
+            System.out.println(5);
             ps.setString(5, s.getUser_name());
+            System.out.println(6);
             ps.setInt(6,s.getId());
+            System.out.println(7);
             ps.executeUpdate();
+            System.out.println(8);
             System.out.println("stock updated Successfully!");
 
         } catch (SQLException ex) {
