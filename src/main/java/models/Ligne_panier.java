@@ -108,38 +108,7 @@ public class Ligne_panier {
         this.prix = prix;
     }*/
 
-    /*@Override
-    public String toString() {
-        return "Ligne_panier{" +
-                "id=" + id +
-                ", article=" + article +
-                ", id_panier=" + id_panier +
-                ", prix_unitaire=" + prix_unitaire +
-                ", quantity=" + quantity +
-                ", nom_article='" + nom_article + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }*/
 
-  /*  @Override
-    public String toString() {
-        return "Nom_article='" + nom_article + System.lineSeparator()+
-                "Description='" + description + System.lineSeparator() +
-                "Prix_unitaire=" + prix_unitaire  + System.lineSeparator() +
-                "Quantity=" + quantity+ System.lineSeparator();
-    }*/
-
-    /*@Override
-    public String toString() {
-        return "Ligne_panier{" +
-                "article_name=" + article.getNom_article() +System.lineSeparator()+
-                "article_description=" + article.getDescription() +System.lineSeparator()+
-                "article_price=" + article.getPrice() +System.lineSeparator()+
-                "article_type=" + article.getType() +System.lineSeparator()+
-                ", id_panier=" + id_panier +System.lineSeparator()+
-                ", quantity=" + quantity +System.lineSeparator()+
-                '}';
-    }*/
     @Override
     public String toString() {
         return  "Article_name : " + article.getNom_article() +System.lineSeparator()+

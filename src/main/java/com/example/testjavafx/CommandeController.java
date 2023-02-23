@@ -16,6 +16,8 @@ import services.PanierService;
 
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 public class CommandeController {
 
@@ -43,7 +45,7 @@ public class CommandeController {
 
     @FXML
     void ConfirmerCommandeAction(ActionEvent event) {
-        if (Nomtext.getText().length() == 0||Prénomtext.getText().length() == 0||Adressetext.getText().length() == 0||Numerotext.getText().length() == 0||CodepostalText.getText().length()==0){
+        if (Nomtext.getText().length() == 0 ||Prénomtext.getText().length() == 0||Adressetext.getText().length() == 0||Numerotext.getText().length() == 0||CodepostalText.getText().length()==0){
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -51,7 +53,27 @@ public class CommandeController {
             alert.setContentText("Please remplir tous les champs"+ "");
             alert.show();
 
-        }else {
+        } else if (isValidName(Nomtext.getText())==false||isValidName(Prénomtext.getText())==false||isValidName(Adressetext.getText())==false||isValidName(Numerotext.getText())==false||isValidName(CodepostalText.getText())==false)
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur de saisie !");
+            alert.setContentText("Please don't use special caracteres "+ "");
+            alert.show();
+        } else if (Numerotext.getText().length()!= 8 ) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur de saisie !");
+            alert.setContentText("Please Phone number must contain 8 numbers "+ "");
+            alert.show();
+        } else if (CodepostalText.getText().length()!=4) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur de saisie !");
+            alert.setContentText("Please Code postal must contain 4 numbers "+ "");
+            alert.show();
+
+        } else {
 
 
             PanierService p = new PanierService();
@@ -104,6 +126,22 @@ public class CommandeController {
         alert.setContentText(msg);
         alert.show();
     }
+    public class SpecialCharacters {
+
+        public static final List<Character> specialCharacters = Arrays.asList(
+                '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}', '[', ']', '\\', '|', ';', ':', '\'', '\"', ',', '.', '/', '?', '<', '>', '~', '`'
+        );
+    }
+    public static boolean isValidName(String name) {
+        for (int i = 0; i < name.length(); i++) {
+            char c = name.charAt(i);
+            if (SpecialCharacters.specialCharacters.contains(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
 
