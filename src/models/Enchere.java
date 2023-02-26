@@ -39,18 +39,8 @@ public class Enchere {
         this.img = img;
     }
 
-    public String getImg() {
-        return img;
-    }
+   
 
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    
-
-    
-    
     
     
     public int getIde() {
@@ -93,10 +83,18 @@ public class Enchere {
         this.date_limite = date_limite;
     }
 
+    
+     public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+    
     @Override
     public String toString() {
-        return "Enchere: "
-                + "id enchere : " + ide +  ", titre=" + titre + ", description=" + description + ", prixdepart=" + prixdepart + ", date_limite=" + date_limite + ", img=" + img + '}';
+        return "Enchere: "+ "id enchere : " + ide +  ", titre=" + titre + ", description=" + description + ", prixdepart=" + prixdepart + ", date_limite=" + date_limite + ", img=" + img + '}';
     }
 
     /*
@@ -114,9 +112,9 @@ public class Enchere {
     
      */
 
-    public Object getItems() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    public Object getItems() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
     
     

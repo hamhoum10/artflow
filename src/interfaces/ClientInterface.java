@@ -15,6 +15,8 @@ import models.Enchere;
  */
 public interface ClientInterface {
     
+    public void addClient(Client c);
+    
     
         public Client fetchClientByName(String nom);
         public List<Client> fetchClient();

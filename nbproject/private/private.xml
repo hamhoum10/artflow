@@ -3,17 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/services/ClientService.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/models/Client.java</file>
             <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/services/EnchereService.java</file>
             <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/AfficherEnchereController.java</file>
             <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/ParticipationController.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/ModifyEnchereController.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/Participation.fxml</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/FXMLController.java</file>
             <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/enchere/main.java</file>
+            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/ModifController.java</file>
             <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/enchere/FXMain.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/interfaces/ClientInterface.java</file>
         </group>
     </open-files>
 </project-private>

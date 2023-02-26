@@ -7,12 +7,14 @@ package services;
 
 import interfaces.ClientInterface;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import models.Client;
+import models.Participant;
 import utils.MyConnection;
 
 
@@ -71,6 +73,31 @@ public class ClientService implements  ClientInterface {
         }
         
         return client;    }
+    
+    
+    
+    
+    
+     public void addClient(Client c) {
+
+        try {
+            String req = "INSERT INTO `client`(`nom`,`prenom`) VALUES (?,?)";
+            PreparedStatement st = cnx.prepareStatement(req);
+            st.setString(1, c.getNom());
+            st.setString(2, c.getPrenom());
+          
+            st.executeUpdate();
+            System.out.println("client added successfully!");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    
+    
+    
+    
+    
     
     
     

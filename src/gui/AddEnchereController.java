@@ -5,7 +5,6 @@
  */
 package gui;
 
-import interfaces.EnchereParticipantInterface;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -13,11 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -33,6 +30,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import models.Enchere;
 import services.EnchereService;
 
@@ -41,27 +39,30 @@ import services.EnchereService;
  *
  * @author Elizabeth
  */
-public class ModifyEnchereController implements Initializable {
-    EnchereParticipantInterface es = new EnchereService();
+public class AddEnchereController implements Initializable {
 
-    Enchere e;
+       EnchereService es = new  EnchereService ();
+
     @FXML
     private TextField titre;
     @FXML
     private TextField desc;
     @FXML
+    private DatePicker dateLimite;
+    @FXML
     private TextField prixDepart;
     @FXML
-    private DatePicker dateLimite;
+    private Button submitButton;
     @FXML
     private Button image;
     @FXML
-    private ImageView image_view;
-    @FXML
     private TextField imagefield;
-        private File selectedFile;
+    @FXML
+    private ImageView image_view;
 
+    private File selectedFile;
 
+    
     /**
      * Initializes the controller class.
      */
@@ -70,20 +71,9 @@ public class ModifyEnchereController implements Initializable {
         // TODO
     }    
 
-    
-    public void getEnchere(Enchere e){
-        titre.setText(e.getTitre());
-        desc.setText(e.getDescription());
-        prixDepart.setText(String.valueOf(e.getPrixdepart()));
-        dateLimite.setValue(e.getDate_limite().toLocalDate());
-        
-    }
-    
-    
-  
     @FXML
-   private void modifyEnchere(ActionEvent event) throws IOException {
-      LocalDate currentDate = LocalDate.now();
+    private void add_enchere(ActionEvent event) throws IOException {
+LocalDate currentDate = LocalDate.now();
  LocalDate selectedDate = dateLimite.getValue();
     
         if (titre.getText().length() == 0||desc.getText().length() == 0|| dateLimite.getValue() == null ) {
@@ -97,7 +87,7 @@ public class ModifyEnchereController implements Initializable {
         
        
         if (selectedDate.compareTo(currentDate) < 0) {
-    Alert alert = new Alert(Alert.AlertType.WARNING);
+    Alert alert = new Alert(AlertType.WARNING);
     alert.setTitle("Erreur de saisie");
     alert.setHeaderText("Date sélectionnée invalide");
     alert.setContentText("La date sélectionnée doit être supérieure ou égale à la date actuelle.");
@@ -149,7 +139,7 @@ public class ModifyEnchereController implements Initializable {
                     out.write(buf, 0, length);
                 }
             
-            es.updateEnchere(en);
+            es.AddEnchere(en);
             // return to the main 
                 FXMLLoader loader= new FXMLLoader(getClass().getResource("FXML.fxml"));
                 Parent view_2=loader.load();
@@ -202,6 +192,7 @@ public class ModifyEnchereController implements Initializable {
     @FXML
     private void takeImage(ActionEvent event) {
         
+        
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image File");
         fileChooser.getExtensionFilters().addAll(
@@ -219,12 +210,20 @@ public class ModifyEnchereController implements Initializable {
                      System.out.println(ex);
         }
                 
-            } 
-        
+            }
         
         
     }
 
-
+    @FXML
+    private void exitPage(ActionEvent event) throws IOException {
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("./AfficherEnchere.fxml"));
+               Parent view_2=loader.load();
+               Scene scene = new Scene(view_2);
+               Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+               stage.setScene(scene);
+               stage.show();
     
+    }
+
 }

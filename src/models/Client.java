@@ -16,6 +16,12 @@ public class Client {
     public Client() {
     }
 
+    public Client(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
+    
     public Client(int idc, String nom, String prenom) {
         this.idc = idc;
         this.nom = nom;

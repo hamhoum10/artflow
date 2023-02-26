@@ -69,35 +69,11 @@ public class AfficherEnchereController implements Initializable {
     
     }
     
-    
-    
-    @FXML
-    private void modifyEnchere(ActionEvent event) {
-            FXMLLoader loader;
-
-    try {
-        Enchere selectedEnchere=listEnchere.getSelectionModel().getSelectedItem();
-        
-        
-        loader= new FXMLLoader(getClass().getResource("./ModifyEnchere.fxml"));
-        Parent view_2=loader.load();
-       ModifyEnchereController ModifyEnchereController=loader.getController();
-        ModifyEnchereController.getEnchere(selectedEnchere);
-        ModifyEnchereController.e=selectedEnchere;
-        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(view_2);
-        stage.setScene(scene);
-        stage.show();
-    } catch (IOException ex) {
-        Logger.getLogger(AfficherEnchereController.class.getName()).log(Level.SEVERE, null, ex);
-    }
-   
-    }
 
     @FXML
     private void addEnchere(ActionEvent event) throws IOException {
     
-      FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXML.fxml"));
+      FXMLLoader loader= new FXMLLoader(getClass().getResource("./addEnchere.fxml"));
                Parent view_2=loader.load();
                Scene scene = new Scene(view_2);
                Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -105,6 +81,36 @@ public class AfficherEnchereController implements Initializable {
                stage.show();
     
     }
+    
+   
+    
+    
+      @FXML
+    private void modifyEnch(ActionEvent event) throws IOException {
+    
+    try {
+        Enchere selectedarticle=listEnchere.getSelectionModel().getSelectedItem();
+        
+        
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("./modif.fxml"));
+        Parent view_2=loader.load();
+        ModifController ModifController=loader.getController();
+        ModifController.getEnchere(selectedarticle);
+        ModifController.e=selectedarticle;
+        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(view_2);
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        Logger.getLogger(AfficherEnchereController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    
+    }
+
+  
+    
+    
     
     
     

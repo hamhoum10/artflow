@@ -4,12 +4,10 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 23 févr. 2023, 01:21:51
+    Created on : 23 févr. 2023, 02:34:34
     Author     : Elizabeth
 */
 
-
 .bodybg{
-    -fx-background-image : url("./A.png");
+    -fx-background-image : url("./henne.jpg");
 }
-
