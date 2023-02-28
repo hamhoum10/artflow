@@ -1,0 +1,142 @@
+/* Buttons */
+.button {
+    -fx-background-color: linear-gradient(to right, #5fa8d3, #63c1f7);
+    -fx-text-fill: white;
+    /*-fx-font-size: 14px;*/
+    -fx-font-weight: bold;
+    /*-fx-pref-height: 40px;
+    -fx-pref-width: 120px;*/
+    -fx-background-radius: 20px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);
+    -fx-transition: all 0.3s;
+    -fx-graphic: url("/icons/arrow-right-white.png");
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #4c98c9, #51b2ed);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0, 0, 5);
+    -fx-graphic: url("/icons/arrow-right-white-hover.png");
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(to right, #3c6e9d, #4188c1);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 20, 0, 0, 7);
+    -fx-graphic: url("/icons/arrow-right-white-pressed.png");
+}
+
+/* Text fields */
+.text-field {
+    -fx-prompt-text-fill: #90a4ae;
+    /*-fx-font-size: 14px;
+    -fx-pref-height: 40px;
+    -fx-pref-width: 200px;*/
+    -fx-background-color: #eceff1;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);
+    -fx-transition: all 0.3s;
+}
+
+.text-field:focused {
+    -fx-border-color: #C69186;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(95, 168, 211, 0.4), 15, 0, 0, 5);
+}
+
+/* Labels */
+.label {
+    /*-fx-font-size: 14px;*/
+    -fx-font-weight: bold;
+    /*-fx-text-fill: #37474f;*/
+}
+
+/* Container pane */
+.container {
+    -fx-background-color: linear-gradient(to bottom right, #C69186, #C69186);
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);
+}
+/* Application Bar */
+#app-bar {
+    -fx-background-color: #2196f3;
+    -fx-padding: 10px;
+    -fx-alignment: center-left;
+}
+
+#app-bar .app-icon {
+    -fx-padding: 5px;
+}
+
+#app-bar .app-title {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 10px;
+}
+
+#app-bar .menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+#app-bar .menu-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+#app-bar .menu-button:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+.list-view {
+    -fx-background-color: #fafafa;
+    -fx-border-color:  #C69186;
+    -fx-border-width: 1px;
+    -fx-padding: 10px;
+}
+
+.list-cell {
+    -fx-padding: 10px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.list-cell:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.list-cell:selected {
+    -fx-background-color: #C69186;
+    -fx-text-fill: white;
+}
+
+.list-view:focused .list-cell:selected {
+    -fx-background-color: #C69186;
+    -fx-text-fill: white;
+}
+
+.list-cell:odd {
+    -fx-background-color: #fafafa;
+}
+
+.list-cell:even {
+    -fx-background-color: #e0f7fa;
+}
+
+.list-view .scroll-bar {
+    -fx-background-color: #e0e0e0;
+}
+
+.list-view .scroll-bar:horizontal .thumb {
+    -fx-background-color: #C69186;
+}
+
+.list-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #C69186;
+}
+
+

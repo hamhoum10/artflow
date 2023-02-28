@@ -10,66 +10,81 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.PanierController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.PanierController">
     <children>
-        <ListView fx:id="listView" editable="true" fixedCellSize="0.0" layoutX="8.0" layoutY="94.0" prefHeight="448.0" prefWidth="592.0" />
-      <Pane layoutX="611.0" layoutY="94.0" prefHeight="241.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF;">
+        <ListView fx:id="listView" editable="true" fixedCellSize="0.0" layoutX="8.0" layoutY="94.0" prefHeight="538.0" prefWidth="707.0" />
+      <Pane layoutX="743.0" layoutY="233.0" prefHeight="233.0" prefWidth="242.0" style="-fx-background-color: #FFFFFF;">
          <children>
-              <Label layoutX="66.0" layoutY="71.0" text="Total">
+              <Label layoutX="10.0" layoutY="13.0" prefHeight="38.0" prefWidth="94.0" text="You're total is:">
                   <font>
-                      <Font name="Bernard MT Condensed" size="29.0" />
+                      <Font name="Bernard MT Condensed" size="16.0" />
                   </font>
               </Label>
-              <TextField fx:id="total" alignment="CENTER" layoutX="41.0" layoutY="117.0" prefHeight="60.0" prefWidth="108.0">
-                  <font>
-                      <Font name="System Bold" size="12.0" />
-                  </font>
-            </TextField>
-              <Button fx:id="comamanderbut" layoutX="49.0" layoutY="194.0" mnemonicParsing="false" onAction="#commandeAction" prefHeight="40.0" prefWidth="93.0" text="commander" textFill="#27ae1b">
+              <Button fx:id="comamanderbut" layoutX="74.0" layoutY="177.0" mnemonicParsing="false" onAction="#commandeAction" prefHeight="40.0" prefWidth="93.0" text="commander" textFill="#27ae1b">
                   <font>
                       <Font name="System Bold" size="13.0" />
                   </font>
               </Button>
+            <Label layoutX="10.0" layoutY="75.0" lineSpacing="5.0" prefHeight="22.0" prefWidth="80.0" text="Discount:">
+               <font>
+                  <Font name="Bernard MT Condensed" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="138.0" prefHeight="17.0" prefWidth="93.0" text="Total Amount :">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="167.0" layoutY="32.0" />
+            <Label fx:id="totaltext" layoutX="169.0" layoutY="22.0" text="Label" textFill="#6e6e6e" underline="true" />
+            <Label fx:id="discounttext" layoutX="169.0" layoutY="76.0" text="Label" underline="true" />
+            <Label fx:id="totalamounttext" layoutX="169.0" layoutY="138.0" text="Label" underline="true" />
          </children>
       </Pane>
-      <Pane prefHeight="82.0" prefWidth="796.0" style="-fx-background-color: #C69186;">
+      <Pane prefHeight="82.0" prefWidth="1000.0" style="-fx-background-color: #C69186;">
          <children>
             <ImageView fx:id="logo" fitHeight="207.0" fitWidth="200.0" layoutX="7.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/artflowlogoo.png" />
                </image></ImageView>
-              <Label layoutX="311.0" layoutY="16.0" prefHeight="50.0" prefWidth="200.0" text="Mon Panier" textFill="WHITE">
+              <Label layoutX="311.0" layoutY="16.0" prefHeight="50.0" prefWidth="187.0" text="Mon Panier" textFill="WHITE">
                   <font>
                       <Font name="Bernard MT Condensed" size="40.0" />
                   </font>
               </Label>
-              <Button fx:id="showmycartBut" layoutX="619.0" layoutY="19.0" mnemonicParsing="false" onAction="#ShowcartAction" prefHeight="44.0" prefWidth="98.0" text="ShowMyCart">
-                  <font>
-                      <Font name="Playbill" size="21.0" />
-                  </font>
-            </Button>
          </children>
       </Pane>
-      <Button fx:id="MinusOne" layoutX="730.0" layoutY="458.0" mnemonicParsing="false" onAction="#minusOnetoarticleAction" prefHeight="37.0" prefWidth="42.0" text="-1">
+      <Button fx:id="MinusOne" layoutX="870.0" layoutY="593.0" mnemonicParsing="false" onAction="#minusOnetoarticleAction" prefHeight="38.0" prefWidth="93.0" text="Decrease">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="addOne" layoutX="679.0" layoutY="458.0" mnemonicParsing="false" onAction="#addOnetoarticleAction" prefHeight="37.0" prefWidth="42.0" text="+1">
+      <Button fx:id="addOne" layoutX="770.0" layoutY="593.0" mnemonicParsing="false" onAction="#addOnetoarticleAction" prefHeight="38.0" prefWidth="93.0" text="Add">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Label layoutX="611.0" layoutY="457.0" prefHeight="38.0" prefWidth="79.0" text="Quantity" textAlignment="RIGHT">
+      <Label layoutX="754.0" layoutY="554.0" prefHeight="38.0" prefWidth="200.0" text="Change Quantity :" textAlignment="RIGHT">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Bernard MT Condensed" size="16.0" />
          </font>
       </Label>
-        <Button fx:id="viderPanier" layoutX="617.0" layoutY="366.0" mnemonicParsing="false" onAction="#ViderPanierActionforuser" prefHeight="40.0" prefWidth="79.0" text="Delete All" />
-        <Button fx:id="delete" layoutX="697.0" layoutY="366.0" mnemonicParsing="false" onAction="#deleteLignePanierAction" prefHeight="40.0" prefWidth="86.0" text="Delete Article" textFill="#0b0b0b">
+        <Button fx:id="viderPanier" layoutX="770.0" layoutY="487.0" mnemonicParsing="false" onAction="#ViderPanierActionforuser" prefHeight="40.0" prefWidth="93.0" text="Delete All" />
+        <Button fx:id="delete" layoutX="870.0" layoutY="487.0" mnemonicParsing="false" onAction="#deleteLignePanierAction" prefHeight="40.0" prefWidth="93.0" text="Delete Article" textFill="#0b0b0b">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
+      <Pane layoutX="743.0" layoutY="111.0" prefHeight="106.0" prefWidth="242.0" style="-fx-background-color: ffffff;">
+         <children>
+            <Label layoutX="14.0" layoutY="21.0" text="Promo code">
+               <font>
+                  <Font name="Bernard MT Condensed" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Promocodetext" layoutX="14.0" layoutY="41.0" prefHeight="25.0" prefWidth="215.0" promptText="Promo code !" />
+            <Button fx:id="donepromo" layoutX="99.0" layoutY="74.0" mnemonicParsing="false" onAction="#PromocodeOnAction" text="done" />
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

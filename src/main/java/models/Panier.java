@@ -1,10 +1,20 @@
 package models;
 
+import util.MyConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Panier {
-    private int id_panier;
+    private static int id_panier;
+
     private int id_client; //change it into Customer class
 
     private Client client;
+
+    Connection cnx = MyConnection.getInstance().getCnx();
 
     public Panier(){}
     public Panier(int id_client) {
@@ -16,11 +26,25 @@ public class Panier {
         this.client = client;
     }
 
-    public int getId_panier() {
+    public Panier(Client client) {
+        this.client = client;
+    }
+
+    public  int getId_panier() {
+        /*try {
+            String sql ="select id_panier from panier p join client c on p.id_client =c.id  where c.username ="+client.getUsername(); //twali baed where client.username = 7aja alkhtr username unique w ana acces lih mel class mesh kif id auto incere wfama join entre client w panier
+            PreparedStatement p  = cnx.prepareStatement(sql);
+            ResultSet rs = p.executeQuery();
+            while (rs.next()) {
+                id_panier = rs.getInt("id_panier");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
         return id_panier;
     }
 
-    public void setId_panier(int id_panier) {
+    public   void setId_panier(int id_panier) {
         this.id_panier = id_panier;
     }
 

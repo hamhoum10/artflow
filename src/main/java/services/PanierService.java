@@ -20,17 +20,28 @@ public class PanierService {
     // Créer une nouvelle commande
     public void createPanier(Panier p) {
         try {
+            int  rowAjiouté=0;
             Conditions c =new Conditions();
             // Créer une requête préparée pour insérer une nouvelle entrée dans la table "commandes"
             String sql = "insert into panier (id_client) values (?) ";
-            PreparedStatement  ps = cnx.prepareStatement(sql);
+            PreparedStatement  ps = cnx.prepareStatement(sql/*,Statement.RETURN_GENERATED_KEYS*/);
             if(c.DoUserIdExistinPanier(p.getId_client())==false) {
-                ps.setInt(1, p.getId_client());
-                ps.executeUpdate();
-                System.out.println("Panier Created");
+                ps.setInt(1, p.getId_client());  //mesh twali p.getclient().getid() //lezem nada trigel fazet el id
+                rowAjiouté =ps.executeUpdate();
+                System.out.println("Panier Created" +rowAjiouté);
             }else{
                 System.out.println("Panier of this user already exist");
             }
+            /*if(rowAjiouté==1){
+                ResultSet rs = ps.getGeneratedKeys();
+                if(rs.next()){
+                    int id_autoincremant = rs.getInt(1);
+                    p.setId_panier(id_autoincremant);
+                    System.out.println(id_autoincremant);
+                }
+            }*/
+
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,6 +62,20 @@ public class PanierService {
             e.printStackTrace();
         }
         return totalPrixPanier;
+    }
+    public double totalmontantPanierWith20Discount(int id_client){
+        Double totalPrixPanierWithDiscount=0.0 ;
+        try {
+            String sql = "SELECT SUM( prix_unitaire * quantity * 0.8) AS total FROM panier JOIN ligne_panier ON panier.id_panier = ligne_panier.id_panier WHERE panier.id_client = "+ id_client;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                totalPrixPanierWithDiscount = rs.getDouble("total");//total est colonne virtuell, il n'existe pas dans la table panier
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalPrixPanierWithDiscount;
     }
     public int getPanierIdForUser(int id_client) {
         int panierId = 0;

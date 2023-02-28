@@ -3,12 +3,14 @@ package com.example.testjavafx;
 import models.*;
 import services.*;
 
+
 public class Main {
     public static void main(String[] args) {
         //FAMA PROB FI ID AUTO INCREM KIFEH NAMLOU RECUPERATION MTE3O ALKHTR WA9TLI ON PASSE EL INSTANCE MTA CLASS FI PARAMETREN GETID TE3O MAHESH EL AUTO GENERTATED
         //Client cboss=new Client("lotfi","la3meri","01/1/1922","ariana","9683025","lotfi@gmail.com","lotf","04451");
-        //Client c1 =new Client("leo","miaoui","04-12-2000","arian","9874563","med@gmail.com","medboss","0321545defz");
+        Client amine =new Client("amine","teemo","04-12-2878","arian","9874563","med@gmail.com","gazouza","0321545defz");
         ClientService cs=new ClientService();
+        //cs.saveClient(omar);
         Categorie c=new Categorie();
         Artiste med =new Artiste("Mohamed","Miaoui","ariana","04/12/2000","yasuo main","fdf","borjba","9684565","med","yasuo","med@gmail.com");
         ArtisteService as =new ArtisteService();
@@ -25,9 +27,10 @@ public class Main {
         //cl.saveClient(cboss);
         //a.addArticle(pc);
         //cs.saveClient(c1);
-        Panier panier=new Panier(2);
+        Panier panierAmine=new Panier(4); //baed ki nada trigel fazet getid user nwali just naddi client
         PanierService psss=new PanierService();
-        Panier pmed=new Panier(3);
+        //psss.createPanier(panierAmine);
+        //System.out.println(panierOmar.getId_panier());
         //psss.createPanier(pmed);
         //psss.createPanier(panier);
        // Ligne_panier lp=new Ligne_panier(ps4,1,200.0,5);
@@ -36,7 +39,7 @@ public class Main {
         Ligne_panier ligne_panierheadphone =new Ligne_panier(headphone,4,1);
 
         Ligne_PanierService lps =new Ligne_PanierService();
-        System.out.println(lps.readelementPanierbyiduser(3));
+        //System.out.println(lps.readelementPanierbyiduser(3));
         lps.AjouterDansTableligne_Panier(ligne_paniergun,32);
         lps.AjouterDansTableligne_Panier(ligne_panierheadphone,33);
         lps.AjouterDansTableligne_Panier(ligne_panierps4,22);

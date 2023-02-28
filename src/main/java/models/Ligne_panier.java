@@ -111,9 +111,9 @@ public class Ligne_panier {
 
     @Override
     public String toString() {
+        //"Article_description : " + article.getDescription() +System.lineSeparator()+
         return  "Article_name : " + article.getNom_article() +System.lineSeparator()+
                 "Article_type : " + article.getType() +System.lineSeparator()+
-                "Article_description : " + article.getDescription() +System.lineSeparator()+
                 "Article_price : " + article.getPrice() +System.lineSeparator()+
                 "Quantity : " + quantity +System.lineSeparator()+
                 "id_panier : " + id_panier +System.lineSeparator();

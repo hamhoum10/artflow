@@ -148,6 +148,36 @@ public class Ligne_PanierService {
         }
         return ps;
     }
+
+    public List<Ligne_panier> readelementPanierbyidpanier(int id_panier) {
+        List<Ligne_panier> ps = new ArrayList<>();
+        ArticleService as =new ArticleService();
+
+        try {
+            //String sql = "SELECT p.id_panier, lp.id_article, lp.prix_unitaire, lp.quantity,lp.Nom_article,lp.description FROM panier p JOIN ligne_panier lp ON p.id_panier = lp.id_panier WHERE p.id_client ="+id_client  ;
+            String sql = "SELECT p.id_panier, lp.quantity, a.* FROM article a JOIN ligne_panier lp ON a.id_article = lp.id_article JOIN panier p ON lp.id_panier = p.id_panier WHERE p.id_panier = "+ id_panier ;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                Article a =new Article();
+                Ligne_panier lp = new Ligne_panier();
+                lp.setQuantity(rs.getInt("lp.quantity"));
+                lp.setId_panier(rs.getInt("p.id_panier"));
+                a.setId_article(rs.getInt("a.id_article"));
+                a.setNom_article(rs.getString("a.Nom_article"));
+                a.setPrice(rs.getDouble("a.price"));
+                a.setDescription(rs.getString("a.description"));
+                a.setType(rs.getString("a.type"));
+                a.setQuantity(rs.getInt("a.quantity"));
+                lp.setArticle(a);
+                ps.add(lp);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ps;
+    }
         //tzid +1 qauntity fi "panier"
     public void updatequantitywith1Plus(int id_panier,int id_article) throws SQLException {
         String query = "UPDATE ligne_panier lp JOIN panier p ON lp.id_panier = p.id_panier SET lp.quantity = lp.quantity + ? WHERE lp.id_article =? AND p.id_panier =? ";

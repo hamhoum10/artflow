@@ -17,7 +17,7 @@ import services.CommandeService;
 import java.io.IOException;
 import java.util.List;
 
-public class PayerController {
+public class ComfirmerCommandeController {
     @FXML
     private Button AnullerCommande;
 
