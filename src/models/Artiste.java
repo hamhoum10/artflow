@@ -49,8 +49,10 @@ public class Artiste {
 
     @Override
     public String toString() {
-        return "Artiste{" + "id_artiste=" + id_artiste + ", nom_artiste=" + nom_artiste + ", prenom_artiste=" + prenom_artiste + '}';
+        return   "nom_artiste=" + nom_artiste + ", prenom_artiste=" + prenom_artiste ;
     }
+
+    
 
     public void getId_artiste(int parseInt) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

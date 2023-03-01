@@ -45,6 +45,8 @@ public class FXMLAfficherCategorieController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        ObservableList<Categorie> k= FXCollections.observableArrayList(ch.fetchCategorie());
+    listc.setItems(k);
     }    
 
     

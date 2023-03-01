@@ -70,6 +70,7 @@ public class Project_malek {
 //System.out.println(ai.fetchArticleTriByPrice());
 //System.err.println(ai.fetchArticleTriByName());
 //System.out.println(ai.fetchArticleTriByCategorie());
+System.out.println(ai.fetchArticleByCaracter("b"));
 ////// TODO code application logic here
 //      
 //        c.setDescription("rym");

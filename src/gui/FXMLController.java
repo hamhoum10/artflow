@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -94,6 +97,7 @@ public class FXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        image.setDisable(true);
         
         list1.removeAll(list1);
         list2.removeAll(list2);
@@ -142,9 +146,6 @@ public class FXMLController implements Initializable {
         p.setNom_article(name_article.getText());
         //System.out.println(p);
 
-        p.setImage(image.getText());
-                //System.out.println(p);
-
         p.setType(type.getText());
                 //System.out.println(p);
 
@@ -154,18 +155,7 @@ public class FXMLController implements Initializable {
         p.setPrice(Double.parseDouble(price.getText()));
                 //System.out.println(p);
         p.setQuantity(Integer.parseInt(quantity.getText()));
-//        System.err.println(p);
-              String htdocsPath = "";
-                 File destinationFile = new File(htdocsPath + image.getText());
-            if(selectedFile!=null){
-                try (InputStream in = new FileInputStream(selectedFile);
-                 OutputStream out = new FileOutputStream(destinationFile)) {
-                byte[] buf = new byte[8192];
-                int length;
-                while ((length = in.read(buf)) > 0) {
-                    out.write(buf, 0, length);
-                }
-
+        p.setImage(image.getText());
         ps.addArticle(p);}
         
         FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLafficher.fxml"));
@@ -181,10 +171,20 @@ public class FXMLController implements Initializable {
         
 //        c.setName_categorie(name_categorie.getText());
 //System.out.println(p);
-    }}}
+    }
 
     @FXML
-    private void ImportImage(ActionEvent event) {
+    private void ImportImage(ActionEvent event) throws IOException {
+        FileChooser open=new FileChooser();
+        Stage stage=(Stage)name_categorie.getScene().getWindow();
+        File file=open.showOpenDialog(stage);
+        if(file!=null){
+            String filename=file.getName();
+            image.setText(filename);
+            Image img=new Image(file.toURI().toString());
+            image_view.setImage(img);
+        }
+        /*
         
          FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Image File");
@@ -194,6 +194,10 @@ public class FXMLController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         selectedFile = fileChooser.showOpenDialog(stage);
          if (selectedFile != null) {
+                String src = selectedFile.getPath();
+                String dest = "C:\\Users\\MediaStudio\\Documents\\NetBeansProjects\\Project_malek\\src\\img\\"+selectedFile.getName();
+                Path tmp = Files.move(Paths.get(src), Paths.get(dest));
+                p.setImage("/img/"+selectedFile.getName());
                 image.setText(selectedFile.getName());
                  try {
                 Image images = new Image("file:"+selectedFile.getPath().toString());
@@ -223,7 +227,7 @@ public class FXMLController implements Initializable {
 //        if (selectedFile != null) {
 //            // Do something with the selected file
 //            System.out.println("Selected file: " + selectedFile.getAbsolutePath());
-//        }
+//        }*/
     
     }
 
@@ -239,6 +243,18 @@ public class FXMLController implements Initializable {
         p.setArtiste(ui.fetchArtisteByName(artiste.getValue()));
     }
 
+    @FXML
+    private void exit(ActionEvent event) throws IOException {
+          FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLafficher.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
+    
+
+}
 }
     
 

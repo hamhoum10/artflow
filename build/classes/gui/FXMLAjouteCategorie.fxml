@@ -31,5 +31,6 @@
             </ImageView>
          </children>
       </Pane>
+      <Button fx:id="exit" layoutX="412.0" layoutY="403.0" mnemonicParsing="false" onAction="#exit" text="exit" />
    </children>
 </AnchorPane>

@@ -23,6 +23,7 @@ import models.Categorie;
 import models.Client;
 import models.stock;
 import util.MyConnection;
+import util.QrCodeGenerator;
 
 /**
  *
@@ -134,7 +135,12 @@ public class ArticleService implements ArticleInterface {
                 p.setCategorie(c);
                p.setArtiste(e);
                
-                
+                if(GenerateQrCode(p)){
+                    System.out.println("ajout qr code avec success\n");
+                }
+                else{
+                    System.out.println("erreur d'ajout\n");
+                }
                 Articles.add(p);
             }
             
@@ -155,24 +161,32 @@ public class ArticleService implements ArticleInterface {
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
-                Article v = new Article();
+                System.out.println(rs);
+                Article p = new Article();
                 Categorie c=new Categorie();
-                                Artiste h = new Artiste();
-                                v.setId_article(rs.getInt(1));
-                                h.setId_artiste(rs.getInt(2));
-                v.setNom_article(rs.getString(3));
-                v.setPrice(rs.getDouble(4));
-                v.setType(rs.getString(5));
-               v.setDescription(rs.getString(7));
-               c.setId_categorie(rs.getInt(9));
-               c.setName_categorie(rs.getString(10));
-                c.setDescription(rs.getString(11));
-                v.setCategorie(c);
-          h.setNom_artiste(rs.getString("Nom_artiste"));
-                h.setPrenom_artiste(rs.getString("Prenom_artiste"));
-                v.setArtiste(h);
-
-                 Articles.add(v);
+                Artiste e = new Artiste();
+                
+                
+                p.setId_article(rs.getInt("Id_article"));
+                
+                e.setId_artiste(rs.getInt("Id_artiste"));
+                p.setNom_article(rs.getString("Nom_article"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setType(rs.getString("Type"));
+                p.setDescription(rs.getString("Description"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setImage(rs.getString("image"));
+                c.setId_categorie(rs.getInt("Id_categorie"));
+               
+                c.setName_categorie(rs.getString("Name_categorie"));
+                c.setDescription(rs.getString("Description"));
+                e.setNom_artiste(rs.getString("Nom_artiste"));
+                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
+                p.setCategorie(c);
+               p.setArtiste(e);
+               
+                
+                Articles.add(p);
                
             }
             
@@ -227,31 +241,36 @@ public class ArticleService implements ArticleInterface {
      List<Article> Articles = new ArrayList<>();
         try {
             
-            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.Id_artiste and `a`.`Nom_article`like '%"+c+"%' or `a`.`type` like '%"+c+"%'or `a`.`description` like '%"+c+"%'";
+            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.Id_artiste and (`a`.`Nom_article`like '%"+c+"%' or `a`.`type` like '%"+c+"%'or `a`.`description` like '%"+c+"%')";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
-                Article a = new Article();
-                Categorie r=new Categorie();
-                Artiste h = new Artiste();
-
-                               a.setId_article(rs.getInt("Id_article"));
-                                h.setId_artiste(rs.getInt("Id_artiste"));
-                                a.setNom_article(rs.getString("Nom_article"));
-
-                a.setPrice(rs.getDouble("Price"));
-                a.setType(rs.getString("Type"));
-                a.setDescription(rs.getString("Description"));
-                a.setQuantity((int) rs.getDouble("Quantity"));
-                a.setCategorie(r);
-                a.setArtiste(h);
-                r.setId_categorie(rs.getInt("Id_categorie"));
-                r.setDescription(rs.getString("Description"));
-                r.setName_categorie(rs.getString("Name_categorie"));
-                h.setNom_artiste(rs.getString("Nom_artiste"));
-                h.setPrenom_artiste(rs.getString("Prenom_artiste"));
+                System.out.println(rs);
+                Article p = new Article();
+                Categorie cat=new Categorie();
+                Artiste e = new Artiste();
                 
-               Articles.add(a);
+                
+                p.setId_article(rs.getInt("Id_article"));
+                
+                e.setId_artiste(rs.getInt("Id_artiste"));
+                p.setNom_article(rs.getString("Nom_article"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setType(rs.getString("Type"));
+                p.setDescription(rs.getString("Description"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setImage(rs.getString("image"));
+                cat.setId_categorie(rs.getInt("Id_categorie"));
+               
+                cat.setName_categorie(rs.getString("Name_categorie"));
+                cat.setDescription(rs.getString("Description"));
+                e.setNom_artiste(rs.getString("Nom_artiste"));
+                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
+                p.setCategorie(cat);
+               p.setArtiste(e);
+               
+                
+                Articles.add(p);
             }
             
         } catch (SQLException ex) {
@@ -352,21 +371,27 @@ List<Article> Articles = new ArrayList<>();
                 Article p = new Article();
                 Categorie c=new Categorie();
                 Artiste e = new Artiste();
+                
+                
                 p.setId_article(rs.getInt("Id_article"));
+                
                 e.setId_artiste(rs.getInt("Id_artiste"));
                 p.setNom_article(rs.getString("Nom_article"));
                 p.setPrice(rs.getDouble("Price"));
                 p.setType(rs.getString("Type"));
                 p.setDescription(rs.getString("Description"));
-                p.setQuantity(rs.getInt(9));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setImage(rs.getString("image"));
                 c.setId_categorie(rs.getInt("Id_categorie"));
+               
                 c.setName_categorie(rs.getString("Name_categorie"));
                 c.setDescription(rs.getString("Description"));
-                e.setId_artiste(rs.getInt("Id_artiste"));
                 e.setNom_artiste(rs.getString("Nom_artiste"));
                 e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
                 p.setCategorie(c);
-                p.setArtiste(e);
+               p.setArtiste(e);
+               
+                
                 Articles.add(p);
             }
             
@@ -408,6 +433,7 @@ List<Article> Articles = new ArrayList<>();
                 e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
                 p.setCategorie(c);
                 p.setArtiste(e);
+                
                 Articles.add(p);
             }
             
@@ -416,6 +442,9 @@ List<Article> Articles = new ArrayList<>();
         }
         
         return Articles;
+    }
+    public boolean GenerateQrCode(Article a){
+        return QrCodeGenerator.GenerateQrCode(a.getArtiste()+"\n"+a.getCategorie(), a.getId_article());
     }
  }
 

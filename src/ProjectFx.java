@@ -59,7 +59,7 @@ public class ProjectFx extends Application {
    
    try {
             Parent root = FXMLLoader.load(getClass().getResource("./gui/FXMLafficher.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,1000,700);
             primaryStage.setTitle("workshopJavaFx");
             primaryStage.setScene(scene);
             primaryStage.show();

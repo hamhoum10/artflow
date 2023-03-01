@@ -58,5 +58,6 @@
             </DisplacementMap>
          </effect>
       </Pane>
+      <Button layoutX="426.0" layoutY="494.0" mnemonicParsing="false" onAction="#exit" text="exit" />
    </children>
 </AnchorPane>

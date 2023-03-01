@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="624.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXML1Controller">
+<AnchorPane id="AnchorPane" fx:id="anchore" prefHeight="624.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXML1Controller">
    <children>
       <TextField fx:id="name_article" layoutX="173.0" layoutY="251.0" promptText="name" />
       <TextField fx:id="description" layoutX="173.0" layoutY="294.0" promptText="description" />
@@ -28,7 +28,7 @@
       <TextField fx:id="image" layoutX="339.0" layoutY="471.0" prefHeight="26.0" prefWidth="322.0" promptText="image.png" />
       <ComboBox fx:id="artiste" layoutX="500.0" layoutY="202.0" onAction="#setartiste" prefWidth="150.0" promptText="namee_artiste" />
       <ComboBox fx:id="categorie" layoutX="500.0" layoutY="242.0" onAction="#setcat" prefWidth="150.0" promptText="typee_categorie" />
-      <Button layoutX="248.0" layoutY="514.0" mnemonicParsing="false" onAction="#ModifyArticle" prefHeight="26.0" prefWidth="169.0" text="modify" />
+      <Button layoutX="138.0" layoutY="514.0" mnemonicParsing="false" onAction="#ModifyArticle" prefHeight="26.0" prefWidth="169.0" text="modify" />
       <Label layoutX="383.0" layoutY="206.0" text="Name_artiste" />
       <Label layoutX="378.0" layoutY="246.0" text="type_categorie" />
       <ImageView fx:id="image_view" fitHeight="168.0" fitWidth="248.0" layoutX="368.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
@@ -51,5 +51,6 @@
             </ImageView>
          </children>
       </Pane>
+      <Button layoutX="433.0" layoutY="515.0" mnemonicParsing="false" onAction="#exit" prefWidth="142.0" text="exit" />
    </children>
 </AnchorPane>

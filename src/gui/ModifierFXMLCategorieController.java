@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -48,6 +49,8 @@ public class ModifierFXMLCategorieController implements Initializable {
     private ComboBox<String> listq;
     ObservableList list = FXCollections.observableArrayList();
     private TextField nom_artiste;
+    @FXML
+    private Button exit;
 
     /**
      * Initializes the controller class.
@@ -96,6 +99,16 @@ public class ModifierFXMLCategorieController implements Initializable {
             stage.show();
            
 
+    }
+
+    @FXML
+    private void exit(ActionEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLAfficherCategorie.fxml"));
+            Parent view_2=loader.load();
+            Scene scene = new Scene(view_2);
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
     }
     
 }

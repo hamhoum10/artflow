@@ -20,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -57,6 +58,8 @@ public class FXMLAjouteCategorieController implements Initializable {
     private TextField des;
     @FXML
     private TextField nom;
+    @FXML
+    private Button exit;
 
     /**
      * Initializes the controller class.
@@ -103,6 +106,16 @@ public class FXMLAjouteCategorieController implements Initializable {
     @FXML
     private void List_stock(ActionEvent event) {
         C.setStock(st.fetchStockByName(stockkkkk.getValue()));
+    }
+
+    @FXML
+    private void exit(ActionEvent event) throws IOException {
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLAfficherCategorie.fxml"));
+            Parent view_2=loader.load();
+            Scene scene = new Scene(view_2);
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
     }
 
     
