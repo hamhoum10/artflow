@@ -4,6 +4,7 @@
  */
 package models;
 
+
 /**
  *
  * @author Elizabeth
@@ -63,11 +64,30 @@ public class Participant {
         this.montant = montant;
     }
 
+
+    
+    
+    
     @Override
     public String toString() {
         return "Participant{" + "idp=" + idp + ", client=" + client + ", Enchere=" + Enchere + ", montant=" + montant + '}';
     }
          
-    
-    
+    /*
+    public void GeneratePdf() throws FileNotFoundException, DocumentException, SQLException {
+        com.itextpdf.text.Document document = new com.itextpdf.text.Document() {
+        };
+        PdfWriter.getInstance(document, new FileOutputStream("try.pdf"));
+        document.open();
+        EnchereService es = new EnchereService();
+        Enchere enchere = new Enchere();
+
+   document.add(new Paragraph("Hello, World!"+es.getWinningBidder(enchere)));
+
+            
+            document.close();
+        
+    }
+
+    */
 }

@@ -32,6 +32,7 @@ public boolean deleteParticipant(Participant p);
 
 public double getHighestBidAmount(Participant p);
  public void effectuerParticipation(Participant p);
+
 //public Participant getWinningBidder(Participant p);
 
 }

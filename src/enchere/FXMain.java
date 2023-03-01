@@ -29,7 +29,7 @@ public class FXMain extends Application {
     
  
     //AFFICHER MODIFIER ET SUPPRIMER UNE ENCHERE
-  
+  /*
 @Override
    
    public void start(Stage primaryStage) {
@@ -69,14 +69,14 @@ public class FXMain extends Application {
     }
     */
   
-    /*
+  
    
     // PARTICIPER AUX ENCHERES 
      @Override
     public void start(Stage primaryStage) {
        Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("/gui/AfficherEnchere.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/gui/Participation.fxml"));
             Scene scene = new Scene(root);
            
             
@@ -90,7 +90,7 @@ public class FXMain extends Application {
     }
     
     
-    */
+   
    
     
     

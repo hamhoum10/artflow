@@ -4,16 +4,26 @@
  */
 package enchere;
 
+import com.itextpdf.text.DocumentException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import models.Client;
 import models.Enchere;
 import models.Participant;
+
 import services.ClientService;
 import services.EnchereService;
 import utils.MyConnection;
-
+import com.itextpdf.text.pdf.PdfReader;
+import java.io.FileNotFoundException;
+//import org.junit.Test;
+//
+//import java.io.IOException;
+//
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertTrue;
+//
 /**
  *
  * @author Elizabeth
@@ -23,7 +33,7 @@ public class main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, FileNotFoundException, DocumentException {
         // TODO code application logic here
         MyConnection c = MyConnection.getInstance();
         Enchere en = new Enchere();
@@ -124,25 +134,85 @@ Client client = new Client();
 Participant participant = new Participant(client, enchere, 1000.0);
 // es.addParticipant(participant);
 
-
+//---------------------------------------------------------------------to get who's the winner after thr time is iup'
 Participant winningBidder = es.getWinningBidder(enchere);
 if (winningBidder != null) {
     System.out.println("The winning bidder is: " + winningBidder.getClient().getNom() + " " + winningBidder.getClient().getPrenom() + " with a bid of " + winningBidder.getMontant());
 }
-//else {
-//    System.out.println("No winning bidder found!");
-//}
+else {
+    System.out.println("No winning bidder found!");
+}
     
 
      
 
-    
+
+
+ 
+/*
+Enchere enchere = new Enchere(22,"kahelani", "shutty", 2341, date, "image");
+String winningBidder = es.generatePdfFromQueryResult(enchere);
+    try {
+        winningBidder = es.generatePdfFromQueryResult(enchere);
+    } catch (SQLException ex) {
+        ex.printStackTrace();
     }
+    System.out.println("Winning bidder: " + winningBidder);
+}
+
+
+*/
+
+
+
+
+
+/*
+ String filename = "my-pdf-file";
+    int Id = 1;
+     // create a Participant object
+    // set properties of the Participant object
+    Enchere enchere = new Enchere(22,"kahelani", "shutty", 2341, date, "image");
+    p.setClient(new Client("John", "Doe"));
+
+    Pdf pdf = new Pdf(); // create an instance of the Pdf class
+    try {
+        pdf.GeneratePdf(filename, p, 1); // call the GeneratePdf method
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+*/
+
+
+
 
     
-   }
+
+//p.GeneratePdf();
+    
+    
+    
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
    
- 
+
     
   
 

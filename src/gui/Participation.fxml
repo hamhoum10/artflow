@@ -4,7 +4,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,19 +12,22 @@
 
 <AnchorPane id="AnchorPane" prefHeight="524.0" prefWidth="647.0" styleClass="bodybg" stylesheets="@../css/cssAffiche.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ParticipationController">
    <children>
-      <Pane layoutX="117.0" layoutY="93.0" opacity="0.88" prefHeight="328.0" prefWidth="426.0" style="-fx-background-color: #FAFAD9;">
+      <Pane layoutX="111.0" layoutY="85.0" opacity="0.88" prefHeight="328.0" prefWidth="426.0" style="-fx-background-color: #FAFAD9;">
          <effect>
-            <InnerShadow color="#262818">
-               <input>
-                  <BoxBlur />
-               </input>
-            </InnerShadow>
+            <InnerShadow color="#262818" />
          </effect>
+         <children>
+            <TextField fx:id="mont" layoutX="159.0" layoutY="244.0" promptText="montant" />
+            <Button layoutX="170.0" layoutY="289.0" mnemonicParsing="false" onAction="#addParticipation" text="Participer" />
+            <Label layoutX="54.0" layoutY="249.0" text="Montant" />
+            <Label fx:id="dateL" layoutX="170.0" layoutY="175.0" text="-" />
+            <Label layoutX="54.0" layoutY="175.0" text="date limite " />
+            <Label layoutX="54.0" layoutY="208.0" text="denier montant" />
+            <Label fx:id="lastamount" layoutX="176.0" layoutY="208.0" text="-" />
+            <Button fx:id="downloadPDF" layoutX="307.0" layoutY="283.0" mnemonicParsing="false" onAction="#downloadPDF" text="pdf" />
+         </children>
       </Pane>
-      <Label layoutX="156.0" layoutY="267.0" text="Montant" />
       <Label fx:id="iden" layoutX="103.0" layoutY="130.0" />
-      <TextField fx:id="mont" layoutX="277.0" layoutY="257.0" promptText="montant" />
-      <Button layoutX="288.0" layoutY="328.0" mnemonicParsing="false" onAction="#addParticipation" text="Participer" />
       <Label layoutX="156.0" layoutY="213.0" text="Titre enchere" />
       <ComboBox fx:id="titre" layoutX="277.0" layoutY="208.0" onAction="#listeEnchere" prefWidth="150.0" />
       <ComboBox fx:id="nom_client" layoutX="277.0" layoutY="165.0" onAction="#listeClient" prefWidth="150.0" />

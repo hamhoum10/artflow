@@ -4,7 +4,14 @@
  */
 package services;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import interfaces.EnchereParticipantInterface;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -242,6 +249,7 @@ public class EnchereService implements EnchereParticipantInterface {
                     if (rs != null) {
                         if (rs.next()) {
                             return rs.getDouble("prixDepart");
+                               
                         }
                     }
                 }
@@ -480,7 +488,7 @@ public Participant getWinningBidder(Participant p) {
         if (rs.next()) {
             double montant = rs.getDouble("montant");
             Date dateLimite = enchere.getDate_limite();
-            if (today.compareTo(dateLimite) > 0) {
+            if (today.compareTo(dateLimite) < 0) {
                 System.out.println("This auction has ended!");
             } else {
                 int idp = rs.getInt("idp");
@@ -491,7 +499,7 @@ public Participant getWinningBidder(Participant p) {
                 winningBidder = new Participant(idp, client, enchere, montant);
             }
         } else {
-            System.out.println("No bids for this auction!");
+            System.out.println("this is the "+enchere.getPrixdepart()+"No bids for this auction!");
         }
     } catch (SQLException ex) {
         System.err.println("Error executing SQL query: " + ex.getMessage());
@@ -500,23 +508,11 @@ public Participant getWinningBidder(Participant p) {
     
     return winningBidder;
 }
- 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
+   
+   
 }
 
+    
 
 
 
