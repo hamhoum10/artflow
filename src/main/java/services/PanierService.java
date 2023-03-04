@@ -1,6 +1,7 @@
 package services;
 
 import models.Article;
+import models.Client;
 import models.Ligne_panier;
 import models.Panier;
 import util.Conditions;
@@ -19,14 +20,15 @@ public class PanierService {
 
     // Créer une nouvelle commande
     public void createPanier(Panier p) {
+        ClientService cs =new ClientService();
+        System.out.println(cs.getId_client(p.getClient()));
         try {
             int  rowAjiouté=0;
             Conditions c =new Conditions();
-            // Créer une requête préparée pour insérer une nouvelle entrée dans la table "commandes"
             String sql = "insert into panier (id_client) values (?) ";
-            PreparedStatement  ps = cnx.prepareStatement(sql/*,Statement.RETURN_GENERATED_KEYS*/);
-            if(c.DoUserIdExistinPanier(p.getId_client())==false) {
-                ps.setInt(1, p.getId_client());  //mesh twali p.getclient().getid() //lezem nada trigel fazet el id
+            PreparedStatement  ps = cnx.prepareStatement(sql);
+            if(c.DoUserIdExistinPanier(cs.getId_client(p.getClient()))==false) {
+                ps.setInt(1, cs.getId_client(p.getClient()));
                 rowAjiouté =ps.executeUpdate();
                 System.out.println("Panier Created" +rowAjiouté);
             }else{
@@ -77,9 +79,25 @@ public class PanierService {
         }
         return totalPrixPanierWithDiscount;
     }
-    public int getPanierIdForUser(int id_client) {
+    public int getPanierIdByUser(Client c) {
         int panierId = 0;
-        String query = "SELECT id_panier FROM panier WHERE id_client = ?";
+        String query = "SELECT id_panier FROM panier p JOIN client c  on p.id_client = c.id  WHERE username = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            ps.setString(1, c.getUsername());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                panierId = rs.getInt("id_panier");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return panierId;
+    }
+
+    //hethi lel javafx
+    public int getPanierIdByIDUser(int id_client) {
+        int panierId = 0;
+        String query = "SELECT id_panier FROM panier p JOIN client c  on p.id_client = c.id  WHERE id = ?";
         try (PreparedStatement ps = cnx.prepareStatement(query)) {
             ps.setInt(1, id_client);
             ResultSet rs = ps.executeQuery();

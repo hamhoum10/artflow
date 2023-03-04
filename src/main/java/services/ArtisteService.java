@@ -8,6 +8,7 @@ package services;
 import Model.Artiste;
 import Util.MyConnection;*/
 
+import com.stripe.Stripe;
 import interfaces.ArtisteInterface;
 import models.Artiste;
 import util.MyConnection;

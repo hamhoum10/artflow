@@ -13,15 +13,51 @@
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.CommandeController">
     
     <children>
-      <Pane layoutY="-1.0" prefHeight="711.0" prefWidth="257.0" style="-fx-background-color: #C69186;">
+      <Pane layoutY="-1.0" prefHeight="127.0" prefWidth="1000.0" style="-fx-background-color: #C69186;">
          <children>
-            <ImageView fitHeight="264.0" fitWidth="340.0" layoutX="-4.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="264.0" fitWidth="340.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/artflowlogoo.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="553.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="636.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/placard%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="44.0" layoutX="720.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/red-carpet%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="808.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/store.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="91.0" fitWidth="90.0" layoutX="902.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/profile.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="560.0" layoutY="96.0" text="Home" />
+            <Label layoutX="645.0" layoutY="96.0" text="Event" />
+            <Label layoutX="719.0" layoutY="96.0" text="Enchere" />
+            <Label layoutX="818.0" layoutY="96.0" text="Store" />
          </children></Pane>
-      <Pane layoutX="306.0" layoutY="64.0" prefHeight="606.0" prefWidth="374.0" style="-fx-background-color: #C69186;">
+      <ListView fx:id="myitemslist" fixedCellSize="200.0" layoutX="433.0" layoutY="190.0" prefHeight="324.0" prefWidth="501.0" />
+      <TextField fx:id="total" alignment="CENTER" editable="false" layoutX="823.0" layoutY="533.0" prefHeight="49.0" prefWidth="156.0" />
+      <Label layoutX="704.0" layoutY="544.0" text="Votre total :">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Pane layoutY="124.0" prefHeight="614.0" prefWidth="378.0" style="-fx-background-color: #C69186;">
          <children>
             <Button fx:id="comfirmerCommande" layoutX="67.0" layoutY="526.0" mnemonicParsing="false" onAction="#ConfirmerCommandeAction" prefHeight="49.0" prefWidth="103.0" text="Comfirmer" />
             <Button fx:id="backtopanier" layoutX="194.0" layoutY="526.0" mnemonicParsing="false" onAction="#backtopanierAction" prefHeight="49.0" prefWidth="103.0" text="retour" />
@@ -50,19 +86,12 @@
                   <Font size="15.0" />
                </font>
             </TextField>
-               <Label layoutX="14.0" layoutY="14.0" prefHeight="62.0" prefWidth="361.0" text="FINALISATION DE LA COMMANDE" textFill="WHITE">
+               <Label layoutX="7.0" layoutY="14.0" prefHeight="62.0" prefWidth="368.0" text="FINALISATION DE LA COMMANDE" textFill="WHITE">
                    <font>
                        <Font name="Bernard MT Condensed" size="30.0" />
                    </font>
                </Label>
          </children>
       </Pane>
-      <ListView fx:id="myitemslist" fixedCellSize="100.0" layoutX="691.0" layoutY="196.0" prefHeight="243.0" prefWidth="302.0" />
-      <TextField fx:id="total" alignment="CENTER" editable="false" layoutX="824.0" layoutY="461.0" prefHeight="49.0" prefWidth="156.0" />
-      <Label layoutX="710.0" layoutY="477.0" text="Votre total :">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
     </children>
 </AnchorPane>

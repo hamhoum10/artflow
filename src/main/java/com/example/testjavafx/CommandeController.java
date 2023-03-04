@@ -16,8 +16,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import models.Client;
 import models.Commande;
 import models.Ligne_panier;
+import services.ClientService;
 import services.CommandeService;
 import services.Ligne_PanierService;
 import services.PanierService;
@@ -94,16 +96,19 @@ public class CommandeController implements Initializable {
 
         } else {
 
-
             PanierService p = new PanierService();
             CommandeService cs = new CommandeService();
+            ClientService clientService =new ClientService();
+
 
             String prenom = Prénomtext.getText();
             String nom = Nomtext.getText();
             int numero = Integer.parseInt(Numerotext.getText());
             int codepostal = Integer.parseInt(CodepostalText.getText());
             String adresse = Adressetext.getText();
-            Commande c = new Commande(4, prenom, nom, numero, "en attente", p.totalmontantPanier(3), codepostal, adresse);
+            int id_panierselectionner = myitemslist.getFocusModel().getFocusedItem().getId();
+            //int id_clientselectionner = clientService.getId_client(myitemslist.getFocusModel().getFocusedItem().getPanier().getClient());
+            Commande c = new Commande(id_panierselectionner, prenom, nom, numero, "en attente", p.totalmontantPanier(3), codepostal, adresse); //id_client nada authen
             if (cs.create(c).booleanValue() == false) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("ComfirmerCommandeView.fxml"));
                 Parent root = null;
@@ -136,7 +141,7 @@ public class CommandeController implements Initializable {
         Stage stage = (Stage) backtopanier.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        System.out.println("hi");
+
     }
 
     //alert window
@@ -170,13 +175,17 @@ public class CommandeController implements Initializable {
     void ShowmyItems(ActionEvent event) {
         Ligne_PanierService lps =new Ligne_PanierService();
         PanierService p =new PanierService();
+        ClientService clientService =new ClientService();
+        //int id_panierselectionner = myitemslist.getFocusModel().getFocusedItem().getId();
+
+        //int id_clientselectionner = clientService.getId_client(myitemslist.getFocusModel().getFocusedItem().getPanier().getClient());
         List<Ligne_panier> pa = lps.readelementPanierbyiduser(3);
         e= FXCollections.observableArrayList(pa);
         myitemslist.setItems(e);
         if (isPromo==true){
             total.setText(String.valueOf(p.totalmontantPanierWith20Discount(3)) + " DT");
         }else{
-            total.setText(String.valueOf(p.totalmontantPanier(3)) + " DT");
+            total.setText(String.valueOf(p.totalmontantPanier(3)) + " DT");//id_client nada baed aithentification
         }
 
 
@@ -191,13 +200,13 @@ public class CommandeController implements Initializable {
                 } else {
 
                     Image img =new Image("C:/Users/medya/IdeaProjects/artflow_javafx_Pidev/src/main/resources/images/artflowlogoo.png");
-                    imageViewArticle.setFitHeight(70);
-                    imageViewArticle.setFitWidth(70);
+                    imageViewArticle.setFitHeight(150);
+                    imageViewArticle.setFitWidth(150);
                     imageViewArticle.setImage(img);
 
                     //tostring
                     Label contenu =new Label(item.toString());
-                    contenu.setStyle("-fx-font-family: Arial; -fx-font-size: 12;");
+                    contenu.setStyle("-fx-font-family: Arial; -fx-font-size: 14;");
 
                     //BORDERPANE
                     BorderPane borderPane = new BorderPane();

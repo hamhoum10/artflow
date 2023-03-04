@@ -5,6 +5,7 @@ import interfaces.ArticleInterface;
 import models.Article;
 import models.Artiste;
 import models.Categorie;
+import models.Client;
 import util.MyConnection;
 
 import java.io.FileInputStream;
@@ -244,8 +245,24 @@ public class ArticleService implements ArticleInterface {
         }
         
         return Articles;
-    }    
-    
-    
-    
+    }
+    //il faut que malek tzid ce code pour que je puisse recuperer l'id des articles et les ahouter en ligne panier
+    public int getId_Article(Article a) {
+        int article_id = 0;
+        String query = "SELECT id_article FROM article WHERE type = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            ps.setString(1, a.getType());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                article_id = rs.getInt("id_article");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return article_id;
+    }
+
+
+
+
 }

@@ -2,7 +2,9 @@ package com.example.testjavafx;
 
 
 
+import com.stripe.Stripe;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,6 +33,7 @@ public class PanierController implements Initializable {
 
     static  boolean promocodeEtat; // na3rfou si el utilisateur sta3mel code (true) sinon false , wmesh nest7a9ouh baed fi view commande mesh nafshiw total en fonction de ce variable (discount ou non)
 
+    static int id_panierlistview ;
     @FXML
     private Button addOne;
 
@@ -72,16 +75,26 @@ public class PanierController implements Initializable {
 
     private ObservableList<Ligne_panier> e;
 
+
+
     @FXML
     void ShowcartAction(ActionEvent event) {
         //System.out.println(promocodeEtat);
         Ligne_PanierService lps =new Ligne_PanierService();
         PanierService p =new PanierService();
-        List<Ligne_panier> pa = lps.readelementPanierbyiduser(3);
+        List<Ligne_panier> pa = lps.readelementPanierbyiduser(3);//normally el id eli tebda andd nada mta authentification
         e= FXCollections.observableArrayList(pa);
         listView.setItems(e);
-        totaltext.setText(String.valueOf(p.totalmontantPanier(3)) + " DT"); // total sans discount
-        totalamounttext.setText(String.valueOf(p.totalmontantPanier(3)) + " DT");// total avec discount
+        totaltext.setText(String.valueOf(p.totalmontantPanier(3)) + " DT"); // total sans discount & normally el id eli tebda andd nada mta authentification
+        totalamounttext.setText(String.valueOf(p.totalmontantPanier(3)) + " DT");// total avec discount & normally el id eli tebda andd nada mta authentification
+
+        //System.out.println(id_panierlistview);
+        if (listView.getItems().isEmpty()){
+            //System.out.println("it's empty");
+        }else{
+            id_panierlistview = listView.getFocusModel().getFocusedItem().getId(); //static idpanier mesh najm n5ou value men class okhra
+            System.out.println(id_panierlistview);
+        }
         if (promocodeEtat==true){
             discounttext.setText("20%");
             totalamounttext.setText(String.valueOf(p.totalmontantPanierWith20Discount(3)) + " DT");
@@ -91,38 +104,18 @@ public class PanierController implements Initializable {
         }
         listView.setCellFactory(param -> new ListCell<Ligne_panier>() {
             private final ImageView imageViewArticle = new ImageView();
-            private final Button buttonDelete = new Button("Delete");
-            private final Button buttonPlus = new Button("+1");
-            private final Button buttonMinus = new Button("-1");
+            //private final Button buttonDelete = new Button("Delete");
+            //private final Button buttonPlus = new Button("+1");
+            //private final Button buttonMinus = new Button("-1");
             @Override
             protected void updateItem(Ligne_panier item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
                     setGraphic(null);
+
                 } else {
-                    /*buttonDelete.setOnAction(event -> {
-                        //int index = getIndex();
-                        //if (index >= 0 && index < listView.getItems().size()) {}
-                        //System.out.println(e.indexOf(getItem().getId_panier()));
-                        //System.out.println(listView.getItems().indexOf(getItem()));
-                        deleteLignePanierAction(event);
-                        listView.getItems().indexOf(getItem());
-                        ShowcartAction(event);
 
-
-
-                    });
-                    buttonPlus.setOnAction(event -> {
-                        addOnetoarticleAction(event);
-                        listView.getItems().remove(getItem());
-                        ShowcartAction(event);
-                    });
-                    buttonMinus.setOnAction(event -> {
-                        minusOnetoarticleAction(event);
-                        listView.getItems().remove(getItem());
-                        ShowcartAction(event);
-                    });*/
                     Image img =new Image("C:/Users/medya/IdeaProjects/artflow_javafx_Pidev/src/main/resources/images/artflowlogoo.png");
                     imageViewArticle.setFitHeight(200);
                     imageViewArticle.setFitWidth(200);
@@ -141,18 +134,6 @@ public class PanierController implements Initializable {
                     centerBox.setAlignment(Pos.CENTER_LEFT);
                     centerBox.setSpacing(5);
                     borderPane.setCenter(centerBox);
-                    /*
-                    //button delete
-                    HBox bottomRightBox = new HBox(buttonDelete);
-                    bottomRightBox.setAlignment(Pos.BOTTOM_RIGHT);
-                    bottomRightBox.setSpacing(50);
-                    borderPane.setRight(bottomRightBox);
-
-                    //button + et -
-                    HBox bottomLeftBox = new HBox(buttonPlus, buttonMinus);
-                    bottomLeftBox.setAlignment(Pos.BOTTOM_LEFT);
-                    bottomLeftBox.setSpacing(5);
-                    borderPane.setBottom(bottomLeftBox);*/
 
                     //Image
                     HBox centerleftBox = new HBox(imageViewArticle);
@@ -173,24 +154,9 @@ public class PanierController implements Initializable {
 
     @FXML
     void deleteLignePanierAction(ActionEvent event) {
-        PanierService p =new PanierService();
         Ligne_PanierService lps = new Ligne_PanierService();
-
-        // Delete by selecting el ligne(article eli fi panier) w baed tclick ala button delete eli hwa mesh fi list aslan
-        /*int selectedidpanier = listView.getSelectionModel().getSelectedItem().getId_panier();
-        int selectedidarticle = listView.getSelectionModel().getSelectedItem().getArticle().getId_article();
-        //System.out.println(selectedidpanier+ ""+ selectedidarticle);
-        lps.deleteFromLigne_panierByArticle(selectedidpanier,selectedidarticle);
-        ShowcartAction(event);
-        alertDialog("Article supprimer avec sucess!");*/
-
-        //hethi just tenzel al button tfas5 ligne apparament Focuseditem yani winn ybda cursor fi ligne mel list naml extraction mta donnes eli mesh nestamlhom fi delete
-        //int id_panier  = listView.getFocusModel().focusedItemProperty().get().getId_panier();
-        //int id_article  = listView.getFocusModel().focusedItemProperty().get().getArticle().getId_article();
-        int id_panier = listView.getSelectionModel().getSelectedItem().getId_panier();
+        int id_panier = listView.getSelectionModel().getSelectedItem().getId(); //ken getId_panier() eli kent fi fetch l9dima
         int id_article = listView.getSelectionModel().getSelectedItem().getArticle().getId_article();
-        //System.out.println(id_panier +"   "+id_article);
-        //lps.deleteFromLigne_panierByArticle(id__panier,id__article);
         lps.deleteFromLigne_panierByArticle(id_panier,id_article);
         ShowcartAction(event);
         alertDialog("Article supprimer avec sucess!");
@@ -199,20 +165,16 @@ public class PanierController implements Initializable {
     void ViderPanierActionforuser(ActionEvent event){
         PanierService p =new PanierService();
         Ligne_PanierService lps = new Ligne_PanierService();
-        lps.deleteAllFromLigne_panier(4);
+        int id_panier = listView.getFocusModel().getFocusedItem().getId(); //bel get focus mesh najmo nfaskho sans selectionne w select tebda auto ala awel index w tantque id panier kolhom kifi fi list view
+        lps.deleteAllFromLigne_panier(id_panier);
         ShowcartAction(event);
+        alertDialog("Panier vidé !");
     }
     @FXML
     void addOnetoarticleAction(ActionEvent event) {
         Ligne_PanierService lps =new Ligne_PanierService();
-        //methode 9dima ama heya eli mesh n(aliha apparament
-        int selectedidpanier = listView.getSelectionModel().getSelectedItem().getId_panier();
+        int selectedidpanier = listView.getSelectionModel().getSelectedItem().getId();//ken getId_panier() eli kent fi fetch l9dima
         int selectedidarticle = listView.getSelectionModel().getSelectedItem().getArticle().getId_article();
-
-        //methode  o5ra meh
-        //int id_panier  = listView.getFocusModel().focusedItemProperty().get().getId_panier();
-        //int id_article  = listView.getFocusModel().focusedItemProperty().get().getArticle().getId_article();
-        //System.out.println(selectedidpanier +"   "+selectedidarticle);
         try {
             lps.updatequantitywith1Plus(selectedidpanier,selectedidarticle);
             System.out.println("Quantity add by one");
@@ -226,13 +188,8 @@ public class PanierController implements Initializable {
     void minusOnetoarticleAction(ActionEvent event) {
         Ligne_PanierService lps =new Ligne_PanierService();
         // """"""
-        int selectedidpanier = listView.getSelectionModel().getSelectedItem().getId_panier();
+        int selectedidpanier = listView.getSelectionModel().getSelectedItem().getId();
         int selectedidarticle = listView.getSelectionModel().getSelectedItem().getArticle().getId_article();
-
-        //new
-        //int id_panier  = listView.getFocusModel().focusedItemProperty().get().getId_panier();
-        //int id_article  = listView.getFocusModel().focusedItemProperty().get().getArticle().getId_article();
-        //System.out.println(selectedidpanier +"   "+selectedidarticle);
         try {
             lps.updatequantitywith1Minus(selectedidpanier,selectedidarticle);
             System.out.println("Quantity decreased by one");
@@ -244,8 +201,10 @@ public class PanierController implements Initializable {
     @FXML
     void commandeAction(ActionEvent event) {
         Ligne_PanierService lps =new Ligne_PanierService();
+        int selectidpanierfocus = listView.getFocusModel().getFocusedItem().getId(); //me8ir manselectionni
+        System.out.println(listView.getFocusModel().getFocusedItem().getId());
         //len panier vide
-        if(lps.readelementPanierbyidpanier(4).isEmpty()){
+        if(lps.readelementPanierbyidpanier(selectidpanierfocus).isEmpty()){
             System.out.println("Panier est vide");
             alertDialog("Votre Panier est vide !");
         //ken panier fiha elements net3adew lel formulaire commande
@@ -278,7 +237,9 @@ public class PanierController implements Initializable {
             alertDialog("Congratzulation you have 20% discount");
             //nfas5o code mel bd
             pcs.deletepromocode(codetyped);
+            pcs.generatenewCode();
             ShowcartAction(event);
+
 
         }else{
             System.out.println("Wrong PromoCode ! Try again");

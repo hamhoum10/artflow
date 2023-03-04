@@ -9,7 +9,9 @@ public class Ligne_panier {
     private int id;
     //private int id_article;
     private  Article article;
-    private int id_panier;
+
+    private  Panier panier;
+    //private int id_panier;
 
     private Double prix_unitaire;
     private int quantity;
@@ -21,16 +23,18 @@ public class Ligne_panier {
     // Constructeur
     public Ligne_panier() {}
 
-    public Ligne_panier(Article article, int id_panier , int quantity) {
+    /*public Ligne_panier(Article article, int id_panier , int quantity) {
         this.article = article;
         this.id_panier = id_panier;
         //this.prix = prix;
         this.quantity = quantity;
+    }*/
+
+    public Ligne_panier(Article article, Panier panier, int quantity) {
+        this.article = article;
+        this.panier = panier;
+        this.quantity = quantity;
     }
-
-
-
-
 
 // Getters et Setters
 
@@ -40,6 +44,14 @@ public class Ligne_panier {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Panier getPanier() {
+        return panier;
+    }
+
+    public void setPanier(Panier panier) {
+        this.panier = panier;
     }
 
     public Article getArticle() {
@@ -84,14 +96,14 @@ public class Ligne_panier {
     }
 
 
-    public int getId_panier() {
+    /*public int getId_panier() {
         return id_panier;
     }
 
     public void setId_panier(int id_panier) {
         this.id_panier = id_panier;
     }
-
+*/
     public String getDescription() {
         return description;
     }
@@ -115,8 +127,8 @@ public class Ligne_panier {
         return  "Article_name : " + article.getNom_article() +System.lineSeparator()+
                 "Article_type : " + article.getType() +System.lineSeparator()+
                 "Article_price : " + article.getPrice() +System.lineSeparator()+
-                "Quantity : " + quantity +System.lineSeparator()+
-                "id_panier : " + id_panier +System.lineSeparator();
+                "Quantity : " + quantity +System.lineSeparator();
+                //"id_panier : " + id_panier +System.lineSeparator();
 
     }
 }

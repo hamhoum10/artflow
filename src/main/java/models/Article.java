@@ -6,6 +6,8 @@
 package models;
 
 
+import com.stripe.Stripe;
+
 public class Article {
    int id_article,id_artiste,id_client;
    double price;
@@ -14,6 +16,7 @@ public class Article {
    Categorie categorie;
    Artiste artiste;
    int quantity;
+
 
     public Article() {
     }

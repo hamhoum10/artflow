@@ -26,6 +26,8 @@ public class ClientService  {
             a.setString(7, p.getUsername());
             a.setString(8, p.getPassword());
             a.executeUpdate();
+            p.setId(getId_client(p));
+            System.out.println("the id is attribué : " + p.getId());
             System.out.println("client Added successfully!");
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -99,6 +101,21 @@ public class ClientService  {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+    // hethi lezem nada ta3melha zeda fi code te3ha mesh najem npassi client object fi parametre me8ir takssir rass
+    public int getId_client(Client c) {
+        int client_id = 0;
+        String query = "SELECT id FROM client WHERE username = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            ps.setString(1, c.getUsername());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                client_id = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return client_id;
     }
 
 }

@@ -5,6 +5,8 @@
 package models;
 
 
+import com.stripe.Stripe;
+
 /**
  *
  * @author kanza
@@ -38,6 +40,7 @@ public class Artiste {
         this.username = username;
         this.password = password;
         this.email = email;
+        
     }
 
     public Artiste(int id, String firstname, String lastname, String birthplace, String birthdate, String description, String image, String address, String phonenumber, String username, String password, String email) {

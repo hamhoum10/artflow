@@ -12,8 +12,8 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.PanierController">
     <children>
-        <ListView fx:id="listView" editable="true" fixedCellSize="0.0" layoutX="8.0" layoutY="94.0" prefHeight="538.0" prefWidth="707.0" />
-      <Pane layoutX="743.0" layoutY="233.0" prefHeight="233.0" prefWidth="242.0" style="-fx-background-color: #FFFFFF;">
+        <ListView fx:id="listView" editable="true" fixedCellSize="0.0" layoutX="14.0" layoutY="140.0" prefHeight="538.0" prefWidth="707.0" />
+      <Pane layoutX="748.0" layoutY="267.0" prefHeight="233.0" prefWidth="242.0" style="-fx-background-color: #FFFFFF;">
          <children>
               <Label layoutX="10.0" layoutY="13.0" prefHeight="38.0" prefWidth="94.0" text="You're total is:">
                   <font>
@@ -41,41 +41,70 @@
             <Label fx:id="totalamounttext" layoutX="169.0" layoutY="138.0" text="Label" underline="true" />
          </children>
       </Pane>
-      <Pane prefHeight="82.0" prefWidth="1000.0" style="-fx-background-color: #C69186;">
+      <Pane prefHeight="119.0" prefWidth="1000.0" style="-fx-background-color: #C69186;">
          <children>
-            <ImageView fx:id="logo" fitHeight="207.0" fitWidth="200.0" layoutX="7.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logo" fitHeight="234.0" fitWidth="260.0" layoutY="-63.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/artflowlogoo.png" />
                </image></ImageView>
-              <Label layoutX="311.0" layoutY="16.0" prefHeight="50.0" prefWidth="187.0" text="Mon Panier" textFill="WHITE">
+              <Label layoutX="288.0" layoutY="29.0" prefHeight="50.0" prefWidth="187.0" text="Mon Panier" textFill="WHITE">
                   <font>
                       <Font name="Bernard MT Condensed" size="40.0" />
                   </font>
               </Label>
+            <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="827.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/store.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="736.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/red-carpet%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="649.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/placard%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="106.0" fitWidth="80.0" layoutX="906.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/profile.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="57.0" fitWidth="50.0" layoutX="562.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/home.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="570.0" layoutY="86.0" text="Home" />
+            <Label layoutX="660.0" layoutY="86.0" text="Event" />
+            <Label layoutX="738.0" layoutY="86.0" text="Enchere" />
+            <Label layoutX="837.0" layoutY="86.0" text="Store" />
          </children>
       </Pane>
-      <Button fx:id="MinusOne" layoutX="870.0" layoutY="593.0" mnemonicParsing="false" onAction="#minusOnetoarticleAction" prefHeight="38.0" prefWidth="93.0" text="Decrease">
+      <Button fx:id="MinusOne" layoutX="870.0" layoutY="620.0" mnemonicParsing="false" onAction="#minusOnetoarticleAction" prefHeight="38.0" prefWidth="93.0" text="Decrease">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="addOne" layoutX="770.0" layoutY="593.0" mnemonicParsing="false" onAction="#addOnetoarticleAction" prefHeight="38.0" prefWidth="93.0" text="Add">
+      <Button fx:id="addOne" layoutX="770.0" layoutY="620.0" mnemonicParsing="false" onAction="#addOnetoarticleAction" prefHeight="38.0" prefWidth="93.0" text="Add">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <Label layoutX="754.0" layoutY="554.0" prefHeight="38.0" prefWidth="200.0" text="Change Quantity :" textAlignment="RIGHT">
+      <Label layoutX="754.0" layoutY="581.0" prefHeight="38.0" prefWidth="200.0" text="Change Quantity :" textAlignment="RIGHT">
          <font>
             <Font name="Bernard MT Condensed" size="16.0" />
          </font>
       </Label>
-        <Button fx:id="viderPanier" layoutX="770.0" layoutY="487.0" mnemonicParsing="false" onAction="#ViderPanierActionforuser" prefHeight="40.0" prefWidth="93.0" text="Delete All" />
-        <Button fx:id="delete" layoutX="870.0" layoutY="487.0" mnemonicParsing="false" onAction="#deleteLignePanierAction" prefHeight="40.0" prefWidth="93.0" text="Delete Article" textFill="#0b0b0b">
+        <Button fx:id="viderPanier" layoutX="770.0" layoutY="527.0" mnemonicParsing="false" onAction="#ViderPanierActionforuser" prefHeight="40.0" prefWidth="93.0" text="Delete All" />
+        <Button fx:id="delete" layoutX="870.0" layoutY="527.0" mnemonicParsing="false" onAction="#deleteLignePanierAction" prefHeight="40.0" prefWidth="93.0" text="Delete Article" textFill="#0b0b0b">
          <font>
             <Font size="11.0" />
          </font>
       </Button>
-      <Pane layoutX="743.0" layoutY="111.0" prefHeight="106.0" prefWidth="242.0" style="-fx-background-color: ffffff;">
+      <Pane layoutX="748.0" layoutY="140.0" prefHeight="106.0" prefWidth="242.0" style="-fx-background-color: ffffff;">
          <children>
             <Label layoutX="14.0" layoutY="21.0" text="Promo code">
                <font>

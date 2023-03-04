@@ -10,6 +10,8 @@ public class Commande {
         //private int customerId;
         private int id_panier; //baed twali panier
 
+        private Panier panier;
+
         private String prénomClientCommande;
 
         private String nomClientCommande;
@@ -39,19 +41,24 @@ public class Commande {
         this.adresse = adresse;
     }
 
-    public Commande(int id_panier, String status, double totalAmount /*String createdAt*/, int codepostal, String adresse) {
-        this.id_panier=id_panier;
+    public Commande(Panier panier, String prénomClientCommande, String nomClientCommande, int numeroPhoneclient, String status, double totalAmount, String createdAt, int codepostal, String adresse) {
+        this.panier = panier;
+        this.prénomClientCommande = prénomClientCommande;
+        this.nomClientCommande = nomClientCommande;
+        this.numeroPhoneclient = numeroPhoneclient;
         this.status = status;
         this.totalAmount = totalAmount;
-        /*this.createdAt = createdAt;*/
+        this.createdAt = createdAt;
         this.codepostal = codepostal;
         this.adresse = adresse;
     }
 
-        // Getters pour les variables d'instance
+    // Getters pour les variables d'instance
         public int getId() {
             return id;
         }
+
+
 
         public int getId_panier() {
         return id_panier;
@@ -60,7 +67,15 @@ public class Commande {
             this.id_panier = id_panier;
         }
 
-        public String getStatus() {
+    public Panier getPanier() {
+        return panier;
+    }
+
+    public void setPanier(Panier panier) {
+        this.panier = panier;
+    }
+
+    public String getStatus() {
             return status;
         }
 
@@ -142,16 +157,16 @@ public class Commande {
 
     @Override
     public String toString() {
-        return  "id=" + id +
-                "id_panier=" + id_panier +System.lineSeparator()+
-                "prénomClientCommande='" + prénomClientCommande + System.lineSeparator()+
-                "nomClientCommande='" + nomClientCommande + System.lineSeparator()+
-                "numeroPhoneclient='" + numeroPhoneclient + System.lineSeparator()+
-                "status='" + status + System.lineSeparator()+
-                "totalAmount=" + totalAmount +System.lineSeparator()+
-                "createdAt='" + createdAt + System.lineSeparator()+
-                "codepostal=" + codepostal +System.lineSeparator()+
-                "adresse='" + adresse +System.lineSeparator();
+        return  //"id=" + id +
+                //"id_panier=" + id_panier +System.lineSeparator()+
+                "prénom : " + prénomClientCommande + System.lineSeparator()+
+                "nom : " + nomClientCommande + System.lineSeparator()+
+                "numero : " + numeroPhoneclient + System.lineSeparator()+
+                "status : " + status + System.lineSeparator()+
+                "totalAmount : " + totalAmount + " DT"+System.lineSeparator()+
+                "createdAt : " + createdAt + System.lineSeparator()+
+                "codepostal : " + codepostal +System.lineSeparator()+
+                "adresse : " + adresse +System.lineSeparator();
 
     }
 }

@@ -7,6 +7,7 @@ import util.MyConnection;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PromoCodeService {
 
@@ -44,5 +45,21 @@ public class PromoCodeService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void generatenewCode(){
+        int newCode ;
+        Random random = new Random();
+        int randomNumber = random.nextInt(90000000) + 10000000;
+        System.out.println(randomNumber);
+        try {
+            String sql ="insert into promocode (code) values (?) ";
+            PreparedStatement p  = cnx.prepareStatement(sql);
+            p.setInt(1,randomNumber);
+            p.executeUpdate();
+            System.out.println("new promocode est ajouté");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }

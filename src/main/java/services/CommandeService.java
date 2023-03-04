@@ -1,5 +1,6 @@
 package services;
 
+import models.Client;
 import models.Commande;
 import models.Panier;
 import util.Conditions;
@@ -104,6 +105,7 @@ public class CommandeService {
                 commande.setCreatedAt(rs.getString("created_at"));
                 commande.setCodepostal(rs.getInt("codepostal"));
                 commande.setAdresse(rs.getString("adresse"));
+                commande.setNumeroPhoneclient(rs.getInt("numero"));
                 commandeList.add(commande);
             }
         } catch (SQLException e) {
@@ -190,9 +192,19 @@ public class CommandeService {
         return totalPrixPanier;
     }
 
-    public void payer(){
-        //ki ta3mel payment el panier twali vide
-        //wta3mel delete lel commande mel base de donnes
+    public int getPanierIdByUser(Client c) {
+        int panierId = 0;
+        String query = "SELECT id_panier FROM panier p JOIN client c  on p.id_client = c.id  WHERE username = ?";
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            ps.setString(1, c.getUsername());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                panierId = rs.getInt("id_panier");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return panierId;
     }
 
 

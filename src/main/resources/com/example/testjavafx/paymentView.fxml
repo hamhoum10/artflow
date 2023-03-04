@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.PaymentViewController">
+   <children>
+      <Pane prefHeight="150.0" prefWidth="1142.0" style="-fx-background-color: #C69186;">
+         <children>
+            <ImageView fitHeight="271.0" fitWidth="378.0" layoutY="-66.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/artflowlogoo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="452.0" layoutY="64.0" prefHeight="55.0" prefWidth="256.0" text="Payment Details" textFill="WHITE">
+               <font>
+                  <Font name="Bernard MT Condensed" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Separator layoutX="500.0" layoutY="165.0" orientation="VERTICAL" prefHeight="509.0" prefWidth="2.0" />
+      <Text layoutX="544.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill This formulaire with You're card details : " wrappingWidth="411.4749755859375">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Separator layoutX="544.0" layoutY="199.0" prefHeight="3.0" prefWidth="401.0" />
+      <Pane layoutX="458.0" layoutY="272.0" prefHeight="296.0" prefWidth="439.0">
+         <children>
+            <Label layoutX="88.0" layoutY="25.0" text="Card Information" textFill="#7e7676" />
+            <Label layoutX="91.0" layoutY="98.0" text="Expiry month" textFill="#7e7676" />
+            <TextField fx:id="cvcfield" alignment="CENTER" layoutX="330.0" layoutY="115.0" prefHeight="42.0" prefWidth="98.0" promptText="***" />
+            <Label layoutX="217.0" layoutY="98.0" text="Expiry year" textFill="#7e7676" />
+            <TextField fx:id="expmonthfield" alignment="CENTER" layoutX="88.0" layoutY="115.0" prefHeight="42.0" prefWidth="98.0" promptText="**" />
+            <Label layoutX="338.0" layoutY="98.0" text="CVC" textFill="#7e7676" />
+            <Label layoutX="92.0" layoutY="179.0" text="Name holder" textFill="#7e7676" />
+            <TextField fx:id="expyearfield" alignment="CENTER" layoutX="211.0" layoutY="115.0" prefHeight="42.0" prefWidth="98.0" promptText="**" />
+            <TextField fx:id="numberTextfield" layoutX="86.0" layoutY="42.0" prefHeight="42.0" prefWidth="348.0" promptText="Card number">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="namefield" layoutX="91.0" layoutY="196.0" prefHeight="42.0" prefWidth="206.0" promptText="Name" />
+            <ImageView fitHeight="28.0" fitWidth="53.0" layoutX="361.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/visa.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button fx:id="validate" layoutX="630.0" layoutY="568.0" mnemonicParsing="false" onAction="#validateOnaction" prefHeight="42.0" prefWidth="76.0" text="Validate" />
+      <Button fx:id="cancel" layoutX="726.0" layoutY="568.0" mnemonicParsing="false" onAction="#cancelOnaction" prefHeight="42.0" prefWidth="76.0" text="Cancel" />
+      <ImageView fitHeight="376.0" fitWidth="467.0" layoutX="59.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/credit-card.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
