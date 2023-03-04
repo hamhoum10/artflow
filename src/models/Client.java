@@ -10,10 +10,18 @@ package models;
  */
 public class Client {
     private int idc;
+   
     private String nom;
     private String prenom;
+   
 
     public Client() {
+    }
+
+    public Client(int idc, String nom, String prenom) {
+        this.idc = idc;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
     public Client(String nom, String prenom) {
@@ -22,11 +30,9 @@ public class Client {
     }
 
     
-    public Client(int idc, String nom, String prenom) {
-        this.idc = idc;
-        this.nom = nom;
-        this.prenom = prenom;
-    }
+    
+    
+    
 
     public int getIdc() {
         return idc;

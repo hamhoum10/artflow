@@ -495,7 +495,9 @@ public Participant getWinningBidder(Participant p) {
                 int idc = rs.getInt("idc");
                 String nom = rs.getString("nom");
                 String prenom = rs.getString("prenom");
-                Client client = new Client(idc, nom, prenom);
+                
+              
+                Client client = new Client(idc,nom,prenom);
                 winningBidder = new Participant(idp, client, enchere, montant);
             }
         } else {

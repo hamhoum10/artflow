@@ -41,23 +41,23 @@ public class AfficherEnchereController implements Initializable {
     private ListView<Enchere> listEnchere;
     @FXML
     private Button id_afficher;
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-// TODO
-
-
-
-
-    }    
-
-    @FXML
+     @FXML
     private void afficherEnchere(ActionEvent event) {
     
  
     ObservableList<Enchere> e= FXCollections.observableArrayList(es.fetchEnchere());
     listEnchere.setItems(e);
     }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        
+// TODO
+
+ObservableList<Enchere> e= FXCollections.observableArrayList(es.fetchEnchere());
+    listEnchere.setItems(e);
+    }    
+
+   
 
     @FXML
     private void deleteEnchere(ActionEvent event) {

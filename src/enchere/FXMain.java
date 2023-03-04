@@ -5,49 +5,32 @@
  */
 package enchere;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import models.Enchere;
 
 /**
  *
- * @author helam
+ * @author 
  */
 public class FXMain extends Application {
     
  
     //AFFICHER MODIFIER ET SUPPRIMER UNE ENCHERE
-  /*
-@Override
-   
-   public void start(Stage primaryStage) {
-       Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/gui/AfficherEnchere.fxml"));
-            Scene scene = new Scene(root);
-           
-            
-            primaryStage.setTitle("home page");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-    }
-    
+
+  
   
     /*
     @Override
@@ -56,7 +39,7 @@ public class FXMain extends Application {
        Parent root;
         try {
             root = FXMLLoader.load(getClass().getResource("/gui/AfficherEnchere.fxml"));
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,1700,1000);
            
             
             primaryStage.setTitle("home page");
@@ -67,8 +50,8 @@ public class FXMain extends Application {
         }
        
     }
-    */
-  
+   */
+
   
    
     // PARTICIPER AUX ENCHERES 
@@ -89,9 +72,8 @@ public class FXMain extends Application {
        
     }
     
-    
    
-   
+  
     
     
   

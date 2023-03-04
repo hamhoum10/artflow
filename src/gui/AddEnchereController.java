@@ -72,7 +72,7 @@ public class AddEnchereController implements Initializable {
     }    
 
     @FXML
-    private void add_enchere(ActionEvent event) throws IOException {
+    private void addEnchere(ActionEvent event) throws IOException {
 LocalDate currentDate = LocalDate.now();
  LocalDate selectedDate = dateLimite.getValue();
     
@@ -126,7 +126,9 @@ LocalDate currentDate = LocalDate.now();
     en.setPrixdepart(Double.parseDouble(prixDepart.getText()));
         LocalDate date = dateLimite.getValue();
     en.setDate_limite(java.sql.Date.valueOf(date));
+    
     en.setImg(imagefield.getText());
+    
     
    String htdocsPath = "";
                  File destinationFile = new File(htdocsPath + imagefield.getText());
@@ -138,15 +140,15 @@ LocalDate currentDate = LocalDate.now();
                 while ((length = in.read(buf)) > 0) {
                     out.write(buf, 0, length);
                 }
-            
+                    System.out.println(en);
             es.AddEnchere(en);
             // return to the main 
-                FXMLLoader loader= new FXMLLoader(getClass().getResource("FXML.fxml"));
-                Parent view_2=loader.load();
-                Scene scene = new Scene(view_2);
-                Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
+//                FXMLLoader loader= new FXMLLoader(getClass().getResource("./AfficherEnchere.fxml"));
+//                Parent view_2=loader.load();
+//                Scene scene = new Scene(view_2);
+//                Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+//                stage.setScene(scene);
+//                stage.show();
             
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -214,6 +216,7 @@ LocalDate currentDate = LocalDate.now();
         
         
     }
+    
 
     @FXML
     private void exitPage(ActionEvent event) throws IOException {
@@ -225,5 +228,5 @@ LocalDate currentDate = LocalDate.now();
                stage.show();
     
     }
-
 }
+

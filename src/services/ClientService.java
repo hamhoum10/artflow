@@ -38,6 +38,7 @@ public class ClientService implements  ClientInterface {
                c.setIdc(rs.getInt("idc"));
                 c.setNom(rs.getString("nom"));
                 c.setPrenom(rs.getString("prenom"));
+                
             }
             
         } catch (SQLException ex) {
@@ -63,7 +64,7 @@ public class ClientService implements  ClientInterface {
 
                cl.setNom(rs.getString("nom"));
                cl.setPrenom(rs.getString("prenom"));
-                
+              
 
                 client.add(cl);
             }
@@ -85,6 +86,8 @@ public class ClientService implements  ClientInterface {
             PreparedStatement st = cnx.prepareStatement(req);
             st.setString(1, c.getNom());
             st.setString(2, c.getPrenom());
+           
+            
           
             st.executeUpdate();
             System.out.println("client added successfully!");

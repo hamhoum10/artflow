@@ -96,13 +96,14 @@ public class ModifController implements Initializable {
             alert.showAndWait();
         }
 
-        if (!prixdepart.getText().matches("\\d")) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("error");
-            alert.setHeaderText("input error !");
-            alert.setContentText("prix de depart doit contenir des chiffres" + "");
-            alert.show();
-        } else {
+//        if (!prixdepart.getText().matches("\\d")) {
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("error");
+//            alert.setHeaderText("input error !");
+//            alert.setContentText("prix de depart doit contenir des chiffres" + "");
+//            alert.show();
+//        } 
+        else {
 
             e.setTitre(titre.getText());
             e.setDescription(desc.getText());

@@ -52,11 +52,11 @@ public class main {
 
         
 //AJOUT AUCTION   
-//    en.setTitre("symfony");
-//    en.setDescription("today");
-//    en.setPrixdepart(5673);
+//    en.setTitre("lila kalba");
+//    en.setDescription("avec souhabi");
+//    en.setPrixdepart(6666);
 //    en.setDate_limite(d);
-//    en.setImg("img/gh.hy");
+//    en.setImg("img.png");
 //    es.AddEnchere(en);
 
 // UPDATE AUCTION     
@@ -64,13 +64,13 @@ public class main {
 //    en.setDescription("IF U CAN");
 //    en.setPrixdepart(2341);
 //    en.setDate_limite(d);
-//    en.setIde(3);
+//    en.setIde(23);
 //    en.setImg("img.png");
 //    es.updateEnchere(en);
 
 // DELETE ENCHERE
-//en.setIde(2);
-//es.deleteEnchere(en);
+//en.setIde(20);
+//es.deleteEnchere(20);
 
 //affichage enchere
 // System.out.println(es.fetchEnchere());
@@ -124,7 +124,7 @@ public class main {
     
 
 
-
+/*
 
  Enchere enchere = new Enchere(22,"kahelani", "shutty", 2341, date, "image");
  //  es.AddEnchere(enchere);
@@ -143,7 +143,7 @@ else {
     System.out.println("No winning bidder found!");
 }
     
-
+*/
      
 
 
