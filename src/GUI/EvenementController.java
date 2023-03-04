@@ -5,11 +5,19 @@
  */
 package GUI;
 
+import Interface.ArtisteInterface;
 import Models.Artiste;
 import Models.Evenement;
+import Service.ArtisteSerice;
 import Service.EvenementService;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -23,11 +31,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import java.time.LocalDate;
+import java.sql.*;
+import java.time.LocalDate;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 /**
  * FXML Controller class
@@ -36,12 +54,13 @@ import javafx.stage.Stage;
  */
 public class EvenementController implements Initializable {
     
-    EvenementService Es = new EvenementService();
+    EvenementService Rs = new EvenementService();
+     ArtisteInterface ci = new ArtisteSerice();
+    
 
     @FXML
     private TextField name;
-    @FXML
-    private TextField date;
+    
     @FXML
     private TextField start_hour;
     @FXML
@@ -57,29 +76,69 @@ public class EvenementController implements Initializable {
     @FXML
     private TextField imagee;
     @FXML
-    private TextField artiste;
-     
+    private ComboBox<String> artiste;
+    ObservableList list = FXCollections.observableArrayList();
+    
+    @FXML
+    private DatePicker date_evemt;
+    @FXML
+    private ImageView imageview;
+     private File selectedFile;
     
 
     /**
      * Initializes the controller class.
      */
+     
+      Evenement e = new Evenement();
+       // Artiste a = new Artiste();
+    @FXML
+    private TextField prix;
+    
+     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         // TODO
+        list.removeAll(list);
+        ci.fetchArtiste().stream().forEach(e->list.add(e.getFirstname()));
+        artiste.getItems().addAll(list);
+        
+        
+        
     }    
 
     @FXML
-    private void enregistrer(ActionEvent event) {
+    private void enregistrer(ActionEvent event) throws FileNotFoundException, IOException {
+        
+        
+        
+        LocalDate currentDate = LocalDate.now();
+        LocalDate selectedDate = date_evemt.getValue();
+        
+       
+        
+       
+                    if (selectedDate.compareTo(currentDate) < 0) {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Erreur de saisie");
+                alert.setHeaderText("Date sélectionnée invalide");
+                alert.setContentText("La date sélectionnée doit être supérieure ou égale à la date actuelle.");
+                alert.showAndWait();
+            }
+        
          if (name.getText().length()==0||
-                 date.getText().length()==0||
+                // DatePicker.get
+                 date_evemt.getValue()==null||
                  start_hour.getText().length()==0||
                  finish_hour.getText().length()==0||
                  capacity.getText().length()==0||
                  description.getText().length()==0||
                  capacity.getText().length()==0||
                  image.getText().length()==0||
-                 location.getText().length()==0){
+                 location.getText().length()==0||
+                  prix.getText().length()==0){
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
@@ -109,37 +168,63 @@ public class EvenementController implements Initializable {
 //        return;
 //    }
         
-        Evenement e = new Evenement();
-        Artiste a = new Artiste();
+       
          e.setName(name.getText());
-        e.setDate(date.getText());
+       // e.setDate(date.getText());
+        LocalDate date = date_evemt.getValue();
+        e.setDate_evemt(java.sql.Date.valueOf(date));
+       
+       // LocalDate date = date_evemt.getValue();
+        
         e.setStart_hour(start_hour.getText());
         e.setFinish_hour(finish_hour.getText());
         e.setCapacity(capacity.getText());
         e.setDescription(description.getText());
         e.setImage(imagee.getText());
         e.setLocation(location.getText());
-        a.setId_artiste(Integer.parseInt(artiste.getText()));
-        e.setArtiste(a);
+        e.setPrix(Double.parseDouble(prix.getText()));
+        //a.setId_artiste(Integer.parseInt(artiste.getText()));
+         e.setArtiste(ci.fetchClientByName(artiste.getValue().toString()));
         
-        Es.addEvenement(e);
+         System.out.println(e);
+       // e.setId_artiste(1);
+        String htdocsPath = "C:\\xampp\\htdocs\\img";
+                 File destinationFile = new File(htdocsPath + image.getText());
+            if(selectedFile!=null){
+                try (InputStream in = new FileInputStream(selectedFile);
+                 OutputStream out = new FileOutputStream(destinationFile)) {
+                byte[] buf = new byte[8192];
+                int length;
+                while ((length = in.read(buf)) > 0) {
+                    out.write(buf, 0, length);
+                }
+        
+        Rs.addEvenement(e);
        
+    }
+            }
     }
 
     @FXML
     private void image(ActionEvent event) {
-        FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().addAll(new ExtensionFilter("image Files"," *.png"));
-                File selectedFile = fc.showOpenDialog(null);
-                if(selectedFile !=null){
-        imagee.setText(selectedFile.getAbsolutePath());
-        
-    
-                    }
-                else{
-                        System.out.println("Image invaides");
-                        
-                        }
+           FileChooser fileChooser = new FileChooser();
+           
+        fileChooser.setTitle("Select Image File");
+        fileChooser.getExtensionFilters().addAll(
+        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.JPG", "*.gif"));
+          fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        selectedFile = fileChooser.showOpenDialog(stage);
+         if (selectedFile != null) {
+                imagee.setText(selectedFile.getName());
+                 try {
+                Image images = new Image("file:"+selectedFile.getPath().toString());
+                imageview.setImage(images);
+                System.out.println(selectedFile.getPath().toString());
+        } catch (Exception ex) {
+                     System.out.println(ex);
+        }
+    }
                 
         
         
@@ -159,6 +244,12 @@ public class EvenementController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(EvenementController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+    }
+
+    @FXML
+    private void artiste(ActionEvent event) {
+        e.setArtiste(ci.fetchClientByName(artiste.getValue()));
     }
 
    

@@ -5,14 +5,18 @@
  */
 package GUI;
 
+import Interface.ClientInterface;
 import Models.Artiste;
 import Models.Reservation;
+import Service.ClientService;
 import Service.ReservationService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -36,13 +41,23 @@ public class ModifierReservationController implements Initializable {
     private TextField nb_place;
     @FXML
     private TextField price;
+    @FXML
+    private ComboBox<String> client;
+    ObservableList list = FXCollections.observableArrayList();
+    // ReservationService Rs = new ReservationService()
+    ClientInterface ci = new ClientService();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         // TODO
+        list.removeAll(list);
+        
+        ci.fetchClients().stream().forEach(e->list.add(e.getFirstname()));
+        client.getItems().addAll(list);
     }  
     
     void getEvent(Reservation r){
@@ -73,6 +88,7 @@ public class ModifierReservationController implements Initializable {
             //a.setNb_place(Integer.parseInt(nb_place.getText()));
             a.setNb_place(Integer.parseInt(nb_place.getText()));
             a.setPrice(Double.parseDouble(price.getText()));
+            a.setClient(ci.fetchClientByName(client.getValue().toString()));
             
             Rs. modReservation(a);
             
@@ -100,6 +116,11 @@ public class ModifierReservationController implements Initializable {
 
     @FXML
     private void price(ActionEvent event) {
+    }
+
+    @FXML
+    private void client(ActionEvent event) {
+        r.setClient(ci.fetchClientByName(client.getValue()));
     }
      
     

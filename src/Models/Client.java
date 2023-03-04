@@ -5,35 +5,29 @@
  */
 package Models;
 
-import java.sql.Date;
+
 
 /**
  *
  * @author Lenovo
  */
 public class Client {
-    private int id_client;
+     private int id_client;
     private String firstname;
     private String lastname;
-    private Date birthdate;
     private String address;
     private String phonenumber;
-    private String email;
+    private String email;   
     private String username;
     private String password;
-    
-    
-    public Client(){
-    
-    
+
+    public Client() {
     }
 
-    public Client(int id_client, String firstname, String lastname, Date birthdate, String address, String phonenumber, 
-            String email, String username, String password) {
+    public Client(int id_client, String firstname, String lastname, String address, String phonenumber, String email, String username, String password) {
         this.id_client = id_client;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.birthdate = birthdate;
         this.address = address;
         this.phonenumber = phonenumber;
         this.email = email;
@@ -41,72 +35,76 @@ public class Client {
         this.password = password;
     }
 
-    public int getId_client() {
-        return id_client;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
+    public Client(String firstname, String lastname, String address, String phonenumber, String email, String username, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.phonenumber = phonenumber;
+        this.email = email;
+        this.username = username;
+        this.password = password;
     }
 
     public void setId_client(int id_client) {
         this.id_client = id_client;
     }
 
+    public int getId_client() {
+        return id_client;
+    }
+
+   
+
+    public String getFirstname() {
+        return firstname;
+    }
+
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
     }
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public String getAddress() {
+        return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
     }
 
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
@@ -115,8 +113,11 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + "id_client=" + id_client + ", firstname=" + firstname + ", lastname=" + lastname + ", birthdate=" + birthdate + ", address=" + address + ", phonenumber=" + phonenumber + ", email=" + email + ", username=" + username + ", password=" + password + '}';
-    }
+         return "id_client=" + id_client; }
+    
+  
+
+    
     
     
     

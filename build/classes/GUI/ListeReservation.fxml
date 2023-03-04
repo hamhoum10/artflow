@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../CSS/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ListeReservationController">
+   <children>
+      <ListView fx:id="affiche" layoutX="59.0" layoutY="26.0" prefHeight="513.0" prefWidth="898.0" />
+      <Button layoutX="425.0" layoutY="546.0" mnemonicParsing="false" onAction="#reserver" text="Reserver" />
+      <VBox layoutY="-7.0" prefHeight="600.0" prefWidth="59.0" style="-fx-background-color: #C69186;" />
+   </children>
+</AnchorPane>

@@ -22,13 +22,19 @@ import javafx.stage.Stage;
  */
 public class ReservationFXMain extends Application {
     
+     
+    
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../GUI/Reservation.fxml"));
-       Scene scene = new Scene(root, 600,400);
+        Parent root = FXMLLoader.load(getClass().getResource("../GUI/ListeReservation.fxml"));
+       Scene scene = new Scene(root);
        primaryStage.setTitle("Ajouter une reservation d'un evenement");
        primaryStage.setScene(scene);
        primaryStage.show();
+       
+       
+       
+       
     }
 //    public class ReservationFXMain extends Application {
 //    

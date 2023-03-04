@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Interface.ArtisteInterface;
 import Interface.EvenementInterface;
 import Models.Artiste;
 import Models.Evenement;
@@ -26,6 +27,17 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+import Service.ArtisteSerice;
+import Models.Artiste;
+import javafx.scene.control.DatePicker;
+import java.time.LocalDate;
+import java.sql.Date;
+import java.sql.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
+
+
 
 /**
  * FXML Controller class
@@ -37,8 +49,7 @@ public class ModifiEvemtController implements Initializable {
 
     @FXML
     private TextField name;
-    @FXML
-    private TextField date;
+  
     @FXML
     private TextField start_hour;
     @FXML
@@ -52,11 +63,18 @@ public class ModifiEvemtController implements Initializable {
     private TextField description;
     @FXML
     private TextField imagee;
-    @FXML
-    private TextField id;
-    @FXML
-    private TextField evemt;
     Evenement e ;
+    
+    @FXML
+    private DatePicker date_evemt;
+    @FXML
+    private ComboBox<String> artiste;
+    ObservableList list = FXCollections.observableArrayList();
+    
+    ArtisteInterface ci = new ArtisteSerice();
+    Evenement r = new Evenement();
+    @FXML
+    private TextField prix;
    
 
     /**
@@ -65,6 +83,10 @@ public class ModifiEvemtController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        list.removeAll(list);
+        
+        ci.fetchArtiste().stream().forEach(e->list.add(e.getFirstname()));
+        artiste.getItems().addAll(list);
     } 
     
      void getEvent(Evenement e){
@@ -76,35 +98,46 @@ public class ModifiEvemtController implements Initializable {
 //            prix.setText(e.getPrix().toString());
 
            name.setText(e.getName());
-           date.setText(e.getDate());
+           date_evemt.setValue(e.getDate_evemt().toLocalDate());
+           
+         
            start_hour.setText(e.getStart_hour());
            finish_hour.setText(e.getFinish_hour());
            capacity.setText(e.getCapacity());
            description.setText(e.getDescription());
            imagee.setText(e.getImage());
            location.setText(e.getLocation());
+           prix.setText(Double.toString(e.getPrix()));
            
            
         }
 
     @FXML
     private void modifier(ActionEvent event) {
+     //  ArtisteSerice Z = new ArtisteSerice();
+       Artiste P = new Artiste();
+       
 
         
        
         try {
             e.setName(name.getText());
-            e.setDate(date.getText());
+             LocalDate date = date_evemt.getValue();
+           e.setDate_evemt(java.sql.Date.valueOf(date));
+           // e.setDate(date.getText());
             e.setStart_hour(start_hour.getText());
             e.setFinish_hour(finish_hour.getText());
             e.setCapacity(capacity.getText());
             e.setDescription(description.getText());
             e.setImage(imagee.getText());
             e.setLocation(location.getText());
-            //a.setId_artiste(Integer.parseInt(artiste.getText()));
+            e.setPrix(Double.parseDouble(prix.getText()));
+            P.setId_artiste(1);
+           //e.setId_artiste(P); 
+           //e.setId_artiste(1);
             //a.setId_artiste(Integer.parseInt(artiste.getText()));
             //a.setId(Integer.parseInt(evemt.getText()));
-            // e.setArtiste(a);
+             e.setId(19);
             
             Es.modEvenement(e);
             FXMLLoader loader= new FXMLLoader(getClass().getResource("./View_Evemt.fxml"));
@@ -137,6 +170,11 @@ public class ModifiEvemtController implements Initializable {
                 
         
         
+    }
+
+    @FXML
+    private void artiste(ActionEvent event) {
+        r.setArtiste(ci.fetchClientByName(artiste.getValue()));
     }
            
     

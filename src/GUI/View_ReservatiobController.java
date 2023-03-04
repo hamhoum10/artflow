@@ -41,6 +41,9 @@ public class View_ReservatiobController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         ObservableList<Reservation > e =FXCollections.observableArrayList(Rs.fetchReservations());
+        
+        afficheres.setItems(e);
     }    
 
     @FXML
