@@ -18,6 +18,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -125,6 +126,8 @@ public class FXML1Controller implements Initializable {
             image.setText(filename);
             Image img=new Image(file.toURI().toString());
             image_view.setImage(img);
+             Path destDir=Paths.get("C:\\xampp\\htdocs\\img");
+            Files.copy(file.toPath(),destDir.resolve(filename),StandardCopyOption.REPLACE_EXISTING);
         }
         /*
         FileChooser fileChooser = new FileChooser();

@@ -9,16 +9,19 @@ import interfaces.ArticleInterface;
 import interfaces.ArtisteInterface;
 import interfaces.CategorieInterface;
 import interfaces.ClientInterface;
+import interfaces.RateInterface;
 import interfaces.StockInterface;
 import models.Article;
 import models.Artiste;
 import models.Categorie;
 import models.Client;
+import models.Rate;
 import models.stock;
 import services.ArticleService;
 import services.ArtisteService;
 import services.CategorieService;
 import services.ClientService;
+import services.RateService;
 import services.StockService;
 
 
@@ -41,6 +44,8 @@ public class Project_malek {
         Artiste ar = new Artiste();
         StockInterface ins = new StockService();
         stock st = new stock();
+        RateInterface re = new RateService();
+        Rate b=new Rate();
         
         
  a.setId_article(35);
@@ -70,7 +75,7 @@ public class Project_malek {
 //System.out.println(ai.fetchArticleTriByPrice());
 //System.err.println(ai.fetchArticleTriByName());
 //System.out.println(ai.fetchArticleTriByCategorie());
-System.out.println(ai.fetchArticleByCaracter("b"));
+//System.out.println(ai.fetchArticleByCaracter("b"));
 ////// TODO code application logic here
 //      
 //        c.setDescription("rym");
@@ -104,6 +109,8 @@ System.out.println(ai.fetchArticleByCaracter("b"));
 //st.setId_commende(1);
 //        System.out.println(ins.fetchStockByName("picaso"));
 //System.out.println(ins.fetchStock());
+
+//System.out.println(re.afficherRating(b));
 
     }
     

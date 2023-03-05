@@ -5,6 +5,7 @@
  */
 package gui;
 
+import interfaces.RateInterface;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +23,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import models.Article;
+import models.Artiste;
+import models.Rate;
+import org.controlsfx.control.Rating;
+import services.RateService;
 
 /**
  * FXML Controller class
@@ -29,7 +34,7 @@ import models.Article;
  * @author MediaStudio
  */
 public class FXMLdesController implements Initializable {
-
+    RateInterface ra = new RateService();
     @FXML
     private ImageView image_view;
     @FXML
@@ -40,6 +45,9 @@ public class FXMLdesController implements Initializable {
     private Label Artiste;
     @FXML
     private Label quantity;
+    @FXML
+    private Rating stars;
+    Rate rate= new Rate();
     
 
     /**
@@ -60,6 +68,13 @@ public class FXMLdesController implements Initializable {
         type.setText(article.getType());
         Artiste.setText(article.getArtiste().getNom_artiste());
         quantity.setText(String.valueOf(article.getQuantity()));
+        Artiste rater=new Artiste();
+        rater.setId_artiste(7);
+        rate.setRater(rater);
+        rate.setArticle(article);
+        rate.setRating(ra.afficherRating(rate));
+        stars.setRating(ra.afficherRating(rate));
+
         
 }
     
@@ -77,6 +92,12 @@ public class FXMLdesController implements Initializable {
             stage.setScene(scene);
             stage.show(); 
     
+    }
+
+    @FXML
+    private void rating(ActionEvent event) {
+     rate.setRating(stars.getRating());
+     ra.updateRating(rate);
     }
     
 

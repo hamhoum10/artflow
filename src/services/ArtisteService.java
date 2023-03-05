@@ -70,5 +70,8 @@ List<Artiste> artiste = new ArrayList<>();
         return artiste;    }
         
     
-    
+    public String getArtistNameById(int id){
+        return fetchArtiste().stream().filter(a->a.getId_artiste()==id).findFirst().get().getNom_artiste();
+    }
 }
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" onMouseClicked="#view_description" prefHeight="329.0" prefWidth="345.0" style="-fx-border-color: #121212; -fx-border-width: 2; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLafficherclientController">
+   <children>
+      <ImageView fx:id="articleImg" fitHeight="252.0" fitWidth="229.0" layoutX="17.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="name" layoutX="6.0" layoutY="275.0" prefHeight="28.0" prefWidth="178.0" text="name">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Label>
+      <Label fx:id="price" layoutX="216.0" layoutY="275.0" prefHeight="18.0" prefWidth="60.0" text="price">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <ImageView fitHeight="28.0" fitWidth="37.0" layoutX="305.0" layoutY="276.0" onMouseClicked="#addToCart" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/add-to-cart.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="qrcodeimg" fitHeight="104.0" fitWidth="124.0" layoutX="178.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="275.0" layoutY="280.0" prefHeight="18.0" prefWidth="28.0" text="DT" textOverrun="CLIP" />
+         
+      
+   </children>
+</AnchorPane>

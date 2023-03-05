@@ -57,8 +57,19 @@ public class ProjectFx extends Application {
         
           
    
-   try {
+//   try {
+//            Parent root = FXMLLoader.load(getClass().getResource("./gui/FXMLafficher.fxml"));
+//            Scene scene = new Scene(root,1000,700);
+//            primaryStage.setTitle("workshopJavaFx");
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        } catch (IOException ex) {
+//            Logger.getLogger(ProjectFx.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+       
+     try {
             Parent root = FXMLLoader.load(getClass().getResource("./gui/FXMLafficher.fxml"));
+//            Parent root = FXMLLoader.load(getClass().getResource("./gui/FXMLstat.fxml"));        
             Scene scene = new Scene(root,1000,700);
             primaryStage.setTitle("workshopJavaFx");
             primaryStage.setScene(scene);
@@ -66,8 +77,6 @@ public class ProjectFx extends Application {
         } catch (IOException ex) {
             Logger.getLogger(ProjectFx.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-     
        
     
         

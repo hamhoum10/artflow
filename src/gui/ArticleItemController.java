@@ -6,6 +6,7 @@
 package gui;
 
 import interfaces.ArticleInterface;
+import interfaces.RateInterface;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -22,7 +23,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import models.Article;
+import models.Rate;
 import services.ArticleService;
+import services.RateService;
+
 
 /**
  * FXML Controller class
@@ -43,6 +47,8 @@ public class ArticleItemController implements Initializable {
 
     Article a = new Article();
     ArticleInterface ai = new ArticleService();
+    @FXML
+    private Label avg;
       
     /**
      * Initializes the controller class.
@@ -53,6 +59,7 @@ public class ArticleItemController implements Initializable {
     }    
     
     public void setData(Article a) {
+        RateInterface ri = new RateService();
         article=a;
         this.a=a;
         name.setText(a.getNom_article());
@@ -70,6 +77,12 @@ public class ArticleItemController implements Initializable {
          File file2=new File("C:\\xampp\\htdocs\\qrcode\\Article"+a.getId_article()+".png");
         Image img2=new Image(file2.toURI().toString());
         qrcodeimg.setImage(img2);
+        if(String.valueOf(ri.afficherRateavg(a)).length()>2){
+        avg.setText(String.valueOf(ri.afficherRateavg(a)).substring(0,3));
+        
+        }
+        
+        
         
 
     }
