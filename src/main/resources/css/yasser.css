@@ -1,22 +1,22 @@
 /* Buttons */
 .button {
-    -fx-background-color: linear-gradient(to right, #5fa8d3, #63c1f7);
+    -fx-background-color: linear-gradient(to right, #C69186, #C69186);
     -fx-text-fill: white;
     /*-fx-font-size: 14px;*/
     -fx-font-weight: bold;
-    /*-fx-pref-height: 40px;
-    -fx-pref-width: 120px;*/
+    -fx-pref-height: 50px;
+    -fx-pref-width: 102px;
     -fx-background-radius: 20px;
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 3);
     -fx-transition: all 0.3s;
     -fx-graphic: url("/icons/arrow-right-white.png");
 }
-
 .button:hover {
     -fx-background-color: linear-gradient(to right, #4c98c9, #51b2ed);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 15, 0, 0, 5);
     -fx-graphic: url("/icons/arrow-right-white-hover.png");
+    /*-fx-border-color: white;*/
 }
 
 .button:pressed {
@@ -124,7 +124,7 @@
 }
 
 .list-cell:even {
-    -fx-background-color: #e0f7fa;
+    -fx-background-color: #FFF5F2 ;
 }
 
 .list-view .scroll-bar {

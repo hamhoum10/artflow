@@ -60,7 +60,7 @@ public class PaymentViewController implements Initializable {
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        commandeService.deleteCommande(PanierController.id_panierlistview);
+        commandeService.deleteCommande(PanierController.id_panierlistview); //static value of id_panier mel classe PanierController
     }
 
 
@@ -122,7 +122,7 @@ public class PaymentViewController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Erreur de saisie !");
-            alert.setContentText("cvc  must contain 2 digits "+ "");
+            alert.setContentText("cvc  must contain 3 digits "+ "");
             alert.show();
         }else if ( Integer.parseInt(cvcfield.getText()) >999  ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -152,24 +152,27 @@ public class PaymentViewController implements Initializable {
 
             try {
                 stp.verifyCardAndPay(cardNumber, expMonth, expYear, cvc, String.valueOf((int)ps.totalmontantPanier(3) * 100), cardholderName);
-                alertDialog("transaction done  !");
-                //System.out.println(PanierController.id_panierlistview);
-                commandeService.deleteCommande(PanierController.id_panierlistview); //4
-                lps.deleteAllFromLigne_panier(PanierController.id_panierlistview);//4
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("panierView.fxml"));
-                Parent root = null;
-                try {
-                    root = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                if (Stripeapi.creditcardvalid==true) {
+                    alertDialog("transaction done  !");
+                    //System.out.println(PanierController.id_panierlistview);
+                    //commandeService.deleteCommande(PanierController.id_panierlistview); //4
+                    //lps.deleteAllFromLigne_panier(PanierController.id_panierlistview);//4
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("ComfirmerCommandeView.fxml"));
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) validate.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                }else {
+                    alertDialog("transaction failed, enter a valid card number  !");
                 }
-                PanierController panierController =new PanierController();
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) validate.getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
 
-                PanierController.id_panierlistview=  ps.getPanierIdByIDUser(3); //lezem n7ot id bel methode hethi alkhtr valeur static mesh ywali null w twli errors
+                //PanierController.id_panierlistview=  ps.getPanierIdByIDUser(3); //lezem n7ot id bel methode hethi alkhtr valeur static mesh ywali null w twli errors
 
 
 

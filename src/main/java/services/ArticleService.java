@@ -198,6 +198,7 @@ public class ArticleService implements ArticleInterface {
                 a.setNom_article(rs.getString(4));
                 a.setPrice(rs.getDouble(5));
                 a.setType(rs.getString(6));
+                a.setImage(rs.getString(7));
                 a.setDescription(rs.getString(8));
                 c.setId_categorie(rs.getInt(10));
                 c.setName_categorie(rs.getString(11));

@@ -39,7 +39,7 @@ public class Main {
         //psss.createPanier(pmed);
         //psss.createPanier(panier);
 
-        Ligne_panier ligne_panierps4=new Ligne_panier(ps4,p4,5);
+        Ligne_panier ligne_panierps4=new Ligne_panier(ps4,p4,5);//njmo nrodo quanity just 1 w fi panier tzid
         Ligne_panier ligne_paniergun =new Ligne_panier(gun,p4,2);
         Ligne_panier ligne_panierheadphone =new Ligne_panier(headphone,p4,1);
 

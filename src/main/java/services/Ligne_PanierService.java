@@ -131,6 +131,7 @@ public class Ligne_PanierService {
                 a.setDescription(rs.getString("a.description"));
                 a.setType(rs.getString("a.type"));
                 a.setQuantity(rs.getInt("a.quantity"));
+                a.setImage(rs.getString("image"));
                 lp.setArticle(a);
                 ps.add(lp);
 

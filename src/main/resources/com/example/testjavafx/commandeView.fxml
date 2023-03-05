@@ -10,88 +10,98 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.CommandeController">
+<AnchorPane prefHeight="800.0" prefWidth="1550.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.CommandeController">
     
     <children>
-      <Pane layoutY="-1.0" prefHeight="127.0" prefWidth="1000.0" style="-fx-background-color: #C69186;">
+      <Pane layoutY="-1.0" prefHeight="127.0" prefWidth="1550.0" style="-fx-background-color: #C69186;">
          <children>
             <ImageView fitHeight="264.0" fitWidth="340.0" layoutY="-59.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/artflowlogoo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="553.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1103.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/home.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="636.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1180.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/placard%20(1).png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="44.0" layoutX="720.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1264.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/red-carpet%20(1).png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="808.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="1352.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/store.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="91.0" fitWidth="90.0" layoutX="902.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="91.0" fitWidth="90.0" layoutX="1446.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/profile.png" />
                </image>
             </ImageView>
-            <Label layoutX="560.0" layoutY="96.0" text="Home" />
-            <Label layoutX="645.0" layoutY="96.0" text="Event" />
-            <Label layoutX="719.0" layoutY="96.0" text="Enchere" />
-            <Label layoutX="818.0" layoutY="96.0" text="Store" />
+            <Label layoutX="1111.0" layoutY="94.0" text="Home" />
+            <Label layoutX="1191.0" layoutY="94.0" text="Event" />
+            <Label layoutX="1267.0" layoutY="94.0" text="Enchere" />
+            <Label layoutX="1364.0" layoutY="94.0" text="Store" />
+            <Label layoutX="705.0" layoutY="48.0" text="My Order" textFill="WHITE">
+               <font>
+                  <Font name="Bernard MT Condensed" size="41.0" />
+               </font>
+            </Label>
          </children></Pane>
-      <ListView fx:id="myitemslist" fixedCellSize="200.0" layoutX="433.0" layoutY="190.0" prefHeight="324.0" prefWidth="501.0" />
-      <TextField fx:id="total" alignment="CENTER" editable="false" layoutX="823.0" layoutY="533.0" prefHeight="49.0" prefWidth="156.0" />
-      <Label layoutX="704.0" layoutY="544.0" text="Votre total :">
+      <ListView fx:id="myitemslist" fixedCellSize="200.0" layoutX="687.0" layoutY="226.0" prefHeight="439.0" prefWidth="708.0" />
+      <TextField fx:id="total" alignment="CENTER" editable="false" layoutX="1185.0" layoutY="679.0" prefHeight="62.0" prefWidth="209.0" />
+      <Label layoutX="1029.0" layoutY="688.0" text="You're Total :">
          <font>
-            <Font size="17.0" />
+            <Font size="22.0" />
          </font>
       </Label>
-      <Pane layoutY="124.0" prefHeight="614.0" prefWidth="378.0" style="-fx-background-color: #C69186;">
+      <Pane layoutX="100.0" layoutY="149.0" prefHeight="642.0" prefWidth="521.0" style="-fx-background-color: #C69186;">
          <children>
-            <Button fx:id="comfirmerCommande" layoutX="67.0" layoutY="526.0" mnemonicParsing="false" onAction="#ConfirmerCommandeAction" prefHeight="49.0" prefWidth="103.0" text="Comfirmer" />
-            <Button fx:id="backtopanier" layoutX="194.0" layoutY="526.0" mnemonicParsing="false" onAction="#backtopanierAction" prefHeight="49.0" prefWidth="103.0" text="retour" />
-            <TextField fx:id="Adressetext" layoutX="53.0" layoutY="442.0" prefHeight="62.0" prefWidth="268.0" promptText="Adresse">
+            <Button fx:id="comfirmerCommande" layoutX="144.0" layoutY="565.0" mnemonicParsing="false" onAction="#ConfirmerCommandeAction" prefHeight="49.0" prefWidth="103.0" text="Comfirmer" />
+            <Button fx:id="backtopanier" layoutX="270.0" layoutY="565.0" mnemonicParsing="false" onAction="#backtopanierAction" prefHeight="49.0" prefWidth="103.0" text="retour" />
+            <TextField fx:id="Adressetext" layoutX="104.0" layoutY="477.0" prefHeight="62.0" prefWidth="302.0" promptText="Adress">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="CodepostalText" layoutX="53.0" layoutY="355.0" prefHeight="62.0" prefWidth="268.0" promptText="Code Postal">
+            <TextField fx:id="CodepostalText" layoutX="104.0" layoutY="389.0" prefHeight="62.0" prefWidth="302.0" promptText="Postal Code">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="Numerotext" layoutX="53.0" layoutY="272.0" prefHeight="62.0" prefWidth="268.0" promptText="Numéro">
+            <TextField fx:id="Numerotext" layoutX="104.0" layoutY="296.0" prefHeight="62.0" prefWidth="302.0" promptText="Number">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="Nomtext" layoutX="53.0" layoutY="189.0" prefHeight="62.0" prefWidth="268.0" promptText="Nom">
+            <TextField fx:id="Nomtext" layoutX="104.0" layoutY="210.0" prefHeight="62.0" prefWidth="302.0" promptText="SecondName">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="Prénomtext" layoutX="53.0" layoutY="109.0" prefHeight="62.0" prefWidth="268.0" promptText="Prénom">
+            <TextField fx:id="Prénomtext" layoutX="104.0" layoutY="120.0" prefHeight="62.0" prefWidth="302.0" promptText="FirstName">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-               <Label layoutX="7.0" layoutY="14.0" prefHeight="62.0" prefWidth="368.0" text="FINALISATION DE LA COMMANDE" textFill="WHITE">
+               <Label layoutX="77.0" layoutY="32.0" prefHeight="62.0" prefWidth="368.0" text="FINALISATION DE LA COMMANDE" textFill="WHITE">
                    <font>
                        <Font name="Bernard MT Condensed" size="30.0" />
                    </font>
                </Label>
          </children>
       </Pane>
+      <Label layoutX="687.0" layoutY="161.0" prefHeight="32.0" prefWidth="203.0" text="Cart Summary :">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

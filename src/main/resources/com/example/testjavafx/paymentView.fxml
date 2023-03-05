@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.PaymentViewController">
+<AnchorPane prefHeight="800.0" prefWidth="1550.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testjavafx.PaymentViewController">
    <children>
-      <Pane prefHeight="150.0" prefWidth="1142.0" style="-fx-background-color: #C69186;">
+      <Pane prefHeight="150.0" prefWidth="1550.0" style="-fx-background-color: #C69186;">
          <children>
             <ImageView fitHeight="271.0" fitWidth="378.0" layoutY="-66.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -27,42 +27,70 @@
             </Label>
          </children>
       </Pane>
-      <Separator layoutX="500.0" layoutY="165.0" orientation="VERTICAL" prefHeight="509.0" prefWidth="2.0" />
-      <Text layoutX="544.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill This formulaire with You're card details : " wrappingWidth="411.4749755859375">
+      <Separator layoutX="772.0" layoutY="187.0" orientation="VERTICAL" prefHeight="570.0" prefWidth="6.0" />
+      <Text layoutX="86.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill This formulaire with You're credit card details to proceed the payment : " wrappingWidth="532.2750244140625">
          <font>
-            <Font size="21.0" />
+            <Font size="24.0" />
          </font>
       </Text>
-      <Separator layoutX="544.0" layoutY="199.0" prefHeight="3.0" prefWidth="401.0" />
-      <Pane layoutX="458.0" layoutY="272.0" prefHeight="296.0" prefWidth="439.0">
+      <Separator layoutX="86.0" layoutY="252.0" prefHeight="3.0" prefWidth="256.0" />
+      <Pane layoutX="33.0" layoutY="309.0" prefHeight="358.0" prefWidth="716.0">
          <children>
-            <Label layoutX="88.0" layoutY="25.0" text="Card Information" textFill="#7e7676" />
-            <Label layoutX="91.0" layoutY="98.0" text="Expiry month" textFill="#7e7676" />
-            <TextField fx:id="cvcfield" alignment="CENTER" layoutX="330.0" layoutY="115.0" prefHeight="42.0" prefWidth="98.0" promptText="***" />
-            <Label layoutX="217.0" layoutY="98.0" text="Expiry year" textFill="#7e7676" />
-            <TextField fx:id="expmonthfield" alignment="CENTER" layoutX="88.0" layoutY="115.0" prefHeight="42.0" prefWidth="98.0" promptText="**" />
-            <Label layoutX="338.0" layoutY="98.0" text="CVC" textFill="#7e7676" />
-            <Label layoutX="92.0" layoutY="179.0" text="Name holder" textFill="#7e7676" />
-            <TextField fx:id="expyearfield" alignment="CENTER" layoutX="211.0" layoutY="115.0" prefHeight="42.0" prefWidth="98.0" promptText="**" />
-            <TextField fx:id="numberTextfield" layoutX="86.0" layoutY="42.0" prefHeight="42.0" prefWidth="348.0" promptText="Card number">
+            <Label layoutX="100.0" layoutY="14.0" text="Card Information" textFill="#7e7676">
                <font>
-                  <Font size="18.0" />
+                  <Font size="16.0" />
+               </font></Label>
+            <Label layoutX="100.0" layoutY="115.0" text="Expiry month" textFill="#7e7676">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <TextField fx:id="cvcfield" alignment="CENTER" layoutX="450.0" layoutY="144.0" prefHeight="55.0" prefWidth="165.0" promptText="***">
+               <font>
+                  <Font size="26.0" />
+               </font></TextField>
+            <Label layoutX="285.0" layoutY="115.0" text="Expiry year" textFill="#7e7676">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <TextField fx:id="expmonthfield" alignment="CENTER" layoutX="89.0" layoutY="144.0" prefHeight="55.0" prefWidth="165.0" promptText="**">
+               <font>
+                  <Font size="26.0" />
+               </font></TextField>
+            <Label layoutX="467.0" layoutY="115.0" text="CVC number" textFill="#7e7676">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <Label layoutX="102.0" layoutY="239.0" text="Name holder" textFill="#7e7676">
+               <font>
+                  <Font size="16.0" />
+               </font></Label>
+            <TextField fx:id="expyearfield" alignment="CENTER" layoutX="267.0" layoutY="144.0" prefHeight="55.0" prefWidth="165.0" promptText="**">
+               <font>
+                  <Font size="26.0" />
+               </font></TextField>
+            <TextField fx:id="numberTextfield" alignment="CENTER" layoutX="86.0" layoutY="42.0" prefHeight="55.0" prefWidth="526.0" promptText="Card number">
+               <font>
+                  <Font size="26.0" />
                </font>
             </TextField>
-            <TextField fx:id="namefield" layoutX="91.0" layoutY="196.0" prefHeight="42.0" prefWidth="206.0" promptText="Name" />
-            <ImageView fitHeight="28.0" fitWidth="53.0" layoutX="361.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="namefield" alignment="CENTER" layoutX="86.0" layoutY="264.0" prefHeight="56.0" prefWidth="347.0" promptText="Name">
+               <font>
+                  <Font size="26.0" />
+               </font></TextField>
+            <ImageView fitHeight="42.0" fitWidth="55.0" layoutX="541.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/visa.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Button fx:id="validate" layoutX="630.0" layoutY="568.0" mnemonicParsing="false" onAction="#validateOnaction" prefHeight="42.0" prefWidth="76.0" text="Validate" />
-      <Button fx:id="cancel" layoutX="726.0" layoutY="568.0" mnemonicParsing="false" onAction="#cancelOnaction" prefHeight="42.0" prefWidth="76.0" text="Cancel" />
-      <ImageView fitHeight="376.0" fitWidth="467.0" layoutX="59.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="validate" layoutX="288.0" layoutY="690.0" mnemonicParsing="false" onAction="#validateOnaction" prefHeight="55.0" prefWidth="120.0" text="Validate" />
+      <Button fx:id="cancel" layoutX="424.0" layoutY="690.0" mnemonicParsing="false" onAction="#cancelOnaction" prefHeight="42.0" prefWidth="76.0" text="Cancel" />
+      <ImageView fitHeight="514.0" fitWidth="598.0" layoutX="917.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/credit-card.png" />
          </image>
       </ImageView>
+      <Separator layoutX="86.0" layoutY="219.0" prefHeight="3.0" prefWidth="507.0" />
    </children>
 </AnchorPane>

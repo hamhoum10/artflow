@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import models.Ligne_panier;
@@ -104,6 +105,7 @@ public class PanierController implements Initializable {
         }
         listView.setCellFactory(param -> new ListCell<Ligne_panier>() {
             private final ImageView imageViewArticle = new ImageView();
+
             //private final Button buttonDelete = new Button("Delete");
             //private final Button buttonPlus = new Button("+1");
             //private final Button buttonMinus = new Button("-1");
@@ -116,14 +118,17 @@ public class PanierController implements Initializable {
 
                 } else {
 
-                    Image img =new Image("C:/Users/medya/IdeaProjects/artflow_javafx_Pidev/src/main/resources/images/artflowlogoo.png");
-                    imageViewArticle.setFitHeight(200);
-                    imageViewArticle.setFitWidth(200);
+                    //System.out.println(item.getArticle().getImage());
+                    Image img =new Image("C:/xampp/htdocs/img/"+item.getArticle().getImage());
+                    imageViewArticle.setFitHeight(300);
+                    imageViewArticle.setFitWidth(300);
                     imageViewArticle.setImage(img);
 
                     //tostring
+
                     Label contenu =new Label(item.toString());
-                    contenu.setStyle("-fx-font-family: Arial; -fx-font-size: 16;");
+                    contenu.setStyle("-fx-font-family: Arial; -fx-font-size: 18;");
+
 
                     //BORDERPANE
                     BorderPane borderPane = new BorderPane();
@@ -138,7 +143,7 @@ public class PanierController implements Initializable {
                     //Image
                     HBox centerleftBox = new HBox(imageViewArticle);
                     centerleftBox.setAlignment(Pos.BASELINE_LEFT);
-                    centerleftBox.setSpacing(5);
+                    centerleftBox.setSpacing(50);
                     borderPane.setLeft(centerleftBox);
 
 
@@ -245,6 +250,11 @@ public class PanierController implements Initializable {
             System.out.println("Wrong PromoCode ! Try again");
             alertDialog("Wrong PromoCode ! Try again");
         }
+    }
+    @FXML
+    void HomeAction(MouseEvent event) {
+        alertDialog("done");
+
     }
 
     void alertDialog(String msg){

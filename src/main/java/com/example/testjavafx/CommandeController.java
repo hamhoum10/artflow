@@ -27,6 +27,7 @@ import services.PanierService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -34,6 +35,19 @@ import java.util.ResourceBundle;
 public class CommandeController implements Initializable {
 
     boolean isPromo =PanierController.promocodeEtat; //narfou si fama promtion ou non mesh narfou n7oto methode total with or without dsicount
+
+    //static values eli mesh n7othom fi recu commande
+    static String prenomsta;
+    static String nomsta;
+    static String numerosta;
+    static String adressesta;
+    static int codepostalsta;
+    static String createdsta;
+    static String statussta;
+    static double totalsta;
+
+
+    LocalDate currentDate = LocalDate.now();
 
     @FXML
     private TextField Adressetext;
@@ -95,35 +109,75 @@ public class CommandeController implements Initializable {
             alert.show();
 
         } else {
-
+            //services
             PanierService p = new PanierService();
             CommandeService cs = new CommandeService();
-            ClientService clientService =new ClientService();
 
-
+            //input mta textfield commande
             String prenom = Prénomtext.getText();
             String nom = Nomtext.getText();
             int numero = Integer.parseInt(Numerotext.getText());
             int codepostal = Integer.parseInt(CodepostalText.getText());
             String adresse = Adressetext.getText();
             int id_panierselectionner = myitemslist.getFocusModel().getFocusedItem().getId();
-            //int id_clientselectionner = clientService.getId_client(myitemslist.getFocusModel().getFocusedItem().getPanier().getClient());
-            Commande c = new Commande(id_panierselectionner, prenom, nom, numero, "en attente", p.totalmontantPanier(3), codepostal, adresse); //id_client nada authen
-            if (cs.create(c).booleanValue() == false) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("ComfirmerCommandeView.fxml"));
-                Parent root = null;
-                try {
-                    root = loader.load();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
+
+            //ken 3mal promocode namlou commande fiha discount
+            if(PanierController.promocodeEtat==true){
+                Commande c = new Commande(id_panierselectionner, prenom, nom, numero, "en attente", p.totalmontantPanierWith20Discount(3), codepostal, adresse); //id_client nada authen
+                if (cs.create(c).booleanValue() == false) {//ken commaande mesh mawjouda
+                    //fill the static values so i can use them in the next views commande ect
+                    prenomsta=prenom;
+                    nomsta=nom;
+                    statussta="en attente";
+                    numerosta= String.valueOf(numero);
+                    totalsta=p.totalmontantPanierWith20Discount(3);
+                    codepostalsta=codepostal;
+                    adressesta=adresse;
+                    createdsta= String.valueOf(currentDate);
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("paymentView.fxml"));
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) comfirmerCommande.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                } else {//ken mawjouda
+                    alertDialog("You already passed an Order");
                 }
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) comfirmerCommande.getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } else {
-                alertDialog("You already passed an Order");
+            }else{//pas de promocode ywali ttoal yet7seb aadi
+                Commande c = new Commande(id_panierselectionner, prenom, nom, numero, "en attente", p.totalmontantPanier(3), codepostal, adresse); //id_client nada authen
+                if (cs.create(c).booleanValue() == false) {
+                    //fill the static values so i can use them in the next views commande ect
+                    prenomsta=prenom;
+                    nomsta=nom;
+                    statussta="en attente";
+                    numerosta= String.valueOf(numero);
+                    totalsta=p.totalmontantPanier(3);
+                    codepostalsta=codepostal;
+                    adressesta=adresse;
+                    createdsta= String.valueOf(currentDate);
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("paymentView.fxml"));
+                    Parent root = null;
+                    try {
+                        root = loader.load();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) comfirmerCommande.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.show();
+                } else {
+                    alertDialog("You already passed an Order");
+                }
             }
+
 
         }
     }
@@ -199,7 +253,9 @@ public class CommandeController implements Initializable {
                     setGraphic(null);
                 } else {
 
-                    Image img =new Image("C:/Users/medya/IdeaProjects/artflow_javafx_Pidev/src/main/resources/images/artflowlogoo.png");
+
+
+                    Image img =new Image("C:/xampp/htdocs/img/"+item.getArticle().getImage());
                     imageViewArticle.setFitHeight(150);
                     imageViewArticle.setFitWidth(150);
                     imageViewArticle.setImage(img);
