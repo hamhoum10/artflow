@@ -1,6 +1,9 @@
 package services;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
 import interfaces.stockInterface;
+import models.livraison;
 import models.stock;
 import util.MyConnection;
 
@@ -26,7 +29,7 @@ public class stockService implements stockInterface {
             ps.executeUpdate();
 
             System.out.println("stock Added Successfully!");
-
+//SmsNotification();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -99,6 +102,7 @@ public class stockService implements stockInterface {
                 s.setAddres(rs.getString(4));
                 s.setId_commende(rs.getInt(5));
                 s.setUser_name(rs.getString(6));
+                s.setDate_entr(rs.getDate("date_entr"));
 
                 stocks.add(s);
             }
@@ -154,6 +158,7 @@ public class stockService implements stockInterface {
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
                 s.setId_commende(rs.getInt("id_commende"));
+                s.setDate_entr(rs.getDate("date_entr"));
                 stocks.add(s);
             }
 
@@ -179,6 +184,7 @@ public class stockService implements stockInterface {
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
                 s.setId_commende(rs.getInt("id_commende"));
+                s.setDate_entr(rs.getDate("date_entr"));
                 stocks.add(s);
             }
 
@@ -194,7 +200,7 @@ public class stockService implements stockInterface {
     public List<stock> SelectByUser(String usr) {
         List<stock> stocks=new ArrayList<>();
         try {
-            String req = "select * FROM `stock` where `user_name` = "+usr;
+            String req = "select * FROM `stock` where `user_name`like '%"+usr+"%'";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -205,6 +211,7 @@ public class stockService implements stockInterface {
                 s.setId_commende(rs.getInt("id_commende"));
                 s.setAddres(rs.getString("addres"));
                 s.setUser_name(rs.getString("user_name"));
+                s.setDate_entr(rs.getDate("date_entr"));
                 ;
                 stocks.add(s);
             }
@@ -218,6 +225,60 @@ public class stockService implements stockInterface {
 
     @Override
     public List<stock> SlectByDate(Date d) {
-        return null;
+
+        List<stock> stocks=new ArrayList<>();
+        try {
+            String req = "select * FROM `stock` where `date_ent` = "+d;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                stock s = new stock();
+                s.setId(rs.getInt(1));
+                s.setName(rs.getString(2));
+                s.setArtiste(rs.getString("artiste"));
+                s.setId_commende(rs.getInt("id_commende"));
+                s.setAddres(rs.getString("addres"));
+                s.setUser_name(rs.getString("user_name"));
+                s.setDate_entr(rs.getDate("date_entr"));
+                ;
+                stocks.add(s);
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return stocks;
     }
+
+    @Override
+    public void SmsNotification() {
+        String ACCOUNT_SID = "AC0d38c511436eadf48ac03b413f251cbb";
+        String AUTH_TOKEN = "28b08adf773c0df3f314fc80c562026a";
+
+
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        Message message = Message.creator(
+                        new com.twilio.type.PhoneNumber("+21650660438"),
+
+                        new com.twilio.type.PhoneNumber("+12766638918"),
+                        "ArtFlow want to unform you that your commend is in the Stock now ")
+                .create();
+
+        System.out.println(message.getSid());
+
+    }
+
+    @Override
+    public void moveToLivraison(stock s) {
+        livraisonService sl = new livraisonService();
+
+        deleatstockById(s.getId());
+        livraison l = new livraison(s.getId(),s.getName(),s.getArtiste(),s.getAddres(),s.getDate_entr(),s.getId_commende(),s.getUser_name());
+        sl.addlivraison(l);
+        System.out.println("le stock is now in livraison");
+
+
+    }
+
 }

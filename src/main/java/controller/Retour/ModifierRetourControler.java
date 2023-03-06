@@ -1,4 +1,4 @@
-package controller;
+package controller.Retour;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,14 +10,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.livraison;
-import models.stock;
+import models.retour;
 import services.livraisonService;
-import services.stockService;
+import services.retourService;
 
 import java.io.IOException;
 
-public class ModifierLivraisonControler {
-    livraisonService ss = new livraisonService();
+public class ModifierRetourControler {
+    retourService ss = new retourService();
     @FXML
     private TextField ad;
 
@@ -38,9 +38,9 @@ public class ModifierLivraisonControler {
 
     @FXML
     private TextField un;
-    livraison s;
+    retour s;
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    public void getLivraison(livraison s){
+    public void getLivraison(retour s){
 
 
 
@@ -54,7 +54,7 @@ public class ModifierLivraisonControler {
     }
 
     @FXML
-    void ModifierLivraison(ActionEvent event) {
+    void ModifierLivraison(ActionEvent event) throws IOException {
 
 
 
@@ -95,20 +95,23 @@ public class ModifierLivraisonControler {
         }
 
 
-        ss.updateAlllivraison(s);
+        ss.updateAllretour(s);
         alert.setTitle("reuissi");
         alert.setHeaderText(null);
         alert.setContentText("modifier est reussite !");
         alert.show();
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherRetour.fxml"));
+        Stage window = (Stage) re.getScene().getWindow();
+        window.setScene(new Scene(root,1000,1000));
 
 
     }
 
     @FXML
     void returnonClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherLivraison.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherRetour.fxml"));
         Stage window = (Stage) re.getScene().getWindow();
-        window.setScene(new Scene(root));
+        window.setScene(new Scene(root,1000,1000));
 
     }
 

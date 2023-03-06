@@ -1,4 +1,4 @@
-package controller;
+package controller.Stock;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,7 +57,7 @@ public class AjouterStockController   implements  Initializable {
      public void returnonClick(ActionEvent event) throws  Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherStock.fxml"));
         Stage window = (Stage) re.getScene().getWindow();
-        window.setScene(new Scene(root));
+        window.setScene(new Scene(root,1000,1000));
 
     }
 
@@ -110,7 +110,7 @@ public class AjouterStockController   implements  Initializable {
         s.setAddres(addres);
         s.setId_commende(idCommende);
         s.setUser_name(userName);
-
+        ss.SmsNotification();
         ss.addstock(s);
 
         titre.setText("stock Added Successfully!");
@@ -118,7 +118,7 @@ public class AjouterStockController   implements  Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/newartflow/Stock/AfficherLivraison.fxml"));
         Parent view_2 = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(view_2);
+        Scene scene = new Scene(view_2,1000,1000);
         stage.setScene(scene);
         stage.show();
 
@@ -129,40 +129,6 @@ public class AjouterStockController   implements  Initializable {
         alert.showAndWait();
     }
     }
-//        stock s = new stock();
-//        s.setName(np.getText());
-//        s.setArtiste(ar.getText());
-//        s.setAddres(ad.getText());
-//        s.setId_commende(Integer.parseInt(ic.getText()));
-//        s.setUser_name(un.getText());
-//        ss.addstock(s);
-//        titre.setText("Stock Added Successfully! ");
-//        //FXMLLoader loader= new FXMLLoader(getClass().getResource("FXMLafficher.fxml"));
-//        //Parent view_2=loader.load();
 //
-//        //Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-//        //Scene scene = new Scene(view_2);
-//        //stage.setScene(scene);
-//        //stage.show();
-//
-//        FXMLLoader loader= new FXMLLoader(getClass().getResource("AfficherStock.fxml"));
-//        Parent view_2=loader.load();
-//
-//        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-//        Scene scene = new Scene(view_2);
-//        stage.setScene(scene);
-//        stage.show();
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//
-//        alert.setTitle("Information Dialog");
-//
-//        alert.setHeaderText(null);
-//
-//        alert.setContentText("Stock insérée avec succés!");
-//
-//        alert.show();
-//
-//
-//    }
 
 

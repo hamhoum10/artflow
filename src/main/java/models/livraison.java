@@ -35,10 +35,10 @@ public class livraison {
     @Override
     public String toString() {
         return "Livraison{" +
-                "id=" + id +
+//                "id=" + id +
+                " user_name='" + user_name + '\'' + System.lineSeparator()+
                 ", date_entr=" + date_sort + System.lineSeparator()+
                 ", name='" + name + '\'' + System.lineSeparator()+
-                ", user_name='" + user_name + '\'' + System.lineSeparator()+
                 ", addres='" + addres + '\'' + System.lineSeparator()+
                 ", artiste='" + artiste + '\'' + System.lineSeparator()+
                 ", id_commende=" + id_commende + System.lineSeparator()+

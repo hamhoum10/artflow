@@ -1,4 +1,4 @@
-package controller;
+package controller.Stock;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,7 +52,7 @@ public class ModifierStockControler {
     }
 
     @FXML
-    void ModifierStock(ActionEvent event) {
+    void ModifierStock(ActionEvent event) throws IOException {
 
 
         s.setName(np.getText());
@@ -95,6 +95,9 @@ public class ModifierStockControler {
         alert.setHeaderText(null);
         alert.setContentText("modifier est reussite !");
         alert.show();
+        Parent root = FXMLLoader.load(getClass().getResource("/com/example/newartflow/Stock/AfficherStock.fxml"));
+        Stage window = (Stage) re.getScene().getWindow();
+        window.setScene(new Scene(root,1000,1000));
 
 
     }

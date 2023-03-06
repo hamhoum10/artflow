@@ -8,24 +8,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ModifierLivraisonControler">
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Livraison.ModifierLivraisonControler">
 
     <children>
         <Label fx:id="titre" layoutX="225.0" layoutY="17.0" text="Modifier Livraison" />
-        <Label layoutX="183.0" layoutY="101.0" text="Name Produit :" />
-        <TextField fx:id="np" layoutX="300.0" layoutY="96.0" promptText="name" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="150.39999999999998" />
-        <Label layoutX="210.0" layoutY="163.0" text="Artiste :" />
-        <TextField fx:id="ar" layoutX="300.0" layoutY="158.0" promptText="Artiste" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="150.39999999999998" />
-        <Label layoutX="210.0" layoutY="224.0" text="addres :" />
-        <TextField fx:id="ad" layoutX="300.0" layoutY="219.0" promptText="addres" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="150.39999999999998" />
-        <Label layoutX="182.0" layoutY="273.0" text="ID Commende :" />
-        <TextField fx:id="ic" layoutX="300.0" layoutY="268.0" promptText="ID" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="150.39999999999998" />
-        <Label layoutX="182.0" layoutY="334.0" text="User Name :" />
-        <TextField fx:id="un" layoutX="300.0" layoutY="329.0" promptText="User" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="150.39999999999998" />
-        <Button layoutX="300.0" layoutY="395.0" mnemonicParsing="false" onAction="#ModifierLivraison" style="-fx-background-color: #C69186;" text="Modifier" />
-      <Pane prefHeight="502.0" prefWidth="170.0" style="-fx-background-color: #C69186;">
+        <Label layoutX="245.0" layoutY="367.0" text="Name Produit :" />
+        <TextField fx:id="np" layoutX="362.0" layoutY="362.0" promptText="name" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="88.39999999999998" />
+        <Label layoutX="272.0" layoutY="429.0" text="Artiste :" />
+        <TextField fx:id="ar" layoutX="362.0" layoutY="424.0" promptText="Artiste" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="88.39999999999998" />
+        <Label layoutX="272.0" layoutY="490.0" text="addres :" />
+        <TextField fx:id="ad" layoutX="362.0" layoutY="485.0" promptText="addres" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="88.39999999999998" />
+        <Label layoutX="244.0" layoutY="539.0" text="ID Commende :" />
+        <TextField fx:id="ic" layoutX="362.0" layoutY="534.0" promptText="ID" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="88.39999999999998" />
+        <Label layoutX="244.0" layoutY="600.0" text="User Name :" />
+        <TextField fx:id="un" layoutX="362.0" layoutY="595.0" promptText="User" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="88.39999999999998" />
+        <Button layoutX="362.0" layoutY="661.0" mnemonicParsing="false" onAction="#ModifierLivraison" style="-fx-background-color: #C69186;" text="Modifier" />
+      <Pane prefHeight="1000.0" prefWidth="170.0" style="-fx-background-color: #C69186;">
          <children>
-              <Button fx:id="re" layoutX="3.0" layoutY="-6.0" mnemonicParsing="false" onAction="#returnonClick" style="-fx-background-color: #C69186;" text="retour" />
+              <Button fx:id="re" layoutX="25.0" layoutY="946.0" mnemonicParsing="false" onAction="#returnonClick" style="-fx-background-color: #C69186;" text="retour" />
          </children>
       </Pane>
       <ImageView fitHeight="118.0" fitWidth="135.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">

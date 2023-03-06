@@ -1,5 +1,6 @@
-package controller;
+package controller.Stock;
 
+import controller.Stock.ModifierStockControler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,9 +11,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.stock;
+import services.livraisonService;
 import services.stockService;
 
 
@@ -30,6 +33,7 @@ import static javafx.beans.binding.Bindings.isEmpty;
 
 public class AfficherStockController implements Initializable  {
     stockService ss = new stockService();
+    livraisonService ll = new livraisonService();
 
 
     @FXML
@@ -39,6 +43,7 @@ public class AfficherStockController implements Initializable  {
 
         @FXML
         private TextField id;
+        stock l = new stock();
 
 
 
@@ -51,14 +56,10 @@ public class AfficherStockController implements Initializable  {
     void afficher(ActionEvent event) {
 
 
-        if (id.getText().isEmpty())
-        { e= FXCollections.observableArrayList(ss.fetchstock());
-
-        lst.setItems(e);}
 
 
-        else
-            e= FXCollections.observableArrayList(ss.SelectById(Integer.parseInt( id.getText())));
+
+            e= FXCollections.observableArrayList(ss.SelectByUser( id.getText()));
             lst.setItems(e);
 
 
@@ -71,7 +72,7 @@ public class AfficherStockController implements Initializable  {
         Parent view_2=loader.load();
 
         Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(view_2);
+        Scene scene = new Scene(view_2,1000,1000);
         stage.setScene(scene);
         stage.show();
 
@@ -91,7 +92,7 @@ public class AfficherStockController implements Initializable  {
         ModifyStockController.s=selectedStock;
 
         Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(view_2);
+        Scene scene = new Scene(view_2,1000,1000);
         stage.setScene(scene);
         stage.show();
     }
@@ -107,8 +108,9 @@ public class AfficherStockController implements Initializable  {
 
             alert.show();
         }
-
-        ss.deleatstockById(Integer.parseInt(id.getText()));
+        int selectedid = lst.getSelectionModel().getSelectedItem().getId();
+        ss.deleatstockById(selectedid);
+        afficher(event);
 
 
 
@@ -121,10 +123,53 @@ public class AfficherStockController implements Initializable  {
         alert.show();
         e= FXCollections.observableArrayList(ss.fetchstock());
     }
+    @FXML
+    void mvlivraison(ActionEvent event) {l.setId(lst.getSelectionModel().getSelectedItem().getId())  ;
+        l.setId_commende(lst.getSelectionModel().getSelectedItem().getId_commende()) ;
+        l.setUser_name(lst.getSelectionModel().getSelectedItem().getUser_name());
+        l.setName(lst.getSelectionModel().getSelectedItem().getName());
+        l.setAddres(lst.getSelectionModel().getSelectedItem().getAddres());
+        l.setArtiste(lst.getSelectionModel().getSelectedItem().getArtiste());
+        l.setDate_entr(lst.getSelectionModel().getSelectedItem().getDate_entr());
+        ll.SmsNotification();
+        ss.moveToLivraison(l);
+        afficher(event);
+
+    }
+    @FXML
+    void allerLivraison(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/example/newartflow/Stock/AfficherLivraison.fxml"));
+
+        Parent view_2=loader.load();
+
+        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(view_2,1000,1000);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    void allerRetour(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/example/newartflow/Stock/AfficherRetour.fxml"));
+
+        Parent view_2=loader.load();
+
+        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(view_2,1000,1000);
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        e= FXCollections.observableArrayList(ss.fetchstock());
+        lst.setItems(e);
 
     }
 }

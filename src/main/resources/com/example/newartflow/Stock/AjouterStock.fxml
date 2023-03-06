@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="578.0" prefWidth="781.0" stylesheets="@../../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterStockController">
+<AnchorPane fx:id="rootPane" prefHeight="578.0" prefWidth="781.0" stylesheets="@../../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Stock.AjouterStockController">
    <children>
       <Label fx:id="titre" layoutX="234.0" layoutY="14.0" text="Ajouter Stock" textOverrun="LEADING_WORD_ELLIPSIS" />
       <Label layoutX="127.0" layoutY="68.0" prefHeight="18.0" prefWidth="124.0" text="Name Produit :">

@@ -16,5 +16,8 @@ public interface livraisonInterface {
     public List<livraison> SelectByArtisteliv(String art);
     public List<livraison> SelectByUserliv(String usr);
     public List<livraison>SlectByDateliv(Date d);
+    public void moveToretour( livraison s);
+    public void moveToStock(livraison s);
+    public void SmsNotification();
 
 }

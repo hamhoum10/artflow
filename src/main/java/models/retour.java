@@ -2,17 +2,16 @@ package models;
 
 import java.util.Date;
 
-public class stock {
-    //var
+public class retour {
     private int id;
-    private Date date_entr;
+    private Date date_retour;
 
-    public Date getDate_entr() {
-        return date_entr;
+    public Date getDate_sort() {
+        return date_retour;
     }
 
-    public void setDate_entr(Date date_entr) {
-        this.date_entr = date_entr;
+    public void setDate_entr(Date date_sort) {
+        this.date_retour = date_sort;
     }
 
     public String getUser_name() {
@@ -33,14 +32,14 @@ public class stock {
 
     @Override
     public String toString() {
-        return "stock{" +
-//                "id= " + id +
-                " user_name = '" + user_name + '\'' +System.lineSeparator()+
-                " date_entr= " + date_entr +System.lineSeparator()+
-                " name = '" + name + '\'' +System.lineSeparator()+
-                " addres = '" + addres + '\'' +System.lineSeparator()+
-                " artiste = '" + artiste + '\'' +System.lineSeparator()+
-                ", id_commende = " + id_commende +System.lineSeparator()+
+        return "Livraison{" +
+//                "id=" + id +
+                "user_name='" + user_name + '\'' + System.lineSeparator()+
+                ",date_entr=" + date_retour + System.lineSeparator()+
+                ", name='" + name + '\'' + System.lineSeparator()+
+                ", addres='" + addres + '\'' + System.lineSeparator()+
+                ", artiste='" + artiste + '\'' + System.lineSeparator()+
+                ", id_commende=" + id_commende + System.lineSeparator()+
                 '}';
     }
 
@@ -49,15 +48,15 @@ public class stock {
     private String artiste;
     private int id_commende;
     //constructeure
-    public stock(){}
+    public retour(){}
 
-    public stock(int id, String name, String artiste, String addres , Date date_entr, int id_commende, String user_name) {
+    public retour(int id, String name, String artiste, String addres , Date date_retour, int id_commende, String user_name) {
         this.id = id;
         this.name = name;
         this.artiste = artiste;
         this.id_commende = id_commende;
         this.addres=addres;
-        this.date_entr=date_entr;
+        this.date_retour=date_retour;
         this.user_name=user_name;
     }
 
@@ -72,6 +71,14 @@ public class stock {
 
     public String getName() {
         return name;
+    }
+
+    public void setDate_retour(Date date_retour) {
+        this.date_retour = date_retour;
+    }
+
+    public Date getDate_retour() {
+        return date_retour;
     }
 
     public void setName(String name) {
@@ -96,6 +103,3 @@ public class stock {
     //affichage du stock
 
 }
-
-
-

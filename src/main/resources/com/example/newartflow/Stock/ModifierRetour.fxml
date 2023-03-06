@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Retour.ModifierRetourControler">
+
+    <children>
+        <Label fx:id="titre" layoutX="225.0" layoutY="17.0" text="Modifier Livraison" />
+        <Label layoutX="193.0" layoutY="431.0" text="Name Produit :" />
+        <TextField fx:id="np" layoutX="326.0" layoutY="419.0" promptText="name" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="124.39999999999998" />
+        <Label layoutX="220.0" layoutY="493.0" text="Artiste :" />
+        <TextField fx:id="ar" layoutX="326.0" layoutY="481.0" promptText="Artiste" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="124.39999999999998" />
+        <Label layoutX="220.0" layoutY="554.0" text="addres :" />
+        <TextField fx:id="ad" layoutX="326.0" layoutY="542.0" promptText="addres" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="124.39999999999998" />
+        <Label layoutX="192.0" layoutY="603.0" text="ID Commende :" />
+        <TextField fx:id="ic" layoutX="326.0" layoutY="591.0" promptText="ID" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="124.39999999999998" />
+        <Label layoutX="192.0" layoutY="664.0" text="User Name :" />
+        <TextField fx:id="un" layoutX="326.0" layoutY="652.0" promptText="User" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="124.39999999999998" />
+        <Button layoutX="455.0" layoutY="903.0" mnemonicParsing="false" onAction="#ModifierLivraison" style="-fx-background-color: #C69186;" text="Modifier" />
+      <Pane layoutY="-5.0" prefHeight="1025.0" prefWidth="172.0" style="-fx-background-color: #C69186;">
+         <children>
+              <Button fx:id="re" layoutX="26.0" layoutY="965.0" mnemonicParsing="false" onAction="#returnonClick" style="-fx-background-color: #C69186;" text="retour" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="118.0" fitWidth="135.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../image/Art_flow.png" />
+         </image>
+      </ImageView>
+    </children>
+
+</AnchorPane>

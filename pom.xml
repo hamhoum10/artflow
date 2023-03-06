@@ -64,6 +64,11 @@
             <artifactId>test-domain-project</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.twilio.sdk</groupId>
+            <artifactId>twilio</artifactId>
+            <version>9.2.4</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Retour.AjouterRetourController">
+   <children>
+      <Label fx:id="titre" layoutX="304.0" layoutY="269.0" text="Ajouter Livraison" textOverrun="LEADING_WORD_ELLIPSIS" />
+      <Label layoutX="197.0" layoutY="323.0" prefHeight="18.0" prefWidth="124.0" text="Name Produit :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="np" layoutX="327.0" layoutY="318.0" promptText="name" AnchorPane.leftAnchor="327.0" AnchorPane.rightAnchor="123.39999999999998" />
+      <Label layoutX="197.0" layoutY="384.0" prefHeight="18.0" prefWidth="82.0" text="Artiste :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="ar" layoutX="326.0" layoutY="379.0" promptText="Artiste" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="124.39999999999998" />
+      <Label layoutX="196.0" layoutY="443.0" prefHeight="18.0" prefWidth="82.0" text="addres :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="ad" layoutX="327.0" layoutY="438.0" promptText="addres" AnchorPane.leftAnchor="327.0" AnchorPane.rightAnchor="123.39999999999998" />
+      <Label layoutX="196.0" layoutY="493.0" text="ID Commende :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="ic" layoutX="326.0" layoutY="488.0" promptText="ID" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="124.39999999999998" />
+      <Label layoutX="196.0" layoutY="554.0" prefHeight="18.0" prefWidth="82.0" text="User Name :">
+         <font>
+            <Font name="Arial Bold Italic" size="12.0" />
+         </font></Label>
+      <TextField fx:id="un" layoutX="326.0" layoutY="549.0" promptText="User" AnchorPane.leftAnchor="326.0" AnchorPane.rightAnchor="124.39999999999998" />
+      <Button layoutX="432.0" layoutY="599.0" mnemonicParsing="false" onAction="#ajouterStock" style="-fx-background-color: #C69186;" text="Ajouter" />
+      <Pane layoutY="-11.0" prefHeight="1015.0" prefWidth="124.0" style="-fx-background-color: #C69186;">
+         <children>
+            <Button fx:id="re" layoutX="-2.0" layoutY="961.0" mnemonicParsing="false" onAction="#returnonClick" style="-fx-background-color: #C69186;" text="retour" />
+            <ImageView fitHeight="150.0" fitWidth="124.0" layoutX="-2.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../image/Art_flow.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

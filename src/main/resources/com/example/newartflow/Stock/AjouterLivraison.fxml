@@ -9,38 +9,37 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="578.0" prefWidth="781.0" stylesheets="@../../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AjouterLivraisonController">
+<AnchorPane fx:id="rootPane" prefHeight="578.0" prefWidth="781.0" stylesheets="@../../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Livraison.AjouterLivraisonController">
    <children>
       <Label fx:id="titre" layoutX="234.0" layoutY="14.0" text="Ajouter Livraison" textOverrun="LEADING_WORD_ELLIPSIS" />
-      <Label layoutX="127.0" layoutY="68.0" prefHeight="18.0" prefWidth="124.0" text="Name Produit :">
+      <Label layoutX="124.0" layoutY="68.0" prefHeight="18.0" prefWidth="124.0" text="Name Produit :">
          <font>
             <Font name="Arial Bold Italic" size="12.0" />
          </font></Label>
       <TextField fx:id="np" layoutX="257.0" layoutY="63.0" promptText="name" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="193.39999999999998" />
-      <Label layoutX="127.0" layoutY="129.0" prefHeight="18.0" prefWidth="82.0" text="Artiste :">
+      <Label layoutX="151.0" layoutY="129.0" prefHeight="18.0" prefWidth="82.0" text="Artiste :">
          <font>
             <Font name="Arial Bold Italic" size="12.0" />
          </font></Label>
       <TextField fx:id="ar" layoutX="256.0" layoutY="124.0" promptText="Artiste" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="194.39999999999998" />
-      <Label layoutX="126.0" layoutY="188.0" prefHeight="18.0" prefWidth="82.0" text="addres :">
+      <Label layoutX="151.0" layoutY="188.0" prefHeight="18.0" prefWidth="82.0" text="addres :">
          <font>
             <Font name="Arial Bold Italic" size="12.0" />
          </font></Label>
       <TextField fx:id="ad" layoutX="257.0" layoutY="183.0" promptText="addres" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="193.39999999999998" />
-      <Label layoutX="126.0" layoutY="238.0" text="ID Commende :">
+      <Label layoutX="126.0" layoutY="304.0" text="ID Commende :">
          <font>
             <Font name="Arial Bold Italic" size="12.0" />
          </font></Label>
-      <TextField fx:id="ic" layoutX="256.0" layoutY="233.0" promptText="ID" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="194.39999999999998" />
-      <Label layoutX="126.0" layoutY="299.0" prefHeight="18.0" prefWidth="82.0" text="User Name :">
+      <Label layoutX="136.0" layoutY="247.0" prefHeight="18.0" prefWidth="82.0" text="User Name :">
          <font>
             <Font name="Arial Bold Italic" size="12.0" />
          </font></Label>
-      <TextField fx:id="un" layoutX="256.0" layoutY="294.0" promptText="User" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="194.39999999999998" />
+      <TextField fx:id="un" layoutX="257.0" layoutY="242.0" promptText="User" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="193.39999999999998" />
       <Button layoutX="362.0" layoutY="344.0" mnemonicParsing="false" onAction="#ajouterStock" style="-fx-background-color: #C69186;" text="Ajouter" />
       <Pane layoutY="-11.0" prefHeight="593.0" prefWidth="124.0" style="-fx-background-color: #C69186;">
          <children>
-            <Button fx:id="re" layoutX="-2.0" layoutY="3.0" mnemonicParsing="false" onAction="#returnonClick" style="-fx-background-color: #C69186;" text="retour" />
+            <Button fx:id="re" layoutX="2.0" layoutY="546.0" mnemonicParsing="false" onAction="#returnonClick" style="-fx-background-color: #C69186;" text="retour" />
             <ImageView fitHeight="150.0" fitWidth="124.0" layoutX="-2.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../image/Art_flow.png" />
@@ -48,5 +47,6 @@
             </ImageView>
          </children>
       </Pane>
+      <TextField fx:id="ic" layoutX="262.0" layoutY="299.0" prefHeight="200.0" prefWidth="331.0" />
    </children>
 </AnchorPane>
