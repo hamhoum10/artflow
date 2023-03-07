@@ -35,9 +35,9 @@ import javafx.stage.Stage;
     @Override
     public void start(Stage primaryStage) throws IOException {
        Parent root = FXMLLoader.load(getClass().getResource("Evenement.fxml"));
-       Scene scene = new Scene(root);
+       Scene scene = new Scene(root, 1100,650);
        primaryStage.setTitle("Ajouter un evenement");
-       primaryStage.setScene(scene);
+       primaryStage.setScene(scene);  //Scene scene = new Scene(root, 1100,600);
        primaryStage.show();
     }
     

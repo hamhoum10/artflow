@@ -10,6 +10,7 @@ import Models.Reservation;
 import Service.ReservationService;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,27 +34,39 @@ import javafx.stage.Stage;
 public class View_ReservatiobController implements Initializable {
     ReservationService  Rs = new ReservationService() ;
     Reservation r=new Reservation();
+    
+    private List<Reservation> listres;
+    
     @FXML
     private ListView<Reservation> afficheres;
+    
+    @FXML
+    ObservableList<Reservation > e;
+    
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         ObservableList<Reservation > e =FXCollections.observableArrayList(Rs.fetchReservations());
+         //ObservableList<Reservation > e =FXCollections.observableArrayList();
         
+         //afficheres.setItems(e);
+          listres=Rs.fetchReservations(44);
+        e =  FXCollections.observableArrayList(listres);
         afficheres.setItems(e);
     }    
 
-    @FXML
     private void afficher(ActionEvent event) {
-         ObservableList<Reservation > e =FXCollections.observableArrayList(Rs.fetchReservations());
         
+         //ObservableList<Reservation > e =FXCollections.observableArrayList();
+         listres=Rs.fetchReservations(44);
+        e =  FXCollections.observableArrayList(listres);
         afficheres.setItems(e);
+        //afficheres.setItems(e);
     }
 
-    @FXML
     private void modifier(ActionEvent event) {
         
          try {
@@ -85,6 +98,18 @@ public class View_ReservatiobController implements Initializable {
         
        
     
+    }
+
+    @FXML
+    private void reour(ActionEvent event) throws IOException {
+        
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("./Reservation.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show();
     }
     
 }

@@ -3,13 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/ModifiEvemtController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/View_EvemtController.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/Service/EvenementService.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/Models/Reservation.java</file>
-            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/Service/ReservationService.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/Interface/ReservationInterface.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/CommentaireController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/ListeReservationController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/EvemtFXMain.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/MusqiueMM/FXMLMedia.fxml</file>
             <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/zombie/Zombie.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/ReservationController.java</file>
             <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/ModifierReservationController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/ReservationFXMain.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/View_EvemtController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/View_ReservatiobController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/Models/Reservation.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/Service/EvenementService.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/GUI/EvenementController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/Models/Evenement.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/Zombie/src/MusqiueMM/MediaPlayer.java</file>
         </group>
     </open-files>
 </project-private>

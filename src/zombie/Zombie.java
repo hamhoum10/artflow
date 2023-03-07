@@ -15,6 +15,7 @@ import Models.Client;
 import Models.Commentaire;
 import Models.Evenement;
 import Models.Reservation;
+import Models.User;
 import Service.ArtisteSerice;
 import Service.ClientService;
 import Service.CommentaireService;
@@ -41,11 +42,11 @@ public class Zombie {
         Date d = new Date(2023, 02, 23);
         d = d.valueOf(locald);
         Service.ArtisteSerice ar = new Service.ArtisteSerice();
-       // System.out.println(ar.fetchArtiste());
-        
-        Service.EvenementService ss= new Service.EvenementService();
-       // System.out.println(ss.fetchEvenements().add(e));
-        
+        // System.out.println(ar.fetchArtiste());
+
+        Service.EvenementService ss = new Service.EvenementService();
+        // System.out.println(ss.fetchEvenements().add(e));
+
         EvenementInterface ps = new EvenementService();
         ArtisteInterface km = new ArtisteSerice();
         ClientInterface cl = new ClientService();
@@ -64,94 +65,115 @@ public class Zombie {
         a.setUsername("Ronaldo");
         a.setPassword("0258963147");
         a.setEmail("ayoub.barnat@esprit.tn");
-       //a.setEmail(email);
-        
-        
-        
-         //Evenement init
-       Evenement e = new Evenement();
+        //a.setEmail(email);
+
+        //Evenement init
+        Evenement e = new Evenement();
         //Date d = new Date(2023, 02, 2);
-     // a.setId_artiste(1);
-      
-        e.setId(57);
-       e.setName("Baradine chardine");
-        e.setCapacity("41");
-        e.setDescription("Ariana");
-        //e.setDate_evemt(LocalDate.of(2000, 1, 1));
-         e.setDate_evemt(d);
-       e.setFinish_hour("Enseignante");
-        e.setStart_hour("888");
-       e.setImage("C:/Users/Lenovo/Desktop/esprit.png");
-        e.setLocation("Diguel");
-        e.setArtiste(a);
-        a.setId_artiste(1);
-        
-         e.setPrix(1.55);
-        
-        
-        
+        // a.setId_artiste(1);
+
+//        e.setId(57);
+//        e.setName("Baradine chardine");
+//        e.setCapacity("41");
+//        e.setDescription("Ariana");
+//        //e.setDate_evemt(LocalDate.of(2000, 1, 1));
+//        e.setDate_evemt(d);
+//        e.setFinish_hour("Enseignante");
+//        e.setStart_hour("888");
+//        e.setImage("C:/Users/Lenovo/Desktop/esprit.png");
+//        e.setLocation("Diguel");
+//        e.setArtiste(a);
+//        a.setId_artiste(1);
+//
+//        e.setPrix(1.55);
+
 //        
 //        //add action
-    //ps.addEvenement(e);
-     // System.out.println(ps.fetchEvenements());
-       //System.out.println(km.fetchClientByName("Nada"));
-   // ps.modEvenement(e);
- // ps.suppEvenement(35);
-    
+        //ps.addEvenement(e);
+        // System.out.println(ps.fetchEvenements());
+        //System.out.println(km.fetchClientByName("Nada"));
+        // ps.modEvenement(e);
+        // ps.suppEvenement(35);
         //System.out.println(ps.sortBy("capacity","DESC")); 
         //System.out.println(ps.readById(17));
-   
-   ReservationInterface rs = new ReservationService();
-   ClientInterface mk = new ClientService();
-   
-   Client c = new Client();
+        ReservationInterface rs = new ReservationService();
+        ClientInterface mk = new ClientService();
+
+        Client c = new Client();
         //Artiste init
-       c.setId_client(1);
-       c.setFirstname("Ayoub");
-        c.setLastname("Barnat");
-        //c.setbirthdate(000);
-       //c.setBirthdate(new Date(2023, 02, 01));
-        c.setAddress("Ariana");
-        c.setPhonenumber("885852");
-        c.setUsername("Ronaldo");
-        c.setPassword("0258963147");
-        c.setEmail("ayoub.barnat@esprit.tn");
+//        c.setId_client(1);
+//        c.setFirstname("Ayoub");
+//        c.setLastname("Barnat");
+//        //c.setbirthdate(000);
+//        //c.setBirthdate(new Date(2023, 02, 01));
+//        c.setAddress("Ariana");
+//        c.setPhonenumber("885852");
+//        c.setUsername("Ronaldo");
+//        c.setPassword("0258963147");
+//        c.setEmail("ayoub.barnat@esprit.tn");
+
+        ReservationService mr = new ReservationService();
+        Reservation r = new Reservation();
         
+
+        
+
 //   
 //   
-  Reservation r = new Reservation();
-                r.setId(22);
-                r.setNb_place(2);
-                
-                 r.setPrice(1);
-                 r.setClient(g);
-                 g.setId_client(1);
-                 r.setName("issa");
-                 
-             // r.setId_client(1);
-        //rs.addReservation(r);
+        r.setId(22);
+        r.setNb_place(120);
+
+       // r.setPrice(1);
+        // r.setClient(g);
+      //  g.setId_client(1);
+        //  r.setName("issa");
+        e.setId(60);
+        e.setPrix(10.0);
+        r.setEvent(e);
+        r.setDateres(new Date(2023, 02, 01));
+        
+         
+
+         System.out.println(mr.totalMontalReservation(48)); 
+         
+        // r.setId_client(1);
+        // rs.addReservation(r);
         //System.out.println(mk.fetchClientByName("Malek"));
-       System.out.println(rs.fetchReservations());
+        //System.out.println(rs.fetchReservations());
 //    //r.setPrice(2023);
 //    
-//         rs.modReservation(r);
-// rs.suppReservation(7);
+       // rs.modReservation(r);
+                  //  rs.suppReservation(39);
 // 
 // System.out.println(ps.sortBy("price","DESC")); 
 // System.out.println(ps.readById(6));
-//        CommentaireInterface cs = new CommentaireService();
-//        ClientInterface ci = new ClientService();
-//        Commentaire c = new Commentaire();
-//        //Evenement ee = new Evenement();
-//        Client rr = new Client();
-//        c.setId_evemt(55);
-//        //c.setCommentaire("jj");
-//        rr.setId_client(2);
-//       // c.setId_commentaire(1);
-//      c.setId(1);
+
+//        
+
+//        User u = new User();
+//        //  Category c = new Category();
+//          Evenement p = new Evenement();
+//          Commentaire co = new Commentaire();
+//
+//                        Commentaire comment = new Commentaire();
+//                   comment.setId_user(1);
+//
+//                   comment.setCommentaire("c'est une bonne initiative");
+//                   Evenement evemt = new Evenement();
+//                   evemt.setId(10);
+//                  comment.setId(evemt);
+//
+//                //   Call the addComment() method
+//                 CommentaireInterface comm = new CommentaireService();
+//                   comm.addComment(comment);
+//
+//                  // comm.supprimer(2);
+//
+//                  co.setCommentaire("This is the edit edit comment");
+        // co.setId_comment(1);
+        //   comm.modifier(co);
+//        
 //       
-//        cs.ajouter(c);
-//       
-   }
-    
+    }
+
 }

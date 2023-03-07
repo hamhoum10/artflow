@@ -7,6 +7,7 @@ package Service;
 
 import Interface.ReservationInterface;
 import Models.Client;
+import Models.Evenement;
 import Models.Reservation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -40,12 +41,15 @@ public class ReservationService implements ReservationInterface {
 //        }
 try {
             
-            String req = "INSERT INTO `reservation`(`nb_place`, `price`, `id_client`, `name`) VALUES (?,?,?,?)";
+            String req = "INSERT INTO `reservation`(`nb_place`, `dateres`, `id_event`, `id_client`) VALUES (?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, r.getNb_place());
-            ps.setDouble(2, r.getPrice());
-            ps.setInt(3, r.getClient().getId_client());
-            ps.setString(4,r.getName() );
+          //  ps.setDouble(2, r.getPrice());
+           ps.setDate(2, r.getDateres());
+            ps.setInt(3, r.getEvent().getId());
+            ps.setInt(4, r.getId_client());
+            
+            
             ps.executeUpdate();
             System.out.println("reservation a ete ajoutée avec Success!");
             
@@ -56,30 +60,32 @@ try {
     }
 
     @Override
-    public List<Reservation> fetchReservations() {
+    public List<Reservation> fetchReservations(int id) {
          List<Reservation> Reservations = new ArrayList<>();
         try {
             
-            String req = "SELECT * FROM reservation as r join client as a where r.id_client=a.id_client";
+            String req = "SELECT * FROM reservation where id_res ="+id;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
                 Reservation r = new Reservation();
-                Client c = new Client();
+                Evenement e =new Evenement();
+               
+                
                 
                 //r.setId(rs.getInt(1));
-                 r.setId(rs.getInt("id"));
+                r.setId(rs.getInt("id_res"));
                 
               // Client c =new Client();
-                c.setId_client(rs.getInt("Id_client"));
                 
               //  c.setFirstname(rs.getString("c.firstname"));
-                r.setClient(c);
 //                r.setNb_place(rs.getInt(2));
 //                r.setPrice(rs.getDouble(3));
                  r.setNb_place(rs.getInt("nb_place"));
-                r.setPrice(rs.getDouble("price"));
-                r.setName(rs.getString("name"));
+                //r.setPrice(rs.getDouble("price"));
+                r.setDateres(rs.getDate("dateres"));
+                r.setId_client(rs.getInt("id_client"));
+              // r.getEvent().setId(rs.getInt("id_event"));
                 
                 
                 
@@ -100,17 +106,18 @@ try {
 
 
  try {    
-            String req = "update `reservation` set `nb_place`=?, `price`=?, `id_client`, `name`=? where `id`=? ";
+            String req = "update `reservation` set `nb_place`=?, `dateres`=?, `id_event`=? where `id_res`=? ";
             PreparedStatement ps = cnx.prepareStatement(req);
            
             ps.setInt(1, r.getNb_place());
-            ps.setDouble(2, r.getPrice());
+          //  ps.setDouble(2, r.getPrice());
+            ps.setDate(2, r.getDateres());
+            ps.setInt(3,r.getEvent().getId());
            // ps.setInt(3, r.getClient().getId_client());
             
            
-            ps.setInt(3, r.getClient().getId_client());
-             ps.setString(4, r.getName());
-            ps.setInt(5, r.getId());
+           
+            ps.setInt(4, r.getId());
 
          
            
@@ -124,8 +131,8 @@ try {
     }
 
     @Override
-    public void suppReservation(int id) {
-        String req = "DELETE FROM `reservation` where id = "+id;
+    public void suppReservation(int id_res) {
+        String req = "DELETE FROM `reservation` where id_res = "+id_res;
         Statement st;
         try {
             st = cnx.createStatement();
@@ -143,7 +150,7 @@ try {
          
         try {
             
-            String req = "SELECT * FROM reservation ORDER BY "+nom_column + " "+Asc_Dsc+" ";
+            String req = "SELECT * FROM `reservation` ORDER BY "+nom_column + " "+Asc_Dsc+" ";
             Statement st = cnx.createStatement();
             
             ResultSet rs = st.executeQuery(req);
@@ -151,7 +158,7 @@ try {
                 Reservation r  = new Reservation();
                  r.setId(rs.getInt(1));
                  r.setNb_place(rs.getInt(2));
-                 r.setPrice(rs.getDouble(3));
+              //   r.setPrice(rs.getDouble(3));
                 // r.setId_client(c.getId_client());
                  
                  
@@ -177,14 +184,14 @@ try {
  
              try {
             
-            String req = "SELECT * FROM reservation WHERE id= "+id;
+            String req = "SELECT * FROM `reservation` WHERE id= "+id;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             rs.beforeFirst();
             rs.next();
             r.setId(rs.getInt(1));
            r.setNb_place(rs.getInt(2));
-             r.setPrice(rs.getDouble(3));
+          //   r.setPrice(rs.getDouble(3));
             
             
            
@@ -200,4 +207,57 @@ try {
     }
     
     
+    
+   
+    
+//    public double totalMontalReservation(Reservation r){
+//        Reservation cc = new Reservation();
+//        Double totalPrixReservation=0.0 ;
+//        try {
+//            String sql = "SELECT  SUM(E.prix * R.nb_place) AS total from `Reservation` as R , `evemt` As E where r.id_event  = "+r.getId()+"  and R.id_event = E.id";
+//            
+//            Statement st = cnx.createStatement();
+//            ResultSet rs = st.executeQuery(sql);
+//            while (rs.next()) {
+//                totalPrixReservation = rs.getDouble("total");//total est colonne virtuell, il n'existe pas dans la table panier
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return totalPrixReservation;
+
+ public double totalMontalReservation(int id_client){
+        Reservation cc = new Reservation();
+        Double totalPrixReservation=0.0 ;
+        try {
+            //String sql = "SELECT  SUM(E.prix * R.nb_place) AS total from `Reservation` as R , `evemt` As E where r.id_event  = "+r+"  and R.id_event = E.id";
+            String sql = "SELECT  SUM(E.prix * R.nb_place) AS total from `Reservation` as R JOIN `evemt` As E JOIN `client` as C on  R.id_event =E.id AND R.id_client =C.id_client  WHERE R.id_client= "+id_client ;
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                totalPrixReservation = rs.getDouble("total");//total est colonne virtuell, il n'existe pas dans la table panier
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totalPrixReservation;    
+    
+        
+    }
+    public int getReservationId(Client client){
+        int id=0;
+        try {
+            String sql = "SELECT id_res from `reservation` where id_client = " +client.getId_client();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+              id= rs.getInt("id_res");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+    return id;
+    }
 }

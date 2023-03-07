@@ -136,7 +136,7 @@ public class EvenementController implements Initializable {
                  capacity.getText().length()==0||
                  description.getText().length()==0||
                  capacity.getText().length()==0||
-                 image.getText().length()==0||
+                 imagee.getText().length()==0||
                  location.getText().length()==0||
                   prix.getText().length()==0){
 
@@ -185,11 +185,12 @@ public class EvenementController implements Initializable {
         e.setPrix(Double.parseDouble(prix.getText()));
         //a.setId_artiste(Integer.parseInt(artiste.getText()));
          e.setArtiste(ci.fetchClientByName(artiste.getValue().toString()));
+         String imagehtdocs =imagee.getText();
         
          System.out.println(e);
        // e.setId_artiste(1);
-        String htdocsPath = "C:\\xampp\\htdocs\\img";
-                 File destinationFile = new File(htdocsPath + image.getText());
+        String htdocsPath = "C:/xampp/htdocs/img/";
+                 File destinationFile = new File(htdocsPath + imagee.getText());
             if(selectedFile!=null){
                 try (InputStream in = new FileInputStream(selectedFile);
                  OutputStream out = new FileOutputStream(destinationFile)) {

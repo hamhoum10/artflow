@@ -5,71 +5,88 @@
  */
 package Models;
 
+import java.sql.Date;
+
 /**
  *
  * @author Lenovo
  */
 public class Commentaire {
-    private int id;
-    private String commentaire;
-    private int id_client;
-    private int id_evemt;
-    
+    private int id_comment, id_user;
+   
+   private Evenement id;
+   private String commentaire;
     
     
     public Commentaire(){
     
+    
     }
 
-    public Commentaire(int id, String commentaire, int id_client, int id_evemt) {
+    public Commentaire(int id_user, Evenement id, String commentaire) {
+        this.id_user = id_user;
         this.id = id;
         this.commentaire = commentaire;
-        this.id_client = id_client;
-        this.id_evemt = id_evemt;
     }
 
-    public int getId() {
+    public Commentaire(int id_comment, int id_user, Evenement id, String commentaire) {
+        this.id_comment = id_comment;
+        this.id_user = id_user;
+        this.id = id;
+        this.commentaire = commentaire;
+    }
+
+   
+
+   
+
+    public int getId_comment() {
+        return id_comment;
+    }
+
+    public int getId_user() {
+        return id_user;
+    }
+
+    
+
+    public Evenement getId() {
         return id;
     }
-
-   
-
-   
-
-   
 
     public String getCommentaire() {
         return commentaire;
     }
 
-    public int getId_client() {
-        return id_client;
+    public void setId_comment(int id_comment) {
+        this.id_comment = id_comment;
     }
 
-    public int getId_evemt() {
-        return id_evemt;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setId_user(int id_user) {
+        this.id_user = id_user;
     }
 
    
 
-    
+    public void setId(Evenement id) {
+        this.id = id;
+    }
 
     public void setCommentaire(String commentaire) {
         this.commentaire = commentaire;
     }
 
-    public void setId_client(int id_client) {
-        this.id_client = id_client;
-    }
+    
+   
 
-    public void setId_evemt(int id_evemt) {
-        this.id_evemt = id_evemt;
-    }
+    
 
+    
+    
+    
+    
+    
+    
     
     
     

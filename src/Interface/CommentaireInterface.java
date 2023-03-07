@@ -6,6 +6,7 @@
 package Interface;
 
 import Models.Commentaire;
+import Models.Evenement;
 import java.util.List;
 
 /**
@@ -14,10 +15,16 @@ import java.util.List;
  */
 public interface CommentaireInterface {
     
-     public void ajouter(Commentaire t);
-     public void modifier(Commentaire t);
-      public void supprimer(Commentaire t);
-      public List<Commentaire> recuperer(int idp);
-     
+      public void addComment(Commentaire t);
+        public void modifier(Commentaire co);
+        public void supprimer(int commentId);
+        public Commentaire fetchCommentByEvemtId(int id);
+        public List<Commentaire> fetchCommentaireByEvemtId(int id);
+        public List<Evenement> fetchEvemts();
+        public Evenement fetchEvemt(int id);
+        public Commentaire fetchCommentByEvemtId(String description);
+        public List<Commentaire> fetchCommentByPostId(int Id);
+        public List<Commentaire> recuperer(int id);
+
     
 }

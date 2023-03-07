@@ -25,7 +25,7 @@
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font></Text>
-      <Text layoutX="255.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure du debut">
+      <Text layoutX="255.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start hour">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
@@ -33,7 +33,7 @@
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></TextField>
-      <Text layoutX="282.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure du fin">
+      <Text layoutX="282.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finish hour">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
@@ -41,7 +41,7 @@
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font></TextField>
-      <Text layoutX="287.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacité">
+      <Text layoutX="287.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font></Text>
@@ -49,7 +49,7 @@
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></TextField>
-      <Text layoutX="255.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation">
+      <Text layoutX="255.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
@@ -61,7 +61,7 @@
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <Button layoutX="616.0" layoutY="651.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" textFill="#dd0808">
+      <Button layoutX="616.0" layoutY="651.0" mnemonicParsing="false" onAction="#modifier" text="Modify" textFill="#dd0808">
          <font>
             <Font name="Bernard MT Condensed" size="14.0" />
          </font></Button>
@@ -84,15 +84,21 @@
             </ImageView>
          </children>
       </VBox>
-      <Text fill="#eb0808" layoutX="255.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez modifier les informations del'evenement">
+      <Text fill="#eb0808" layoutX="255.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please edit event information">
          <font>
             <Font name="Berlin Sans FB" size="22.0" />
          </font>
       </Text>
       <DatePicker fx:id="date_evemt" layoutX="372.0" layoutY="224.0" promptText="Saisie la date de l'evenement" />
       <ComboBox fx:id="artiste" layoutX="399.0" layoutY="575.0" onAction="#artiste" prefWidth="150.0" />
-      <Text layoutX="301.0" layoutY="607.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artiste" />
-      <Text layoutX="327.0" layoutY="656.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
+      <Text fill="#1b1717" layoutX="301.0" layoutY="607.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artiste">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Text>
+      <Text layoutX="327.0" layoutY="656.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Text>
       <TextField fx:id="prix" layoutX="400.0" layoutY="626.0" />
    </children>
 </AnchorPane>

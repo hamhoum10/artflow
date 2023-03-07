@@ -73,7 +73,8 @@ public class ModifierReservationController implements Initializable {
           // a.setId_artiste(Integer.parseInt(artiste.getText()));
           
           nb_place.setText(Integer.toString(r.getNb_place()));
-         price.setText(Double.toString(r.getPrice()));
+          
+        // price.setText(Double.toString(r.getPrice()));
  
 
 
@@ -87,8 +88,9 @@ public class ModifierReservationController implements Initializable {
             Reservation a = new Reservation();
             //a.setNb_place(Integer.parseInt(nb_place.getText()));
             a.setNb_place(Integer.parseInt(nb_place.getText()));
-            a.setPrice(Double.parseDouble(price.getText()));
-            a.setClient(ci.fetchClientByName(client.getValue().toString()));
+           // a.setPrice(Double.parseDouble(price.getText()));
+          //  a.setClient(ci.fetchClientByName(client.getValue().toString()));
+         // a.setEvent(Integer.parseInt(id_event.getText()));
             
             Rs. modReservation(a);
             
@@ -120,7 +122,7 @@ public class ModifierReservationController implements Initializable {
 
     @FXML
     private void client(ActionEvent event) {
-        r.setClient(ci.fetchClientByName(client.getValue()));
+        //r.setClient(ci.fetchClientByName(client.getValue()));
     }
      
     

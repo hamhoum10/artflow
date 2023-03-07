@@ -18,6 +18,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.Myconnection;
 import Models.Client;
+import Models.Evenement;
+import java.sql.Date;
+import Models.Client;
 
 /**
  *
@@ -27,72 +30,100 @@ public class CommentaireService implements CommentaireInterface{
     Connection cnx = Myconnection.getInstance().getCnx();
 
     @Override
-    public void ajouter(Commentaire t) {
+    public void addComment(Commentaire t) {
+        
         try {
-            String req = "insert into commentaire(commentaire,id_client,id) values("+t.getCommentaire()+ ",'" + t.getId_client()+"'," + t.getId_evemt()+ ");";
-            Statement st = cnx.createStatement();
-            st.executeUpdate(req);
-            System.out.println("Comment ajoutée");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-
-    @Override
-    public void modifier(Commentaire t) {
-        try {
-          
-            String req = "update commentaire set commentaire=? where id= ?";
-            PreparedStatement ps = cnx.prepareStatement(req);
-           
-            ps.setString(1, t.getCommentaire());
-            ps.setInt(2, (int) t.getId_evemt());
-            ps.executeUpdate();
-            System.out.println("Commentaire  modifiée");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-
-    @Override
-    public void supprimer(Commentaire t) {
-       try
-    { 
-      Statement st = cnx.createStatement();
-      String req = "DELETE FROM commentaire WHERE id = "+id_commentaire+"";
-                st.executeUpdate(req);      
-      System.out.println("Comment supprimer avec succès...");
-    } catch (SQLException ex) {
-                System.out.println(ex.getMessage());        
-              }
-    }
-    
-
-    @Override
-    public List<Commentaire> recuperer(int idp) {
-         List<Commentaire> comments = new ArrayList<>();
-        try {
-            String req = "select * from commentaire where posts_id= "+idp;
-            Statement st = cnx.createStatement();
-            ResultSet rs = st.executeQuery(req);
-
-            while (rs.next()) {
-                Commentaire p = new Commentaire();
-                p.setId_commentaire(rs.getInt(1));
-           
-                p.setCommentaire(rs.getString("commentaire"));
-              
-                p.setId_client(idp);
-               comments.add(p);
+            String insertCommentQuery = "INSERT INTO parler(id_user, Id,Commentaire) VALUES (?, ?, ?)";
+            PreparedStatement insertCommentStmt = cnx.prepareStatement(insertCommentQuery);
+            insertCommentStmt.setInt(1, t.getId_user());
+            insertCommentStmt.setInt(2, t.getId().getId());
+            insertCommentStmt.setString(3, t.getCommentaire());
+            int result = insertCommentStmt.executeUpdate();
+            if (result > 0) {
+                System.out.println("Comment added successfully");
+            } else {
+                System.out.println("Error adding comment: No rows affected");
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommentaireService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
 
+    @Override
+    public void modifier(Commentaire co) {
+        try {
+            String req = "UPDATE comment SET Comment = ? WHERE Id_comment = ?";
+            PreparedStatement com = cnx.prepareStatement(req);
+            com.setString(1, co.getCommentaire());
+            com.setInt(2, co.getId_comment());
+            int result = com.executeUpdate();
+            if (result > 0) {
+                System.out.println("Comment modified");
+            } else {
+                System.out.println("No comment found with Id_comment " + co.getId_comment());
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return comments;
+       
+    }
+
+    @Override
+    public void supprimer(int commentId) {
+        try {
+            String req = "DELETE FROM parler WHERE Id_comment = ?";
+            PreparedStatement com = cnx.prepareStatement(req);
+            com.setInt(1, commentId);
+            int result = com.executeUpdate();
+            if (result > 0) {
+                System.out.println("Comment deleted");
+            } else {
+                System.out.println("No comment found with Id_comment " + commentId);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Override
+    public Commentaire fetchCommentByEvemtId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Commentaire> fetchCommentaireByEvemtId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Evenement> fetchEvemts() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Evenement fetchEvemt(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Commentaire fetchCommentByEvemtId(String description) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Commentaire> fetchCommentByPostId(int Id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Commentaire> recuperer(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     }
+
+   
+    
+    
 
    
     

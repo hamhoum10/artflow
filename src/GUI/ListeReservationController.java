@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -42,6 +43,17 @@ public class ListeReservationController implements Initializable {
     ArtisteSerice Ar = new ArtisteSerice();
     @FXML
     private ListView<Evenement> affiche;
+    
+    public static Date datesta;
+    public static String description;
+    public static String finish_hour;
+     public static String start_hour;
+    public static String location;
+    public static String capacity;
+   public  static String image;
+   public  static String name;
+   public  static int id_artiste;
+    public static Double prix;
 
     /**
      * Initializes the controller class.
@@ -133,6 +145,20 @@ public class ListeReservationController implements Initializable {
 
     @FXML
     private void reserver(ActionEvent event) throws IOException {
+        
+        datesta =affiche.getSelectionModel().getSelectedItem().getDate_evemt();
+    description = affiche.getSelectionModel().getSelectedItem().getDescription();
+     finish_hour= affiche.getSelectionModel().getSelectedItem().getFinish_hour();
+     start_hour = affiche.getSelectionModel().getSelectedItem().getStart_hour();
+     location = affiche.getSelectionModel().getSelectedItem().getLocation();
+     capacity =affiche.getSelectionModel().getSelectedItem().getCapacity();
+     image = affiche.getSelectionModel().getSelectedItem().getImage();
+     name = affiche.getSelectionModel().getSelectedItem().getName();
+     id_artiste = affiche.getSelectionModel().getSelectedItem().getArtiste().getId_artiste();
+     prix =affiche.getSelectionModel().getSelectedItem().getPrix();
+        
+          System.out.println(datesta+description);
+         
          FXMLLoader loader= new FXMLLoader(getClass().getResource("./Reservation.fxml"));
             Parent view_2=loader.load();
             
@@ -142,6 +168,17 @@ public class ListeReservationController implements Initializable {
             stage.show();
         
         
+    }
+
+    @FXML
+    private void video(ActionEvent event) throws IOException {
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("../MusqiueMM/FXMLMedia.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show();
     }
     }    
     

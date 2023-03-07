@@ -5,32 +5,36 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="659.0" prefWidth="808.0" stylesheets="@../CSS/yasser.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.View_EvemtController">
+<AnchorPane id="AnchorPane" prefHeight="659.0" prefWidth="808.0" stylesheets="@../CSS/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.View_EvemtController">
    <children>
-      <ListView fx:id="affiche" layoutX="-1.0" layoutY="85.0" prefHeight="424.0" prefWidth="808.0" />
-      <Button layoutX="262.0" layoutY="537.0" mnemonicParsing="false" onAction="#aff" text="Afficher" textFill="#d01212">
+      <ListView fx:id="affiche" layoutX="-1.0" layoutY="60.0" prefHeight="488.0" prefWidth="808.0" />
+      <Button layoutX="222.0" layoutY="575.0" mnemonicParsing="false" onAction="#aff" text="View" textFill="#d01212">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
-         </font></Button>
-      <Button fx:id="BOUTTONMOD" layoutX="369.0" layoutY="537.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" textFill="#e3223e">
+         </font>
+      </Button>
+      <Button layoutX="356.0" layoutY="571.0" mnemonicParsing="false" onAction="#supprimer" prefWidth="64.0" text="Deleted" textFill="#d00d0d">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
-         </font></Button>
-      <Button layoutX="474.0" layoutY="537.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" textFill="#d00d0d">
+         </font>
+      </Button>
+      <Button fx:id="BOUTTONMOD" layoutX="495.0" layoutY="575.0" mnemonicParsing="false" onAction="#modifier" text="Modify" textFill="#e3223e">
          <font>
             <Font name="Bauhaus 93" size="14.0" />
-         </font></Button>
-      <VBox prefHeight="87.0" prefWidth="808.0" style="-fx-background-color: #C69186;">
+         </font>
+      </Button>
+      <Pane layoutX="-4.0" prefHeight="63.0" prefWidth="808.0" style="-fx-background-color: #C69186;">
          <children>
-            <ImageView fitHeight="95.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="52.0" fitWidth="154.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../image/Artflow.png" />
                </image>
             </ImageView>
+            <Button layoutX="674.0" layoutY="14.0" mnemonicParsing="false" onAction="#retour" prefWidth="78.0" text="Exit" />
          </children>
-      </VBox>
+      </Pane>
    </children>
 </AnchorPane>

@@ -35,6 +35,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -53,18 +54,29 @@ public class View_EvemtController implements Initializable {
     @FXML
     private Button BOUTTONMOD;
 
+        List<Evenement> ev =Es.fetchEvenements();
+        // TODO
+          ObservableList<Evenement> e =FXCollections.observableArrayList(ev);
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        aff(null);
         
-        List<Evenement> ev =Es.fetchEvenements();
-        // TODO
-          ObservableList<Evenement> e =FXCollections.observableArrayList(ev);
+        
           
        
-        affiche.setItems(e);   
+    } 
+    
+   
+    
+     @FXML
+    void aff(ActionEvent event) {
+          FXCollections.observableArrayList(Es.fetchEvenements());
+         //String ar = (String)FXCollections.observableArrayList(Ar.fetchArtiste()).toString();
+         
+             affiche.setItems(e);   
         affiche.setCellFactory(param -> new ListCell<Evenement>() {
             private final ImageView imageViewEvenement = new ImageView();
             
@@ -139,15 +151,7 @@ public class View_EvemtController implements Initializable {
             }
         });
        // affiche1.setItems(a);
-    } 
     
-   
-    
-     @FXML
-    void aff(ActionEvent event) {
-         String e =(String)FXCollections.observableArrayList(Es.fetchEvenements()).toString();
-         String ar = (String)FXCollections.observableArrayList(Ar.fetchArtiste()).toString();
-        
     }
     
      @FXML
@@ -176,9 +180,22 @@ public class View_EvemtController implements Initializable {
     private void supprimer(ActionEvent event) {
         int selectedId= affiche.getSelectionModel().getSelectedItem().getId();
         Es.suppEvenement(selectedId);
+        affiche.getItems().remove(affiche.getSelectionModel().getSelectedItem());
         aff(event);
         
     }
+
+    @FXML
+    private void retour(ActionEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("./Evenement.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show();
+    }
+
     }
     
 

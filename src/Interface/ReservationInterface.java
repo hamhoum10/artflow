@@ -18,9 +18,9 @@ public interface ReservationInterface {
     
     
     //list : select
-    public List<Reservation> fetchReservations();
+    public List<Reservation> fetchReservations(int id);
     public void modReservation(Reservation r);
-    public void suppReservation(int id);
+    public void suppReservation(int  id_res);
     public ArrayList sortBy(String nom_column, String Asc_Dsc);
      public Reservation readById(int id);
 }

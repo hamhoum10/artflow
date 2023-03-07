@@ -13,51 +13,51 @@
 
 <AnchorPane id="AnchorPane" prefHeight="639.0" prefWidth="1000.0" stylesheets="@../CSS/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.EvenementController">
    <children>
-      <Button layoutX="378.0" layoutY="585.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: #C69186;" text="Enregistrer" textFill="#c21056">
+      <Button layoutX="378.0" layoutY="585.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: #C69186;" text="Save" textFill="#c21056">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Button>
-      <Text fill="#ae0e0e" layoutX="317.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Théme" textAlignment="JUSTIFY">
+      <Text fill="#ae0e0e" layoutX="347.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Théme" textAlignment="JUSTIFY">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <TextField fx:id="name" layoutX="378.0" layoutY="128.0" prefHeight="31.0" prefWidth="243.0" promptText="Saisie  le theme de l'evenement">
+      <TextField fx:id="name" layoutX="438.0" layoutY="128.0" prefHeight="31.0" prefWidth="283.0" promptText="Saisie  le theme de l'evenement">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></TextField>
-      <Text fill="#a40b0b" layoutX="311.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+      <Text fill="#a40b0b" layoutX="349.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <Text fill="#d00f0f" layoutX="264.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure du debut">
+      <Text fill="#d00f0f" layoutX="310.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start hour">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <TextField fx:id="start_hour" layoutX="372.0" layoutY="213.0" prefHeight="31.0" prefWidth="255.0" promptText="Saisie l'heure du commencement">
+      <TextField fx:id="start_hour" layoutX="460.0" layoutY="214.0" prefHeight="31.0" prefWidth="255.0" promptText="Saisie l'heure du commencement">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></TextField>
-      <Text fill="#c30e0e" layoutX="280.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heure du fin">
+      <Text fill="#c30e0e" layoutX="320.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finish hour">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <TextField fx:id="finish_hour" layoutX="378.0" layoutY="256.0" prefHeight="31.0" prefWidth="243.0" promptText="Saisie l'heure du fin">
+      <TextField fx:id="finish_hour" layoutX="453.0" layoutY="257.0" prefHeight="31.0" prefWidth="243.0" promptText="Saisie l'heure du fin">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></TextField>
-      <Text fill="#e10c0c" layoutX="304.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacité">
+      <Text fill="#e10c0c" layoutX="330.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <TextField fx:id="capacity" layoutX="372.0" layoutY="304.0" prefHeight="31.0" prefWidth="255.0" promptText="Capacité">
+      <TextField fx:id="capacity" layoutX="453.0" layoutY="305.0" prefHeight="31.0" prefWidth="255.0" promptText="Capacité">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></TextField>
-      <Text fill="#b91414" layoutX="289.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+      <Text fill="#b91414" layoutX="322.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <TextField fx:id="description" layoutX="378.0" layoutY="348.0" prefHeight="31.0" prefWidth="243.0" promptText="la description">
+      <TextField fx:id="description" layoutX="438.0" layoutY="349.0" prefHeight="31.0" prefWidth="243.0" promptText="la description">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></TextField>
@@ -65,25 +65,25 @@
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <Text fill="#d01313" layoutX="296.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation">
+      <Text fill="#d01313" layoutX="348.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localtion">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <TextField fx:id="location" layoutX="385.0" layoutY="438.0" prefHeight="31.0" prefWidth="243.0" promptText="localisation">
+      <TextField fx:id="location" layoutX="453.0" layoutY="439.0" prefHeight="31.0" prefWidth="243.0" promptText="localisation">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="15.0" />
          </font></TextField>
-      <Button fx:id="image" layoutX="400.0" layoutY="397.0" mnemonicParsing="false" onAction="#image" prefHeight="31.0" prefWidth="141.0" text="Choisir une image" />
+      <Button layoutX="400.0" layoutY="397.0" mnemonicParsing="false" onAction="#image" prefHeight="31.0" prefWidth="141.0" text="Choisir une image" />
       <TextField fx:id="imagee" layoutX="579.0" layoutY="397.0" />
       <Text fill="#a80b0b" layoutX="367.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Artiste">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Text>
-      <Button layoutX="512.0" layoutY="585.0" mnemonicParsing="false" onAction="#afficher" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #C69186;" text="Afficher" textFill="#a10657">
+      <Button layoutX="512.0" layoutY="585.0" mnemonicParsing="false" onAction="#afficher" prefHeight="31.0" prefWidth="78.0" style="-fx-background-color: #C69186;" text="View" textFill="#a10657">
          <font>
             <Font name="Bauhaus 93" size="15.0" />
          </font></Button>
-      <VBox layoutY="-11.0" prefHeight="658.0" prefWidth="150.0" style="-fx-background-color: #C69186;">
+      <VBox layoutY="-11.0" prefHeight="658.0" prefWidth="186.0" style="-fx-background-color: #C69186;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -91,15 +91,19 @@
                </image>
             </ImageView>
          </children></VBox>
-      <Text fill="#e81818" layoutX="315.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Veuillez réserver un evenement">
+      <Text fill="#e81818" layoutX="315.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="please book an event">
          <font>
             <Font name="Bauhaus 93" size="29.0" />
          </font>
       </Text>
-      <DatePicker fx:id="date_evemt" layoutX="391.0" layoutY="170.0" promptText="Saisie la date de l'evenement" />
+      <DatePicker fx:id="date_evemt" layoutX="440.0" layoutY="170.0" promptText="Saisie la date de l'evenement" />
       <ImageView fx:id="imageview" fitHeight="150.0" fitWidth="200.0" layoutX="652.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
       <ComboBox fx:id="artiste" layoutX="459.0" layoutY="477.0" onAction="#artiste" prefWidth="150.0" />
-      <Text layoutX="350.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
-      <TextField fx:id="prix" layoutX="453.0" layoutY="531.0" />
+      <Text fill="#e41414" layoutX="409.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Text>
+      <TextField fx:id="prix" layoutX="491.0" layoutY="528.0" />
+      <VBox layoutX="186.0" prefHeight="86.0" prefWidth="780.0" stylesheets="@../CSS/yasser.css" />
    </children>
 </AnchorPane>
