@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="600.0" style="-fx-background-color: #F8F9F9;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidev.AfficheClientFXMLController">
+    <stylesheets>
+        <URL value="@afficheclientfxml.css" />
+    </stylesheets>
+   <children>
+      <ListView fx:id="listClient" layoutX="22.0" layoutY="162.0" prefHeight="284.0" prefWidth="374.0" />
+      <Button fx:id="afficheClient" layoutX="449.0" layoutY="204.0" mnemonicParsing="false" onAction="#AfficheClient" text="Display" textFill="#c95e00">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="453.0" layoutY="375.0" mnemonicParsing="false" onAction="#deleteClient" text="delete" textFill="#c95e00">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="450.0" layoutY="291.0" mnemonicParsing="false" onAction="#updateClient" text="update" textFill="#c95e00">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Pane prefHeight="142.0" prefWidth="600.0" style="-fx-background-color: #F9E79F;">
+         <children>
+            <ImageView fitHeight="190.0" fitWidth="349.0" layoutX="205.0" layoutY="-31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../css/logoi.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

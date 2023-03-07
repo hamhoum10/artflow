@@ -45,8 +45,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import models.Article;
+import models.Artiste;
 import models.Categorie;
 import models.Client;
+import pidevAuthArtiste.LoginArtisteController;
 import services.ArticleService;
 import services.ArtisteService;
 import services.CategorieService;
@@ -84,7 +86,6 @@ public class FXMLController implements Initializable {
     ObservableList list1 = FXCollections.observableArrayList();
     ObservableList list2 = FXCollections.observableArrayList();
 
-    @FXML
     private ComboBox<String> artiste;
     @FXML
     private TextField quantity;
@@ -101,13 +102,11 @@ public class FXMLController implements Initializable {
         image.setDisable(true);
         
         list1.removeAll(list1);
-        list2.removeAll(list2);
-        System.out.println(ci.fetchCategorie());
+       System.out.println(ci.fetchCategorie());
         ci.fetchCategorie().stream().forEach(e->list1.add(e.getName_categorie()));
         categorie.getItems().addAll(list1);
         System.out.println(ui.fetchArtiste());
-        ui.fetchArtiste().stream().forEach(e->list2.add(e.getNom_artiste()));
-        artiste.getItems().addAll(list2);
+      
         
 //        ui.fetchArtiste().stream().forEach(e->System.out.println(e.toString()));
            
@@ -116,7 +115,7 @@ public class FXMLController implements Initializable {
     @FXML
     private void ajoute_article(ActionEvent event) throws IOException {
 
-       if (name_article.getText().length() == 0||description.getText().length() == 0||type.getText().length() == 0||price.getText().length() == 0||image.getText().length() == 0||quantity.getText().length() == 0||categorie.getValue().length() == 0||artiste.getValue().length() == 0 ) {
+       if (name_article.getText().length() == 0||description.getText().length() == 0||type.getText().length() == 0||price.getText().length() == 0||image.getText().length() == 0||quantity.getText().length() == 0||categorie.getValue().length() == 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Erreur de saisie !");
@@ -157,6 +156,11 @@ public class FXMLController implements Initializable {
                 //System.out.println(p);
         p.setQuantity(Integer.parseInt(quantity.getText()));
         p.setImage(image.getText());
+        Artiste a = new Artiste();
+        a.setUsername(LoginArtisteController.usernameArtiste);
+        
+        
+        p.setArtiste(a);
         
         ps.addArticle(p);}
         
@@ -242,7 +246,6 @@ public class FXMLController implements Initializable {
 
     
 
-    @FXML
     private void setartiste(ActionEvent event) {
         p.setArtiste(ui.fetchArtisteByName(artiste.getValue()));
     }

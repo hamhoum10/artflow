@@ -49,10 +49,10 @@ public class FXMLstatController implements Initializable {
         stat();
     }    
     public void stat(){
-        Connection cnx=MyConnection.getInstance().getCnx();
+        Connection cnx =MyConnection.getInstance().getCnx();
         String query="select count(*) As value,id_artiste as art from article group by id_artiste";
         try {
-            PreparedStatement ps=cnx.prepareStatement(query);
+            PreparedStatement ps= cnx.prepareStatement(query);
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
                 data.add(new PieChart.Data(sa.getArtistNameById(rs.getInt("art")),rs.getInt("value")));

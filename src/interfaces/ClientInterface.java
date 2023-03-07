@@ -1,18 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package interfaces;
 
-import java.util.List;
 import models.Client;
+import java.util.List;
 
 /**
  *
- * @author MediaStudio
+ * @author kanza
  */
 public interface ClientInterface {
-    public Client fetchClientByName(String name);
+    public Client saveClient(Client p);
     public List<Client> fetchClient();
+    public Client getClient(int id);
+    public void updateClient(Client p);
+    public void deleteClient(String username);
+    public Client getClientbyusername(String username);
+    
 }

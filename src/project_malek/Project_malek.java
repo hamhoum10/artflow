@@ -39,7 +39,7 @@ public class Project_malek {
         Article a= new Article();
         CategorieInterface pi = new CategorieService();
         Categorie c = new Categorie(); 
-                ArtisteInterface al = new ArtisteService();
+                ArtisteService al = new ArtisteService();
            
         Artiste ar = new Artiste();
         StockInterface ins = new StockService();
@@ -48,8 +48,8 @@ public class Project_malek {
         Rate b=new Rate();
         
         
- a.setId_article(35);
-        ar.setId_artiste(9);
+ a.setId_article(128);
+        ar.setId(9);
         a.setNom_article("rym");
         a.setDescription("project");
         a.setImage("C:/Users/MediaStudio/Desktop/icon.png");
@@ -66,11 +66,15 @@ public class Project_malek {
 //      ai.addArticle(a);
 ////     a.setCategorie(c);
 ////        a.setId_article(2);
-//ai.deleteArticle(37);
+//ai.deleteArticle(129);
 //       
 // ai.ModifyArticle(a);
 //   
-//System.out.println(ai.fetchArticleByPrice(19.0, 152.00));
+//System.out.println(al.getArtistNameById(7));
+
+//al.getArtistebyusername("ghj");
+        System.out.println(ai.fetchArticle());
+
 //System.err.println(ai.fetchArticleById(21));
 //System.out.println(ai.fetchArticleTriByPrice());
 //System.err.println(ai.fetchArticleTriByName());

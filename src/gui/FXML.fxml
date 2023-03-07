@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" fx:id="name_categorie" prefHeight="594.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLController">
+<AnchorPane id="AnchorPane" fx:id="name_categorie" prefHeight="594.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLController">
    <children>
       <TextField fx:id="name_article" layoutX="185.0" layoutY="191.0" promptText="name_article" />
       <Label layoutX="104.0" layoutY="195.0" text="name_article" />
@@ -30,10 +30,8 @@
       <Label layoutX="134.0" layoutY="438.0" text="image" />
       <TextField fx:id="image" layoutX="341.0" layoutY="434.0" prefHeight="26.0" prefWidth="322.0" promptText="image.png" />
       <ComboBox fx:id="categorie" layoutX="502.0" layoutY="208.0" onAction="#setCat" prefWidth="150.0" promptText="type categorie" />
-      <ComboBox fx:id="artiste" layoutX="502.0" layoutY="178.0" onAction="#setartiste" prefWidth="150.0" promptText="artiste" />
       <Label layoutX="136.0" layoutY="381.0" text="quantity" />
       <TextField fx:id="quantity" layoutX="193.0" layoutY="377.0" promptText="quantity" />
-      <Label layoutX="385.0" layoutY="186.0" text="name_artiste" />
       <Label layoutX="368.0" layoutY="221.0" text="name_categorie" />
       <ImageView fx:id="image_view" fitHeight="150.0" fitWidth="200.0" layoutX="402.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true" />
       <Pane layoutX="-7.0" prefHeight="114.0" prefWidth="806.0" style="-fx-background-color: #C69187;">

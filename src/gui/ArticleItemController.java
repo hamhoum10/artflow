@@ -21,11 +21,17 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Article;
 import models.Rate;
+import models.User;
+import pidevAuth.LoginFXMLController;
+import pidevAuthAdmin.LoginAdminController;
+import pidevAuthArtiste.LoginArtisteController;
 import services.ArticleService;
 import services.RateService;
+import services.UserService;
 
 
 /**
@@ -49,6 +55,12 @@ public class ArticleItemController implements Initializable {
     ArticleInterface ai = new ArticleService();
     @FXML
     private Label avg;
+    @FXML
+    private VBox vbox;
+    @FXML
+    private ImageView delete_id;
+    @FXML
+    private ImageView modify_id;
       
     /**
      * Initializes the controller class.
@@ -80,6 +92,20 @@ public class ArticleItemController implements Initializable {
         if(String.valueOf(ri.afficherRateavg(a)).length()>2){
         avg.setText(String.valueOf(ri.afficherRateavg(a)).substring(0,3));
         
+        if(LoginFXMLController.usernamewelcome!=null){
+            //if(!LoginArtisteController.usernameArtiste.equals(a.getArtiste().getUsername())){
+                            vbox.getChildren().remove(delete_id);
+                            vbox.getChildren().remove(modify_id);
+            }
+        if(LoginArtisteController.usernameArtiste!=null){
+            if(!LoginArtisteController.usernameArtiste.equals(a.getArtiste().getUsername())){
+                            vbox.getChildren().remove(delete_id);
+                            vbox.getChildren().remove(modify_id);
+            }
+        }
+        if(LoginAdminController.usernameAdmin!=null){
+                            vbox.getChildren().remove(modify_id);
+        }
         }
         
         

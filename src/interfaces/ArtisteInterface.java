@@ -8,6 +8,7 @@ package interfaces;
 import java.util.List;
 import models.Artiste;
 import models.Categorie;
+import models.User;
 
 /**
  *
@@ -15,5 +16,12 @@ import models.Categorie;
  */
 public interface ArtisteInterface {
     public Artiste fetchArtisteByName(String name);
+    
+     public Artiste saveArtiste(Artiste p);
     public List<Artiste> fetchArtiste();
+    public Artiste getArtiste(int id);
+    public void updateArtiste(Artiste p);
+    public void deleteArtiste(String username);
+    public User Userinsert (User a);
+    public Artiste getArtistebyusername(String username);
 }

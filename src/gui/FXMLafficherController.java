@@ -36,11 +36,25 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.Alert;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.FileOutputStream;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import models.User;
+import pidevAuth.LoginFXMLController;
+import pidevAuthArtiste.LoginArtisteController;
+import services.ArtisteService;
+import services.UserService;
 
 
 /**
@@ -61,7 +75,6 @@ Article ai=new Article();
 //    private TextField caracter;
     
     private List<Article> articles;
-    @FXML
     private TextField car;
     private TextField prix;
     @FXML
@@ -72,13 +85,21 @@ Article ai=new Article();
     private TextField id_rech;
      private ObservableList<Article> allArticles;
     private FilteredList<Article> filteredArticles;
+    @FXML
+    private VBox vbox;
+    @FXML
+    private ImageView add_article_id;
+    @FXML
+    private ImageView statistic_id;
+     
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        String uuu=LoginArtisteController.usernameArtiste;
+        System.out.println(uuu);
         try {
             recherche_avance();
         } catch (IOException ex) {
@@ -92,13 +113,21 @@ Article ai=new Article();
     public void afficher_Articles(List<Article> articles) throws IOException {
         articleGrid.getChildren().clear();
         //articles = h.fetchArticle();
+        UserService us =new UserService();
+        if(LoginArtisteController.usernameArtiste!=null){
+            vbox.getChildren().remove(statistic_id);
+        }
+        if(LoginFXMLController.usernamewelcome!=null){
+            vbox.getChildren().remove(statistic_id);
+             vbox.getChildren().remove(add_article_id);
+        }
         int columns=0;
         int rows=0;
         try {
         for(int i=0;i<articles.size();i++){
             FXMLLoader fxmlLoader = new FXMLLoader();
             AnchorPane item;
-            if(articles.get(i).getArtiste().getId_artiste()==8){
+            if(articles.get(i).getArtiste().getId()==10 ||true){
                     fxmlLoader.setLocation(getClass().getResource("ArticleItem.fxml"));
             
              item = fxmlLoader.load();
@@ -117,7 +146,7 @@ Article ai=new Article();
             System.out.println(articles.get(i));
             itemController.setData(articles.get(i));}
             
-            
+                
             if(columns == 4){
                 columns = 0 ;
                 ++rows;
@@ -150,7 +179,6 @@ Article ai=new Article();
     }
     }
 
-    @FXML
     private void ajouterArticle(ActionEvent event) {
         try {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXML.fxml"));
@@ -251,7 +279,6 @@ Article ai=new Article();
             }
     }
 
-    @FXML
     private void recherchcara(MouseEvent event) {
                 articleGrid.getChildren().clear();
         articles = h.fetchArticleByCaracter(car.getText());
@@ -281,7 +308,6 @@ Article ai=new Article();
             }
     }
 
-    @FXML
     private void stat_art(ActionEvent event) throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLstat.fxml"));
             Parent view_2=loader.load();
@@ -366,5 +392,37 @@ public void refresh() {
            }
         });
     }
+
+    @FXML
+    private void ajouterArticle(MouseEvent event) {
+         try {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXML.fxml"));
+        Parent view_2=loader.load();
+        
+        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(view_2);
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        Logger.getLogger(FXMLafficherController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+    }
+
+    @FXML
+    private void stat_art(MouseEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/FXMLstat.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
+    }
+
+   
+    
+
+    
     
 }

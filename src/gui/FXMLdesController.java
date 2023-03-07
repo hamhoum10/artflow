@@ -17,15 +17,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import models.Article;
 import models.Artiste;
 import models.Rate;
 import org.controlsfx.control.Rating;
+import pidevAuthAdmin.LoginAdminController;
+import pidevAuthArtiste.LoginArtisteController;
 import services.RateService;
 
 /**
@@ -48,6 +52,14 @@ public class FXMLdesController implements Initializable {
     @FXML
     private Rating stars;
     Rate rate= new Rate();
+    @FXML
+    private HBox hbox;
+    @FXML
+    private Button rate_id;
+    @FXML
+    private ImageView market_id;
+    @FXML
+    private Button ajout_id;
     
 
     /**
@@ -66,15 +78,20 @@ public class FXMLdesController implements Initializable {
         image_view.setImage(img);
         desc.setText(article.getDescription());
         type.setText(article.getType());
-        Artiste.setText(article.getArtiste().getNom_artiste());
+        Artiste.setText(article.getArtiste().getFirstname());
         quantity.setText(String.valueOf(article.getQuantity()));
         Artiste rater=new Artiste();
-        rater.setId_artiste(7);
+        rater.setId(7);
         rate.setRater(rater);
         rate.setArticle(article);
         rate.setRating(ra.afficherRating(rate));
         stars.setRating(ra.afficherRating(rate));
-
+         if(LoginArtisteController.usernameArtiste!=null || LoginAdminController.usernameAdmin!=null){
+             hbox.getChildren().remove(rate_id);
+             hbox.getChildren().remove(market_id);
+             hbox.getChildren().remove(ajout_id);
+             hbox.getChildren().remove(stars);
+         }
         
 }
     

@@ -67,10 +67,16 @@ public class ProjectFx extends Application {
 //            Logger.getLogger(ProjectFx.class.getName()).log(Level.SEVERE, null, ex);
 //        }
        
-     try {
+     
+       
+
+
+
+
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("./gui/FXMLafficher.fxml"));
 //            Parent root = FXMLLoader.load(getClass().getResource("./gui/FXMLstat.fxml"));        
-            Scene scene = new Scene(root,1000,700);
+            Scene scene = new Scene(root,1700,1000);
             primaryStage.setTitle("workshopJavaFx");
             primaryStage.setScene(scene);
             primaryStage.show();

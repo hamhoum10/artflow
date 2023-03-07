@@ -70,7 +70,6 @@ public class FXML1Controller implements Initializable {
     private TextField quantity;
     @FXML
     private TextField image;
-    @FXML
     private ComboBox<String> artiste;
 
     ObservableList list2 = FXCollections.observableArrayList();
@@ -93,13 +92,11 @@ public class FXML1Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         image.setDisable(true);
         list1.removeAll(list1);
-        list2.removeAll(list2);
+        
         System.out.println(ci.fetchCategorie());
         ci.fetchCategorie().stream().forEach(e -> list1.add(e.getName_categorie()));
         categorie.getItems().addAll(list1);
-        System.out.println(ui.fetchArtiste());
-        ui.fetchArtiste().stream().forEach(e -> list2.add(e.getNom_artiste()));
-        artiste.getItems().addAll(list2);
+        
     }
 
     public void getArticlee(Article a) {
@@ -108,7 +105,7 @@ public class FXML1Controller implements Initializable {
         price.setText(String.valueOf(a.getPrice()));
         quantity.setText(String.valueOf(a.getQuantity()));
         image.setText(a.getImage());
-        artiste.setValue(a.getArtiste().getNom_artiste());
+        artiste.setValue(a.getArtiste().getFirstname());
         categorie.setValue(a.getCategorie().getName_categorie());
         type.setText(a.getType());
         File file=new File("C:\\xampp\\htdocs\\img\\"+a.getImage());
@@ -161,10 +158,8 @@ public class FXML1Controller implements Initializable {
         a.setType(type.getText());
 //        a.setImage(image.getText());
         a.setPrice(Double.parseDouble(price.getText()));
-        String art = artiste.getValue();
         String cat = categorie.getValue();
         a.setQuantity(Integer.parseInt(quantity.getText()));
-        a.setArtiste(ui.fetchArtisteByName(artiste.getValue()));
         a.setCategorie(ci.fetchCategorieByName(categorie.getValue()));
         a.setImage(image.getText());
 //        String htdocsPath = "C:/xampp/htdocs/img/";
@@ -192,11 +187,7 @@ public class FXML1Controller implements Initializable {
 //        }
     }
 
-    @FXML
-    private void setartiste(ActionEvent event) {
-        p.setArtiste(ui.fetchArtisteByName(artiste.getValue()));
-
-    }
+   
 
     @FXML
     private void setcat(ActionEvent event) {
@@ -222,7 +213,6 @@ public class FXML1Controller implements Initializable {
         price.setText(String.valueOf(a.getPrice()));
         quantity.setText(String.valueOf(a.getQuantity()));
         image.setText(a.getImage());
-        artiste.setValue(a.getArtiste().getNom_artiste());
         categorie.setValue(a.getCategorie().getName_categorie());
         type.setText(a.getType());
         this.a = a;

@@ -1,4 +1,9 @@
 
+
+
+
+
+
 package services;
 
 import interfaces.ArticleInterface;
@@ -22,6 +27,7 @@ import models.Artiste;
 import models.Categorie;
 import models.Client;
 import models.stock;
+import pidevAuthArtiste.LoginArtisteController;
 import util.MyConnection;
 import util.QrCodeGenerator;
 
@@ -41,8 +47,10 @@ public class ArticleService implements ArticleInterface {
                        String req = "INSERT INTO `article`(`id_artiste`,`Nom_article`,`price`, `type`, `image`, `description`, `quantity`,`id_categorie`) VALUES (?,?,?,?,?,?,?,?)";
 
             PreparedStatement ps = cnx.prepareStatement(req);
+            ArtisteService as =new ArtisteService();
             
-            ps.setInt(1,a.getArtiste().getId_artiste());
+//            ps.setInt(1,a.getArtiste().getId());
+            ps.setString(1,LoginArtisteController.usernameArtiste);
             ps.setString(2, a.getNom_article());
             ps.setDouble(3, a.getPrice());
             ps.setString(4, a.getType());
@@ -50,6 +58,8 @@ public class ArticleService implements ArticleInterface {
             ps.setString(6, a.getDescription());
             ps.setInt(7, a.getQuantity());
             ps.setInt(8, a.getCategorie().getId_categorie());
+                        System.out.println("id t3adet");
+
             ps.executeUpdate();
             System.out.println("Article Added Successfully!");
             
@@ -64,8 +74,9 @@ public class ArticleService implements ArticleInterface {
         try {    
             String req = "update `article`  set `id_artiste`=?,`Nom_article`=?,`Price`=?, `Type`=?,`Image`=?, `Description`=?,`Quantity`=? , `id_categorie`=? where `id_article`= ? ";
             PreparedStatement ps = cnx.prepareStatement(req);
-         
-            ps.setInt(1, t.getArtiste().getId_artiste());
+                     ArtisteService as =new ArtisteService();
+
+            ps.setString(1,LoginArtisteController.usernameArtiste);
             ps.setString(2, t.getNom_article());
 
             ps.setDouble(3, t.getPrice());
@@ -104,7 +115,7 @@ public class ArticleService implements ArticleInterface {
        List<Article> Articles = new ArrayList<>();
         try {
             
-          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.Id_artiste";
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username";
 //String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
 //          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
 
@@ -119,7 +130,7 @@ public class ArticleService implements ArticleInterface {
                 
                 p.setId_article(rs.getInt("Id_article"));
                 
-                e.setId_artiste(rs.getInt("Id_artiste"));
+                e.setUsername(rs.getString("Username"));
                 p.setNom_article(rs.getString("Nom_article"));
                 p.setPrice(rs.getDouble("Price"));
                 p.setType(rs.getString("Type"));
@@ -130,8 +141,66 @@ public class ArticleService implements ArticleInterface {
                
                 c.setName_categorie(rs.getString("Name_categorie"));
                 c.setDescription(rs.getString("Description"));
-                e.setNom_artiste(rs.getString("Nom_artiste"));
-                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
+                e.setLastname(rs.getString("Lastname"));
+                e.setFirstname(rs.getNString("Firstname"));
+                p.setCategorie(c);
+               p.setArtiste(e);
+               
+                if(GenerateQrCode(p)){
+                    System.out.println("ajout qr code avec success\n");
+                }
+                else{
+                    System.out.println("erreur d'ajout\n");
+                }
+                Articles.add(p);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Articles;
+    }
+      
+    
+    
+    
+    
+    
+    
+    @Override
+    public List<Article> fetchArticlebyusername(String usernameartiste) {
+       List<Article> Articles = new ArrayList<>();
+        try {
+            
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username";
+//String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
+//          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
+
+          Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {   
+                System.out.println(rs);
+                Article p = new Article();
+                Categorie c=new Categorie();
+                Artiste e = new Artiste();
+                
+                
+                p.setId_article(rs.getInt("Id_article"));
+                
+                e.setUsername(rs.getString("Username"));
+                p.setNom_article(rs.getString("Nom_article"));
+                p.setPrice(rs.getDouble("Price"));
+                p.setType(rs.getString("Type"));
+                p.setDescription(rs.getString("Description"));
+                p.setQuantity(rs.getInt("Quantity"));
+                p.setImage(rs.getString("image"));
+                c.setId_categorie(rs.getInt("Id_categorie"));
+               
+                c.setName_categorie(rs.getString("Name_categorie"));
+                c.setDescription(rs.getString("Description"));
+                e.setLastname(rs.getString("Lastname"));
+                e.setFirstname(rs.getNString("Firstname"));
                 p.setCategorie(c);
                p.setArtiste(e);
                
@@ -151,13 +220,14 @@ public class ArticleService implements ArticleInterface {
         return Articles;
     }
 
+    
     @Override
     public List<Article> fetchArticleByPrice(Double min, Double max) {
         List<Article> Articles = new ArrayList<>();
 
         try {
             
-            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.Id_artiste and price between "+min +" and "+max ;
+            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username and price between "+min +" and "+max ;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
@@ -169,7 +239,7 @@ public class ArticleService implements ArticleInterface {
                 
                 p.setId_article(rs.getInt("Id_article"));
                 
-                e.setId_artiste(rs.getInt("Id_artiste"));
+                e.setUsername(rs.getString("Username"));
                 p.setNom_article(rs.getString("Nom_article"));
                 p.setPrice(rs.getDouble("Price"));
                 p.setType(rs.getString("Type"));
@@ -180,8 +250,8 @@ public class ArticleService implements ArticleInterface {
                
                 c.setName_categorie(rs.getString("Name_categorie"));
                 c.setDescription(rs.getString("Description"));
-                e.setNom_artiste(rs.getString("Nom_artiste"));
-                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
+                e.setLastname(rs.getString("Lastname"));
+                e.setFirstname(rs.getNString("Firstname"));
                 p.setCategorie(c);
                p.setArtiste(e);
                
@@ -202,7 +272,7 @@ public class ArticleService implements ArticleInterface {
      List<Article> Articles = new ArrayList<>();
         try {
             
-            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.Id_artiste and Id_article = "+id;
+            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username and Id_article = "+id;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
@@ -212,7 +282,7 @@ public class ArticleService implements ArticleInterface {
                                 
 
                 a.setId_article(rs.getInt(1));
-                h.setId_artiste(rs.getInt(2));
+                h.setUsername(rs.getString(2));
                 a.setNom_article(rs.getString(3));
                 a.setPrice(rs.getDouble(4));
                 a.setType(rs.getString(5));
@@ -222,8 +292,8 @@ public class ArticleService implements ArticleInterface {
                 c.setDescription(rs.getString(11));
                 a.setCategorie(c);
                 a.setArtiste(h);
-                 h.setNom_artiste(rs.getString("Nom_artiste"));
-                h.setPrenom_artiste(rs.getString("Prenom_artiste"));
+                 h.setLastname(rs.getString("Lastname"));
+                h.setFirstname(rs.getString("Firstname"));
           
                 
                Articles.add(a);
@@ -241,7 +311,7 @@ public class ArticleService implements ArticleInterface {
      List<Article> Articles = new ArrayList<>();
         try {
             
-            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.Id_artiste and (`a`.`Nom_article`like '%"+c+"%' or `a`.`type` like '%"+c+"%'or `a`.`description` like '%"+c+"%')";
+            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username and (`a`.`Nom_article`like '%"+c+"%' or `a`.`type` like '%"+c+"%'or `a`.`description` like '%"+c+"%')";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
@@ -253,7 +323,7 @@ public class ArticleService implements ArticleInterface {
                 
                 p.setId_article(rs.getInt("Id_article"));
                 
-                e.setId_artiste(rs.getInt("Id_artiste"));
+                e.setUsername(rs.getString("Username"));
                 p.setNom_article(rs.getString("Nom_article"));
                 p.setPrice(rs.getDouble("Price"));
                 p.setType(rs.getString("Type"));
@@ -264,8 +334,8 @@ public class ArticleService implements ArticleInterface {
                
                 cat.setName_categorie(rs.getString("Name_categorie"));
                 cat.setDescription(rs.getString("Description"));
-                e.setNom_artiste(rs.getString("Nom_artiste"));
-                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
+                e.setLastname(rs.getString("Lastname"));
+                e.setFirstname(rs.getNString("Prenom_artiste"));
                 p.setCategorie(cat);
                p.setArtiste(e);
                
@@ -293,7 +363,7 @@ List<Article> Articles = new ArrayList<>();
                 Categorie c=new Categorie();
                 Artiste j = new Artiste();
                 a.setId_article(rs.getInt("Id_article"));
-                j.setId_artiste(rs.getInt("Id_artiste"));
+                j.setUsername(rs.getString("Username"));
                 a.setNom_article(rs.getString("Nom_article"));
                 a.setPrice(rs.getDouble("Price"));
                 a.setType(rs.getString("Type"));
@@ -318,7 +388,7 @@ List<Article> Articles = new ArrayList<>();
        List<Article> Articles = new ArrayList<>();
         try {
             
-          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.Id_artiste ORDER BY Price ";
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username ORDER BY Price ";
 //String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
 //          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
 
@@ -331,7 +401,7 @@ List<Article> Articles = new ArrayList<>();
                 Artiste e = new Artiste();                                
 
                 p.setId_article(rs.getInt("Id_article"));
-                e.setId_artiste(rs.getInt("Id_artiste"));
+                e.setUsername(rs.getString("Username"));;
                 p.setNom_article(rs.getString("Nom_article"));
                 p.setPrice(rs.getDouble("Price"));
                 p.setType(rs.getString("Type"));
@@ -340,9 +410,9 @@ List<Article> Articles = new ArrayList<>();
                 c.setId_categorie(rs.getInt("Id_categorie"));
                 c.setName_categorie(rs.getString("Name_categorie"));
                 c.setDescription(rs.getString("Description"));
-                e.setId_artiste(rs.getInt("Id_artiste"));
-                e.setNom_artiste(rs.getString("Nom_artiste"));
-                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
+                e.setId(rs.getInt("Id_artiste"));
+                e.setLastname(rs.getString("Lastname"));
+                e.setFirstname(rs.getNString("Firstname"));
                 p.setCategorie(c);
                 p.setArtiste(e);
                 Articles.add(p);
@@ -360,7 +430,7 @@ List<Article> Articles = new ArrayList<>();
  List<Article> Articles = new ArrayList<>();
         try {
             
-          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.Id_artiste ORDER BY Nom_article ";
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username ORDER BY Nom_article ";
 //String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
 //          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
 
@@ -375,7 +445,7 @@ List<Article> Articles = new ArrayList<>();
                 
                 p.setId_article(rs.getInt("Id_article"));
                 
-                e.setId_artiste(rs.getInt("Id_artiste"));
+                e.setUsername(rs.getString("Username"));
                 p.setNom_article(rs.getString("Nom_article"));
                 p.setPrice(rs.getDouble("Price"));
                 p.setType(rs.getString("Type"));
@@ -386,8 +456,8 @@ List<Article> Articles = new ArrayList<>();
                
                 c.setName_categorie(rs.getString("Name_categorie"));
                 c.setDescription(rs.getString("Description"));
-                e.setNom_artiste(rs.getString("Nom_artiste"));
-                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
+                e.setLastname(rs.getString("Lastname"));
+                e.setFirstname(rs.getNString("Firstname"));
                 p.setCategorie(c);
                p.setArtiste(e);
                
@@ -407,7 +477,7 @@ List<Article> Articles = new ArrayList<>();
      List<Article> Articles = new ArrayList<>();
         try {
             
-          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.Id_artiste ORDER BY a.Id_categorie ";
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username ORDER BY a.Id_categorie ";
 //String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
 //          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
 
@@ -419,7 +489,7 @@ List<Article> Articles = new ArrayList<>();
                 Categorie c=new Categorie();
                 Artiste e = new Artiste();
                 p.setId_article(rs.getInt("Id_article"));
-                e.setId_artiste(rs.getInt("Id_artiste"));
+                e.setUsername(rs.getString("Username"));
                 p.setNom_article(rs.getString("Nom_article"));
                 p.setPrice(rs.getDouble("Price"));
                 p.setType(rs.getString("Type"));
@@ -428,9 +498,9 @@ List<Article> Articles = new ArrayList<>();
                 c.setId_categorie(rs.getInt("Id_categorie"));
                 c.setName_categorie(rs.getString("Name_categorie"));
                 c.setDescription(rs.getString("Description"));
-                e.setId_artiste(rs.getInt("Id_artiste"));
-                e.setNom_artiste(rs.getString("Nom_artiste"));
-                e.setPrenom_artiste(rs.getNString("Prenom_artiste"));
+                e.setId(rs.getInt("Id"));
+                e.setLastname(rs.getString("Lastname"));
+                e.setFirstname(rs.getNString("Firstname"));
                 p.setCategorie(c);
                 p.setArtiste(e);
                 

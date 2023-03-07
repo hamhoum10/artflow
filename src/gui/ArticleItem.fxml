@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
@@ -23,20 +24,27 @@
             <Image url="@../img/add-to-cart.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="305.0" layoutY="14.0" onMouseClicked="#deleteArticle" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/delete.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="305.0" layoutY="68.0" onMouseClicked="#modifyArticle" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/edit.png" />
-         </image>
-      </ImageView>
       <ImageView fx:id="qrcodeimg" fitHeight="104.0" fitWidth="124.0" layoutX="178.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="275.0" layoutY="280.0" prefHeight="18.0" prefWidth="28.0" text="DT" textOverrun="CLIP" />
-      <Circle fill="#c69187" layoutX="44.0" layoutY="33.0" opacity="0.42" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label fx:id="avg" layoutX="40.0" layoutY="23.0" text="1" />
+      <Circle fill="#e4ca9d" layoutX="44.0" layoutY="33.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="avg" layoutX="40.0" layoutY="23.0" text="1">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <VBox fx:id="vbox" layoutX="305.0" layoutY="24.0" spacing="20.0">
+         <children>
+            <ImageView fx:id="delete_id" fitHeight="28.0" fitWidth="29.0" onMouseClicked="#deleteArticle" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/delete.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="modify_id" fitHeight="28.0" fitWidth="28.0" onMouseClicked="#modifyArticle" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/edit.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
          
       
    </children>

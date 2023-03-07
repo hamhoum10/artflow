@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="955.0" maxWidth="1324.0" minHeight="955.0" minWidth="1324.0" prefHeight="955.0" prefWidth="1324.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidevAuth.WelcomePageController">
+   <children>
+      <AnchorPane prefHeight="955.0" prefWidth="286.0" style="-fx-background-color: #DFC583;" AnchorPane.bottomAnchor="-0.20000000000004547">
+         <children>
+            <ImageView fitHeight="239.0" fitWidth="260.0" layoutX="24.0" layoutY="-50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../css/logoi.png" />
+               </image>
+            </ImageView>
+            <VBox layoutY="286.0" prefHeight="440.0" prefWidth="286.0" spacing="30.0" AnchorPane.bottomAnchor="214.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="286.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#goHome" prefHeight="71.0" prefWidth="286.0" style="-fx-background-color: #DFC583; -fx-cursor: hand;" styleClass="sidebar" stylesheets="@fxml.css" text="Home" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="19.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../css/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <HBox prefHeight="60.0" prefWidth="286.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="286.0" style="-fx-background-color: #DFC583;" styleClass="sidebar" stylesheets="@fxml.css" text="Events" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold Italic" size="19.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../css/event.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Button mnemonicParsing="false" prefHeight="59.0" prefWidth="286.0" style="-fx-background-color: #DFC583;" styleClass="sidebar" stylesheets="@fxml.css" text="Auctions" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="19.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../css/bid.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="59.0" prefWidth="286.0" style="-fx-background-color: #DFC583;" styleClass="sidebar" stylesheets="@fxml.css" text="Chart" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="19.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="42.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../css/shopping-bag.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets right="15.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#Settings" prefHeight="59.0" prefWidth="286.0" style="-fx-background-color: #DFC583;" styleClass="sidebar" stylesheets="@fxml.css" text="Setting" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="19.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../css/setting.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" top="15.0" />
+               </padding>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="284.0" prefHeight="955.0" prefWidth="1039.0" style="-fx-background-color: #FFFBF4;" stylesheets="@fxml.css">
+         <styleClass>
+            <String fx:value="mainFxmlClass" />
+            <String fx:value="text-input" />
+         </styleClass>
+         <children>
+            <AnchorPane prefHeight="955.0" prefWidth="1054.0">
+               <children>
+                  <Label fx:id="userwelcome" alignment="CENTER" layoutX="31.0" layoutY="47.0" prefHeight="58.0" prefWidth="199.0" text="Label" textFill="#dfc583">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="93.0" layoutY="118.0" text="Profile Settings" textFill="#dfc583">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="131.0" layoutY="262.0" prefHeight="314.0" prefWidth="176.0" spacing="40.0">
+                     <children>
+                        <Label text="First name" textFill="#7b6a3f">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Last name" textFill="#7b6a3f">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Adress" textFill="#7b6a3f">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Phone number" textFill="#7b6a3f">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Email" textFill="#7b6a3f">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="User name " textFill="#7b6a3f">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="Password" textFill="#7b6a3f">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <TextField fx:id="firstname" editable="false" layoutX="332.0" layoutY="255.0" prefHeight="26.0" prefWidth="374.0" styleClass="text-inputlogin" stylesheets="@fxml.css" />
+                  <TextField fx:id="lastname" editable="false" layoutX="332.0" layoutY="319.0" prefHeight="26.0" prefWidth="374.0" styleClass="text-inputlogin" stylesheets="@fxml.css" />
+                  <TextField fx:id="adress" editable="false" layoutX="332.0" layoutY="382.0" prefHeight="26.0" prefWidth="374.0" styleClass="text-inputlogin" stylesheets="@fxml.css" />
+                  <TextField fx:id="phonenumber" editable="false" layoutX="332.0" layoutY="444.0" prefHeight="26.0" prefWidth="374.0" styleClass="text-inputlogin" stylesheets="@fxml.css" />
+                  <TextField fx:id="email" editable="false" layoutX="332.0" layoutY="501.0" prefHeight="26.0" prefWidth="374.0" styleClass="text-inputlogin" stylesheets="@fxml.css" />
+                  <TextField fx:id="username" editable="false" layoutX="332.0" layoutY="558.0" prefHeight="26.0" prefWidth="374.0" styleClass="text-inputlogin" stylesheets="@fxml.css" />
+                  <Button layoutX="259.0" layoutY="722.0" mnemonicParsing="false" onAction="#seeprofile" prefHeight="40.0" prefWidth="176.0" style="-fx-background-color: #DFC583; -fx-background-radius: 25;" text="SEE PROFILE" textFill="#fffefe">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="502.0" layoutY="722.0" mnemonicParsing="false" onAction="#goUpdate" prefHeight="40.0" prefWidth="176.0" style="-fx-background-color: #DFC583; -fx-background-radius: 25;" text="UPDATE PROFILE" textFill="#fffefe">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="741.0" layoutY="860.0" mnemonicParsing="false" onAction="#deleteprofile" prefHeight="40.0" prefWidth="176.0" style="-fx-background-color: #DFC583; -fx-background-radius: 25;" text="DELETE PROFILE" textFill="#fffefe">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <PasswordField fx:id="password" editable="false" layoutX="332.0" layoutY="627.0" prefHeight="26.0" prefWidth="374.0" styleClass="text-inputlogin" stylesheets="@fxml.css" />
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

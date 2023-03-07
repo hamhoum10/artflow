@@ -1,0 +1,42 @@
+.text-inputclient{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #cb4335;
+    
+}
+
+.text-inputwelsetting{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #000;
+    
+}
+
+.text-inputartiste{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #E19405;
+    
+}
+
+.text-inputlogin{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #000;
+    
+}
+
+.selected-border{
+    -fx-border-color:  #DFC583;
+    -fx-border-width: 0 3 0 0;
+}
+
+.selected:hover{
+    -fx-background-color: #3C3D5B;
+}
+.sidebar:hover{
+    -fx-background-color: #fff;
+    -fx-border-color:  #fff;
+    -fx-border-width: 1 1 1 3;
+    
+}

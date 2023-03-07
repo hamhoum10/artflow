@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pidevAuthArtiste.UpdateArtisteController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="711.0" prefWidth="600.0" style="-fx-background-color: #FFFBF4;">
+         <children>
+            <AnchorPane prefHeight="122.0" prefWidth="600.0" style="-fx-background-color: #dfc583;">
+               <children>
+                  <Label layoutX="161.0" layoutY="38.0" text="Update your profile" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <TextField fx:id="firstname" layoutX="179.0" layoutY="160.0" prefHeight="26.0" prefWidth="340.0" promptText="First name" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+            <TextField fx:id="username" layoutX="179.0" layoutY="556.0" prefWidth="340.0" promptText="Username" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+            <TextField fx:id="email" layoutX="179.0" layoutY="516.0" prefHeight="26.0" prefWidth="340.0" promptText="Email" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+            <TextField fx:id="phonenumber" layoutX="179.0" layoutY="470.0" prefHeight="26.0" prefWidth="340.0" promptText="Phone number" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+            <TextField fx:id="birthplace" layoutX="179.0" layoutY="242.0" prefHeight="26.0" prefWidth="340.0" promptText="Birth place" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+            <TextField fx:id="lastname" layoutX="179.0" layoutY="205.0" prefHeight="26.0" prefWidth="340.0" promptText="Last name" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+            <Button layoutX="217.0" layoutY="656.0" mnemonicParsing="false" onAction="#saveUpdate" prefHeight="26.0" prefWidth="166.0" style="-fx-background-color: #dfc583; -fx-background-radius: 25;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+            <Label layoutX="56.0" layoutY="164.0" text="First name" />
+            <Label layoutX="58.0" layoutY="602.0" text="Password" />
+            <Label layoutX="57.0" layoutY="560.0" text="Username" />
+            <Label layoutX="61.0" layoutY="520.0" text="Email" />
+            <Label layoutX="54.0" layoutY="474.0" text="Phone number" />
+            <Label layoutX="57.0" layoutY="427.0" text="Adress" />
+            <Label layoutX="56.0" layoutY="209.0" text="Last name" />
+            <DatePicker fx:id="birthdate" layoutX="181.0" layoutY="286.0" prefHeight="26.0" prefWidth="340.0" />
+            <TextField fx:id="description" layoutX="181.0" layoutY="325.0" prefHeight="26.0" prefWidth="340.0" promptText="Description" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+            <ImageView fx:id="image_view" fitHeight="88.0" fitWidth="135.0" layoutX="454.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="179.0" layoutY="373.0" mnemonicParsing="false" onAction="#takeimage" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #dfc583;" text="Image" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="adress" layoutX="179.0" layoutY="423.0" prefHeight="26.0" prefWidth="340.0" promptText="Adress" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+            <TextField fx:id="imagefield" layoutX="268.0" layoutY="373.0" prefHeight="26.0" prefWidth="145.0" promptText="Image URL" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+            <Label layoutX="54.0" layoutY="378.0" text="Image" />
+            <Label layoutX="54.0" layoutY="246.0" text="Birth place" />
+            <Label layoutX="54.0" layoutY="290.0" text="Date" />
+            <Label layoutX="54.0" layoutY="329.0" text="Description" />
+            <PasswordField fx:id="password" layoutX="181.0" layoutY="598.0" prefHeight="26.0" prefWidth="340.0" styleClass="text-inputlogin" stylesheets="@../pidevAuth/fxml.css" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

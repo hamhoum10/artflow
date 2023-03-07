@@ -38,7 +38,7 @@ public interface ArticleInterface {
                         public List<Article> fetchArticleTriByName();
                         public List<Article> fetchArticleTriByCategorie();
 
-
+public List<Article> fetchArticlebyusername(String usernameartiste);
             
 
 

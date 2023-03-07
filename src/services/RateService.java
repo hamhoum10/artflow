@@ -31,7 +31,7 @@ public class RateService implements RateInterface {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setDouble(1, r.getRating());
                 ps.setInt(2, r.getArticle().getId_article());
-                ps.setInt(3, r.getRater().getId_artiste());
+                ps.setInt(3, r.getRater().getId());
                 
                 ps.executeUpdate();
                 System.out.println("rate is inserted");
@@ -42,7 +42,7 @@ public class RateService implements RateInterface {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setDouble(1, r.getRating());
                 ps.setInt(2, r.getArticle().getId_article());
-                ps.setInt(3, r.getRater().getId_artiste());
+                ps.setInt(3, r.getRater().getId());
                 ps.executeUpdate();
                 System.out.println("rate is updated");
 
@@ -59,7 +59,7 @@ public class RateService implements RateInterface {
         Rate rating = new Rate();
         try {
             
-            String req = "SELECT * FROM rating where id_Rater="+r.getRater().getId_artiste()+" and id_Article="+r.getArticle().getId_article();
+            String req = "SELECT * FROM rating where id_Rater="+r.getRater().getId()+" and id_Article="+r.getArticle().getId_article();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
