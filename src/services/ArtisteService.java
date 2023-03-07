@@ -75,8 +75,10 @@ public class ArtisteService implements ArtisteInterface {
 //        return artiste;    }
 //        
     
-    public String getArtistNameById(int id){
-        return fetchArtiste().stream().filter(a->a.getId()==id).findFirst().get().getFirstname();
+    public String getArtistNameById(String id){
+        System.out.println(fetchArtiste().stream().filter(a->a.getUsername()==id).findFirst().get().getFirstname());
+        return fetchArtiste().stream().filter(a->a.getUsername()==id).findFirst().get().getFirstname();
+        
     }
         
         

@@ -52,6 +52,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import models.User;
 import pidevAuth.LoginFXMLController;
+import pidevAuthAdmin.LoginAdminController;
 import pidevAuthArtiste.LoginArtisteController;
 import services.ArtisteService;
 import services.UserService;
@@ -120,6 +121,9 @@ Article ai=new Article();
         if(LoginFXMLController.usernamewelcome!=null){
             vbox.getChildren().remove(statistic_id);
              vbox.getChildren().remove(add_article_id);
+        }
+        if(LoginAdminController.usernameAdmin!=null){
+            vbox.getChildren().remove(add_article_id);
         }
         int columns=0;
         int rows=0;

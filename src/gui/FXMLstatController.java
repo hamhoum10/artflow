@@ -26,6 +26,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
+import pidevAuthArtiste.LoginArtisteController;
 import services.ArtisteService;
 import util.MyConnection;
 
@@ -55,11 +56,14 @@ public class FXMLstatController implements Initializable {
             PreparedStatement ps= cnx.prepareStatement(query);
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
-                data.add(new PieChart.Data(sa.getArtistNameById(rs.getInt("art")),rs.getInt("value")));
+                System.out.println(rs.getString("art"));
+                System.out.println(rs.getInt("value"));
+                data.add(new PieChart.Data(rs.getString("art"),rs.getInt("value")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(FXMLstatController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        System.out.println("d"+data);
         piechart.setTitle("***Statistiques nombre des articles par artiste**");
         piechart.setLegendSide(Side.LEFT);
         piechart.setData(data);

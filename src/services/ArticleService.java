@@ -27,6 +27,7 @@ import models.Artiste;
 import models.Categorie;
 import models.Client;
 import models.stock;
+import pidevAuthAdmin.LoginAdminController;
 import pidevAuthArtiste.LoginArtisteController;
 import util.MyConnection;
 import util.QrCodeGenerator;
@@ -49,8 +50,11 @@ public class ArticleService implements ArticleInterface {
             PreparedStatement ps = cnx.prepareStatement(req);
             ArtisteService as =new ArtisteService();
             
-//            ps.setInt(1,a.getArtiste().getId());
-            ps.setString(1,LoginArtisteController.usernameArtiste);
+////            ps.setInt(1,a.getArtiste().getId());
+//            if(LoginAdminController.usernameAdmin==null)
+                ps.setString(1,LoginArtisteController.usernameArtiste);
+//            else
+//                ps.setString(1,LoginAdminController.usernameAdmin);
             ps.setString(2, a.getNom_article());
             ps.setDouble(3, a.getPrice());
             ps.setString(4, a.getType());
@@ -76,7 +80,10 @@ public class ArticleService implements ArticleInterface {
             PreparedStatement ps = cnx.prepareStatement(req);
                      ArtisteService as =new ArtisteService();
 
-            ps.setString(1,LoginArtisteController.usernameArtiste);
+//            if(LoginAdminController.usernameAdmin==null)
+                ps.setString(1,LoginArtisteController.usernameArtiste);
+//            else
+//                ps.setString(1,LoginAdminController.usernameAdmin);
             ps.setString(2, t.getNom_article());
 
             ps.setDouble(3, t.getPrice());

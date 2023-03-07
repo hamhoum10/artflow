@@ -104,6 +104,7 @@ public class ArticleItemController implements Initializable {
             }
         }
         if(LoginAdminController.usernameAdmin!=null){
+            
                             vbox.getChildren().remove(modify_id);
         }
         }
