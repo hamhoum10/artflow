@@ -22,8 +22,8 @@
       <Label layoutX="91.0" layoutY="255.0" text="name_article" />
       <Label layoutX="96.0" layoutY="298.0" text="description" />
       <Label layoutX="112.0" layoutY="342.0" text="price" />
-      <Label layoutX="111.0" layoutY="390.0" prefHeight="18.0" prefWidth="28.0" text="type" />
-      <Label layoutX="115.0" layoutY="430.0" prefHeight="18.0" prefWidth="46.0" text="quantity" />
+      <Label layoutX="111.0" layoutY="390.0" prefHeight="21.0" prefWidth="33.0" text="type" />
+      <Label layoutX="96.0" layoutY="432.0" prefHeight="21.0" prefWidth="66.0" text="quantity" />
       <Button layoutX="173.0" layoutY="471.0" mnemonicParsing="false" onAction="#import_image" prefHeight="26.0" prefWidth="150.0" text="import_image" />
       <TextField fx:id="image" layoutX="339.0" layoutY="471.0" prefHeight="26.0" prefWidth="322.0" promptText="image.png" />
       <ComboBox fx:id="categorie" layoutX="500.0" layoutY="242.0" onAction="#setcat" prefWidth="150.0" promptText="typee_categorie" />

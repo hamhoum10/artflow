@@ -158,7 +158,7 @@ Article ai=new Article();
             itemController.setData(articles.get(i));}
             
                 
-            if(columns == 4){
+            if(columns == 3){
                 columns = 0 ;
                 ++rows;
             }

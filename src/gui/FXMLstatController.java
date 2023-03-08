@@ -64,7 +64,7 @@ public class FXMLstatController implements Initializable {
             Logger.getLogger(FXMLstatController.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("d"+data);
-        piechart.setTitle("***Statistiques nombre des articles par artiste**");
+        piechart.setTitle("***Statistics number of articles by artist**");
         piechart.setLegendSide(Side.LEFT);
         piechart.setData(data);
         

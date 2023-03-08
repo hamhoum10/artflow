@@ -13,9 +13,9 @@
    <children>
       <TextField fx:id="nom" layoutX="151.0" layoutY="203.0" promptText="name" />
       <TextField fx:id="des" layoutX="151.0" layoutY="264.0" promptText="description" />
-      <Button layoutX="151.0" layoutY="402.0" mnemonicParsing="false" onAction="#ajouter_categorie" prefHeight="26.0" prefWidth="150.0" text="ajoute Categorie" />
+      <Button layoutX="151.0" layoutY="402.0" mnemonicParsing="false" onAction="#ajouter_categorie" prefHeight="26.0" prefWidth="150.0" text="add Categorie" />
       <Label fx:id="name_categorie" layoutX="42.0" layoutY="207.0" text="name_categorie" />
-      <Label fx:id="description" layoutX="53.0" layoutY="267.0" prefHeight="18.0" prefWidth="62.0" text="Description" />
+      <Label fx:id="description" layoutX="33.0" layoutY="269.0" prefHeight="21.0" prefWidth="92.0" text="Description" />
       <Pane prefHeight="131.0" prefWidth="798.0" style="-fx-background-color: #C69187;">
          <effect>
             <Glow />
