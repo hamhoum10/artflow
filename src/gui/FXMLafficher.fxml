@@ -61,6 +61,15 @@
                </image>
             </ImageView>
             <TextField fx:id="id_rech" layoutX="439.0" layoutY="28.0" />
+            <VBox fx:id="vboxc" layoutX="1277.0" layoutY="17.0" prefHeight="148.0" prefWidth="72.0">
+               <children>
+                  <ImageView fx:id="id_cat" fitHeight="79.0" fitWidth="93.0" onMouseClicked="#Gocat" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                     <image>
+                        <Image url="@../img/apps.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
          </children>
          <effect>
             <DisplacementMap>

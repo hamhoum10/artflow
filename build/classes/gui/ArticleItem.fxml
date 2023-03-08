@@ -24,7 +24,7 @@
             <Image url="@../img/add-to-cart.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="qrcodeimg" fitHeight="104.0" fitWidth="124.0" layoutX="178.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="qrcodeimg" fitHeight="111.0" fitWidth="122.0" layoutX="180.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="275.0" layoutY="280.0" prefHeight="18.0" prefWidth="28.0" text="DT" textOverrun="CLIP" />
       <Circle fill="#e4ca9d" layoutX="44.0" layoutY="33.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" />
       <Label fx:id="avg" layoutX="40.0" layoutY="23.0" text="1">

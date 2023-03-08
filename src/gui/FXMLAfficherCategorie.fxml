@@ -8,13 +8,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="661.0" prefWidth="734.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLAfficherCategorieController">
+<AnchorPane id="AnchorPane" prefHeight="661.0" prefWidth="734.0" stylesheets="@../../../../../Downloads/yasser.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLAfficherCategorieController">
    <children>
-      <ListView fx:id="listc" layoutX="14.0" layoutY="237.0" prefHeight="410.0" prefWidth="718.0" />
-      <Button layoutX="69.0" layoutY="187.0" mnemonicParsing="false" onAction="#afficherca" prefHeight="26.0" prefWidth="139.0" text="afficher" />
-      <Button layoutX="546.0" layoutY="187.0" mnemonicParsing="false" onAction="#supprimerca" prefHeight="26.0" prefWidth="139.0" text="supprimer" />
-      <Button layoutX="381.0" layoutY="187.0" mnemonicParsing="false" onAction="#modify_categorie" prefHeight="26.0" prefWidth="139.0" text="modify" />
-      <Button layoutX="229.0" layoutY="187.0" mnemonicParsing="false" onAction="#ajouterlist" prefHeight="26.0" prefWidth="130.0" text="Ajouter" />
+      <Button layoutX="346.0" layoutY="575.0" mnemonicParsing="false" onAction="#supprimerca" prefHeight="26.0" prefWidth="139.0" text="supprimer" />
+      <Button layoutX="196.0" layoutY="575.0" mnemonicParsing="false" onAction="#modify_categorie" prefHeight="26.0" prefWidth="139.0" text="modify" />
       <Pane layoutY="-6.0" prefHeight="119.0" prefWidth="734.0" style="-fx-background-color: #C69187;">
          <effect>
             <Glow />
@@ -27,5 +24,8 @@
             </ImageView>
          </children>
       </Pane>
+      <Button layoutX="27.0" layoutY="575.0" mnemonicParsing="false" onAction="#ajouterlist" prefHeight="26.0" prefWidth="130.0" text="Ajouter" />
+      <ListView fx:id="listc" layoutX="8.0" layoutY="126.0" prefHeight="410.0" prefWidth="718.0" />
+      <Button layoutX="553.0" layoutY="567.0" mnemonicParsing="false" onAction="#exit" text="exit" />
    </children>
 </AnchorPane>

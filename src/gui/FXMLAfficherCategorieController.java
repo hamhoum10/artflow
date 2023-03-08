@@ -51,7 +51,6 @@ public class FXMLAfficherCategorieController implements Initializable {
 
     
 
-    @FXML
     private void afficherca(ActionEvent event) {
     ObservableList<Categorie> k= FXCollections.observableArrayList(ch.fetchCategorie());
     listc.setItems(k);
@@ -100,6 +99,17 @@ public class FXMLAfficherCategorieController implements Initializable {
         Logger.getLogger(FXMLAfficherCategorieController.class.getName()).log(Level.SEVERE, null, ex);
     }
     
+    }
+
+     @FXML
+    private void exit(ActionEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLafficher.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
     }
     
 }

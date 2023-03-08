@@ -77,6 +77,7 @@ public class FXMLdesController implements Initializable {
         Image img=new Image(file.toURI().toString());
         image_view.setImage(img);
         desc.setText(article.getDescription());
+        System.out.println(article);
         type.setText(article.getType());
         Artiste.setText(article.getArtiste().getFirstname());
         quantity.setText(String.valueOf(article.getQuantity()));

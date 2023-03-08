@@ -40,11 +40,11 @@ public class Project_malek {
         CategorieInterface pi = new CategorieService();
         Categorie c = new Categorie(); 
                 ArtisteService al = new ArtisteService();
-           
+          
         Artiste ar = new Artiste();
         StockInterface ins = new StockService();
         stock st = new stock();
-        RateInterface re = new RateService();
+        RateService re = new RateService();
         Rate b=new Rate();
         
         
@@ -115,6 +115,7 @@ public class Project_malek {
 //System.out.println(ins.fetchStock());
 
 //System.out.println(re.afficherRating(b));
+System.out.println(al.fetchArtiste());
 
     }
     

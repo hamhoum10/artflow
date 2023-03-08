@@ -155,8 +155,10 @@ public class Artiste {
 
     @Override
     public String toString() {
-        return "Artiste{" + "id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", birthplace=" + birthplace + ", birthdate=" + birthdate + ", description=" + description + ", image=" + image + ", address=" + address + ", phonenumber=" + phonenumber + ", username=" + username + ", password=" + password + ", email=" + email + '}';
+        return "Artiste{" + "firstname=" + firstname + ", lastname=" + lastname + '}';
     }
+
+    
     
     
     

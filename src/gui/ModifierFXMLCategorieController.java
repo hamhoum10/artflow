@@ -45,7 +45,6 @@ public class ModifierFXMLCategorieController implements Initializable {
     private TextField name;
     @FXML
     private TextField des;
-    @FXML
     private ComboBox<String> listq;
     ObservableList list = FXCollections.observableArrayList();
     private TextField nom_artiste;
@@ -58,18 +57,15 @@ public class ModifierFXMLCategorieController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-         list.removeAll(list);
-        System.out.println(st.fetchStock());
-        st.fetchStock().stream().forEach(e->list.add(e.getName()));
-        listq.getItems().addAll(list);
+         
     }
 
 
     public void getCategorie(Categorie ca){
+        System.out.println(ca.getName_categorie());
     name.setText(ca.getName_categorie());
     des.setText(ca.getDescription());
-    listq.setValue(ca.getStock().getName());
-   
+    
     
     }
 
@@ -78,23 +74,20 @@ public class ModifierFXMLCategorieController implements Initializable {
 
     
 
-    @FXML
-    private void list_stock(ActionEvent event) {
-        C.setStock(st.fetchStockByName(listq.getValue()));
-    }
-
+    
     @FXML
     private void modifier_categorie(ActionEvent event) throws IOException  {
                 ca.setDescription(des.getText());
                 ca.setName_categorie(name.getText());
-                 ca.setStock(st.fetchStockByName(listq.getValue()));
                 V.ModifyCategorie(ca);
                 
                 
-                 FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLAfficherCategorie.fxml"));
+                 
+             FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLAfficherCategorie.fxml"));
             Parent view_2=loader.load();
-            Scene scene = new Scene(view_2);
+            
             Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
             stage.setScene(scene);
             stage.show();
            
@@ -103,7 +96,7 @@ public class ModifierFXMLCategorieController implements Initializable {
 
     @FXML
     private void exit(ActionEvent event) throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLAfficherCategorie.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("FXMLAfficherCategorie.fxml"));
             Parent view_2=loader.load();
             Scene scene = new Scene(view_2);
             Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();

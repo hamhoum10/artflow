@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
@@ -10,15 +9,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="469.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLAjouteCategorieController">
+<AnchorPane id="AnchorPane" prefHeight="469.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLAjouteCategorieController">
    <children>
-      <ComboBox fx:id="stockkkkk" layoutX="151.0" layoutY="325.0" onAction="#List_stock" prefWidth="150.0" promptText="choisir" />
       <TextField fx:id="nom" layoutX="151.0" layoutY="203.0" promptText="name" />
       <TextField fx:id="des" layoutX="151.0" layoutY="264.0" promptText="description" />
       <Button layoutX="151.0" layoutY="402.0" mnemonicParsing="false" onAction="#ajouter_categorie" prefHeight="26.0" prefWidth="150.0" text="ajoute Categorie" />
       <Label fx:id="name_categorie" layoutX="42.0" layoutY="207.0" text="name_categorie" />
       <Label fx:id="description" layoutX="53.0" layoutY="267.0" prefHeight="18.0" prefWidth="62.0" text="Description" />
-      <Label fx:id="choisir_stock" layoutX="51.0" layoutY="329.0" text="choisir stock" />
       <Pane prefHeight="131.0" prefWidth="798.0" style="-fx-background-color: #C69187;">
          <effect>
             <Glow />

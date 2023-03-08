@@ -88,4 +88,18 @@ public class RateService implements RateInterface {
         return 0.0;
         
     }
+    public Double afficherRateavg1() {
+        Rate rating = new Rate();
+        try {
+            
+            String req = "SELECT AVG(rate) FROM rating ";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {                
+                return(rs.getDouble("AVG(rate)"));
+            }   
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 0.0;}
 }

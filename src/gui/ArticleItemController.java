@@ -71,7 +71,7 @@ public class ArticleItemController implements Initializable {
     }    
     
     public void setData(Article a) {
-        RateInterface ri = new RateService();
+        RateService ri = new RateService();
         article=a;
         this.a=a;
         name.setText(a.getNom_article());

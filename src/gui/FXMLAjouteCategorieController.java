@@ -49,9 +49,6 @@ public class FXMLAjouteCategorieController implements Initializable {
     private Label name_categorie;
     @FXML
     private Label description;
-    @FXML
-    private Label choisir_stock;
-    @FXML
     private ComboBox<String> stockkkkk;
     ObservableList list = FXCollections.observableArrayList();
     @FXML
@@ -66,18 +63,14 @@ public class FXMLAjouteCategorieController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        list.removeAll(list);
-        System.out.println(st.fetchStock());
-        st.fetchStock().stream().forEach(e->list.add(e.getName()));
-        stockkkkk.getItems().addAll(list);
+      
     }    
 
 
     @FXML
     private void ajouter_categorie(ActionEvent event) throws IOException {
        
-        if (des.getText().length() == 0||nom.getText().length() == 0||stockkkkk.getValue().length() == 0 ) {
+        if (des.getText().length() == 0||nom.getText().length() == 0 ) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur");
             alert.setHeaderText("Erreur de saisie !");
@@ -103,11 +96,7 @@ public class FXMLAjouteCategorieController implements Initializable {
             stage.show(); 
     }
 
-    @FXML
-    private void List_stock(ActionEvent event) {
-        C.setStock(st.fetchStockByName(stockkkkk.getValue()));
-    }
-
+   
     @FXML
     private void exit(ActionEvent event) throws IOException {
          FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLAfficherCategorie.fxml"));

@@ -14,7 +14,7 @@ public class Categorie {
     int id_categorie  ;
     String name_categorie;
     String description;
-    stock stock;
+   
 
     public Categorie() {
     }
@@ -23,7 +23,6 @@ public class Categorie {
         this.id_categorie = id_categorie;
         this.name_categorie = name_categorie;
         this.description = description;
-        this.stock = stock;
     }
 
     public int getId_categorie() {
@@ -50,17 +49,10 @@ public class Categorie {
         this.description = description;
     }
 
-    public stock getStock() {
-        return stock;
-    }
-
-    public void setStock(stock stock) {
-        this.stock = stock;
-    }
 
     @Override
     public String toString() {
-        return  "name_categorie=" + name_categorie + ", description=" + description ;
+        return  "name categorie=" + name_categorie +System.lineSeparator()+ " description =" + description ;
     }
 
     

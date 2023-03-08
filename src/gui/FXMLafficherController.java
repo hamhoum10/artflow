@@ -92,6 +92,10 @@ Article ai=new Article();
     private ImageView add_article_id;
     @FXML
     private ImageView statistic_id;
+    @FXML
+    private VBox vboxc;
+    @FXML
+    private ImageView id_cat;
      
 
     /**
@@ -117,10 +121,13 @@ Article ai=new Article();
         UserService us =new UserService();
         if(LoginArtisteController.usernameArtiste!=null){
             vbox.getChildren().remove(statistic_id);
+            vboxc.getChildren().remove(id_cat);
+            
         }
         if(LoginFXMLController.usernamewelcome!=null){
             vbox.getChildren().remove(statistic_id);
              vbox.getChildren().remove(add_article_id);
+             vboxc.getChildren().remove(id_cat);
         }
         if(LoginAdminController.usernameAdmin!=null){
             vbox.getChildren().remove(add_article_id);
@@ -416,6 +423,17 @@ public void refresh() {
     @FXML
     private void stat_art(MouseEvent event) throws IOException {
         FXMLLoader loader= new FXMLLoader(getClass().getResource("../gui/FXMLstat.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
+    }
+
+    @FXML
+    private void Gocat(MouseEvent event) throws IOException {
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLAfficherCategorie.fxml"));
             Parent view_2=loader.load();
             
             Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
