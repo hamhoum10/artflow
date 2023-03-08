@@ -3,20 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/models/Client.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/services/EnchereService.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/ModifController.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/enchere/main.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/enchere/MainJAVAFX.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/services/ClientService.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/AddEnchereController.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/models/Pdf.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/addEnchere.fxml</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/AfficherEnchereController.java</file>
             <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/ParticipationController.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/models/Participant.java</file>
-            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/models/Enchere.java</file>
+            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/enchere/main.java</file>
+            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/descirption.fxml</file>
+            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/EnchereItemController.java</file>
+            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/descriptionController.java</file>
             <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/enchere/FXMain.java</file>
+            <file>file:/C:/Users/Elizabeth/Documents/NetBeansProjects/pidev/src/gui/ShowAllItemsController.java</file>
         </group>
     </open-files>
 </project-private>

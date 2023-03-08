@@ -94,7 +94,7 @@ public class Enchere {
     
     @Override
     public String toString() {
-        return "Enchere: "+ "id enchere : " + ide +System.lineSeparator() + ", titre=" + titre +System.lineSeparator()+ ", description=" + description +System.lineSeparator()+ ", prixdepart=" + prixdepart +System.lineSeparator()+ ", date_limite=" + date_limite +System.lineSeparator()+ ", img=" + img +System.lineSeparator() ;
+        return " titre=" + titre +System.lineSeparator()+ ", description=" + description +System.lineSeparator()+ ", prixdepart=" + prixdepart +System.lineSeparator()+ ", date_limite=" + date_limite +System.lineSeparator()+ ", img=" + img +System.lineSeparator() ;
     }
 //"prénom : " + prénomClientCommande + System.lineSeparator()+
     /*

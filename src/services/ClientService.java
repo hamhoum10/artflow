@@ -28,16 +28,21 @@ public class ClientService implements  ClientInterface {
     Connection cnx = MyConnection.getInstance().getCnx();
     
     @Override
-    public Client fetchClientByName(String nom) {
+    public Client fetchClientByName(String username) {
        try {
             
-            String req = "SELECT * FROM client WHERE `nom` = '"+nom+" '";
+            String req = "SELECT * FROM client WHERE `username` = '"+username+" '";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
-               c.setIdc(rs.getInt("idc"));
-                c.setNom(rs.getString("nom"));
-                c.setPrenom(rs.getString("prenom"));
+               c.setId(rs.getInt("id"));
+                c.setFirstname(rs.getString("firstname"));
+                c.setLastname(rs.getString("lastname"));
+                c.setAddress(rs.getString("address"));
+                c.setPhone(rs.getInt("phonenumber"));
+                c.setEmail(rs.getString("email"));
+                c.setUsername(rs.getString("username"));
+                   c.setPwd(rs.getString("password"));
                 
             }
             
@@ -59,13 +64,14 @@ public class ClientService implements  ClientInterface {
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
                          Client cl = new Client();
-
-                cl.setIdc(rs.getInt("idc"));
-
-               cl.setNom(rs.getString("nom"));
-               cl.setPrenom(rs.getString("prenom"));
-              
-
+                cl.setId(rs.getInt("id"));
+                cl.setFirstname(rs.getString("firstname"));
+                cl.setLastname(rs.getString("lastname"));
+                cl.setAddress(rs.getString("address"));
+                cl.setPhone(rs.getInt("phonenumber"));
+                cl.setEmail(rs.getString("email"));
+                cl.setUsername(rs.getString("username"));
+                cl.setPwd(rs.getString("password"));
                 client.add(cl);
             }
             
@@ -82,10 +88,16 @@ public class ClientService implements  ClientInterface {
      public void addClient(Client c) {
 
         try {
-            String req = "INSERT INTO `client`(`nom`,`prenom`) VALUES (?,?)";
+            String req = "INSERT INTO `client`(`firstname`, `lastname`, `address`, `phonenumber`, `email`, `username`,`password`) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement st = cnx.prepareStatement(req);
-            st.setString(1, c.getNom());
-            st.setString(2, c.getPrenom());
+            st.setString(1, c.getFirstname());
+            st.setString(2, c.getLastname());
+              st.setString(3, c.getAddress());
+                st.setInt(4, c.getPhone());
+                  st.setString(5, c.getEmail());
+                    st.setString(6, c.getUsername());
+                    st.setString(7, c.getPwd());
+                 
            
             
           

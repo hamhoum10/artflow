@@ -59,6 +59,8 @@ public class main {
 //    en.setImg("img.png");
 //    es.AddEnchere(en);
 
+
+
 // UPDATE AUCTION     
 //    en.setTitre("TRY CATCH");
 //    en.setDescription("IF U CAN");
@@ -78,17 +80,28 @@ public class main {
 //     System.out.println(cs.fetchClient());
 // System.out.println(cs.fetchClientByName("mzou"));
 
+
+//ADD A CLIENT 
+//cl.setFirstname("rym");
+//cl.setLastname("saidi");
+//cl.setAddress("2050 EZZAHRA");
+//cl.setPhone(92678543);
+//cl.setEmail("rym@a.com");
+//cl.setUsername("reem");
+//cl.setPwd("reiei");
+//cs.addClient(cl);
+
 // ADD PARTICIPANT TO THE AUCTION     
-//cl.setIdc(1);
-//en.setIde(1);
+//cl.setId(20);
+//en.setIde(24);
 //p.setClient(cl);
 //p.setEnchere(en);
-//p.setMontant(100);
+//p.setMontant(1100); 
 //es.addParticipant(p);
 
 
 //UPDATE PARTICIPATION
-//cl.setIdc(1);
+//cl.setId(1);
 //en.setIde(1);
 //
 //p.setClient(cl);
@@ -98,7 +111,7 @@ public class main {
 
 
 // DELETE PARTICIPANT 
-//cl.setIdc(1);
+//cl.setId(1);
 //en.setIde(1);
 //
 //p.setClient(cl);
@@ -108,7 +121,7 @@ public class main {
 
 
 // verification -----> bid must be superiro to the old soum
-//cl.setIdc(2);
+//cl.setId(2);
 //en.setIde(1);
 //p.setClient(cl);
 //p.setEnchere(en);
@@ -190,6 +203,11 @@ String winningBidder = es.generatePdfFromQueryResult(enchere);
     
 
 //p.GeneratePdf();
+    
+    
+    
+   
+    
     
     
     

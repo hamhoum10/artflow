@@ -31,8 +31,77 @@ public class FXMain extends Application {
     //AFFICHER MODIFIER ET SUPPRIMER UNE ENCHERE
 
   
-  
-    /*
+    
+    /////show all items i need to create new enchere with picture 
+    @Override
+   
+   public void start(Stage primaryStage) {
+       Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/gui/showAllItems.fxml"));
+            Scene scene = new Scene(root,1700,1000);
+           
+            
+            primaryStage.setTitle("home page");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
+    
+    
+    
+    
+    
+     //////aaficher  les descriptions 
+//      @Override
+//   
+//   public void start(Stage primaryStage) {
+//       Parent root;
+//        try {
+//            root = FXMLLoader.load(getClass().getResource("/gui/descirption.fxml"));
+//            Scene scene = new Scene(root,1700,1000);
+//           
+//            
+//            primaryStage.setTitle("home page");
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        } catch (IOException ex) {
+//            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//       
+//    }
+//    
+   
+    
+    
+    ////item enchere
+//    @Override
+//   
+//   public void start(Stage primaryStage) {
+//       Parent root;
+//        try {
+//            root = FXMLLoader.load(getClass().getResource("/gui/EnchereItem.fxml"));
+//            Scene scene = new Scene(root,1700,1000);
+//           
+//            
+//            primaryStage.setTitle("home page");
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        } catch (IOException ex) {
+//            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//       
+//    }
+////   
+//    
+//    
+    
+    
+  /*
+   
     @Override
    
    public void start(Stage primaryStage) {
@@ -50,31 +119,33 @@ public class FXMain extends Application {
         }
        
     }
-   */
+  */
+    
+    
+    
 
-  
    
     // PARTICIPER AUX ENCHERES 
-     @Override
-    public void start(Stage primaryStage) {
-       Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/gui/Participation.fxml"));
-            Scene scene = new Scene(root);
-           
-            
-            primaryStage.setTitle("bienvenue aux ventes des encheres");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-    }
-    
+//     @Override
+//    public void start(Stage primaryStage) {
+//       Parent root;
+//        try {
+//            root = FXMLLoader.load(getClass().getResource("/gui/Participation.fxml"));
+//            Scene scene = new Scene(root,1700,1000);
+//           
+//            
+//            primaryStage.setTitle("bienvenue aux ventes des encheres");
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        } catch (IOException ex) {
+//            Logger.getLogger(FXMain.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//       
+//    }
+
    
   
-    
+  
     
   
     

@@ -12,6 +12,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -28,6 +32,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -61,7 +66,11 @@ public class AddEnchereController implements Initializable {
     private ImageView image_view;
 
     private File selectedFile;
-
+ @FXML
+    private AnchorPane anchore;
+    @FXML
+    private ImageView img;
+    /**
     
     /**
      * Initializes the controller class.
@@ -130,17 +139,17 @@ LocalDate currentDate = LocalDate.now();
     en.setImg(imagefield.getText());
     
     
-   String htdocsPath = "";
-                 File destinationFile = new File(htdocsPath + imagefield.getText());
-            if(selectedFile!=null){
-                try (InputStream in = new FileInputStream(selectedFile);
-                 OutputStream out = new FileOutputStream(destinationFile)) {
-                byte[] buf = new byte[8192];
-                int length;
-                while ((length = in.read(buf)) > 0) {
-                    out.write(buf, 0, length);
-                }
-                    System.out.println(en);
+//   String htdocsPath = "C:\\xampp\\htdocs\\img";
+//                 File destinationFile = new File(htdocsPath + imagefield.getText());
+//            if(selectedFile!=null){
+//                try (InputStream in = new FileInputStream(selectedFile);
+//                 OutputStream out = new FileOutputStream(destinationFile)) {
+//                byte[] buf = new byte[8192];
+//                int length;
+//                while ((length = in.read(buf)) > 0) {
+//                    out.write(buf, 0, length);
+//                }
+//                    System.out.println(en);
             es.AddEnchere(en);
             // return to the main 
 //                FXMLLoader loader= new FXMLLoader(getClass().getResource("./AfficherEnchere.fxml"));
@@ -150,13 +159,13 @@ LocalDate currentDate = LocalDate.now();
 //                stage.setScene(scene);
 //                stage.show();
             
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            }else{
-                System.out.println("selected file is null "+selectedFile);
-            }
-            
+//            } catch (IOException ex) {
+//                ex.printStackTrace();
+//            }
+//            }else{
+//                System.out.println("selected file is null "+selectedFile);
+//            }
+//            
         }
     
     
@@ -192,29 +201,22 @@ LocalDate currentDate = LocalDate.now();
     }
 
     @FXML
-    private void takeImage(ActionEvent event) {
+    private void takeImage(ActionEvent event) throws IOException {
         
-        
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Image File");
-        fileChooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("Image Files", "*.png", "*.JPG", "*.gif"));
-          fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        selectedFile = fileChooser.showOpenDialog(stage);
-         if (selectedFile != null) {
-                imagefield.setText(selectedFile.getName());
-                 try {
-                Image images = new Image("file:"+selectedFile.getPath().toString());
-                image_view.setImage(images);
-                System.out.println(selectedFile.getPath().toString());
-        } catch (Exception ex) {
-                     System.out.println(ex);
+       FileChooser open=new FileChooser();
+        Stage stage=(Stage)anchore.getScene().getWindow();
+        File file=open.showOpenDialog(stage);
+        if(file!=null){
+            String filename=file.getName();
+            imagefield.setText(filename);
+            Image img=new Image(file.toURI().toString());
+            image_view.setImage(img);
+             Path destDir;
+           destDir = Paths.get("C:\\xampp\\htdocs\\img");
+            Files.copy(file.toPath(),destDir.resolve(filename),StandardCopyOption.REPLACE_EXISTING);
         }
-                
-            }
         
-        
+
     }
     
 

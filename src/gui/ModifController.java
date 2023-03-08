@@ -1,3 +1,5 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,10 +7,16 @@
  */
 package gui;
 
+
 import interfaces.EnchereParticipantInterface;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -57,7 +65,8 @@ public class ModifController implements Initializable {
     private TextField imgfield;
     @FXML
     private ImageView imageview;
-
+   @FXML
+    private AnchorPane anchore;
     /**
      * Initializes the controller class.
      */
@@ -72,6 +81,9 @@ public class ModifController implements Initializable {
         prixdepart.setText(String.valueOf(e.getPrixdepart()));
         datel.setValue(e.getDate_limite().toLocalDate());
         imgfield.setText((e.getImg()));
+        File file=new File("C:\\xampp\\htdocs\\img\\"+e.getImg());
+        Image img=new Image(file.toURI().toString());
+        imageview.setImage(img);
 
     }
 
@@ -126,26 +138,36 @@ public class ModifController implements Initializable {
     }
 
     @FXML
-    private void takeImage(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Image File");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.JPG", "*.gif"));
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        selectedFile = fileChooser.showOpenDialog(stage);
-        if (selectedFile != null) {
-            imgfield.setText(selectedFile.getName());
-            try {
-                Image images = new Image("file:" + selectedFile.getPath().toString());
-                imageview.setImage(images);
-                System.out.println(selectedFile.getPath().toString());
-            } catch (Exception ex) {
-                System.out.println(ex);
-            }
-
+    private void takeImage(ActionEvent event) throws IOException {
+       FileChooser open=new FileChooser();
+        Stage stage=(Stage)anchore.getScene().getWindow();
+        File file=open.showOpenDialog(stage);
+        if(file!=null){
+            String filename=file.getName();
+            imgfield.setText(filename);
+            Image img=new Image(file.toURI().toString());
+            imageview.setImage(img);
+             Path destDir;
+           destDir = Paths.get("C:\\xampp\\htdocs\\img");
+            Files.copy(file.toPath(),destDir.resolve(filename),StandardCopyOption.REPLACE_EXISTING);
         }
+        
 
     }
+    
+    
+    
+    void setEnchere(Enchere e) {
+        titre.setText(e.getTitre());
+        desc.setText(e.getDescription());
+        prixdepart.setText(String.valueOf(e.getPrixdepart()));
+        if (e.getDate_limite() != null) {
+        datel.setValue(e.getDate_limite().toLocalDate());
+    }
+        imgfield.setText(e.getImg());
+        this.e = e;
+    }
+    
+    
 
 }

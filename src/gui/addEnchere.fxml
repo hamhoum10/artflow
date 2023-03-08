@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1700.0" style="-fx-background-color: #C69186;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddEnchereController">
+<AnchorPane id="AnchorPane" fx:id="anchore" prefHeight="1000.0" prefWidth="1700.0" style="-fx-background-color: #C69186;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddEnchereController">
    <children>
       <Pane layoutX="114.0" layoutY="185.0" opacity="0.87" prefHeight="682.0" prefWidth="971.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -40,13 +40,13 @@
                </font>
             </Label>
             <DatePicker fx:id="dateLimite" layoutX="407.0" layoutY="341.0" prefHeight="31.0" prefWidth="242.0" promptText="date limite" />
-            <Label layoutX="276.0" layoutY="346.0" text="Date limite">
+            <Label layoutX="276.0" layoutY="346.0" text="Limit Date">
                <font>
                   <Font name="Century" size="16.0" />
                </font>
             </Label>
             <TextField fx:id="prixDepart" layoutX="408.0" layoutY="288.0" prefHeight="31.0" prefWidth="242.0" promptText="prix de depart" />
-            <Label layoutX="276.0" layoutY="291.0" text="Prix depart">
+            <Label layoutX="276.0" layoutY="291.0" text="Starting price">
                <font>
                   <Font name="Century" size="16.0" />
                </font>
@@ -58,7 +58,7 @@
             </Label>
             <TextField fx:id="desc" layoutX="413.0" layoutY="227.0" prefHeight="31.0" prefWidth="231.0" promptText="description" />
             <TextField fx:id="titre" layoutX="414.0" layoutY="168.0" prefHeight="31.0" prefWidth="231.0" promptText="titre" />
-            <Label layoutX="278.0" layoutY="174.0" text="Titre">
+            <Label layoutX="278.0" layoutY="174.0" text="Title">
                <font>
                   <Font name="Century" size="16.0" />
                </font>

@@ -18,7 +18,7 @@ public interface ClientInterface {
     public void addClient(Client c);
     
     
-        public Client fetchClientByName(String nom);
+        public Client fetchClientByName(String username);
         public List<Client> fetchClient();
 
     

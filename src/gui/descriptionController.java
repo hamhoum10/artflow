@@ -5,152 +5,184 @@
  */
 package gui;
 
-//import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
-import com.itextpdf.text.Element;
-import com.google.zxing.WriterException;
 
+import com.google.zxing.WriterException;
 import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BarcodeQRCode;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
-
 import com.itextpdf.text.pdf.PdfWriter;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
-
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import models.Client;
 import models.Enchere;
 import models.Participant;
 import services.ClientService;
 import services.EnchereService;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
  *
  * @author Elizabeth
  */
-public class ParticipationController implements Initializable {
+public class descriptionController implements Initializable {
 
-    EnchereService es = new EnchereService();
-    ClientService c = new ClientService();
-    Enchere en = new Enchere();
+    EnchereService es = new  EnchereService();
     Participant p = new Participant();
-
+    Enchere e = new Enchere();
+    Client c = new Client();
+    ClientService cs = new ClientService(); 
     @FXML
-    private TextField mont;
+    private ImageView image_view;
     @FXML
-    private Label iden;
+    private Label desc;
     @FXML
-    private ComboBox<String> titre;
-
-    ObservableList list1 = FXCollections.observableArrayList();
-    ObservableList list2 = FXCollections.observableArrayList();
+    private Label datel;
     @FXML
-    private ComboBox<String> nom_client;
-    @FXML
-    private Label dateL;
+    private Label title;
     @FXML
     private Label lastamount;
     @FXML
+    private TextField mont;
+    @FXML
     private Button downloadPDF;
     @FXML
-    private ImageView img;
+    private ComboBox<String> nom_client;
+     @FXML
+    private ComboBox<String> titre; 
+    ObservableList list1 = FXCollections.observableArrayList();
+     ObservableList list2 = FXCollections.observableArrayList();
+   
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        list1.removeAll(list1);
-        list2.removeAll(list2);
-        es.fetchEnchere().stream().forEach(e -> list1.add(e.getTitre()));
+        // TODO
+         list1.removeAll(list1);
+         list2.removeAll(list2);
+          es.fetchEnchere().stream().forEach(e -> list1.add(e.getTitre()));
         titre.getItems().addAll(list1);
-        c.fetchClient().stream().forEach(e -> list2.add(e.getUsername()));
+         cs.fetchClient().stream().forEach(e -> list2.add(e.getUsername()));
         nom_client.getItems().addAll(list2);
-}
-
+          
+    }    
+    
+    
+     void setEnchere(Enchere e) throws SQLException {
+         lastamount.setText(String.valueOf(es.getHighestBidAmount1(e)));
+        title.setText(e.getTitre());
+        desc.setText(e.getDescription());
+         File file=new File("C:\\xampp\\htdocs\\img\\"+e.getImg());
+        Image img=new Image(file.toURI().toString());
+        image_view.setImage(img);
+         datel.setText(e.getDate_limite().toString());
+//           double lastBidAmount = es.getHighestBidAmount(p);
+////       lastamount.setText(String.valueOf(lastBidAmount));
+         
  
+    }
+
+//    
+
 
     @FXML
-    private void addParticipation(ActionEvent event) {
-        p.setMontant(Double.parseDouble(mont.getText()));
+    private void exit(ActionEvent event) throws IOException {
+    FXMLLoader loader= new FXMLLoader(getClass().getResource("./ShowAllItems.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
+    
+    }
+
+    @FXML
+    private void addParticipation(ActionEvent event) throws SQLException {
+                    
+
+    p.setMontant(Double.parseDouble(mont.getText()));
         double amount = es.getHighestBidAmount(p);
         if (p.getMontant() <= amount) {
+                        System.out.println(es);
+
             // Display an error message if the bid amount is not higher than the current highest bid
-            Alert alert = new Alert(AlertType.ERROR);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Invalid Bid Amount");
             alert.setContentText("Bid must be superior to " + amount + " DT");
             alert.showAndWait();
+            System.out.println(es);
         } else {
             if (es.enchereExist(p)) {
                 // Update the participant if they have already placed a bid
+                            System.out.println(es);
+
                 es.updateParticipant(p);
             } else {
                 // Add the participant to the auction if they are a new bidder
+                            System.out.println(es);
+
                 es.addParticipant(p);
             }
         }
     }
 
-    @FXML
-    private void listeEnchere(ActionEvent event) {
-
-        //  p.setEnchere(es.fetchEnchereByname(titre.getValue())); THIS WORKS
-        Enchere selectedEnchere = es.fetchEnchereByname(titre.getValue());
-
-        if (selectedEnchere != null) {
-            p.setEnchere(selectedEnchere);
-            dateL.setText(selectedEnchere.getDate_limite().toString());
-
-        } else {
-            // Handle the case where no Enchere is found for the selected titre
-            dateL.setText("No Enchere found for the selected titre.");
-        }
-        double lastBidAmount = es.getHighestBidAmount(p);
-        lastamount.setText(String.valueOf(lastBidAmount));
-
-    }
+  
 
     @FXML
     private void listeClient(ActionEvent event) {
-        p.setClient(c.fetchClientByName(nom_client.getValue()));
+        p.setClient(cs.fetchClientByName(nom_client.getValue()));
     }
 
     @FXML
+    private void listeEnchere(ActionEvent event) {
+    
+       p.setEnchere(es.fetchEnchereByname(titre.getValue()));
+        }
+    
+    
+    
+     @FXML
     private void downloadPDF(ActionEvent event) throws SQLException, FileNotFoundException, DocumentException, BadElementException, IOException, WriterException {
         java.util.Date today = new java.util.Date();
         Participant winningBidder = es.getWinningBidder(p.getEnchere());
@@ -162,7 +194,7 @@ public class ParticipationController implements Initializable {
 
                 document.open();
 
-                Image image = Image.getInstance("C:\\Users\\Elizabeth\\Documents\\NetBeansProjects\\pidev\\src\\css\\image.png");
+                com.itextpdf.text.Image image = com.itextpdf.text.Image.getInstance("C:\\Users\\Elizabeth\\Documents\\NetBeansProjects\\pidev\\src\\css\\image.png");
 
                 int moveLeft = 50; // the amount of movement to the left
                 float newX = 500 - ((150 - 120) / 2) - moveLeft; // calculate the new X coordinate
@@ -214,8 +246,8 @@ public class ParticipationController implements Initializable {
 
                 Paragraph qrSummary = new Paragraph("scannez le code qr à fin de recevoir une surprise");
 
-                BarcodeQRCode qrCode = new BarcodeQRCode("De la part de l'équipe de la page : \n  Cher client,\\Au nom de toute l'équipe ArtFlow, je tiens à vous remercier pour votre participation à l'enchère de l'œuvre d'art de l'artiste. Nous sommes ravis que vous ayez choisi de soutenir l'art et les artistes en participant à cette enchère.\n En signe de notre gratitude, nous aimerions vous offrir un code promo de 20% sur votre prochain achat dans notre boutique en ligne. Vous pourrez ainsi découvrir d'autres créations uniques et originales proposées par notre communauté d'artistes.\n De plus, l'artiste aimerait vous faire parvenir une carte dédicacée en remerciement de votre achat. Celle-ci sera un petit témoignage de sa reconnaissance et de son appréciation de votre soutien à son travail.\n  Nous espérons que cette expérience d'enchère vous aura plu et que vous continuerez à soutenir l'art et les artistes à l'avenir. Encore une fois, merci beaucoup pour votre participation à l'enchère et pour votre soutien à l'art et aux artistes.\n  Cordialement,\n L'équipe ArtFlow.", 1, 1, null);
-                Image qrImage = qrCode.getImage();
+                BarcodeQRCode qrCode = new BarcodeQRCode("De la part de l'équipe de la page : \n  Cher client,\\Au nom de toute l'équipe ArtFlow, \n En signe de notre gratitude, nous aimerions vous offrir un code promo de 20% sur votre prochain achat dans notre boutique en ligne avec lo code '', l'artiste aimerait vous faire parvenir une carte dédicacée en remerciement de votre achat. Celle-ci sera un petit témoignage de sa reconnaissance et de son appréciation de votre soutien à son travail.\n  Nous espérons que cette expérience d'enchère vous aura plu et que vous continuerez à soutenir l'art et les artistes à l'avenir.\n  Cordialement,\n L'équipe ArtFlow.", 1, 1, null);
+                com.itextpdf.text.Image qrImage = qrCode.getImage();
                 qrImage.scaleAbsolute(100, 100); // Increase the size to 100x100
 
                 PdfPTable table = new PdfPTable(2); // Create a table with two columns
@@ -261,34 +293,90 @@ public class ParticipationController implements Initializable {
                         }
                         inputStream.close();
                         outputStream.close();
+                        
+                        
+                        String title ="The PDF has been downloaded successfully";
+                        TrayNotification tray = new  TrayNotification();
+                        AnimationType type =  AnimationType.POPUP;
+                        
+                        tray.setAnimationType(type);
+                        tray.setTitle(title);
+                        tray.setMessage(title);
+                        tray.setNotificationType(NotificationType.SUCCESS);
+                        tray.showAndDismiss(Duration.millis(3000));
 
-                        Alert alert = new Alert(AlertType.INFORMATION);
-                        alert.setTitle("Success");
-                        alert.setHeaderText("PDF Downloaded");
-                        alert.setContentText("The PDF has been downloaded successfully.");
-                        alert.showAndWait();
+//                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//                        alert.setTitle("Success");
+//                        alert.setHeaderText("PDF Downloaded");
+//                        alert.setContentText("The PDF has been downloaded successfully.");
+//                        alert.showAndWait();
                     } catch (IOException e) {
-                        Alert alert = new Alert(AlertType.ERROR);
-                        alert.setTitle("Error");
-                        alert.setHeaderText("File Error");
-                        alert.setContentText("An error occurred while reading or writing the file.");
-                        alert.showAndWait();
+                        
+                        
+                        String title ="An error occurred while reading or writing the file.";
+                        TrayNotification tray = new  TrayNotification();
+                        AnimationType type =  AnimationType.POPUP;
+                        
+                        tray.setAnimationType(type);
+                        tray.setTitle(title);
+                        tray.setMessage(title);
+                        tray.setNotificationType(NotificationType.WARNING);
+                        tray.showAndDismiss(Duration.millis(3000));
+//                        Alert alert = new Alert(Alert.AlertType.ERROR);
+//                        alert.setTitle("Error");
+//                        alert.setHeaderText("File Error");
+//                        alert.setContentText("An error occurred while reading or writing the file.");
+//                        alert.showAndWait();
                     }
                 }
             } else {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Unauthorized Access");
-                alert.setContentText("You are not authorized to download this PDF.");
-                alert.showAndWait();
+                
+                        String title ="You are not authorized to download this PDF.";
+                        TrayNotification tray = new  TrayNotification();
+                        AnimationType type =  AnimationType.POPUP;
+                        
+                        tray.setAnimationType(type);
+                        tray.setTitle(title);
+                        tray.setMessage(title);
+                        tray.setNotificationType(NotificationType.ERROR);
+                        tray.showAndDismiss(Duration.millis(3000));
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("Error");
+//                alert.setHeaderText("Unauthorized Access");
+//                alert.setContentText("You are not authorized to download this PDF.");
+//                alert.showAndWait();
             }
         } else {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Auction still open");
-            alert.setContentText("The auction is still open. You cannot download the PDF.");
-            alert.showAndWait();
+            
+            
+            
+                        String title ="The auction is still open. You cannot download the PDF.";
+                        TrayNotification tray = new  TrayNotification();
+                        AnimationType type =  AnimationType.POPUP;
+                        
+                        tray.setAnimationType(type);
+                        tray.setTitle(title);
+                        tray.setMessage(title);
+                        tray.setNotificationType(NotificationType.WARNING);
+                        tray.showAndDismiss(Duration.millis(3000));
+            
+//            Alert alert = new Alert(Alert.AlertType.ERROR);
+//            alert.setTitle("Error");
+//            alert.setHeaderText("Auction still open");
+//            alert.setContentText("The auction is still open. You cannot download the PDF.");
+//            alert.showAndWait();
         }
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

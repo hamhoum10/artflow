@@ -9,24 +9,33 @@ package models;
  * @author Elizabeth
  */
 public class Client {
-    private int idc;
+    private int id;
    
-    private String nom;
-    private String prenom;
-   
+    private String firstname;
+    private String lastname;
+    private String address;
+    private int phone;
+    private String email;
+   private String username;
+   private String pwd;
 
     public Client() {
     }
 
-    public Client(int idc, String nom, String prenom) {
-        this.idc = idc;
-        this.nom = nom;
-        this.prenom = prenom;
+    public Client(int id, String firstname, String lastname) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
 
-    public Client(String nom, String prenom) {
-        this.nom = nom;
-        this.prenom = prenom;
+    public Client(int id, String firstname, String lastname, String address, int phone, String email, String username) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.username = username;
     }
 
     
@@ -34,34 +43,127 @@ public class Client {
     
     
 
-    public int getIdc() {
-        return idc;
+    public Client(int id, String firstname, String lastname, String address, int phone, String email, String username, String pwd) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.username = username;
+        this.pwd = pwd;
     }
 
-    public void setIdc(int idc) {
-        this.idc = idc;
+    public Client(String firstname, String lastname, String address, int phone, String email, String username, String pwd) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.username = username;
+        this.pwd = pwd;
     }
 
-    public String getNom() {
-        return nom;
+    public Client(String firstname, String lastname, String address, int phone, String email, String username) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.username = username;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+  
+
+    public String getPwd() {
+        return pwd;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    
+    
+    
+    
+    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+   
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public void setPhone(int phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
     public String toString() {
-        return "Client{" + "idc=" + idc + ", nom=" + nom + ", prenom=" + prenom + '}';
+        return "Client{" + "id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", address=" + address + ", phone=" + phone + ", email=" + email + ", username=" + username + ", pwd=" + pwd + '}';
     }
+
+    
+    
+    
+    
+    
+    
+   
+
+    
+    
+    
+    
+    
     
     
 }

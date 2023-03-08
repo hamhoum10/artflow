@@ -134,8 +134,8 @@ public class EnchereService implements EnchereParticipantInterface {
     }
 
     @Override
-    public void deleteEnchere(int id) {
-        String req = "delete from `enchere` where `ide`= " + id;
+    public void deleteEnchere(int idee) {
+        String req = "delete from `enchere` where `ide`= " + idee;
 
         try {
             PreparedStatement pst = cnx.prepareStatement(req);
@@ -151,16 +151,16 @@ public class EnchereService implements EnchereParticipantInterface {
     @Override
     public boolean enchereExist(Participant p) {
         boolean test = false;
-        String requete = "select * from `participant` where `participant`.`idc`= ? and `participant`.`ide`=? ";
+        String requete = "select * from `participant` where `participant`.`id`= ? and `participant`.`ide`=? ";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(1, p.getClient().getIdc());
+            pst.setInt(1, p.getClient().getId());
             pst.setInt(2, p.getEnchere().getIde());
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                if (p.getClient().getIdc() == rs.getInt("idc") && p.getEnchere().getIde() == rs.getInt("ide")) {
+                if (p.getClient().getId() == rs.getInt("id") && p.getEnchere().getIde() == rs.getInt("ide")) {
                     test = true;
                 }
             }
@@ -175,9 +175,9 @@ public class EnchereService implements EnchereParticipantInterface {
     public void addParticipant(Participant p) {
 
         try {
-            String req = "INSERT INTO `participant`(`idc`,`ide`,`montant`) VALUES (?,?,?)";
+            String req = "INSERT INTO `participant`(`id`,`ide`,`montant`) VALUES (?,?,?)";
             PreparedStatement st = cnx.prepareStatement(req);
-            st.setInt(1, p.getClient().getIdc());
+            st.setInt(1, p.getClient().getId());
             st.setInt(2, p.getEnchere().getIde());
             st.setInt(3, (int) p.getMontant());
             st.executeUpdate();
@@ -189,12 +189,12 @@ public class EnchereService implements EnchereParticipantInterface {
 
     @Override
     public boolean updateParticipant(Participant p) {
-        String requete = "update `participant` set `montant`=?   where `participant`.`idc`=? and `participant`.`ide`=? ;";
+        String requete = "update `participant` set `montant`=?   where `participant`.`id`=? and `participant`.`ide`=? ;";
 
         try {
             PreparedStatement pst = cnx.prepareStatement(requete);
             pst.setDouble(1, p.getMontant());
-            pst.setInt(2, p.getClient().getIdc());
+            pst.setInt(2, p.getClient().getId());
             pst.setInt(3, p.getEnchere().getIde());
 
             int n = pst.executeUpdate();
@@ -211,10 +211,10 @@ public class EnchereService implements EnchereParticipantInterface {
 
     @Override
     public boolean deleteParticipant(Participant p) {
-        String requete = "delete from `participant` where `participant`.`idc`=? and `participant`.`ide`=?;";
+        String requete = "delete from `participant` where `participant`.`id`=? and `participant`.`ide`=?;";
         try {
             PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(1, p.getClient().getIdc());
+            pst.setInt(1, p.getClient().getId());
             pst.setInt(2, p.getEnchere().getIde());
             int n = pst.executeUpdate();
             if (n >= 1) {
@@ -282,202 +282,13 @@ public class EnchereService implements EnchereParticipantInterface {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    /* @Override
-    public Participant getWinningBidder(Participant p) {
-          java.util.Date dt= new java.util.Date();
-        Date today= new Date(dt.getTime());
-         Date dateLimite= new Date(dt.getTime());
-       Participant pa = null;
-
-       /* String requete="select `c`.`idc`,`c`.`nom`,`c`.`prenom`,`p`.`montant`,`p`.`ide`,`enchere`.`date_limite` from `client` AS c"
-                    +"JOIN `participant` as p ON `c`.`idc`= `p`.`idc`"
-                    + "JOIN `enchere` ON `enchere`.`ide`= `p`.`ide`"
-                    + "  where  `p`.`ide` = ? and  `p`.`montant`=( "
-                    + " select montant from `participant` where `participant`.`ide`=? and "
-                    + "`montant`= (select MAX(montant) from `participant` where `ide`=? ));"
-       
-       String requete= "select * from `client` as c, enchere as e, `participant` as p WHERE  `p`.`ide` = ? and  `p`.`montant`=( select `montant` from `participant` where `participant`.`ide`=? and `montant`= (select MAX(montant) from `participant` where `ide`=? ))";
-       
-       
-       
-        String nom,prenom;
-        
-        int id;
-        double montant;
-        try {
-            PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(1, p.getEnchere().getIde());
-
-            ResultSet rs = pst.executeQuery();
-              if( rs.next()){
-                  Client cl=new Client();
-
-                  dateLimite = rs.getDate("dateLimite");
-
-
-                 if(today.compareTo(dateLimite) <=0 ) System.out.println("this auction still have time left ! ");
-                 else {
-                     Participant.s
-                          
-//                     id = rs.getInt("id");
-//                 nom = rs.getString("nom");
-//                 prenom = rs.getString("prenom");
-//
-//                montant = rs.getDouble("montant");
-        //        enchere = new Enchere(montant, id, articleId,new Client(id, nom, prenom));
-                
-
-//    pa = new Participant(client, Enchere, montant);
-              }
-                
-                     
-                 }
-
-                                
-            
-        } catch (SQLException ex) {
-            System.err.println("probleme de req select" + ex.getMessage());
-
-        }
-        return pa;
- }
- 
-
-
-    @Override
-        public Enchere getWinningBidder(int articleId)
- {
-        java.util.Date dt= new java.util.Date();
-        Date today= new Date(dt.getTime());
-         Date dateLimite= new Date(dt.getTime());
-       Enchere enchere = null;
-
-        String requete = "select `c`.`id`,`c`.`nom`,`c`.`prenom`,`e`.`montant`,`e`.`articleId`,`article`.`dateLimite` from `client` AS c"
-                + " JOIN `enchere` as e ON `c`.`id`= `e`.`clientId`"
-                + "JOIN `article` ON `article`.`id`= `e`.`articleId`"
-                + "  where  `e`.`articleId` = ? and  `e`.`montant`=( "
-                + " select montant from `enchere` where `enchere`.`articleId`=? and "
-                + "`montant`= (select MAX(montant) from `enchere` where articleId=? ));";
-     
-        String nom,prenom;
-        
-        int id;
-        double montant;
-        try {
-            PreparedStatement pst = cnx.prepareStatement(requete);
-            pst.setInt(1, articleId);
-            pst.setInt(2, articleId);
-            pst.setInt(3, articleId);
-
-            ResultSet rs = pst.executeQuery();
-              if( rs.next()){
-                  dateLimite = rs.getDate("dateLimite");
-
-
-                 if(today.compareTo(dateLimite) <=0 ) System.out.println("this auction still have time left ! ");
-                 else {
-                     id = rs.getInt("id");
-                 nom = rs.getString("nom");
-                 prenom = rs.getString("prenom");
-
-                montant = rs.getDouble("montant");
-                enchere = new Enchere(montant, id, articleId,new Client(id, nom, prenom));
-                  
-              }
-                
-                     
-                 }
-
-                                
-            
-        } catch (SQLException ex) {
-            System.err.println("probleme de req select" + ex.getMessage());
-
-        }
-        return enchere;
- }
-     */
-
-
-
-
-
-
-
-
-
-
-/*
-public Participant getWinningBidder(Participant p) {
-    java.util.Date today = new java.util.Date();
-    Participant pa = null;
-    String query = "SELECT * FROM client AS c, enchere AS e, participant AS p " +
-                   "WHERE p.ide = ? AND p.montant = (SELECT MAX(montant) FROM participant WHERE ide = ?) " +
-                   "AND p.ide = e.ide AND p.idc = c.idc";
-
-    try (PreparedStatement pst = cnx.prepareStatement(query)) {
-        pst.setInt(1, p.getEnchere().getIde());
-        pst.setInt(2, p.getEnchere().getIde());
-        ResultSet rs = pst.executeQuery();
-       // if (rs.next()) {
-            Date dateLimite = rs.getDate("date_limite");
-            if (today.compareTo(dateLimite) <= 0) {
-                System.out.println("This auction still has time left!");
-            }
-            
-            /*else {
-                int id = rs.getInt("idc");
-                String nom = rs.getString("nom");
-                String prenom = rs.getString("prenom");
-                double montant = rs.getDouble("montant");
-                int enchereId = rs.getInt("ide");
-                int articleId = rs.getInt("id_article");
-                Client client = new Client(id, nom, prenom);
-                Enchere enchere = new Enchere(montant, enchereId, articleId, client);
-                pa = new Participant(client, enchere, montant);
-            
-        } else {
-            System.out.println("No winner found for this auction.");
-        }
-    }
-
-}catch (SQLException ex) {
-        System.err.println("Error executing SQL query: " + ex.getMessage());
-    }
-    return pa;
-}
-
-
-*/
-
-
-
     
    public Participant getWinningBidder(Enchere enchere) throws SQLException {
     java.util.Date today = new java.util.Date();
     Participant winningBidder = null;
-    String query = "SELECT p.idp, p.montant, c.idc, c.nom, c.prenom " +
+    String query = "SELECT p.idp, p.montant, c.id, c.lastname, c.firstname, c.address, c.phonenumber, c.email,c.username " +
                    "FROM participant AS p " +
-                   "INNER JOIN client AS c ON p.idc = c.idc " +
+                   "INNER JOIN client AS c ON p.id = c.id " +
                    "WHERE p.ide = ? " +
                    "ORDER BY p.montant DESC " +
                    "LIMIT 1";
@@ -489,15 +300,21 @@ public Participant getWinningBidder(Participant p) {
             double montant = rs.getDouble("montant");
             Date dateLimite = enchere.getDate_limite();
             if (today.compareTo(dateLimite) < 0) {
-                System.out.println("This auction has ended!");
+                System.out.println("This auction still open!");
             } else {
                 int idp = rs.getInt("idp");
-                int idc = rs.getInt("idc");
-                String nom = rs.getString("nom");
-                String prenom = rs.getString("prenom");
+                int id = rs.getInt("id");
+                String firstname = rs.getString("firstname");
+                String lastname = rs.getString("lastname");
+                 String address = rs.getString("address");
+                  int phone = rs.getInt("phonenumber");
+                   String email = rs.getString("email");
+                   String username = rs.getString("username");
+                  
+                
                 
               
-                Client client = new Client(idc,nom,prenom);
+                Client client = new Client(id,firstname, lastname,address, phone, email, username);
                 winningBidder = new Participant(idp, client, enchere, montant);
             }
         } else {
@@ -510,6 +327,53 @@ public Participant getWinningBidder(Participant p) {
     
     return winningBidder;
 }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+     public double getHighestBidAmount1(Enchere e) throws SQLException {
+        double montant = 0;
+//String requete = "SELECT MAX(montant) AS amount FROM `participant` INNER JOIN `enchere` ON `participant`.`ide` = `enchere`.`ide` WHERE `enchere`.ide = ?"     ;
+ String requete = "select MAX(montant) AS amount from `participant`, `enchere` where  `participant`.`ide`=`enchere`.`ide` and `participant`.`ide`="+e.getIde();
+
+        try {
+            PreparedStatement pst = cnx.prepareStatement(requete);
+            
+            ResultSet rs = pst.executeQuery();
+            if (rs != null) {
+                rs.next();
+              
+                montant = rs.getDouble("amount");
+
+//                if (montant == 0) {
+//                   requete = "select prixdepart  from `enchere` where  `ide`=? ";
+//                    
+//                    pst = cnx.prepareStatement(requete);
+//                    pst.setDouble(1, p.getEnchere().getPrixdepart());
+//                    rs = pst.executeQuery();
+//                    if (rs != null) {
+//                        if (rs.next()) {
+//                            return rs.getDouble("prixDepart");
+//                               
+//                        }
+//                    }
+//                }
+
+//            }
+            }
+        } catch (SQLException ex) {
+            System.err.println("probleme de req select" + ex.getMessage());
+
+        }
+        return montant;
+    }
+   
+   
    
    
 }
