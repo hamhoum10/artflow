@@ -21,6 +21,8 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import models.Artiste;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import pidevAuth.LoginFXMLController;
+import static pidevAuth.WelcomePageController.static_userwelcome;
 
 /**
  *
@@ -212,6 +214,35 @@ try {
         }
         return u;
 }
+     public int getidclientbyusername(String username) throws SQLException{
+         int id_client=0;
+         
+try {
+    String req ="select `id` from `client`where `username`= ?";
+
+            PreparedStatement a = cnx.prepareStatement( req); 
+            a.setString(1, username);
+            ResultSet rs= a.executeQuery();
+            while(rs.next()){
+            id_client=rs.getInt("id");
+            System.out.println("client added successfully!");}
+            //a.close();
+       
+     }
+ catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+return id_client; 
+     }
     
-    
-    }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     }

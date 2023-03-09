@@ -10,19 +10,18 @@ import interfaces.ArtisteInterface;
 import interfaces.CategorieInterface;
 import interfaces.ClientInterface;
 import interfaces.RateInterface;
-import interfaces.StockInterface;
+
 import models.Article;
 import models.Artiste;
 import models.Categorie;
 import models.Client;
 import models.Rate;
-import models.stock;
+
 import services.ArticleService;
 import services.ArtisteService;
 import services.CategorieService;
 import services.ClientService;
 import services.RateService;
-import services.StockService;
 
 
 /**
@@ -42,8 +41,7 @@ public class Project_malek {
                 ArtisteService al = new ArtisteService();
           
         Artiste ar = new Artiste();
-        StockInterface ins = new StockService();
-        stock st = new stock();
+       
         RateService re = new RateService();
         Rate b=new Rate();
         

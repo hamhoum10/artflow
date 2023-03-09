@@ -21,6 +21,18 @@ public class Client {
     public Client() {
     }
 
+    public Client(int id, String firstname, String lastname, String address, String phonenumber, String email, String username) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.phonenumber = phonenumber;
+        this.email = email;
+        this.username = username;
+    }
+
+    
+    
     public Client(int id, String firstname, String lastname, String address, String phonenumber, String email, String username, String password) {
         this.id = id;
         this.firstname = firstname;

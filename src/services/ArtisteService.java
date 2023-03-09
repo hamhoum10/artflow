@@ -20,6 +20,7 @@ import models.Artiste;
 import models.Categorie;
 import models.User;
 import util.MyConnection;
+import static pidevAuthArtiste.LoginArtisteController.usernameArtiste;
 
 /**
  *
@@ -318,7 +319,26 @@ public class ArtisteService implements ArtisteInterface {
     
     
     
-    
+     public int getidArtistetbyusername(String username) throws SQLException{
+         int id_artiste=0;
+         
+try {
+    String req ="select `id` from `artiste`where `username`= ?";
+
+            PreparedStatement a = cnx.prepareStatement( req); 
+            a.setString(1, username);
+            ResultSet rs= a.executeQuery();
+            while(rs.next()){
+            id_artiste=rs.getInt("id_artiste");
+            System.out.println("client added successfully!");}
+            //a.close();
+       
+     }
+ catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+return id_artiste; 
+     }
     
     
     

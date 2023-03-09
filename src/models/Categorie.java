@@ -19,7 +19,7 @@ public class Categorie {
     public Categorie() {
     }
 
-    public Categorie(int id_categorie, String name_categorie, String description, stock stock) {
+    public Categorie(int id_categorie, String name_categorie, String description) {
         this.id_categorie = id_categorie;
         this.name_categorie = name_categorie;
         this.description = description;

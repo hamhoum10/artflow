@@ -6,7 +6,6 @@
 package gui;
 
 import interfaces.CategorieInterface;
-import interfaces.StockInterface;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,9 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import models.Categorie;
-import models.stock;
 import services.CategorieService;
-import services.StockService;
 
 /**
  * FXML Controller class
@@ -38,8 +35,6 @@ import services.StockService;
  */
 public class FXMLAjouteCategorieController implements Initializable {
     
-    StockInterface st = new StockService(); 
-        stock h = new stock();
         
         CategorieInterface V = new CategorieService();
       

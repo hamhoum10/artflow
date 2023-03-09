@@ -35,7 +35,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javax.mail.MessagingException;
+import models.Panier;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import static pidevAuth.LoginFXMLController.usernamewelcome;
+import services.PanierService;
 
 /**
  * FXML Controller class
@@ -47,6 +50,7 @@ public class DisplayClientFXMLController implements Initializable {
     ClientInterface client =new ClientService();
 Connection cnx = MyConnection.getInstance().getCnx();
                UserService user = new UserService();
+               public static String user1 ;
      private MailSender emailSender;
     @FXML
     private TextField id_Firstname;
@@ -77,7 +81,7 @@ public String displayId(String Client){
         return "client";
     }
     @FXML
-    private void saveClient(ActionEvent event) throws IOException {
+    private void saveClient(ActionEvent event) throws IOException, SQLException {
         emailSender = new MailSender();
       if (id_Firstname.getText().length() == 0||id_Lastname.getText().length() == 0||id_adress.getText()==null||id_Phonenumber.getText()==null||id_Email.getText()==null||id_Username.getText()==null||id_password.getText()==null) {
             
@@ -111,6 +115,9 @@ public String displayId(String Client){
         //u.setType("clien");
         //user.Userinsert(u);
         try {
+             
+       
+        
             String password = id_password.getText();
     String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
     PreparedStatement a1 = cnx.prepareStatement("INSERT INTO `user`(`username`, `password`,`type`) VALUES (?,?,?)");
@@ -118,6 +125,7 @@ public String displayId(String Client){
     a1.setString(2, encryptedPassword);
     a1.setString(3, displayId("client"));
     a1.executeUpdate();
+    
         System.out.println("0000");
      } catch (SQLException ex) {
         ex.printStackTrace();
@@ -125,7 +133,18 @@ public String displayId(String Client){
        
         
         client.saveClient(c);
+         
+                
+                  System.out.println(id_Username.getText());
+                  user1=id_Username.getText();
+//                   int  id=cl.getidclientbyusername(id_Username.getText());
+//                   Panier p = new Panier();
+//                   c.setId(id);
+//                   p.setClient(c);
+//                   ps.createPanier(p);
         String Email= id_Email.getText();
+        
+        
         pidevAuthAdmin.MailSender m =new pidevAuthAdmin.MailSender();
         m.sendVerificationCode(Email, "you're registered succesfully");
         
@@ -136,6 +155,15 @@ public String displayId(String Client){
             Scene scene = new Scene(view_2);
             stage.setScene(scene);
             stage.show();
+            ClientService cl = new ClientService();
+                  PanierService ps = new PanierService();
+                  System.out.println(id_Username.getText());
+                   int  id=cl.getidclientbyusername(id_Username.getText());
+                   Panier p = new Panier();
+                   c.setId(id);
+                   p.setClient(c);
+                   ps.createPanier(p);
+            
              
     }
     }

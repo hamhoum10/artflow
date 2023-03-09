@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1550.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miaouigui.ComfirmerCommandeController">
+   <children>
+      <Pane prefHeight="118.0" prefWidth="1550.0" style="-fx-background-color: #C69186;">
+         <children>
+            <Label layoutX="619.0" layoutY="38.0" prefHeight="50.0" prefWidth="312.0" text="Review Your Order" textFill="WHITE">
+               <font>
+                  <Font name="Bernard MT Condensed" size="40.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="228.0" fitWidth="283.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/artflowlogoo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="1078.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="1167.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/placard%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="1263.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/red-carpet%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="57.0" layoutX="1364.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/store.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="95.0" fitWidth="110.0" layoutX="1449.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/profile.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="1088.0" layoutY="91.0" text="Home" />
+            <Label layoutX="1179.0" layoutY="91.0" text="Event" />
+            <Label layoutX="1268.0" layoutY="91.0" text="Enchere" />
+            <Label layoutX="1377.0" layoutY="91.0" text="Store" />
+            <Separator layoutX="102.0" layoutY="177.0" prefHeight="3.0" prefWidth="390.0" />
+            <Label layoutX="71.0" layoutY="128.0" text="Client">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="retour" layoutX="326.0" layoutY="693.0" mnemonicParsing="false" onAction="#BacktoPanierAction" prefHeight="55.0" prefWidth="134.0" text="Done" />
+      <Button fx:id="imprimer" layoutX="1176.0" layoutY="691.0" mnemonicParsing="false" onAction="#imprimerCommandeAction" prefHeight="55.0" prefWidth="134.0" text="Print PDF" />
+      <Separator layoutX="93.0" layoutY="591.0" prefHeight="3.0" prefWidth="486.0" />
+      <Label layoutX="81.0" layoutY="535.0" text="Entreprise">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="169.0" layoutY="610.0" prefHeight="35.0" prefWidth="102.0" text="ArtFlow">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listviewcommande" fixedCellSize="0.0" layoutX="198.0" layoutY="27.0" opacity="0.0" prefHeight="3.0" prefWidth="1.0" />
+      <VBox layoutX="183.0" layoutY="220.0" prefHeight="282.0" prefWidth="258.0">
+         <children>
+            <Label opacity="0.8" prefHeight="37.0" prefWidth="251.0" text="FirstName :">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label opacity="0.8" prefHeight="35.0" prefWidth="249.0" text="SecondName : ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label opacity="0.8" prefHeight="35.0" prefWidth="256.0" text="Adress : ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label opacity="0.8" prefHeight="35.0" prefWidth="244.0" text="Number :">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label opacity="0.8" prefHeight="35.0" prefWidth="247.0" text="Created at :">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label opacity="0.8" prefHeight="35.0" prefWidth="239.0" text="Status : ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label opacity="0.8" prefHeight="35.0" prefWidth="242.0" text="Total :">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label opacity="0.8" prefHeight="35.0" prefWidth="241.0" text="Postal Code :">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox layoutX="526.0" layoutY="220.0" prefHeight="282.0" prefWidth="258.0">
+         <children>
+            <Label fx:id="prenomlabel" prefHeight="30.0" prefWidth="254.0" text="Label" textFill="GREY">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="nomlabel" prefHeight="30.0" prefWidth="278.0" text="Label" textFill="GREY">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="adresselabel" prefHeight="30.0" prefWidth="270.0" text="Label" textFill="GREY">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="numerilabel" prefHeight="30.0" prefWidth="264.0" text="Label" textFill="GREY">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="creelabel" prefHeight="30.0" prefWidth="265.0" text="Label" textFill="GREY">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="statuslabel" prefHeight="30.0" prefWidth="259.0" text="Label" textFill="GREY">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="totallabel" prefHeight="30.0" prefWidth="266.0" text="Label" textFill="GREY">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="codepostallabel" prefHeight="30.0" prefWidth="260.0" text="Label" textFill="GREY">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <ImageView fitHeight="388.0" fitWidth="368.0" layoutX="1044.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/pdf.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="152.0" fitWidth="119.0" layoutX="1015.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/down-arrow.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="873.0" layoutY="142.0" orientation="VERTICAL" prefHeight="642.0" prefWidth="4.0" />
+      <Label layoutX="1066.0" layoutY="610.0" text="Download in a PDF Format">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="1000.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rymgui.AfficherEnchereController">
+   <children>
+      <ListView fx:id="listEnchere" layoutX="237.0" layoutY="216.0" prefHeight="568.0" prefWidth="1291.0" />
+      <Button fx:id="id_afficher" layoutX="727.0" layoutY="845.0" mnemonicParsing="false" onAction="#afficherEnchere" text="display">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="1071.0" layoutY="845.0" mnemonicParsing="false" onAction="#deleteEnchere" text="delete">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="396.0" layoutY="845.0" mnemonicParsing="false" onAction="#modifyEnch" text="update">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button alignment="TOP_RIGHT" layoutX="1372.0" layoutY="845.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#addEnchere" text="add" textOverrun="CLIP">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="N_RESIZE" />
+         </cursor>
+         <effect>
+            <ColorAdjust />
+         </effect></Button>
+      <Pane layoutX="-2.0" prefHeight="126.0" prefWidth="1707.0" style="-fx-background-color: #C69186;">
+         <children>
+            <ImageView fitHeight="261.0" fitWidth="285.0" layoutY="-51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Downloads/332491846_594676055841915_1941661597642929920_n%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="84.0" fitWidth="76.0" layoutX="1166.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../css/275630755_2186379178176034_2166483768474431004_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img" fitHeight="76.0" fitWidth="76.0" layoutX="1052.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../css/332341905_924920821971225_4706063026448791299_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="75.0" fitWidth="67.0" layoutX="1292.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../css/251873654_904648307078804_2387614371536269579_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="69.0" fitWidth="62.0" layoutX="1410.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../css/333983006_503857705071907_2672044920010029342_n.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="92.0" fitWidth="95.0" layoutX="1531.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../css/250425885_610457350393876_3064174576214053952_n.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="1064.0" layoutY="99.0" text="enchere" />
+            <Label layoutX="1167.0" layoutY="99.0" text="evenement" />
+            <Label layoutX="1302.0" layoutY="99.0" text="articles" />
+            <Label layoutX="1418.0" layoutY="99.0" text="acceuil" />
+         </children>
+      </Pane>
+      <MenuBar layoutX="-1.0" layoutY="126.0" prefHeight="30.0" prefWidth="1758.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

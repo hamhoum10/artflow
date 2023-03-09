@@ -96,6 +96,16 @@ Article ai=new Article();
     private VBox vboxc;
     @FXML
     private ImageView id_cat;
+    @FXML
+    private VBox vboxb;
+    @FXML
+    private ImageView panier;
+    @FXML
+    private VBox vboxen;
+    @FXML
+    private ImageView iden;
+    @FXML
+    private ImageView id_liv;
      
 
     /**
@@ -131,6 +141,14 @@ Article ai=new Article();
         }
         if(LoginAdminController.usernameAdmin!=null){
             vbox.getChildren().remove(add_article_id);
+        }
+        if(LoginAdminController.usernameAdmin!=null || LoginArtisteController.usernameArtiste!=null ){
+            vboxb.getChildren().remove(panier);
+        }
+        
+        
+        if(LoginFXMLController.usernamewelcome!=null|| LoginArtisteController.usernameArtiste!=null ){
+            vboxb.getChildren().remove(id_liv);
         }
         int columns=0;
         int rows=0;
@@ -320,7 +338,7 @@ Article ai=new Article();
     }
 
     private void stat_art(ActionEvent event) throws IOException {
-        FXMLLoader loader= new FXMLLoader(getClass().getResource("./FXMLstat.fxml"));
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("../com.example.newartflow.Stock/Dashbord.fxml"));
             Parent view_2=loader.load();
             
             Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -440,6 +458,46 @@ public void refresh() {
             Scene scene = new Scene(view_2);
             stage.setScene(scene);
             stage.show(); 
+    }
+
+    @FXML
+    private void topanier(MouseEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("../miaouigui/panierView.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
+    }
+
+    @FXML
+    private void gotosetting(MouseEvent event) {
+        
+    }
+
+    @FXML
+    private void go_enchere(MouseEvent event) throws IOException{
+         FXMLLoader loader= new FXMLLoader(getClass().getResource("../rymgui/ShowAllItems.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
+        
+    }
+
+    @FXML
+    private void go_liv(MouseEvent event) throws IOException {
+          FXMLLoader loader= new FXMLLoader(getClass().getResource("../com.example.newartflow.Stock/AfficherLivraison.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
+        
     }
 
    

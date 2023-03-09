@@ -25,7 +25,6 @@ import javafx.stage.Stage;
 import models.Article;
 import models.Categorie;
 import services.CategorieService;
-import services.StockService;
 
 /**
  * FXML Controller class
@@ -33,7 +32,6 @@ import services.StockService;
  * @author MediaStudio
  */
 public class FXMLAfficherCategorieController implements Initializable {
-        StockService h = new StockService();
         CategorieService ch = new CategorieService();
 
     @FXML

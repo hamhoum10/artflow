@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" stylesheets="@../../../../css/yasser.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Retour.ModifierRetourControler">
+
+    <children>
+        <Label fx:id="titre" layoutX="225.0" layoutY="17.0" text="Modifier Retour" />
+        <Label layoutX="209.0" layoutY="113.0" text="Name Produit :" />
+        <TextField fx:id="np" layoutX="342.0" layoutY="101.0" promptText="name" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="108.39999999999998" />
+        <Label layoutX="236.0" layoutY="175.0" text="Artiste :" />
+        <TextField fx:id="ar" layoutX="342.0" layoutY="163.0" promptText="Artiste" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="108.39999999999998" />
+        <Label layoutX="236.0" layoutY="236.0" text="addres :" />
+        <TextField fx:id="ad" layoutX="342.0" layoutY="224.0" promptText="addres" AnchorPane.leftAnchor="342.0" AnchorPane.rightAnchor="108.39999999999998" />
+        <Label layoutX="208.0" layoutY="365.0" text="ID Commende :" />
+        <Label layoutX="222.0" layoutY="291.0" text="User Name :" />
+        <TextField fx:id="un" layoutX="356.0" layoutY="279.0" promptText="User" AnchorPane.leftAnchor="356.0" AnchorPane.rightAnchor="94.39999999999998" />
+        <Button layoutX="471.0" layoutY="585.0" mnemonicParsing="false" onAction="#ModifierLivraison" style="-fx-background-color: #C69186;" text="Modifier" />
+      <Pane layoutY="-5.0" prefHeight="1025.0" prefWidth="172.0" style="-fx-background-color: #C69186;">
+         <children>
+              <Button fx:id="re" layoutX="26.0" layoutY="965.0" mnemonicParsing="false" onAction="#returnonClick" style="-fx-background-color: #C69186;" text="retour" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="118.0" fitWidth="135.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../img/flow.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="commende" layoutX="425.0" layoutY="365.0" prefWidth="150.0" />
+    </children>
+
+</AnchorPane>

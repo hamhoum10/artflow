@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchore" maxHeight="794.0" maxWidth="964.0" minHeight="650.0" minWidth="600.0" prefHeight="794.0" prefWidth="964.0" style="-fx-background-color: #FFFBF4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rymgui.ModifController">
+   <children>
+      <TextField fx:id="titre" layoutX="298.0" layoutY="239.0" prefHeight="48.0" prefWidth="318.0" promptText="title" styleClass="text-inputlogin" stylesheets="@../css/cssajout.css" />
+      <TextField fx:id="desc" layoutX="298.0" layoutY="322.0" prefHeight="48.0" prefWidth="318.0" promptText="Description" styleClass="text-inputlogin" stylesheets="@../css/cssajout.css" />
+      <TextField fx:id="prixdepart" layoutX="298.0" layoutY="398.0" prefHeight="48.0" prefWidth="318.0" promptText="Starting price" styleClass="text-inputlogin" stylesheets="@../css/cssajout.css" />
+      <DatePicker fx:id="datel" layoutX="298.0" layoutY="499.0" prefHeight="40.0" prefWidth="318.0" promptText="limit date" />
+      <Button fx:id="img" layoutX="301.0" layoutY="578.0" mnemonicParsing="false" onAction="#takeImage" prefHeight="40.0" prefWidth="76.0" text="import" />
+      <TextField fx:id="imgfield" layoutX="377.0" layoutY="578.0" prefHeight="40.0" prefWidth="245.0" promptText="img.png" />
+      <Button layoutX="395.0" layoutY="690.0" mnemonicParsing="false" onAction="#modifyEnch" prefHeight="48.0" prefWidth="125.0" style="-fx-background-color: #DFC583; -fx-background-radius: 25;" text="UPDATE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Button>
+      <ImageView fx:id="imageview" fitHeight="295.0" fitWidth="277.0" layoutX="656.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="137.0" layoutY="585.0" text="Image" textFill="#7b6a3f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="506.0" text="Limit Date" textFill="#7b6a3f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="409.0" text="Starting price" textFill="#7b6a3f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="140.0" layoutY="333.0" text="Description" textFill="#7b6a3f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="250.0" text="Titre" textFill="#7b6a3f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane prefHeight="160.0" prefWidth="964.0" style="-fx-background-color: #DFC583;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <Label layoutX="335.0" layoutY="64.0" text="UPDATE AUCTION" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+   
+</AnchorPane>

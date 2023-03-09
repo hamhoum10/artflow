@@ -26,10 +26,15 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import models.Article;
 import models.Artiste;
+import models.Ligne_panier;
+import models.Panier;
 import models.Rate;
 import org.controlsfx.control.Rating;
+import pidevAuth.LoginFXMLController;
 import pidevAuthAdmin.LoginAdminController;
 import pidevAuthArtiste.LoginArtisteController;
+import services.ClientService;
+import services.Ligne_PanierService;
 import services.RateService;
 
 /**
@@ -60,6 +65,9 @@ public class FXMLdesController implements Initializable {
     private ImageView market_id;
     @FXML
     private Button ajout_id;
+    Article a = new Article();
+   
+        Ligne_PanierService lp = new Ligne_PanierService();
     
 
     /**
@@ -93,11 +101,31 @@ public class FXMLdesController implements Initializable {
              hbox.getChildren().remove(ajout_id);
              hbox.getChildren().remove(stars);
          }
-        
+        a=article;
 }
     
     @FXML
     private void ajouter_panner(ActionEvent event) {
+        
+//        Artiste ar = new Artiste();
+         
+//         p.setArticle(a);
+System.out.println(LoginFXMLController.usernamewelcome+"5555555");
+        
+        Ligne_panier p = new Ligne_panier();
+        Ligne_PanierService lp = new Ligne_PanierService();
+        ClientService cs = new ClientService();
+        Panier panier = new Panier();
+        
+        panier.setClient(cs.getClientbyusername(LoginFXMLController.usernamewelcome));
+        p.setArticle(a);
+        panier.setId_panier(38);
+        p.setQuantity(1);
+        p.setPanier(panier);
+        lp.AjouterDansTableligne_Panier(p);
+        System.out.println("sfsdf,kdfk,ds");
+        
+        
     }
 
     @FXML

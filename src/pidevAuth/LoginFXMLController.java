@@ -9,6 +9,7 @@ import models.User;
 import services.UserService;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import models.Client;
+import models.Panier;
+import pidev.DisplayClientFXMLController;
+import services.ClientService;
+import services.PanierService;
 
 /**
  * FXML Controller class
@@ -38,6 +44,7 @@ public class LoginFXMLController extends WelcomePageController implements Initia
     private Stage stage;
     private Scene scene;
     private Parent root;
+    
     public static String usernamewelcome;
 
     @FXML
@@ -48,6 +55,7 @@ public class LoginFXMLController extends WelcomePageController implements Initia
     private Button login;
     @FXML
     private PasswordField password;
+    
     
   
 
@@ -61,7 +69,7 @@ public class LoginFXMLController extends WelcomePageController implements Initia
     }    
 
     @FXML
-    private void login(ActionEvent event) throws IOException {
+    private void login(ActionEvent event) throws IOException, SQLException {
         
         
         UserService us =new UserService();
@@ -87,9 +95,20 @@ public class LoginFXMLController extends WelcomePageController implements Initia
               //System.out.println(ID); 
               //System.out.println(u.getType());
               if(a.getType().equals("client")){
-                   FXMLLoader loader =new FXMLLoader(getClass().getResource("Welcome page.fxml"));
+//                  ClientService cl = new ClientService();
+//                  PanierService ps = new PanierService();
+//                   int  id=cl.getidclientbyusername(DisplayClientFXMLController.user1);
+//                   Panier p = new Panier();
+//                   c.setId(id);
+//                   p.setClient(c);
+//                   ps.createPanier(p);
+                 FXMLLoader loader =new FXMLLoader(getClass().getResource("Welcome page.fxml"));
+                 
+                   
                   root  =loader.load();
+                  
                   usernamewelcome=username.getText();
+                  System.out.println(usernamewelcome);
                   //static_userwelcome.setText(username.getText());
 //                  WelcomePageController wpc= loader.getController();
 //                  wpc.displayId(Username);

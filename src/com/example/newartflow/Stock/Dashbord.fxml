@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashbordController">
+   <children>
+      <PieChart fx:id="pieChart" layoutX="554.0" layoutY="343.0" prefHeight="482.0" prefWidth="446.0" />
+      <Label layoutX="242.0" layoutY="14.0" text="Dashbord     " />
+      <LineChart fx:id="lineChart" layoutX="22.0" layoutY="343.0" prefHeight="517.0" prefWidth="398.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" fx:id="x" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="y" side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Button layoutX="14.0" layoutY="946.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="94.0" text="return" />
+   </children>
+   <stylesheets>
+      <URL value="@../../../../css/yasser.css" />
+      <URL value="@../../../../css/yasser.css" />
+   </stylesheets>
+</AnchorPane>

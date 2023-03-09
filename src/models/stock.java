@@ -1,42 +1,73 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
-/**
- *
- * @author MediaStudio
- */
-public class stock {
-    int id_stock,id_commende;
-    String name ,artiste;
+import java.util.Date;
 
-    public stock() {
+public class stock {
+    //var
+    private int id;
+    private Date date_entr;
+
+    public Date getDate_entr() {
+        return date_entr;
     }
 
-    public stock(int id_stock, int id_commende, String name, String artiste) {
-        this.id_stock = id_stock;
-        this.id_commende = id_commende;
+    public void setDate_entr(Date date_entr) {
+        this.date_entr = date_entr;
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public String getAddres() {
+        return addres;
+    }
+
+    public void setAddres(String addres) {
+        this.addres = addres;
+    }
+
+    @Override
+    public String toString() {
+        return "stock{" +
+//                "id= " + id +
+                " user_name = '" + user_name + '\'' +System.lineSeparator()+
+                " date_entr= " + date_entr +System.lineSeparator()+
+                " name = '" + name + '\'' +System.lineSeparator()+
+                " addres = '" + addres + '\'' +System.lineSeparator()+
+                " artiste = '" + artiste + '\'' +System.lineSeparator()+
+                
+                '}';
+    }
+
+    private String name,user_name,addres;
+
+    private String artiste;
+    private int id_commende;
+    //constructeure
+    public stock(){}
+
+    public stock(int id, String name, String artiste, String addres , Date date_entr, int id_commende, String user_name) {
+        this.id = id;
         this.name = name;
         this.artiste = artiste;
-    }
-
-    public int getId_stock() {
-        return id_stock;
-    }
-
-    public void setId_stock(int id_stock) {
-        this.id_stock = id_stock;
-    }
-
-    public int getId_commende() {
-        return id_commende;
-    }
-
-    public void setId_commende(int id_commende) {
         this.id_commende = id_commende;
+        this.addres=addres;
+        this.date_entr=date_entr;
+        this.user_name=user_name;
+    }
+
+    //getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -55,12 +86,16 @@ public class stock {
         this.artiste = artiste;
     }
 
-    @Override
-    public String toString() {
-        return "stock{" + "id_stock=" + id_stock + ", id_commende=" + id_commende + ", name=" + name + ", artiste=" + artiste + '}';
+    public int getId_commende() {
+        return id_commende;
     }
-    
-    
-    
-    
+
+    public void setId_commende(int id_commende) {
+        this.id_commende = id_commende;
+    }
+    //affichage du stock
+
 }
+
+
+
