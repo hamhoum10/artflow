@@ -37,6 +37,7 @@ public class CommandeController implements Initializable {
     boolean isPromo =PanierController.promocodeEtat; //narfou si fama promtion ou non mesh narfou n7oto methode total with or without dsicount
 
     //static values eli mesh n7othom fi recu commande
+    static int id_paniersta;
     static String prenomsta;
     static String nomsta;
     static String numerosta;
@@ -124,8 +125,10 @@ public class CommandeController implements Initializable {
             //ken 3mal promocode namlou commande fiha discount
             if(PanierController.promocodeEtat==true){
                 Commande c = new Commande(id_panierselectionner, prenom, nom, numero, "en attente", p.totalmontantPanierWith20Discount(3), codepostal, adresse); //id_client nada authen
-                if (cs.create(c).booleanValue() == false) {//ken commaande mesh mawjouda
+                cs.create(c);
+               // if (cs.create(c).booleanValue() == false) {//ken commaande mesh mawjouda
                     //fill the static values so i can use them in the next views commande ect
+                    id_paniersta =id_panierselectionner;
                     prenomsta=prenom;
                     nomsta=nom;
                     statussta="en attente";
@@ -146,12 +149,14 @@ public class CommandeController implements Initializable {
                     Stage stage = (Stage) comfirmerCommande.getScene().getWindow();
                     stage.setScene(scene);
                     stage.show();
-                } else {//ken mawjouda
-                    alertDialog("You already passed an Order");
-                }
+                    alertDialog("you've created an Order ! ");
+               // } else {//ken mawjouda
+               //     alertDialog("You already passed an Order");
+              //  }
             }else{//pas de promocode ywali ttoal yet7seb aadi
                 Commande c = new Commande(id_panierselectionner, prenom, nom, numero, "en attente", p.totalmontantPanier(3), codepostal, adresse); //id_client nada authen
-                if (cs.create(c).booleanValue() == false) {
+                cs.create(c);
+               // if (cs.create(c).booleanValue() == false) {
                     //fill the static values so i can use them in the next views commande ect
                     prenomsta=prenom;
                     nomsta=nom;
@@ -173,9 +178,10 @@ public class CommandeController implements Initializable {
                     Stage stage = (Stage) comfirmerCommande.getScene().getWindow();
                     stage.setScene(scene);
                     stage.show();
-                } else {
-                    alertDialog("You already passed an Order");
-                }
+                    alertDialog("you've created an Order ! ");
+                //} else {
+                    //alertDialog("You already passed an Order");
+               // }
             }
 
 

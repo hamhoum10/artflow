@@ -17,14 +17,14 @@ public class CommandeService {
     Connection cnx = MyConnection.getInstance().getCnx();
     Conditions c =new Conditions();
     // Créer une nouvelle commande
-    public Boolean create(Commande o) {
-        Boolean exist =false;
+    public void create(Commande o) {
+       // Boolean exist =false;
         try {
 
             // Créer une requête préparée pour insérer une nouvelle entrée dans la table "commandes"
             String sql = "insert into commande ( id_panier,prenom,nom,numero,status,total_amount, created_at, codepostal, adresse) values (?, ?, ?, ?, ?,?,?,?,?)";
             PreparedStatement  p = cnx.prepareStatement(sql);
-            if(c.DoPanierIdExistinCommande(o.getId_panier())==false){
+            //if(c.DoPanierIdExistinCommande(o.getId_panier())==false){
                 p.setInt(1, o.getId_panier());
                 p.setString(2, o.getPrénomClientCommande());
                 p.setString(3, o.getNomClientCommande());
@@ -38,17 +38,17 @@ public class CommandeService {
                 // Exécuter la requête
                 p.executeUpdate();
                 System.out.println("Commande is created");
-                System.out.println(exist);
-            }else{
+                //System.out.println(exist);
+            /*}else{
                 exist=true;
                 System.out.println("Commande  exist");
                 System.out.println(exist);
-            }
+            }*/
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return exist;
+        //return exist;
     }
 
     // Lire toutes les commandes
@@ -167,12 +167,15 @@ public class CommandeService {
     // Supprimer une commande
     public void deleteCommande(int id_panier) {
         try {
-            String sql ="delete from commande where id_panier = "+id_panier;
-                PreparedStatement p = cnx.prepareStatement(sql);
+            String sql = "DELETE FROM commande WHERE id_panier = ? AND status = ?";
+            PreparedStatement stmt = cnx.prepareStatement(sql);
 
-            // Exécuter la requête
-            p.executeUpdate();
-            System.out.println("La commande est annulé");
+// set the parameters for the SQL statement
+            stmt.setInt(1, id_panier);
+            stmt.setString(2, "en attente");
+
+// execute the SQL statement
+            stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -190,6 +193,22 @@ public class CommandeService {
             e.printStackTrace();
         }
         return totalPrixPanier;
+    }
+    public void updateStauts(int id_panier) {
+        try {
+            String sql = "UPDATE commande SET status = ? WHERE id_panier = ?";
+            PreparedStatement stmt = cnx.prepareStatement(sql);
+
+            // Set the parameter values
+            stmt.setString(1, "done");
+            stmt.setInt(2, id_panier); // replace id_panier with the actual value
+
+            // Execute the SQL statement
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println(rowsAffected + " rows updated.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public int getPanierIdByUser(Client c) {

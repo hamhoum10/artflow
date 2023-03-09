@@ -27,7 +27,7 @@ public class PanierService {
             Conditions c =new Conditions();
             String sql = "insert into panier (id_client) values (?) ";
             PreparedStatement  ps = cnx.prepareStatement(sql);
-            if(c.DoUserIdExistinPanier(cs.getId_client(p.getClient()))==false) {
+            if(c.DoUserIdExistinPanier(cs.getId_client(p.getClient()))==false) { //normali just id_client static from nada
                 ps.setInt(1, cs.getId_client(p.getClient()));
                 rowAjiouté =ps.executeUpdate();
                 System.out.println("Panier Created" +rowAjiouté);

@@ -46,8 +46,7 @@ public class PromoCodeService {
             e.printStackTrace();
         }
     }
-    public void generatenewCode(){
-        int newCode ;
+    public int generatenewCode(){
         Random random = new Random();
         int randomNumber = random.nextInt(90000000) + 10000000;
         System.out.println(randomNumber);
@@ -61,5 +60,6 @@ public class PromoCodeService {
             e.printStackTrace();
         }
 
+        return randomNumber;
     }
 }

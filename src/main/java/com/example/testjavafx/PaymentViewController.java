@@ -45,6 +45,7 @@ public class PaymentViewController implements Initializable {
 
     @FXML
     private Button validate;
+    CommandeService cs =new CommandeService();
 
     @FXML
     void cancelOnaction(ActionEvent event) {
@@ -60,7 +61,8 @@ public class PaymentViewController implements Initializable {
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        commandeService.deleteCommande(PanierController.id_panierlistview); //static value of id_panier mel classe PanierController
+        commandeService.deleteCommande(PanierController.id_panierlistview); //static value of id_panier mel classe PanierController //where status = "en attente"
+        alertDialog("You've canceled the Order");
     }
 
 
@@ -141,7 +143,7 @@ public class PaymentViewController implements Initializable {
             CommandeService commandeService =new CommandeService();
             Stripeapi stp = new Stripeapi();
             PanierService ps = new PanierService();
-            Ligne_PanierService lps =new Ligne_PanierService();
+
 
             //retrive textfields
             String cardNumber = numberTextfield.getText();
@@ -151,12 +153,39 @@ public class PaymentViewController implements Initializable {
             String cardholderName = namefield.getText();
 
             try {
-                stp.verifyCardAndPay(cardNumber, expMonth, expYear, cvc, String.valueOf((int)ps.totalmontantPanier(3) * 100), cardholderName);
+                if (PanierController.promocodeEtat==true) { //ken promocode activee twali montant b discount
+                    stp.verifyCardAndPay(cardNumber, expMonth, expYear, cvc,cardholderName, String.valueOf((int) ps.totalmontantPanierWith20Discount(3) * 100));
+                    if (Stripeapi.creditcardvalid==true) {
+                        alertDialog("transaction done  !");
+                        //System.out.println(PanierController.id_panierlistview);
+                        //commandeService.deleteCommande(PanierController.id_panierlistview); //4
+                        //lps.deleteAllFromLigne_panier(PanierController.id_panierlistview);//4
+                        System.out.println(PanierController.id_panierlistview);
+                        cs.updateStauts(PanierController.id_panierlistview);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("ComfirmerCommandeView.fxml"));
+                        Parent root = null;
+                        try {
+                            root = loader.load();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        Scene scene = new Scene(root);
+                        Stage stage = (Stage) validate.getScene().getWindow();
+                        stage.setScene(scene);
+                        stage.show();
+                    }else {
+                        alertDialog("transaction failed, enter a valid card number  !");
+                    }
+                }else {
+                    stp.verifyCardAndPay(cardNumber, expMonth, expYear, cvc,cardholderName, String.valueOf((int) ps.totalmontantPanier(3) * 100));
+                }
                 if (Stripeapi.creditcardvalid==true) {
                     alertDialog("transaction done  !");
                     //System.out.println(PanierController.id_panierlistview);
                     //commandeService.deleteCommande(PanierController.id_panierlistview); //4
                     //lps.deleteAllFromLigne_panier(PanierController.id_panierlistview);//4
+                    System.out.println(PanierController.id_panierlistview);
+                    cs.updateStauts(PanierController.id_panierlistview);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("ComfirmerCommandeView.fxml"));
                     Parent root = null;
                     try {

@@ -83,7 +83,7 @@ public class PanierController implements Initializable {
         //System.out.println(promocodeEtat);
         Ligne_PanierService lps =new Ligne_PanierService();
         PanierService p =new PanierService();
-        List<Ligne_panier> pa = lps.readelementPanierbyiduser(3);//normally el id eli tebda andd nada mta authentification
+        List<Ligne_panier> pa = lps.readelementPanierbyiduser(3);//normally el id eli tebda andd nada mta authentification wnafishiw el contenu mta panier mta user heka w najmou nrecupriw ay 7ja mawjoud fi model ligne panier mta kol ligne fi list view ki namloulo selection
         e= FXCollections.observableArrayList(pa);
         listView.setItems(e);
         totaltext.setText(String.valueOf(p.totalmontantPanier(3)) + " DT"); // total sans discount & normally el id eli tebda andd nada mta authentification

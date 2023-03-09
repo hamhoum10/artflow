@@ -82,60 +82,12 @@ public class ComfirmerCommandeController implements Initializable {
         totallabel.setText(String.valueOf(CommandeController.totalsta));
         adresselabel.setText(CommandeController.adressesta);
 
-
-
-       /* CommandeService cs =new CommandeService();
-        List<Commande> commandeList =cs.readCommandesbyPanier(4);
-        ObservableList<Commande> e= FXCollections.observableArrayList(commandeList);
-        listviewcommande.setItems(e);
-
-        listviewcommande.setCellFactory(param -> new ListCell<Commande>() {
-            @Override
-            protected void updateItem(Commande item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
-                    setGraphic(null);
-
-                } else {
-                prenomlabel.setText(item.getPrénomClientCommande());
-                nomlabel.setText(item.getNomClientCommande());
-                codepostallabel.setText(String.valueOf(item.getCodepostal()));
-                statuslabel.setText(item.getStatus());
-                creelabel.setText(item.getCreatedAt());
-                numerilabel.setText(String.valueOf(item.getNumeroPhoneclient()));
-                totallabel.setText(String.valueOf(item.getTotalAmount())+ "DT");
-                adresselabel.setText(item.getAdresse());
-
-
-                    //tostring
-                    Label contenu =new Label(item.toString());
-                    contenu.setStyle("-fx-font-family: Arial; -fx-font-size: 12;");
-
-                    //BORDERPANE
-                    BorderPane borderPane = new BorderPane();
-                    borderPane.setCenter(contenu);
-
-                    //contenu el ToString()
-                    HBox centerBox = new HBox(contenu);
-                    centerBox.setAlignment(Pos.CENTER_LEFT);
-                    centerBox.setSpacing(5);
-                    borderPane.setCenter(centerBox);
-
-
-
-
-                    setGraphic(borderPane);
-
-                }
-            }
-        });*/
     }
     @FXML
     void BacktoPanierAction(ActionEvent event) {
         Ligne_PanierService lps =new Ligne_PanierService();
         CommandeService commandeService =new CommandeService();
-        commandeService.deleteCommande(PanierController.id_panierlistview); //4
+        //commandeService.deleteCommande(PanierController.id_panierlistview); //4
         lps.deleteAllFromLigne_panier(PanierController.id_panierlistview);//4
         //PanierController.id_panierlistview=  ps.getPanierIdByIDUser(3); //lezem n7ot id bel methode hethi alkhtr valeur static mesh ywali null w twli errors, w momken le mezelt ntesti
 

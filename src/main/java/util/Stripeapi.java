@@ -5,8 +5,11 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.*;
 import com.stripe.net.ApiResource;
 import com.stripe.net.RequestOptions;
-import com.stripe.param.checkout.SessionCreateParams;
 
+import javafx.scene.media.MediaPlayer;
+
+import javax.mail.Message;
+import javax.mail.internet.MimeMessage;
 import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +18,7 @@ import java.util.Objects;
 public class Stripeapi {
     public static boolean creditcardvalid;
 
-        public boolean verifyCardAndPay(String cardNumber, int expMonth, int expYear, String cvc ,String montant , String cardholderName) throws StripeException {
+        public boolean verifyCardAndPay(String cardNumber, int expMonth, int expYear, String cvc , String cardholderName ,String montant ) throws StripeException {
 
 
             Stripe.apiKey = "sk_test_51MgCPXKJx2ljBQl3EIxLiyZEKush4tOgcLj9PzUtbqP5vLDDOgyfRQVXxYJOJwF4w36CZpLLFBB8t71hZrTRZUCr00Q6asBogP";

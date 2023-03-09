@@ -17,7 +17,7 @@ public class Panier {
     Connection cnx = MyConnection.getInstance().getCnx();
 
     public Panier(){}
-    public Panier(int id_client) {
+    public Panier(int id_client) { //logiqument nestamel hethi fi javafx alkhtr panier test7a9 just id_client wel CLIENT mafihesh id
         this.id_client = id_client;
     }
 

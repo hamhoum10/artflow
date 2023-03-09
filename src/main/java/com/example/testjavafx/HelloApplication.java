@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import com.stripe.Stripe;
+import services.CommandeService;
+
 public class HelloApplication extends Application {
     @Override
      public void start(Stage stage) throws IOException {
@@ -16,6 +18,12 @@ public class HelloApplication extends Application {
         stage.setTitle("Artflow");
         stage.setScene(scene);
         stage.show();
+        //pour executer un bout de code quand le user quit l'application brusquement
+        stage.setOnCloseRequest(event -> {
+            System.out.println("Application is closing...");
+            CommandeService commandeService =new CommandeService();
+            commandeService.deleteCommande(PanierController.id_panierlistview);
+        });
 
     }
    /* public void start(Stage stage) throws IOException {
