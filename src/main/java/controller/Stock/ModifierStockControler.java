@@ -1,29 +1,37 @@
 package controller.Stock;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.stock;
+import services.CommandeService;
 import services.stockService;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ModifierStockControler {
+public class ModifierStockControler implements Initializable {
     stockService ss = new stockService();
+    CommandeService cs = new CommandeService();
+    ObservableList list = FXCollections.observableArrayList();
+    @FXML
+    private ComboBox<String> commende;
+
     @FXML
     private TextField ad;
 
     @FXML
     private TextField ar;
 
-    @FXML
-    private TextField ic;
+
 
     @FXML
     private TextField np;
@@ -45,20 +53,21 @@ public class ModifierStockControler {
         np.setText(s.getName());
         ar.setText(s.getArtiste());
         ad.setText(s.getAddres());
-        ic.setText(String.valueOf(s.getId_commende()));
+//        ic.setText(String.valueOf(s.getId_commende()));
         un.setText(s.getUser_name());
 
 
     }
 
     @FXML
-    void ModifierStock(ActionEvent event) throws IOException {
+    void ModifierStock(ActionEvent event) throws IOException, SQLException {
 
 
         s.setName(np.getText());
         s.setArtiste(ar.getText());
         s.setAddres(ad.getText());
-        s.setId_commende(Integer.parseInt(ic.getText()));
+        s.setId_commende(cs.getCommendeIdByName( commende.getValue()));
+//        s.setId_commende(Integer.parseInt(ic.getText()));
         s.setUser_name(un.getText());
         if (s.getName().isEmpty() || s.getArtiste().isEmpty() || s.getAddres().isEmpty() || String.valueOf(s.getId_commende()).isEmpty() || s.getUser_name().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -108,5 +117,12 @@ public class ModifierStockControler {
         Stage window = (Stage) re.getScene().getWindow();
         window.setScene(new Scene(root));
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        list.remove(list);
+        cs.readAllCommandes().stream().forEach(e -> list.add(e.getNomClientCommande()));
+        commende.getItems().addAll(list);
     }
 }

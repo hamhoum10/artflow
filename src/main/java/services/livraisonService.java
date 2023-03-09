@@ -1,11 +1,9 @@
 package services;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
 
 import interfaces.livraisonInterface;
+import models.Commande;
 import models.livraison;
 import models.retour;
 import models.stock;
@@ -43,17 +41,21 @@ public class livraisonService implements livraisonInterface {
     public List<livraison> fetchlivraison() {
         List<livraison> livraisons = new ArrayList<>();
 
-        try {String req = "select * FROM `livraison`   ";
+        try {String req = "select * FROM `livraison`";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
                 livraison s = new livraison();
+                Commande c = new Commande();
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setUser_name(rs.getString("User_name"));
                 s.setAddres(rs.getString(4));
                 s.setArtiste(rs.getString("artiste"));
                 s.setId_commende(rs.getInt("id_commende"));
+                s.setDate_entr(rs.getDate("date_sort"));
+
+//                s.setId_commende(rs.getInt("id_commende"));
 //                s.setDate_entr(rs.getDate("date_sort"));
 
                 livraisons.add(s);
@@ -113,6 +115,7 @@ public class livraisonService implements livraisonInterface {
     @Override
     public List<livraison> filtreParCommendeliv(int cmd) {
         List<livraison> livraisons=new ArrayList<>();
+        Commande c = new Commande();
         try {
             String req = "select * FROM `livraison` where `id_commende` = "+cmd;
             Statement st = cnx.createStatement();
@@ -122,6 +125,7 @@ public class livraisonService implements livraisonInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
+                c.setId(rs.getInt("id"));
                 s.setId_commende(rs.getInt("id_commende"));
                 livraisons.add(s);
             }
@@ -243,6 +247,7 @@ public class livraisonService implements livraisonInterface {
                 s.setId_commende(rs.getInt("id_commende"));
                 s.setAddres(rs.getString("addres"));
                 s.setUser_name(rs.getString("user_name"));
+                s.setDate_entr(rs.getDate("date_sort"));
                 ;
                 livraisons.add(s);
             }
@@ -278,20 +283,62 @@ public class livraisonService implements livraisonInterface {
     }
 
     @Override
-    public void SmsNotification() {
-        String ACCOUNT_SID = "AC0d38c511436eadf48ac03b413f251cbb";
-        String AUTH_TOKEN = "28b08adf773c0df3f314fc80c562026a";
+    public void SmsNotification(String id) {
+        String num="";
+
+        try {
+            String req = "select numero FROM `commande` where `nom` = '"+id+"'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+               num=rs.getString("numero") ;
 
 
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        String ACCOUNT_SID = "AC4730297eb72be182dde74c2a2143deb8";
+        String AUTH_TOKEN = "fba49a82e157a83953c49896694c44ec";
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
             Message message = Message.creator(
-                            new com.twilio.type.PhoneNumber("+21650660438"),
-
-                            new com.twilio.type.PhoneNumber("+12766638918"),
+                            new com.twilio.type.PhoneNumber("+216"+num),
+                            new com.twilio.type.PhoneNumber("+12764448061"),
                             "ArtFlow want to unform you that your commend is withe the delevery man now")
                     .create();
 
             System.out.println(message.getSid());
+
+    }
+    public void SmsNotification(int id) {
+        String num="";
+
+        try {
+            String req = "select numero FROM `commande` where `id` = '"+id+"'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+                num=rs.getString("numero") ;
+
+
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        String ACCOUNT_SID = "AC4730297eb72be182dde74c2a2143deb8";
+        String AUTH_TOKEN = "fba49a82e157a83953c49896694c44ec";
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        Message message = Message.creator(
+                        new com.twilio.type.PhoneNumber("+216"+num),
+                        new com.twilio.type.PhoneNumber("+12764448061"),
+                        "ArtFlow want to unform you that your commend is withe the delevery man now")
+                .create();
+
+        System.out.println(message.getSid());
 
     }
 

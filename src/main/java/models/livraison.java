@@ -5,6 +5,11 @@ import java.util.Date;
 public class livraison {
 
     //var
+    private String name,user_name,addres;
+
+    private String artiste;
+    private Commande commende;
+    private int id_commende;
     private int id;
     private Date date_sort;
 
@@ -41,14 +46,11 @@ public class livraison {
                 ", name='" + name + '\'' + System.lineSeparator()+
                 ", addres='" + addres + '\'' + System.lineSeparator()+
                 ", artiste='" + artiste + '\'' + System.lineSeparator()+
-                ", id_commende=" + id_commende + System.lineSeparator()+
+
                 '}';
     }
 
-    private String name,user_name,addres;
 
-    private String artiste;
-    private int id_commende;
     //constructeure
     public livraison(){}
 

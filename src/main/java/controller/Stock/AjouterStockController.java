@@ -1,32 +1,35 @@
 package controller.Stock;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import models.livraison;
 import models.stock;
+import services.CommandeService;
 import services.stockService;
 
 import java.net.URL;
 
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class AjouterStockController   implements  Initializable {
     stockService ss = new stockService();
+    @FXML
+    private ComboBox<String> commende;
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -38,8 +41,6 @@ public class AjouterStockController   implements  Initializable {
     @FXML
     private TextField ar;
 
-    @FXML
-    private TextField ic;
 
     @FXML
     private TextField np;
@@ -49,6 +50,8 @@ public class AjouterStockController   implements  Initializable {
 
     @FXML
     private Label titre;
+    ObservableList list = FXCollections.observableArrayList();
+    CommandeService cs = new CommandeService();
 
 
 
@@ -63,17 +66,20 @@ public class AjouterStockController   implements  Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        list.remove(list);
+        cs.readAllCommandes().stream().forEach(e -> list.add(e.getNomClientCommande()));
+        commende.getItems().addAll(list);
 
     }
     @FXML
-    void ajouterStock(ActionEvent event) throws IOException {
+    void ajouterStock(ActionEvent event) throws IOException, SQLException {
         String name = np.getText().trim();
         String artiste = ar.getText().trim();
         String addres = ad.getText().trim();
-        String idCommendeStr = ic.getText().trim();
+//        String idCommendeStr = ic.getText().trim();
         String userName = un.getText().trim();
 
-        if (name.isEmpty() || artiste.isEmpty() || addres.isEmpty() || idCommendeStr.isEmpty() || userName.isEmpty()) {
+        if (name.isEmpty() || artiste.isEmpty() || addres.isEmpty() ||  userName.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setHeaderText(null);
@@ -92,25 +98,16 @@ public class AjouterStockController   implements  Initializable {
             return;
         }
 
-        int idCommende = 0;
-        try {
-            idCommende = Integer.parseInt(idCommendeStr);
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter a valid integer value for id_commende.");
-            alert.showAndWait();
-            return;
-        }
+
 
         stock s = new stock();
         s.setName(name);
         s.setArtiste(artiste);
         s.setAddres(addres);
-        s.setId_commende(idCommende);
+        s.setId_commende(cs.getCommendeIdByName( commende.getValue()));
+//        s.setId_commende(idCommende);
         s.setUser_name(userName);
-        ss.SmsNotification();
+        ss.SmsNotification(commende.getValue());
         ss.addstock(s);
 
         titre.setText("stock Added Successfully!");

@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="1000.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashbordController">
    <children>
-      <PieChart fx:id="pieChart" layoutX="525.0" layoutY="371.0" prefHeight="482.0" prefWidth="306.0" />
+      <PieChart fx:id="pieChart" layoutX="525.0" layoutY="246.0" prefHeight="607.0" prefWidth="436.0" />
       <Label layoutX="242.0" layoutY="14.0" text="Dashbord     " />
       <LineChart fx:id="lineChart" layoutX="22.0" layoutY="343.0" prefHeight="517.0" prefWidth="398.0">
         <xAxis>

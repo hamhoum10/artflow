@@ -51,7 +51,7 @@ public class DashbordController implements Initializable {
         XYChart.Series series = new XYChart.Series();
         for (int i = 0;i< dd.size();i++){
             switch (dd.get(i).getMonth()){
-                case 0:
+                case 1:
                     series.getData().add(new XYChart.Data("jan",dd.get(i).getTotal_amount()));
 //                    series.getData().add(new XYChart.Data("feb",0));
 //                    series.getData().add(new XYChart.Data("mar",0));
@@ -66,7 +66,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("dec",0));
 
                     break;
-                case 1:
+                case 2:
 //                    series.getData().add(new XYChart.Data("jan",0));
                     series.getData().add(new XYChart.Data("feb",dd.get(i).getTotal_amount()));
 //                    series.getData().add(new XYChart.Data("mar",0));
@@ -81,7 +81,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("dec",0));
 
                     break;
-                case 2:
+                case 3:
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
                     series.getData().add(new XYChart.Data("mar",dd.get(i).getTotal_amount()));
@@ -96,7 +96,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("dec",0));
 
                     break;
-                case 3:
+                case 4:
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
 //                    series.getData().add(new XYChart.Data("mar",0));
@@ -110,7 +110,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("nov",0));
 //                    series.getData().add(new XYChart.Data("dec",0));
                     break;
-                case 4:
+                case 5:
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
 //                    series.getData().add(new XYChart.Data("mar",0));
@@ -124,7 +124,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("nov",0));
 //                    series.getData().add(new XYChart.Data("dec",0));
                     break;
-                case 5:
+                case 6:
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
 //                    series.getData().add(new XYChart.Data("mar",0));
@@ -138,7 +138,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("nov",0));
 //                    series.getData().add(new XYChart.Data("dec",0));
                     break;
-                case 6:
+                case 7:
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
 //                    series.getData().add(new XYChart.Data("mar",0));
@@ -152,7 +152,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("nov",0));
 //                    series.getData().add(new XYChart.Data("dec",0));
                     break;
-                case 7:
+                case 8:
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
 //                    series.getData().add(new XYChart.Data("mar",0));
@@ -166,7 +166,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("nov",0));
 //                    series.getData().add(new XYChart.Data("dec",0));
                     break;
-                case 8:
+                case 9:
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
 //                    series.getData().add(new XYChart.Data("mar",0));
@@ -180,7 +180,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("nov",0));
 //                    series.getData().add(new XYChart.Data("dec",0));
                     break;
-                case 9:
+                case 10:
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
 //                    series.getData().add(new XYChart.Data("mar",0));
@@ -194,7 +194,7 @@ public class DashbordController implements Initializable {
 //                    series.getData().add(new XYChart.Data("nov",0));
 //                    series.getData().add(new XYChart.Data("dec",0));
                     break;
-                case 10:
+                case 11:
 //
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
@@ -209,7 +209,7 @@ public class DashbordController implements Initializable {
                     series.getData().add(new XYChart.Data("nov",dd.get(i).getTotal_amount()));
 //                    series.getData().add(new XYChart.Data("dec",0));
                     break;
-                case 11:
+                case 12:
 //                    series.getData().add(new XYChart.Data("jan",0));
 //                    series.getData().add(new XYChart.Data("feb",0));
 //                    series.getData().add(new XYChart.Data("mar",0));

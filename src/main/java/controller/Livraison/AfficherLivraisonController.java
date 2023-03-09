@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -139,7 +140,8 @@ public class AfficherLivraisonController implements Initializable  {
         l.setArtiste(lst.getSelectionModel().getSelectedItem().getArtiste());
                     ss.moveToretour(l);
                     afficher(event);
-                    r.SmsNotification();
+
+                    r.SmsNotification(l.getId_commende());
     }
 
     @FXML
@@ -153,7 +155,7 @@ public class AfficherLivraisonController implements Initializable  {
         l.setDate_entr(lst.getSelectionModel().getSelectedItem().getDate_sort());
         ss.moveToStock(l);
         afficher(event);
-        sss.SmsNotification();
+        sss.SmsNotification(l.getId_commende());
 
     }
     @FXML
@@ -188,5 +190,31 @@ public class AfficherLivraisonController implements Initializable  {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         e= FXCollections.observableArrayList(ss.fetchlivraison());
         lst.setItems(e);
+    }
+
+    @FXML
+    void tt(ContextMenuEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/example/newartflow/Stock/Dashbord.fxmll"));
+
+        Parent view_2=loader.load();
+
+        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(view_2,1000,1000);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    void allergh(MouseEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/example/newartflow/Stock/Dashbord.fxmll"));
+
+        Parent view_2=loader.load();
+
+        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(view_2,1000,1000);
+        stage.setScene(scene);
+        stage.show();
+
     }
 }

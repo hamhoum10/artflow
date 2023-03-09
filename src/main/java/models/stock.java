@@ -40,7 +40,7 @@ public class stock {
                 " name = '" + name + '\'' +System.lineSeparator()+
                 " addres = '" + addres + '\'' +System.lineSeparator()+
                 " artiste = '" + artiste + '\'' +System.lineSeparator()+
-                ", id_commende = " + id_commende +System.lineSeparator()+
+
                 '}';
     }
 

@@ -3,6 +3,8 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,20 +12,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.livraison;
+import services.CommandeService;
 import services.livraisonService;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AjouterLivraisonController implements  Initializable {
-    livraisonService ss = new livraisonService();
+
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -46,6 +47,13 @@ public class AjouterLivraisonController implements  Initializable {
 
     @FXML
     private Label titre;
+    @FXML
+    private ComboBox<String> commende;
+
+    ObservableList list2= FXCollections.observableArrayList();
+    ObservableList list = FXCollections.observableArrayList();
+    livraisonService ss = new livraisonService();
+    CommandeService cs = new CommandeService();
 
 
 
@@ -60,18 +68,21 @@ public class AjouterLivraisonController implements  Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+     list.remove(list);
+        cs.readAllCommandes().stream().forEach(e -> list.add(e.getNomClientCommande()));
+        commende.getItems().addAll(list);
 
     }
     @FXML
 //
-    public void ajouterStock(ActionEvent event) throws IOException {
+    public void ajouterStock(ActionEvent event) throws IOException, SQLException {
         String name = np.getText().trim();
         String artiste = ar.getText().trim();
         String addres = ad.getText().trim();
-        String idCommendeStr = ic.getText().trim();
+//        String idCommendeStr = ic.getText().trim();
         String userName = un.getText().trim();
 
-        if (name.isEmpty() || artiste.isEmpty() || addres.isEmpty() || idCommendeStr.isEmpty() || userName.isEmpty()) {
+        if (name.isEmpty() || artiste.isEmpty() || addres.isEmpty() ||  userName.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Dialog");
             alert.setHeaderText(null);
@@ -91,24 +102,17 @@ public class AjouterLivraisonController implements  Initializable {
         }
 
         int idCommende = 0;
-        try {
-            idCommende = Integer.parseInt(idCommendeStr);
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter a valid integer value for id_commende.");
-            alert.showAndWait();
-            return;
-        }
+
 
         livraison s = new livraison();
         s.setName(name);
         s.setArtiste(artiste);
         s.setAddres(addres);
-        s.setId_commende(idCommende);
+
+
+        s.setId_commende(cs.getCommendeIdByName( commende.getValue()));
         s.setUser_name(userName);
-        ss.SmsNotification();
+        ss.SmsNotification(commende.getValue());
         ss.addlivraison(s);
 
 
@@ -127,6 +131,10 @@ public class AjouterLivraisonController implements  Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Livraison insérée avec succès!");
         alert.showAndWait();
+    }
+    @FXML
+    void mame_commende(ActionEvent event) {
+
     }
 
 

@@ -19,7 +19,7 @@
       <Button fx:id="button" layoutX="820.0" layoutY="58.0" mnemonicParsing="false" onAction="#ajouter" style="-fx-background-color: #C69186;" text="Ajouter" />
       <Button layoutX="700.0" layoutY="58.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-color: #C69186;" stylesheets="@../../../../css/yasser.css" text="Modifier" />
       <Button layoutX="580.0" layoutY="58.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: #C69186;" text="supprimer" />
-      <Pane layoutY="-1.0" prefHeight="1082.0" prefWidth="200.0" style="-fx-background-color: #C69186;">
+      <Pane layoutY="-1.0" prefHeight="1000.0" prefWidth="200.0" style="-fx-background-color: #C69186;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" pickOnBounds="true" preserveRatio="true">
                <image>

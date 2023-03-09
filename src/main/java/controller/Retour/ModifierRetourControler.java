@@ -1,31 +1,38 @@
 package controller.Retour;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import models.livraison;
 import models.retour;
+import services.CommandeService;
 import services.livraisonService;
 import services.retourService;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ModifierRetourControler {
+public class ModifierRetourControler  implements Initializable {
     retourService ss = new retourService();
+    CommandeService cs = new CommandeService();
+    ObservableList list = FXCollections.observableArrayList();
     @FXML
     private TextField ad;
 
     @FXML
     private TextField ar;
-
     @FXML
-    private TextField ic;
+    private ComboBox<String> commende;
+
+
 
     @FXML
     private TextField np;
@@ -47,21 +54,22 @@ public class ModifierRetourControler {
         np.setText(s.getName());
         ar.setText(s.getArtiste());
         ad.setText(s.getAddres());
-        ic.setText(String.valueOf(s.getId_commende()));
+//        ic.setText(String.valueOf(s.getId_commende()));
         un.setText(s.getUser_name());
 
 
     }
 
     @FXML
-    void ModifierLivraison(ActionEvent event) throws IOException {
+    void ModifierLivraison(ActionEvent event) throws IOException, SQLException {
 
 
 
         s.setName(np.getText());
         s.setArtiste(ar.getText());
         s.setAddres(ad.getText());
-        s.setId_commende(Integer.parseInt(ic.getText()));
+        s.setId_commende(cs.getCommendeIdByName( commende.getValue()));
+//        s.setId_commende(Integer.parseInt(ic.getText()));
         s.setUser_name(un.getText());
         if (s.getName().isEmpty() || s.getArtiste().isEmpty() || s.getAddres().isEmpty() || String.valueOf(s.getId_commende()).isEmpty() || s.getUser_name().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -116,4 +124,10 @@ public class ModifierRetourControler {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        list.remove(list);
+        cs.readAllCommandes().stream().forEach(e -> list.add(e.getNomClientCommande()));
+        commende.getItems().addAll(list);
+    }
 }

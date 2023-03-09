@@ -3,19 +3,23 @@ package com.example.newartflow;
 import models.Dashbord;
 import models.livraison;
 import models.stock;
+import services.CommandeService;
 import services.DashbordService;
 import services.livraisonService;
-import services.stockService;
+//import services.stockService;
 
+import java.sql.SQLException;
 import java.util.List;
 
+
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         System.out.println("hello");
-        stock l =new stock();
+        stock l = new stock();
+        CommandeService c = new CommandeService();
         DashbordService d = new DashbordService();
         livraisonService ll = new livraisonService();
-        stockService ls = new stockService();
+//        stockService ls = new stockService();
         l.setName("ahahah");
         l.setUser_name("babababa");
         l.setId_commende(1);
@@ -30,12 +34,9 @@ public class main {
 //        System.out.println(ll.fetchlivraison());
 //        System.out.println(ll.SelectByUserliv("o"));
 //ll.SmsNotification();
-        List<Dashbord> dd=d.fetchDashbord();
-        for (int i = 0;i< dd.size();i++){
-
-            System.out.println(dd.get(i).getMonth());
-        }
-
-
+//        System.out.println(c.getNumById("dsfdsf"));
+        ll.SmsNotification("yasser");
     }
+
+
 }

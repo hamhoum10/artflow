@@ -18,6 +18,6 @@ public interface livraisonInterface {
     public List<livraison>SlectByDateliv(Date d);
     public void moveToretour( livraison s);
     public void moveToStock(livraison s);
-    public void SmsNotification();
+    public void SmsNotification(String id);
 
 }

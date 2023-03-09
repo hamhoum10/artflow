@@ -252,22 +252,81 @@ public class stockService implements stockInterface {
     }
 
     @Override
-    public void SmsNotification() {
-        String ACCOUNT_SID = "AC0d38c511436eadf48ac03b413f251cbb";
-        String AUTH_TOKEN = "28b08adf773c0df3f314fc80c562026a";
+    public void SmsNotification(String id) {
+        String num="";
+
+        try {
+            String req = "select numero FROM `commande` where `nom` = '"+id+"'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                num=rs.getString("numero") ;
+
+
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+
+        String ACCOUNT_SID = "AC4730297eb72be182dde74c2a2143deb8";
+        String AUTH_TOKEN = "fba49a82e157a83953c49896694c44ec";
 
 
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message message = Message.creator(
-                        new com.twilio.type.PhoneNumber("+21650660438"),
+                        new com.twilio.type.PhoneNumber("+216"+num),
 
-                        new com.twilio.type.PhoneNumber("+12766638918"),
-                        "ArtFlow want to unform you that your commend is in the Stock now ")
+                        new com.twilio.type.PhoneNumber("+12764448061"),
+                        "ArtFlow want to unform you that your commend is in the Stock now")
                 .create();
 
         System.out.println(message.getSid());
 
     }
+    public void SmsNotification(int id) {
+        String num="";
+
+        try {
+            String req = "select numero FROM `commande` where `id` = '"+id+"'";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {
+
+                num=rs.getString("numero") ;
+
+
+            }
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+
+        String ACCOUNT_SID = "AC4730297eb72be182dde74c2a2143deb8";
+        String AUTH_TOKEN = "fba49a82e157a83953c49896694c44ec";
+
+
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        Message message = Message.creator(
+                        new com.twilio.type.PhoneNumber("+216"+num),
+
+                        new com.twilio.type.PhoneNumber("+12764448061"),
+                        "ArtFlow want to unform you that your commend is in the Stock now")
+                .create();
+
+        System.out.println(message.getSid());
+
+    }
+
+
+
+
+
 
     @Override
     public void moveToLivraison(stock s) {

@@ -16,7 +16,7 @@ public void addstock(stock s);
 public List<stock> SelectByArtiste(String art);
     public List<stock> SelectByUser(String usr);
     public List<stock>SlectByDate(Date d);
-    public void SmsNotification();
+    public void SmsNotification(String id);
     public void moveToLivraison( stock s);
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -18,10 +19,9 @@
         <TextField fx:id="ar" layoutX="362.0" layoutY="424.0" promptText="Artiste" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="88.39999999999998" />
         <Label layoutX="272.0" layoutY="490.0" text="addres :" />
         <TextField fx:id="ad" layoutX="362.0" layoutY="485.0" promptText="addres" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="88.39999999999998" />
-        <Label layoutX="244.0" layoutY="539.0" text="ID Commende :" />
-        <TextField fx:id="ic" layoutX="362.0" layoutY="534.0" promptText="ID" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="88.39999999999998" />
-        <Label layoutX="244.0" layoutY="600.0" text="User Name :" />
-        <TextField fx:id="un" layoutX="362.0" layoutY="595.0" promptText="User" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="88.39999999999998" />
+        <Label layoutX="254.0" layoutY="591.0" text=" Commende :" />
+        <Label layoutX="254.0" layoutY="542.0" text="User Name :" />
+        <TextField fx:id="un" layoutX="372.0" layoutY="537.0" promptText="User" AnchorPane.leftAnchor="372.0" AnchorPane.rightAnchor="78.39999999999998" />
         <Button layoutX="362.0" layoutY="661.0" mnemonicParsing="false" onAction="#ModifierLivraison" style="-fx-background-color: #C69186;" text="Modifier" />
       <Pane prefHeight="1000.0" prefWidth="170.0" style="-fx-background-color: #C69186;">
          <children>
@@ -33,6 +33,7 @@
             <Image url="@../../../../image/Art_flow.png" />
          </image>
       </ImageView>
+      <ComboBox fx:id="commende" layoutX="579.0" layoutY="589.0" prefWidth="150.0" />
     </children>
 
 </AnchorPane>
