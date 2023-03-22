@@ -13,7 +13,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import models.Article;
 import models.Rate;
+import pidevAuth.LoginFXMLController;
 import util.MyConnection;
+import services.UserService;
 
 /**
  *
@@ -21,7 +23,8 @@ import util.MyConnection;
  */
 public class RateService implements RateInterface {
         Connection cnx = MyConnection.getInstance().getCnx();
-
+        UserService user = new UserService();
+    
     @Override
     public void updateRating(Rate r) {
         try {
@@ -31,7 +34,7 @@ public class RateService implements RateInterface {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setDouble(1, r.getRating());
                 ps.setInt(2, r.getArticle().getId_article());
-                ps.setInt(3, r.getRater().getId());
+                ps.setInt(3, user.getUserbyusername(LoginFXMLController.usernamewelcome).getId());
                 
                 ps.executeUpdate();
                 System.out.println("rate is inserted");
@@ -42,7 +45,7 @@ public class RateService implements RateInterface {
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ps.setDouble(1, r.getRating());
                 ps.setInt(2, r.getArticle().getId_article());
-                ps.setInt(3, r.getRater().getId());
+                ps.setInt(3, user.getUserbyusername(LoginFXMLController.usernamewelcome).getId());
                 ps.executeUpdate();
                 System.out.println("rate is updated");
 
@@ -57,9 +60,11 @@ public class RateService implements RateInterface {
     @Override
     public Double afficherRating(Rate r) {
         Rate rating = new Rate();
+        
+        if(LoginFXMLController.usernamewelcome!=null)
         try {
             
-            String req = "SELECT * FROM rating where id_Rater="+r.getRater().getId()+" and id_Article="+r.getArticle().getId_article();
+            String req = "SELECT * FROM rating where id_Rater="+user.getUserbyusername(LoginFXMLController.usernamewelcome).getId()+" and id_Article="+r.getArticle().getId_article();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                

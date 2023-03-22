@@ -3,49 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/services/EvenementService.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/pidevAuthAdmin/LoginAdminController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/View_Evemt.fxml</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/Retour/AfficherRetourController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/Livraison/AjouterLivraisonController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/Livraison/AfficherLivraisonController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/models/retour.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/Livraison/ModifierLivraisonControler.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/com/example/newartflow/Stock/AjouterLivraison.fxml</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/View_EvemtController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/gui/FXMLafficherclientController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/Retour/AjouterRetourController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/services/ClientService.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/ModifierReservationController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/services/ReservationService.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/com/example/newartflow/Stock/AfficherLivraison.fxml</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/pidevAuthArtiste/LoginArtisteController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/pidevAuth/LoginMain.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/gui/FXMLafficherController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/ReservationController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/pidevAuthAdmin/SettingAdminMain.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/Evenement.fxml</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/models/Commande.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/models/Evenement.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/services/ArtisteService.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/Retour/ModifierRetourControler.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/mainApplication.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/ListeReservationController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/ModifiEvemtController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/EvemtFXMain.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/models/livraison.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/Stock/AjouterStockController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/models/stock.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/gui/FXMLController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/pidevAuthAdmin/SettingAdminController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/ReservationFXMain.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/Stock/ModifierStockControler.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/Stock/AfficherStockController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/EvenementController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/ModifiEvemt.fxml</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/services/CommentaireService.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/controller/DashbordController.java</file>
-            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/GUIissa/Reservation.fxml</file>
+            <file>file:/C:/Users/MediaStudio/Documents/NetBeansProjects/Project_malek/src/services/RateService.java</file>
         </group>
     </open-files>
 </project-private>
