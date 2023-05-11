@@ -110,7 +110,7 @@ public class FXMLdesController implements Initializable {
 //        Artiste ar = new Artiste();
          
 //         p.setArticle(a);
-System.out.println(LoginFXMLController.usernamewelcome+"5555555");
+//System.out.println(LoginFXMLController.usernamewelcome+"5555555");
         
         Ligne_panier p = new Ligne_panier();
         Ligne_PanierService lp = new Ligne_PanierService();
@@ -118,12 +118,16 @@ System.out.println(LoginFXMLController.usernamewelcome+"5555555");
         Panier panier = new Panier();
         
         panier.setClient(cs.getClientbyusername(LoginFXMLController.usernamewelcome));
+        
         p.setArticle(a);
-        panier.setId_panier(38);
+        
+        
         p.setQuantity(1);
         p.setPanier(panier);
         lp.AjouterDansTableligne_Panier(p);
-        System.out.println("sfsdf,kdfk,ds");
+//        System.out.println(p +"-----------------------------------------------------");
+        
+        
         
         
     }

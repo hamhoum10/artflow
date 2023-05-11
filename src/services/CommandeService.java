@@ -74,6 +74,8 @@ public class CommandeService {
                 commande.setCreatedAt(rs.getString("created_at"));
                 commande.setCodepostal(rs.getInt("codepostal"));
                 commande.setAdresse(rs.getString("adresse"));
+                commande.setPrénomClientCommande(rs.getNString(3));
+                commande.setNomClientCommande(rs.getNString(4));
                 commandeList.add(commande);
             }
         } catch (SQLException e) {

@@ -29,7 +29,7 @@ public class SettingAdminMain extends Application {
     public void start(Stage primaryStage) {
         try{
         System.out.println(getClass());
-         Parent root = FXMLLoader.load(getClass().getResource("SettingAdmin.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("../rymgui/AfficherEnchere.fxml"));
             Scene scene = new Scene(root,1324,955);
            
            

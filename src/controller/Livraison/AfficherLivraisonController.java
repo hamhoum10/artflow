@@ -138,7 +138,7 @@ public class AfficherLivraisonController implements Initializable  {
                     ss.moveToretour(l);
                     afficher(event);
 
-                   // r.SmsNotification(l.getId_commende());
+                   // r.SmsNotification(l.getId_commende()); //////////////////////
     }
 
     @FXML

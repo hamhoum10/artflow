@@ -54,7 +54,7 @@
          <children>
             <ImageView fx:id="logo" fitHeight="234.0" fitWidth="260.0" layoutY="-63.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/artflowlogoo.png" />
+                  <Image url="@../img/logo.png" />
                </image>
             </ImageView>
               <Label layoutX="715.0" layoutY="35.0" prefHeight="50.0" prefWidth="121.0" text="My Cart" textFill="WHITE">
@@ -64,17 +64,17 @@
               </Label>
             <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="1328.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/store.png" />
+                  <Image url="@../img/shop.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1251.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1251.0" layoutY="35.0" onMouseClicked="#gotoenchere" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/red-carpet%20(1).png" />
+                  <Image url="@../img/enchere.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1164.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1164.0" layoutY="35.0" onMouseClicked="#gotoevent" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/placard%20(1).png" />
+                  <Image url="@../img/event1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="106.0" fitWidth="80.0" layoutX="1433.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -84,7 +84,7 @@
             </ImageView>
             <ImageView fitHeight="57.0" fitWidth="50.0" layoutX="1077.0" layoutY="35.0" onMouseClicked="#HomeAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/home.png" />
+                  <Image url="@../img/home.png" />
                </image>
             </ImageView>
             <Label layoutX="1085.0" layoutY="86.0" text="Home" />

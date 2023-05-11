@@ -187,7 +187,7 @@ LocalDate currentDate = LocalDate.now();
    
     
      
-               FXMLLoader loader= new FXMLLoader(getClass().getResource("./AfficherEnchere.fxml"));
+               FXMLLoader loader= new FXMLLoader(getClass().getResource("./ShowAllItems.fxml"));
                Parent view_2=loader.load();
                Scene scene = new Scene(view_2);
                Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();

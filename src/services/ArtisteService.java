@@ -34,13 +34,14 @@ public class ArtisteService implements ArtisteInterface {
       Artiste artiste = new Artiste();
         try {
             
-            String req = "SELECT * FROM Artiste WHERE nom_artiste = '"+name+"'";
+            String req = "SELECT * FROM Artiste WHERE username = '"+name+"'";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
                 artiste.setId(rs.getInt(1));
                 artiste.setFirstname(rs.getString(2));
                 artiste.setLastname(rs.getString(3));
+                artiste.setUsername(rs.getString("username"));
             }
             
         } catch (SQLException ex) {
@@ -48,7 +49,9 @@ public class ArtisteService implements ArtisteInterface {
         }
         
         return artiste;
-    }   
+    }  
+    
+    
 
 //    @Override
 //    public List<Artiste> fetchArtiste() {
@@ -130,7 +133,7 @@ public class ArtisteService implements ArtisteInterface {
     ResultSet rs = a1.executeQuery();
     a1.setString(1, u.getUsername());
     a1.setString(2, u.getPassword());
-    a1.setString(3, u.getType());
+    a1.setString(3, u.getRoles());
     a1.executeUpdate();
         System.out.println("0000");
      } catch (SQLException ex) {
@@ -273,7 +276,7 @@ public class ArtisteService implements ArtisteInterface {
                ResultSet rs = ste.executeQuery();
                
             while (rs.next()) {
-                u.setId(rs.getInt("id_Artiste"));
+                u.setId(rs.getInt("id"));
                 u.setFirstname(rs.getString("firstname"));
                 u.setLastname(rs.getString("lastname"));
                 u.setAddress(rs.getString("address"));
@@ -294,17 +297,17 @@ public class ArtisteService implements ArtisteInterface {
     
     public int getidArtistbyUsername(String username){
         Artiste u =new Artiste();
-        int id_artiste=0;
+        int id=0;
         try {
-            String req = "SELECT id_artiste FROM `artiste` WHERE username=?";
+            String req = "SELECT id FROM `artiste` WHERE username=?";
                PreparedStatement ste = cnx.prepareStatement(req);
                ste.setString(1, username);
                ResultSet rs = ste.executeQuery();
                
             while (rs.next()) {
                
-                u.setId(rs.getInt("id_artiste"));
-                id_artiste =u.getId();
+                u.setId(rs.getInt("id"));
+                id =u.getId();
 //                System.out.println(id_artiste);
                 
                 //users.add(u);
@@ -313,14 +316,14 @@ public class ArtisteService implements ArtisteInterface {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return id_artiste;
+        return id;
     }
     
     
     
     
      public int getidArtistetbyusername(String username) throws SQLException{
-         int id_artiste=0;
+         int id=0;
          
 try {
     String req ="select `id` from `artiste`where `username`= ?";
@@ -329,7 +332,7 @@ try {
             a.setString(1, username);
             ResultSet rs= a.executeQuery();
             while(rs.next()){
-            id_artiste=rs.getInt("id_artiste");
+            id=rs.getInt("id");
             System.out.println("client added successfully!");}
             //a.close();
        
@@ -337,7 +340,7 @@ try {
  catch (SQLException ex) {
             ex.printStackTrace();
         }
-return id_artiste; 
+return id; 
      }
     
     

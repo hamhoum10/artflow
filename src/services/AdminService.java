@@ -67,24 +67,24 @@ public class AdminService implements AdminInterface {
     return false;
 
 }
-       public boolean insertuser(User user) throws SQLException {
-    
-    Admin p=new Admin();
-    PreparedStatement a = cnx.prepareStatement("INSERT INTO `user`(`username`, `password`,`type`) VALUES (?,?,?)");
-    ResultSet rs = a.executeQuery();
-     while (rs.next()) {
-        if (user.getType()!="admin") {
-            user.setUsername(p.getUsername());
-            user.setPassword(p.getPassword());
-            user.setType("admin");
-            System.out.println("u re not an admin");
-            return true;
-        }
-    }
-     
-    return false;
-
-}
+//       public boolean insertuser(User user) throws SQLException {
+//    
+//    Admin p=new Admin();
+//    PreparedStatement a = cnx.prepareStatement("INSERT INTO `user`(`username`,`email`,`password`,`roles`) VALUES (?,?,?,?)");
+//    ResultSet rs = a.executeQuery();
+//     while (rs.next()) {
+//        if (user.getRoles()!="admin") {
+//            user.setUsername(p.getUsername());
+//            user.setPassword(p.getPassword());
+//            user.setType("admin");
+//            System.out.println("u re not an admin");
+//            return true;
+//        }
+//    }
+//     
+//    return false;
+//
+//}
     
     
     @Override
@@ -96,7 +96,7 @@ public class AdminService implements AdminInterface {
 //                if(validphonenumber(p.getPhoneNumber())!=true){
                    
                     try {
-                        PreparedStatement a = cnx.prepareStatement( "INSERT INTO `admin`(`firstname`, `lastname`, `email`, `phoneNumber`, `username`, `password`) VALUES (?,?,?,?,?,?)");
+                        PreparedStatement a = cnx.prepareStatement( "INSERT INTO `admin`(`firstname`, `lastname`, `email`, `phonenumber`, `username`, `password`) VALUES (?,?,?,?,?,?)");
 //                        String password = p.getPassword();
 //                        String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
                         a.setString(1, p.getFirstname());
@@ -133,7 +133,7 @@ public class AdminService implements AdminInterface {
                 p.setFirstname(rs.getString("firstname"));
                 p.setLastname(rs.getString("lastname"));
                 p.setEmail(rs.getString("email"));
-                p.setPhoneNumber(rs.getString("phoneNumber"));
+                p.setPhoneNumber(rs.getString("phonenumber"));
                 p.setUsername(rs.getString("username"));
                 p.setPassword(rs.getString("password"));
                 
@@ -155,7 +155,7 @@ public class AdminService implements AdminInterface {
     @Override
     public void updateAdmin(Admin p) {
         try {
-            PreparedStatement a = cnx.prepareStatement( "UPDATE `admin` SET `firstname`=?,`lastname`=?,`email`=?,`phoneNumber`=?,`username`=?,`password`=? WHERE `username`=?");
+            PreparedStatement a = cnx.prepareStatement( "UPDATE `admin` SET `firstname`=?,`lastname`=?,`email`=?,`phonenumber`=?,`username`=?,`password`=? WHERE `username`=?");
 //             String password = p.getPassword();
 //             String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
             a.setString(1, p.getFirstname());

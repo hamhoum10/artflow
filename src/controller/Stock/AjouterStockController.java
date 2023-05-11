@@ -107,7 +107,7 @@ public class AjouterStockController   implements  Initializable {
         s.setId_commende(cs.getCommendeIdByName( commende.getValue()));
 //        s.setId_commende(idCommende);
         s.setUser_name(userName);
-        ss.SmsNotification(commende.getValue());
+       ss.SmsNotification(commende.getValue());  
         ss.addstock(s);
 
         titre.setText("stock Added Successfully!");

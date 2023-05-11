@@ -39,7 +39,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="286.0" style="-fx-background-color: #DFC583;" styleClass="sidebar" stylesheets="@../pidevAuth/fxml.css" text="Events" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#goevent" prefHeight="71.0" prefWidth="286.0" style="-fx-background-color: #DFC583;" styleClass="sidebar" stylesheets="@../pidevAuth/fxml.css" text="Events" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="19.0" />
                            </font>

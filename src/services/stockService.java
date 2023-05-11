@@ -21,7 +21,7 @@ public class stockService implements stockInterface {
     public void addstock(stock s) {
         try {
 
-            String req = "INSERT INTO `stock`(`name_produit`, `artiste`,`addres`, `id_commende`,`user_name`) VALUES (?,?,?,?,?)";
+            String req = "INSERT INTO `stock`(`name_produit`, `artiste`,`addres`, `id_commende_id`,`user_name`) VALUES (?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, s.getName());
             ps.setString(2, s.getArtiste());
@@ -67,7 +67,7 @@ public class stockService implements stockInterface {
     public List<stock> filtreParCommende(int cmd) {
         List<stock> stocks=new ArrayList<>();
         try {
-            String req = "select * FROM `stock` where `id_commende` = "+cmd;
+            String req = "select * FROM `stock` where `id_commende_id` = "+cmd;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -75,7 +75,7 @@ public class stockService implements stockInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 stocks.add(s);
             }
 
@@ -99,10 +99,10 @@ public class stockService implements stockInterface {
                 stock s = new stock();
                 s.setId(rs.getInt(1));
 
-                s.setName(rs.getString(2));
-                s.setArtiste(rs.getString(3));
-                s.setAddres(rs.getString(4));
-                s.setId_commende(rs.getInt(5));
+                s.setName(rs.getString(3));
+                s.setArtiste(rs.getString(4));
+                s.setAddres(rs.getString(5));
+                s.setId_commende(rs.getInt(2));
                 s.setUser_name(rs.getString(6));
                 s.setDate_entr(rs.getDate("date_entr"));
 
@@ -120,7 +120,7 @@ public class stockService implements stockInterface {
     public void updateAllstock(stock s) {
         try {
 
-            String req = "UPDATE `stock` SET `name_produit`=?,`artiste`=?,`addres`=?,`id_commende`=?,`user_name`=? WHERE id = ?; ";
+            String req = "UPDATE `stock` SET `name_produit`=?,`artiste`=?,`addres`=?,`id_commende_id`=?,`user_name`=? WHERE id = ?; ";
             PreparedStatement ps = cnx.prepareStatement(req);
             System.out.println(1);
             ps.setString(1, s.getName());
@@ -159,7 +159,7 @@ public class stockService implements stockInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setDate_entr(rs.getDate("date_entr"));
                 stocks.add(s);
             }
@@ -185,7 +185,7 @@ public class stockService implements stockInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setDate_entr(rs.getDate("date_entr"));
                 stocks.add(s);
             }
@@ -210,7 +210,7 @@ public class stockService implements stockInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setAddres(rs.getString("addres"));
                 s.setUser_name(rs.getString("user_name"));
                 s.setDate_entr(rs.getDate("date_entr"));
@@ -238,7 +238,7 @@ public class stockService implements stockInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setAddres(rs.getString("addres"));
                 s.setUser_name(rs.getString("user_name"));
                 s.setDate_entr(rs.getDate("date_entr"));

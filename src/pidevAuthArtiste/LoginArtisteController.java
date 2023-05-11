@@ -73,7 +73,7 @@ private Stage stage;
               //ID = a.getId();
               //System.out.println(ID); 
               //System.out.println(u.getType());
-              if(a.getType().equals("client")){
+              if(a.getRoles().equals("[\"client\"]")){
                    FXMLLoader loader =new FXMLLoader(getClass().getResource("../pidevAuth/Welcome page.fxml"));
                   root  =loader.load();
                   static_userwelcome.setText(username.getText());
@@ -85,7 +85,7 @@ private Stage stage;
                   stage.show();
                   
               
-              }else if(a.getType().equals("admin")){
+              }else if(a.getRoles().equals("[\"admin\"]")){
                   // Parent loader = FXMLLoader.load(getClass().getResource("Welcome page.fxml"));
                   //Scene scene = new Scene(loader, 600, 400);
                   //Stage stage= new Stage();
@@ -102,7 +102,7 @@ private Stage stage;
                   stage.show();
                   
               
-              }else if(a.getType().equals("artiste")){
+              }else if(a.getRoles().equals("[\"artiste\"]")){
                   // Parent loader = FXMLLoader.load(getClass().getResource("Welcome page.fxml"));
                   //Scene scene = new Scene(loader, 600, 400);
                   //Stage stage= new Stage();

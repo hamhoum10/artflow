@@ -51,7 +51,7 @@ public class FXMLstatController implements Initializable {
     }    
     public void stat(){
         Connection cnx =MyConnection.getInstance().getCnx();
-        String query="select count(*) As value,id_artiste as art from article group by id_artiste";
+        String query="select count(*) As value,idArtiste as art from article group by idArtiste";
         try {
             PreparedStatement ps= cnx.prepareStatement(query);
             ResultSet rs=ps.executeQuery();

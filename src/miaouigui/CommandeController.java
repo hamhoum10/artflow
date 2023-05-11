@@ -78,7 +78,7 @@ public class CommandeController implements Initializable {
     @FXML
     private ListView<Ligne_panier> myitemslist;
     @FXML
-    private TextField total;
+    private Label total;
 
     private ObservableList<Ligne_panier> e;
      Ligne_PanierService lps = new Ligne_PanierService();
@@ -126,15 +126,17 @@ public class CommandeController implements Initializable {
             int numero = Integer.parseInt(Numerotext.getText());
             int codepostal = Integer.parseInt(CodepostalText.getText());
             String adresse = Adressetext.getText();
-            int id_panierselectionner = myitemslist.getFocusModel().getFocusedItem().getId();
-
+            //int id_panierselectionner = myitemslist.getFocusModel().getFocusedItem().getId();
+            int id_user = clientService.getidclientbyusername(LoginFXMLController.usernamewelcome);
+            int id_panieruser= p.getPanierIdByIDUser(id_user);
             //ken 3mal promocode namlou commande fiha discount
             if(PanierController.promocodeEtat==true){
-                Commande c = new Commande(id_panierselectionner, prenom, nom, numero, "en attente", p.totalmontantPanierWith20Discount(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome)), codepostal, adresse); //id_client nada authen
+                System.out.println(id_panieruser + " ------------------------------------------------------------------------------------");
+                Commande c = new Commande(id_panieruser, prenom, nom, numero, "en attente", p.totalmontantPanierWith20Discount(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome)), codepostal, adresse); //id_client nada authen
                 cs.create(c);
                // if (cs.create(c).booleanValue() == false) {//ken commaande mesh mawjouda
                     //fill the static values so i can use them in the next views commande ect
-                    id_paniersta =id_panierselectionner;
+                    id_paniersta =id_panieruser;
                     prenomsta=prenom;
                     nomsta=nom;
                     statussta="en attente";
@@ -160,10 +162,11 @@ public class CommandeController implements Initializable {
                //     alertDialog("You already passed an Order");
               //  }
             }else{//pas de promocode ywali ttoal yet7seb aadi
-                Commande c = new Commande(id_panierselectionner, prenom, nom, numero, "en attente", p.totalmontantPanier(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome)), codepostal, adresse); //id_client nada authen
+                Commande c = new Commande(id_panieruser, prenom, nom, numero, "en attente", p.totalmontantPanier(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome)), codepostal, adresse); //id_client nada authen
                 cs.create(c);
                // if (cs.create(c).booleanValue() == false) {
                     //fill the static values so i can use them in the next views commande ect
+                    id_paniersta =id_panieruser;
                     prenomsta=prenom;
                     nomsta=nom;
                     statussta="en attente";
@@ -248,8 +251,11 @@ public class CommandeController implements Initializable {
         e= FXCollections.observableArrayList(pa);
         myitemslist.setItems(e);
         if (isPromo==true){
+            
+            //String.valueOf(p.totalmontantPanierWith20Discount(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome))
             total.setText(String.valueOf(p.totalmontantPanierWith20Discount(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome))) + " DT");
         }else{
+            
             total.setText(String.valueOf(p.totalmontantPanier(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome))) + " DT");//id_client nada baed aithentification
         }
 
@@ -304,11 +310,21 @@ public class CommandeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            PanierService p =new PanierService();
+            ClientService clientService =new ClientService();
             List<Ligne_panier> pa = lps.readelementPanierbyiduser(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome));//normally el id eli tebda andd nada mta authentification wnafishiw el contenu mta panier mta user heka w najmou nrecupriw ay 7ja mawjoud fi model ligne panier mta kol ligne fi list view ki namloulo selection
                 System.out.println(pa);
                 
                 e = FXCollections.observableArrayList(pa);
                 myitemslist.setItems(e);
+                if (isPromo==true){
+            
+            //String.valueOf(p.totalmontantPanierWith20Discount(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome))
+                    total.setText(String.valueOf(p.totalmontantPanierWith20Discount(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome))) + " DT");
+                }else{
+            
+                    total.setText(String.valueOf(p.totalmontantPanier(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome))) + " DT");//id_client nada baed aithentification
+        }
         } catch (SQLException ex) {
             Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
         }

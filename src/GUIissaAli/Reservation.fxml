@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="786.0" prefWidth="1000.0" stylesheets="@../CSS/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIissaAli.ReservationController">
+   <children>
+      <Text fill="#dfc583" layoutX="241.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="number of places">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></Text>
+      <TextField fx:id="nb_place" layoutX="385.0" layoutY="147.0" prefHeight="31.0" prefWidth="252.0" promptText="Saisie le nombre de place">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="304.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Text>
+      <Button layoutX="380.0" layoutY="646.0" mnemonicParsing="false" onAction="#valider" text="to validate" textFill="#dfc583">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></Button>
+      <Button layoutX="512.0" layoutY="647.0" mnemonicParsing="false" onAction="#afficher" text="View" textFill="#dfc583">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></Button>
+      <VBox prefHeight="786.0" prefWidth="160.0" style="-fx-background-color: #dfc583;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/Artflow.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <Text fill="#dfc583" layoutX="421.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="please book an event">
+         <font>
+            <Font name="Bauhaus 93" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="#7b6a3f" layoutX="291.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Text>
+      <Button layoutX="606.0" layoutY="647.0" mnemonicParsing="false" onAction="#retour" prefHeight="26.0" prefWidth="62.0" text="Exit" textFill="#dfc583">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Button>
+      <Label layoutX="285.0" layoutY="205.0" prefHeight="26.0" prefWidth="72.0" text="Name" textFill="#7b6a3f">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Label fx:id="nameid" layoutX="483.0" layoutY="205.0" text="Label" />
+      <Label layoutX="285.0" layoutY="241.0" text="Description" textFill="#7b6a3f">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Label>
+      <Label fx:id="descriptionid" layoutX="483.0" layoutY="239.0" text="Label" />
+      <Label layoutX="295.0" layoutY="324.0" text="Start_hour" textFill="#7b6a3f">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Label>
+      <Label layoutX="293.0" layoutY="369.0" text="Finish_hour" textFill="#7b6a3f">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Label>
+      <Label layoutX="309.0" layoutY="411.0" text="Location" textFill="#7b6a3f">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Label>
+      <Label fx:id="prixid" layoutX="483.0" layoutY="273.0" text="Label" />
+      <Label fx:id="start_hourid" layoutX="483.0" layoutY="322.0" text="Label" />
+      <Label fx:id="finish_hourid" layoutX="483.0" layoutY="360.0" text="Label" />
+      <Label fx:id="locationid" layoutX="486.0" layoutY="409.0" text="Label" />
+      <Label fx:id="capacityid" layoutX="813.0" layoutY="460.0" text="Label" />
+      <Label layoutX="301.0" layoutY="496.0" text="Date" textFill="#7b6a3f">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Label>
+      <Label fx:id="dateid" layoutX="483.0" layoutY="495.0" text="Label" />
+      <Label layoutX="668.0" layoutY="451.0" text="total price">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label fx:id="totalprix" layoutX="497.0" layoutY="442.0" text="Label" />
+      <Text fill="#dfc583" layoutX="642.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" />
+      <DatePicker fx:id="dateres" layoutX="679.0" layoutY="150.0" />
+   </children>
+</AnchorPane>

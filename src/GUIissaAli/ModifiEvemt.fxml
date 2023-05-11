@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="689.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIissaAli.ModifiEvemtController">
+   <children>
+      <Text fill="#7b6a3f" layoutX="243.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Theme">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></Text>
+      <TextField fx:id="name" layoutX="374.0" layoutY="169.0" prefHeight="31.0" prefWidth="228.0" promptText="enter the name" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="248.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font></Text>
+      <Text fill="#7b6a3f" layoutX="233.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start hour">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></Text>
+      <TextField fx:id="start_hour" layoutX="364.0" layoutY="274.0" prefHeight="31.0" prefWidth="234.0" promptText="start time" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="229.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finish hour">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></Text>
+      <TextField fx:id="finish_hour" layoutX="374.0" layoutY="327.0" prefHeight="31.0" prefWidth="228.0" promptText="finish hour" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="234.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font></Text>
+      <TextField fx:id="capacity" layoutX="374.0" layoutY="372.0" prefHeight="31.0" prefWidth="228.0" promptText="Capacity" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="236.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></Text>
+      <TextField fx:id="location" layoutX="362.0" layoutY="426.0" prefHeight="31.0" prefWidth="248.0" promptText="Location" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="257.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></Text>
+      <Button layoutX="616.0" layoutY="651.0" mnemonicParsing="false" onAction="#modifier" prefHeight="27.0" prefWidth="90.0" style="-fx-background-color: #7b6a3f;" styleClass="-fx-background-radius" text="Modify" textFill="#e4e2de">
+         <font>
+            <Font name="Bernard MT Condensed" size="14.0" />
+         </font></Button>
+      <Text fill="#7b6a3f" layoutX="243.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font></Text>
+      <TextField fx:id="description" layoutX="362.0" layoutY="533.0" prefHeight="31.0" prefWidth="260.0" promptText="Description" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <TextField fx:id="imagee" layoutX="576.0" layoutY="482.0" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css" />
+      <Button layoutX="374.0" layoutY="482.0" mnemonicParsing="false" onAction="#image" prefHeight="31.0" prefWidth="163.0" text="choose a image" />
+      <Text layoutX="289.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="           Please edit event information">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="date_evemt" layoutX="372.0" layoutY="224.0" promptText="enter the date " styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css" />
+      <Text fill="#7b6a3f" layoutX="270.0" layoutY="656.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font></Text>
+      <TextField fx:id="prix" layoutX="400.0" layoutY="626.0" promptText="price" styleClass="text-inputlogin" />
+      <Text fill="#7b6a3f" layoutX="270.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" text="artiste">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="artiste" layoutX="399.0" layoutY="579.0" onAction="#artiste" prefWidth="150.0" />
+   </children>
+</AnchorPane>

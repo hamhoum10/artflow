@@ -33,9 +33,10 @@ public class Ligne_PanierService {
         ArticleService as =new ArticleService();
         System.out.println(panierService.getPanierIdByUser(lp.getPanier().getClient()));
         try {//ken mesh mawjoud el article tzid ligne
-            if(c.DoArticleIdExistinLignePanier(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome)/* id_article*/,panierService.getPanierIdByUser(lp.getPanier().getClient()))==false){
+            if(c.DoArticleIdExistinLignePanier(lp.getArticle().getId_article()/* id_article*/,panierService.getPanierIdByUser(lp.getPanier().getClient()))==false){
                 //System.out.println(as.getId_Article(lp.getArticle()));
                 // Créer une requête préparée pour insérer les données dans la table
+                System.out.println(lp);
                 String sql = "insert into ligne_panier(id_panier,id_article,Nom_article,description,prix_unitaire, quantity,Nom_artiste,Prenom_artiste) values (?,?,?,?,?,?,?,?)";
                 PreparedStatement st = cnx.prepareStatement(sql);
                 st.setInt(1,panierService.getPanierIdByIDUser(clientService.getidclientbyusername(LoginFXMLController.usernamewelcome)));//hethi te5o el id mta panier ki namlou instance ligne-panier(..,idpanier)

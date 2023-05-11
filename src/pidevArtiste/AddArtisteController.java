@@ -110,9 +110,9 @@ public class AddArtisteController implements Initializable {
         //filechooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("image", "*.*")
         //);
     }    
- public String displayId(String Artiste){
+ public String displayId(String artiste){
         //labelartist.setText("hello  "+ Artiste);
-        return "artiste";
+        return "[\""+ artiste +"\"]";
     }
     @FXML
     private void saveArtiste(ActionEvent event) throws IOException {                
@@ -153,10 +153,11 @@ public class AddArtisteController implements Initializable {
 try {
     String pwd = password.getText();
     String encryptedPassword = BCrypt.hashpw(pwd, BCrypt.gensalt());
-    PreparedStatement a1 = cnx.prepareStatement("INSERT INTO `user`(`username`, `password`,`type`) VALUES (?,?,?)");
+    PreparedStatement a1 = cnx.prepareStatement("INSERT INTO `user`(`username`,`roles`, `password`,`email`) VALUES (?,?,?,?)");
     a1.setString(1, username.getText());
-    a1.setString(2, encryptedPassword);
-    a1.setString(3, displayId("artiste"));
+    a1.setString(2, displayId("client"));
+    a1.setString(4, encryptedPassword);
+    a1.setString(3, email.getText());
     a1.executeUpdate();
         System.out.println("0000");
      } catch (SQLException ex) {

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1550.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miaouigui.ComfirmerCommandeController">
+<AnchorPane prefHeight="800.0" prefWidth="1550.0" stylesheets="@../../../css/yasser.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miaouigui.ComfirmerCommandeController">
    <children>
       <Pane prefHeight="118.0" prefWidth="1550.0" style="-fx-background-color: #C69186;">
          <children>
@@ -22,27 +22,27 @@
             </Label>
             <ImageView fitHeight="228.0" fitWidth="283.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/artflowlogoo.png" />
+                  <Image url="@../../../../../../../xampp/htdocs/img/logo.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="1078.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/home.png" />
+                  <Image url="@../../../../../../../xampp/htdocs/img/home.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="1167.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/placard%20(1).png" />
+                  <Image url="@../../../../../../../xampp/htdocs/img/event1.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="1263.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/red-carpet%20(1).png" />
+                  <Image url="@../img/enchere.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="55.0" fitWidth="57.0" layoutX="1364.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../images/store.png" />
+                  <Image url="@../../../../../../../xampp/htdocs/img/shop.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="95.0" fitWidth="110.0" layoutX="1449.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -166,12 +166,12 @@
       </VBox>
       <ImageView fitHeight="388.0" fitWidth="368.0" layoutX="1044.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/pdf.png" />
+            <Image url="@../img/cartp.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="152.0" fitWidth="119.0" layoutX="1015.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../images/down-arrow.png" />
+            <Image url="@../img/download.png" />
          </image>
       </ImageView>
       <Separator layoutX="873.0" layoutY="142.0" orientation="VERTICAL" prefHeight="642.0" prefWidth="4.0" />

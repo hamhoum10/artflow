@@ -16,7 +16,7 @@ public class retourService  implements retourInterface  {
     Connection cnx = MyConnection.getInstance().getCnx();
     @Override
     public void addretour(retour s) {
-     try{   String req = "INSERT INTO `retour`(`name_produit`, `artiste`,`addres`, `id_commende`,`user_name`) VALUES (?,?,?,?,?)";
+     try{   String req = "INSERT INTO `retour`(`name_produit`, `artiste`,`addres`, `id_commende_id`,`user_name`) VALUES (?,?,?,?,?)";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, s.getName());
         ps.setString(2, s.getArtiste());
@@ -42,11 +42,11 @@ public class retourService  implements retourInterface  {
             while (rs.next()) {
                 retour s = new retour();
                 s.setId(rs.getInt(1));
-                s.setName(rs.getString(2));
-                s.setUser_name(rs.getString("User_name"));
-                s.setAddres(rs.getString(4));
+                s.setName(rs.getString(3));
+                s.setUser_name(rs.getString("user_name"));
+                s.setAddres(rs.getString(5));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setDate_retour(rs.getDate("date"));
 
 
@@ -64,7 +64,7 @@ public class retourService  implements retourInterface  {
     @Override
     public void updateAllretour(retour s) {try {
 
-        String req = "UPDATE `retour` SET `name_produit`=?,`artiste`=?,`addres`=?,`id_commende`=?,`user_name`=? WHERE id = ?; ";
+        String req = "UPDATE `retour` SET `name_produit`=?,`artiste`=?,`addres`=?,`id_commende_id`=?,`user_name`=? WHERE id = ?; ";
 
         PreparedStatement ps = cnx.prepareStatement(req);
 
@@ -110,7 +110,7 @@ public class retourService  implements retourInterface  {
     public List<retour> filtreParCommenderet(int cmd) {
         List<retour> retours = new ArrayList<>();
         try {
-            String req = "select * FROM `retour` where `id_commende` = "+cmd;
+            String req = "select * FROM `retour` where `id_commende_id` = "+cmd;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -118,7 +118,7 @@ public class retourService  implements retourInterface  {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 retours.add(s);
             }
 
@@ -158,7 +158,7 @@ public class retourService  implements retourInterface  {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
 
                 retours.add(s);
             }
@@ -182,7 +182,7 @@ public class retourService  implements retourInterface  {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 retours.add(s);
             }
 
@@ -205,7 +205,7 @@ public class retourService  implements retourInterface  {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setAddres(rs.getString("addres"));
                 s.setUser_name(rs.getString("user_name"));
                 s.setDate_entr(rs.getDate("date"));
@@ -232,7 +232,7 @@ public class retourService  implements retourInterface  {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setAddres(rs.getString("addres"));
                 s.setUser_name(rs.getString("user_name"));
                 ;

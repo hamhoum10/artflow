@@ -71,6 +71,7 @@ public class AjouterLivraisonController implements  Initializable {
      
         cs.readAllCommandes().stream().forEach(e-> list.add(e.getNomClientCommande()));
         commende.getItems().addAll(list);
+        System.out.println(cs.readAllCommandes());
 
     }
     @FXML
@@ -112,7 +113,7 @@ public class AjouterLivraisonController implements  Initializable {
 
         s.setId_commende(cs.getCommendeIdByName( commende.getValue()));
         s.setUser_name(userName);
-        ss.SmsNotification(commende.getValue());
+        ss.SmsNotification(commende.getValue()); 
         ss.addlivraison(s);
 
 

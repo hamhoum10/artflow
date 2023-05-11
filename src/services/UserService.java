@@ -28,12 +28,13 @@ public class UserService implements UserInterface {
      public User Userinsert(User u){
          
     try {
-    PreparedStatement a1 = cnx.prepareStatement("INSERT INTO `user`(`username`, `password`,`type`) VALUES (?,?,?)");
+    PreparedStatement a1 = cnx.prepareStatement("INSERT INTO `user`(`username`,`email` `password`,`roles`) VALUES (?,?,?,?)");
     String password = u.getPassword();
     String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
     a1.setString(1, u.getUsername());
-    a1.setString(2, encryptedPassword);
-    a1.setString(3, u.getType());
+     a1.setString(2, u.getEmail());
+    a1.setString(3, encryptedPassword);
+    a1.setString(4, u.getRoles());
     a1.executeUpdate();
         System.out.println("user added succefully");
      } catch (SQLException ex) {
@@ -45,7 +46,7 @@ public class UserService implements UserInterface {
      public int test(String username, String password){
          int i= -1;
          try{   
-             PreparedStatement a1 = cnx.prepareStatement("SELECT `username`, `password`,`type` FROM user");
+             PreparedStatement a1 = cnx.prepareStatement("SELECT `username`,`email` `password`,`roles` FROM user");
 
         //a1.setString(1, u.getUsername());
 
@@ -84,15 +85,16 @@ public class UserService implements UserInterface {
       @Override
     public void UpdateUser(User p) {
                try {
-            String req =  "UPDATE `user` SET `username`=?,`password`=? WHERE `username`=?";
+            String req =  "UPDATE `user` SET `username`=?,`email`=?,`password`=? WHERE `username`=?";
             PreparedStatement a = cnx.prepareStatement(req);
 //            String password = p.getPassword();
 //            String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());            
            
             a.setString(1, p.getUsername());
-            a.setString(2, p.getPassword());
+            a.setString(2, p.getRoles());
+            a.setString(3, p.getPassword());
            // a.setString(3, p.getType());
-            a.setString(3, p.getUsername());
+            a.setString(4, p.getUsername());
             a.executeUpdate();
             System.out.println("user modified successfully!");
         
@@ -182,7 +184,7 @@ List<User> user = new ArrayList<>();
 //            stmt.setInt(1,u.getId() ); // set the ID to fetch
 //            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                User u = new User(rs.getInt(1),rs.getString("username"),rs.getString("password"),rs.getString("type"));
+                User u = new User(rs.getInt(1),rs.getString("username"),rs.getString("email"),rs.getString("password"),rs.getString("roles"));
                
 //                u.setId(rs.getInt(1));
 //                u.setUsername(rs.getString("username"));
@@ -203,10 +205,12 @@ List<User> user = new ArrayList<>();
                //List<User> users = new ArrayList<>();
         User u =new User();
         try {
-            String req = "SELECT * FROM `user` WHERE username=?";
+            String req = "SELECT * FROM `user` WHERE username="+ "'"+username+"'";
                PreparedStatement ste = cnx.prepareStatement(req);
-               ste.setString(1, username);
-               ResultSet rs = ste.executeQuery();
+//               ste.setString(1, username);
+//               ResultSet rs = ste.executeQuery();
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
 //            String req ="SELECT * FROM user WHERE `id`=?";
 //            Statement st = cnx.createStatement();
 //            ResultSet rs = st.executeQuery(req);
@@ -218,10 +222,12 @@ List<User> user = new ArrayList<>();
             while (rs.next()) {
                 //User u = new User(rs.getString("username"),rs.getString("password"),rs.getString("type"));
                
-                u.setId(rs.getInt("id"));
-                u.setUsername(rs.getString("username"));
-                u.setPassword(rs.getString("password"));
-                u.setType(rs.getString("type"));
+                u.setId(rs.getInt(1));
+                u.setUsername(rs.getString(2));
+                u.setRoles(rs.getString(3));
+                u.setPassword(rs.getString(4));
+                u.setUsername(rs.getString(5));
+               
                 //users.add(u);
             }
             

@@ -14,6 +14,7 @@ import java.sql.Statement;
 import models.Article;
 import models.Rate;
 import pidevAuth.LoginFXMLController;
+import pidevAuthArtiste.LoginArtisteController;
 import util.MyConnection;
 import services.UserService;
 
@@ -24,28 +25,34 @@ import services.UserService;
 public class RateService implements RateInterface {
         Connection cnx = MyConnection.getInstance().getCnx();
         UserService user = new UserService();
+        ClientService cl = new ClientService();
+        
     
     @Override
     public void updateRating(Rate r) {
         try {
             if(afficherRating(r)==0)
             {
-                String req = "INSERT INTO rating(`rate`,`id_Article`,`id_rater`) VALUES (?,?,?)";
+                String req = "INSERT INTO rating(`id_Article`,`id_user`,`rating`) VALUES (?,?,?)";
                 PreparedStatement ps = cnx.prepareStatement(req);
-                ps.setDouble(1, r.getRating());
-                ps.setInt(2, r.getArticle().getId_article());
-                ps.setInt(3, user.getUserbyusername(LoginFXMLController.usernamewelcome).getId());
+                
+                ps.setInt(1, r.getArticle().getId_article());
+                ps.setInt(2, cl.getidclientbyusername(LoginFXMLController.usernamewelcome));
+                ps.setDouble(3, r.getRating());
+                          
+
                 
                 ps.executeUpdate();
                 System.out.println("rate is inserted");
             }
             else
             {
-                String req = "update rating set `rate`=? where `id_Article`= ? and `id_rater`=? ";
+                String req = "update rating set `rating`=? where `id_Article`= ? and `id_user`=? ";
                 PreparedStatement ps = cnx.prepareStatement(req);
-                ps.setDouble(1, r.getRating());
+                  
                 ps.setInt(2, r.getArticle().getId_article());
                 ps.setInt(3, user.getUserbyusername(LoginFXMLController.usernamewelcome).getId());
+                ps.setDouble(1, r.getRating());
                 ps.executeUpdate();
                 System.out.println("rate is updated");
 
@@ -61,14 +68,14 @@ public class RateService implements RateInterface {
     public Double afficherRating(Rate r) {
         Rate rating = new Rate();
         
-        if(LoginFXMLController.usernamewelcome!=null)
+        if(user.getUserbyusername(LoginFXMLController.usernamewelcome).getUsername()!=null)
         try {
             
-            String req = "SELECT * FROM rating where id_Rater="+user.getUserbyusername(LoginFXMLController.usernamewelcome).getId()+" and id_Article="+r.getArticle().getId_article();
+            String req = "SELECT * FROM rating where id_user="+user.getUserbyusername(LoginFXMLController.usernamewelcome).getId()+" and id_Article="+r.getArticle().getId_article();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
-                return(rs.getDouble("rate"));
+                return(rs.getDouble("rating"));
             }   
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -81,11 +88,11 @@ public class RateService implements RateInterface {
         Rate rating = new Rate();
         try {
             
-            String req = "SELECT AVG(rate) FROM rating where Id_article="+e.getId_article();
+            String req = "SELECT AVG(rating) FROM rating where Id_article="+e.getId_article();
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
-                return(rs.getDouble("AVG(rate)"));
+                return(rs.getDouble("AVG(rating)"));
             }   
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -97,11 +104,11 @@ public class RateService implements RateInterface {
         Rate rating = new Rate();
         try {
             
-            String req = "SELECT AVG(rate) FROM rating ";
+            String req = "SELECT AVG(rating) FROM rating ";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
-                return(rs.getDouble("AVG(rate)"));
+                return(rs.getDouble("AVG(rating)"));
             }   
         } catch (SQLException ex) {
             ex.printStackTrace();

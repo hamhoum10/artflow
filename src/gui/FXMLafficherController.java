@@ -126,6 +126,7 @@ Article ai=new Article();
     
     
     public void afficher_Articles(List<Article> articles) throws IOException {
+        Article a=new Article();
         articleGrid.getChildren().clear();
         //articles = h.fetchArticle();
         UserService us =new UserService();
@@ -154,6 +155,8 @@ Article ai=new Article();
         int rows=0;
         try {
         for(int i=0;i<articles.size();i++){
+
+            
             FXMLLoader fxmlLoader = new FXMLLoader();
             AnchorPane item;
             if(articles.get(i).getArtiste().getId()==10 ||true){
@@ -478,6 +481,7 @@ public void refresh() {
 
     @FXML
     private void go_enchere(MouseEvent event) throws IOException{
+        
          FXMLLoader loader= new FXMLLoader(getClass().getResource("../rymgui/ShowAllItems.fxml"));
             Parent view_2=loader.load();
             
@@ -490,7 +494,7 @@ public void refresh() {
 
     @FXML
     private void go_liv(MouseEvent event) throws IOException {
-          FXMLLoader loader= new FXMLLoader(getClass().getResource("../com.example.newartflow.Stock/AfficherLivraison.fxml"));
+          FXMLLoader loader= new FXMLLoader(getClass().getResource("../com/example/newartflow/Stock/AfficherLivraison.fxml"));
             Parent view_2=loader.load();
             
             Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -498,6 +502,54 @@ public void refresh() {
             stage.setScene(scene);
             stage.show(); 
         
+    }
+
+    @FXML
+    private void go_panier(MouseEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("../miaouigui/panierView.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
+    }
+
+    @FXML
+    private void go_event(MouseEvent event) throws IOException {
+        if(LoginAdminController.usernameAdmin!=null){
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("../GUIissaAli/View_Evemt.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show();} 
+            
+            
+            
+        else {
+            FXMLLoader loader =new FXMLLoader(getClass().getResource("../GUIissaAli/ListeReservation.fxml"));
+            Parent view_2=loader.load();
+
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show();}
+    }
+    
+    
+   
+
+    @FXML
+    private void go_home(MouseEvent event) throws IOException {
+//        FXMLLoader loader= new FXMLLoader(getClass().getResource("../GUIissaAli/View_Evemt.fxml"));
+//            Parent view_2=loader.load();
+//            
+//            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+//            Scene scene = new Scene(view_2);
+//            stage.setScene(scene);
+//            stage.show();
     }
 
    

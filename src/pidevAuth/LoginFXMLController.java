@@ -64,6 +64,7 @@ public class LoginFXMLController extends WelcomePageController implements Initia
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
 //        Image img = new Image("logo.jpg");
 //        imglogo.setImage(img);
     }    
@@ -88,13 +89,18 @@ public class LoginFXMLController extends WelcomePageController implements Initia
            
            
            if(us.test(Username, Password) == 1){
+                System.out.println("***************************");
+                System.out.println("/////");
                
-              
-              
+               System.out.println(a.getRoles().equals("[\"client\"]"));
+               System.out.println("hello");  
+                System.out.println(a.getRoles());
+               System.out.println("***************************");  
+                          
               //ID = a.getId();
               //System.out.println(ID); 
               //System.out.println(u.getType());
-              if(a.getType().equals("client")){
+              if(a.getRoles().equals("[\"client\"]")){
 //                  ClientService cl = new ClientService();
 //                  PanierService ps = new PanierService();
 //                   int  id=cl.getidclientbyusername(DisplayClientFXMLController.user1);
@@ -118,7 +124,7 @@ public class LoginFXMLController extends WelcomePageController implements Initia
                   stage.show();
                   
               
-              }else if(a.getType().equals("admin")){
+              }else if(a.getRoles().equals("[\"admin\"]")){
                   // Parent loader = FXMLLoader.load(getClass().getResource("Welcome page.fxml"));
                   //Scene scene = new Scene(loader, 600, 400);
                   //Stage stage= new Stage();
@@ -135,7 +141,7 @@ public class LoginFXMLController extends WelcomePageController implements Initia
                   stage.show();
                   
               
-              }else if(a.getType().equals("artiste")){
+              }else if(a.getRoles().equals("[\"artiste\"]")){
                   // Parent loader = FXMLLoader.load(getClass().getResource("Welcome page.fxml"));
                   //Scene scene = new Scene(loader, 600, 400);
                   //Stage stage= new Stage();

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="766.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIissaAli.View_EvemtController">
+   <children>
+      <ListView fx:id="affiche" layoutX="-1.0" layoutY="83.0" prefHeight="551.0" prefWidth="1075.0" />
+      <Button layoutX="391.0" layoutY="662.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #DFC583;" styleClass="-fx-background-radius" text="Deleted" textFill="#c1b2b2">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="BOUTTONMOD" layoutX="502.0" layoutY="662.0" mnemonicParsing="false" onAction="#modifier" style="-fx-background-color: #DFC583;" styleClass="-fx-background-radius" text="Modify" textFill="#d9cbcd">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font>
+      </Button>
+      <Pane layoutX="-7.0" prefHeight="82.0" prefWidth="1082.0" style="-fx-background-color: #DFC583;">
+         <children>
+            <ImageView fitHeight="52.0" fitWidth="88.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <Button layoutX="979.0" layoutY="26.0" mnemonicParsing="false" onAction="#retour" prefWidth="78.0" style="-fx-background-color: #DFC583;" styleClass="-fx-background-radius" text="Exit" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="936.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Button layoutX="598.0" layoutY="662.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #DFC583;" styleClass="-fx-background-radius" text="ADD" textFill="#c1b2b2">
+         <font>
+            <Font name="Bauhaus 93" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

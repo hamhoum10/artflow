@@ -120,7 +120,7 @@ public class ClientService implements ClientInterface {
                 p.setFirstname(rs.getString("firstname"));
                 p.setLastname(rs.getString("lastname"));
                 p.setAddress(rs.getString("address"));
-                p.setPhonenumber(rs.getString("phoneNumber"));
+                p.setPhonenumber(rs.getString("phonenumber"));
                 p.setEmail(rs.getString("email"));
                 p.setUsername(rs.getString("username"));
                 p.setPassword(rs.getString("password"));
@@ -182,9 +182,9 @@ try {
                //List<User> users = new ArrayList<>();
         Client u =new Client();
         try {
-            String req = "SELECT * FROM `client` WHERE username=?";
+            String req = "SELECT * FROM `client` WHERE username= "+"'"+username+"'" ;
                PreparedStatement ste = cnx.prepareStatement(req);
-               ste.setString(1, username);
+//               ste.setString(1, username);
                ResultSet rs = ste.executeQuery();
 //            String req ="SELECT * FROM user WHERE `id`=?";
 //            Statement st = cnx.createStatement();

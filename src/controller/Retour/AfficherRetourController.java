@@ -67,7 +67,7 @@ public class AfficherRetourController implements Initializable  {
         Scene scene = new Scene(view_2,1000,1000);
         stage.setScene(scene);
         stage.show();
-//        ss.SmsNotification();
+      
 
     }
 
@@ -124,7 +124,7 @@ public class AfficherRetourController implements Initializable  {
         l.setAddres(lst.getSelectionModel().getSelectedItem().getAddres());
         l.setArtiste(lst.getSelectionModel().getSelectedItem().getArtiste());
         l.setDate_retour(lst.getSelectionModel().getSelectedItem().getDate_sort());
-        ll.SmsNotification(l.getId_commende());
+        ll.SmsNotification(l.getId_commende());    
         ss.mouveToLivraison(l);
         afficher(event);
 

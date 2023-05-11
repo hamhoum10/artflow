@@ -261,6 +261,21 @@ private Stage stage;
             stage.show();
     }
 
+   
+
+   
+    @FXML
+    private void goEventb(ActionEvent event) throws IOException {
+       FXMLLoader loader =new FXMLLoader(getClass().getResource("../GUIissaAli/ListeReservation.fxml"));
+            Parent view_2=loader.load();
+
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show();
+
+    }
+
     
       
     }

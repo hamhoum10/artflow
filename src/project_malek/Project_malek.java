@@ -34,34 +34,34 @@ public class Project_malek {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArticleInterface ai = new ArticleService();
-        Article a= new Article();
-        CategorieInterface pi = new CategorieService();
-        Categorie c = new Categorie(); 
-                ArtisteService al = new ArtisteService();
-          
-        Artiste ar = new Artiste();
-       
-        RateService re = new RateService();
-        Rate b=new Rate();
-        
-        
- a.setId_article(128);
-        ar.setId(9);
-        a.setNom_article("rym");
-        a.setDescription("project");
-        a.setImage("C:/Users/MediaStudio/Desktop/icon.png");
-        a.setQuantity(2);
-        a.setType("pi");
-        a.setPrice(29.1);
-     c.setId_categorie(8);
-     a.setCategorie(c);
-     a.setArtiste(ar);
-//    ai.ModifyArticle(a);
+//        ArticleInterface ai = new ArticleService();
+//        Article a= new Article();
+//        CategorieInterface pi = new CategorieService();
+//        Categorie c = new Categorie(); 
+//                ArtisteService al = new ArtisteService();
+//          
+//        Artiste ar = new Artiste();
+//       
+//        RateService re = new RateService();
+//        Rate b=new Rate();
+//        
+//        
+// a.setId_article(1);
+//        ar.setId(1);
+//        a.setNom_article("rym");
+//        a.setDescription("project");
+//        a.setImage("C:/Users/MediaStudio/Desktop/icon.png");
+//        a.setQuantity(2);
+//        a.setType("pi");
+//        a.setPrice(29.1);
+//     c.setId_categorie(8);
+//     a.setCategorie(c);
+//     a.setArtiste(ar);
+//   ai.ModifyArticle(a);
 ////        c.setDescription("nada");
 ////        c.setName_categorie("kanzari");
 //        
-//      ai.addArticle(a);
+//     ai.addArticle(a);
 ////     a.setCategorie(c);
 ////        a.setId_article(2);
 //ai.deleteArticle(129);
@@ -71,7 +71,7 @@ public class Project_malek {
 //System.out.println(al.getArtistNameById(7));
 
 //al.getArtistebyusername("ghj");
-        System.out.println(ai.fetchArticle());
+//        System.out.println(ai.fetchArticle());
 
 //System.err.println(ai.fetchArticleById(21));
 //System.out.println(ai.fetchArticleTriByPrice());
@@ -113,7 +113,7 @@ public class Project_malek {
 //System.out.println(ins.fetchStock());
 
 //System.out.println(re.afficherRating(b));
-System.out.println(al.fetchArtiste());
+//System.out.println(al.fetchArtiste());
 
     }
     

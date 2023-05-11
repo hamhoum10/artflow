@@ -26,7 +26,11 @@ import services.Ligne_PanierService;
 
 import java.io.*;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import pidevAuth.LoginFXMLController;
+import services.ClientService;
+import services.PanierService;
 
 public class ComfirmerCommandeController implements Initializable {
 
@@ -84,11 +88,15 @@ public class ComfirmerCommandeController implements Initializable {
 
     }
     @FXML
-    void BacktoPanierAction(ActionEvent event) {
+    void BacktoPanierAction(ActionEvent event) throws SQLException {
         Ligne_PanierService lps =new Ligne_PanierService();
         CommandeService commandeService =new CommandeService();
+        ClientService cs =new ClientService();
+        PanierService p =new PanierService();
         //commandeService.deleteCommande(PanierController.id_panierlistview); //4
-        lps.deleteAllFromLigne_panier(PanierController.id_panierlistview);//4
+        int id_user = cs.getidclientbyusername(LoginFXMLController.usernamewelcome);
+        int id_panieruser= p.getPanierIdByIDUser(id_user);
+        //lps.deleteAllFromLigne_panier(id_panieruser);//4  yasser need this
         //PanierController.id_panierlistview=  ps.getPanierIdByIDUser(3); //lezem n7ot id bel methode hethi alkhtr valeur static mesh ywali null w twli errors, w momken le mezelt ntesti
 
 
@@ -113,7 +121,10 @@ public class ComfirmerCommandeController implements Initializable {
         Document document =new Document();
         PdfWriter.getInstance(document,new FileOutputStream("recuCommande.pdf"));
         document.open();
-        Image image = Image.getInstance("C:/Users/medya/IdeaProjects/artflow_javafx_Pidev/src/main/resources/images/artflowlogoo.png");
+//        File file=new File("C:\\xampp\\htdocs\\img\\"+a.getImage());
+//        javafx.scene.image.Image img=new javafx.scene.image.Image(file.toURI().toString());
+//        image_view.setImage(img);
+        Image image = Image.getInstance("C:\\xampp\\htdocs\\img\\logo.png");
 
         int moveLeft = 50; // the amount of movement to the left
         float newX = 500 - ((150 - 120) / 2) - moveLeft; // calculate the new X coordinate

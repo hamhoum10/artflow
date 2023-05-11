@@ -5,7 +5,7 @@
  */
 package services;
 
-import GUIissa.ListeReservationController;
+
 import interfaces.ReservationInterface;
 import models.Client;
 import models.Evenement;
@@ -17,8 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import pidevAuth.LoginFXMLController;
+import pidevAuthArtiste.LoginArtisteController;
 import util.MyConnection;
 
 
@@ -28,6 +28,8 @@ import util.MyConnection;
  */
 public class ReservationService implements ReservationInterface {
     Connection cnx = MyConnection.getInstance().getCnx();
+     // ReservationService Rs = new ReservationService();
+    ClientService cl = new ClientService();
 
     @Override
     public void addReservation(Reservation r) {
@@ -47,12 +49,13 @@ try {
             ps.setInt(1, r.getNb_place());
           //  ps.setDouble(2, r.getPrice());
            ps.setDate(2, r.getDateres());
-            ps.setInt(3, ListeReservationController.id_event); // tu va attribuer un valeur static (id_event) lors de la creation d'un evenement
-            ps.setInt(4, r.getId_client());
+            ps.setInt(3, r.getEvent().getId()); // tu va attribuer un valeur static (id_event) lors de la creation d'un evenement
+            ps.setInt(4, cl.getidclientbyusername(LoginFXMLController.usernamewelcome));
             
             
             ps.executeUpdate();
             System.out.println("reservation a ete ajoutée avec Success!");
+            //  System.out.println(String.valueOf((Rs.totalMontalReservation(23))));
             
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -63,9 +66,11 @@ try {
     @Override
     public List<Reservation> fetchReservations(int id) {
          List<Reservation> Reservations = new ArrayList<>();
+         ClientService clientService=new ClientService();
+         EvenementService eventService=new EvenementService();
         try {
             
-            String req = "SELECT * FROM reservation where id_res ="+id;
+            String req = "SELECT * FROM reservation where id_client ="+id;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
@@ -85,7 +90,8 @@ try {
                  r.setNb_place(rs.getInt("nb_place"));
                 //r.setPrice(rs.getDouble("price"));
                 r.setDateres(rs.getDate("dateres"));
-                r.setId_client(rs.getInt("id_client"));
+                r.setEvent(eventService.readById(rs.getInt("id_event")));
+                r.setClient((rs.getInt("id_client")));
               // r.getEvent().setId(rs.getInt("id_event"));
                 
                 
@@ -101,6 +107,51 @@ try {
         
         return Reservations;
     }
+    
+     public List<Reservation> adminfetchReservations() {
+         List<Reservation> Reservations = new ArrayList<>();
+         ClientService clientService=new ClientService();
+         EvenementService eventService=new EvenementService();
+        try {
+            
+            String req = "SELECT * FROM reservation";
+            Statement st = cnx.createStatement();
+            ResultSet rs = st.executeQuery(req);
+            while (rs.next()) {                
+                Reservation r = new Reservation();
+                Evenement e =new Evenement();
+               
+                
+                
+                //r.setId(rs.getInt(1));
+                r.setId(rs.getInt("id_res"));
+                
+              // Client c =new Client();
+                
+              //  c.setFirstname(rs.getString("c.firstname"));
+//                r.setNb_place(rs.getInt(2));
+//                r.setPrice(rs.getDouble(3));
+                 r.setNb_place(rs.getInt("nb_place"));
+                //r.setPrice(rs.getDouble("price"));
+                r.setDateres(rs.getDate("dateres"));
+                r.setEvent(eventService.readById(rs.getInt("id_event")));
+                r.setClient((rs.getInt("id_client")));
+              // r.getEvent().setId(rs.getInt("id_event"));
+                
+                
+                
+               
+                
+               Reservations.add(r);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Reservations;
+    }
+
 
     @Override
     public void modReservation(Reservation r) {
@@ -182,17 +233,40 @@ try {
     public Reservation readById(int id) {
          Reservation r = new Reservation();
         
- 
+    ClientService clientService=new ClientService();
+         EvenementService eventService=new EvenementService();
              try {
             
-            String req = "SELECT * FROM `reservation` WHERE id= "+id;
+            String req = "SELECT * FROM `reservation` WHERE id_res= "+id;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
-            rs.beforeFirst();
-            rs.next();
-            r.setId(rs.getInt(1));
-           r.setNb_place(rs.getInt(2));
-          //   r.setPrice(rs.getDouble(3));
+            while (rs.next()) {                
+//                Reservation r = new Reservation();
+                Evenement e =new Evenement();
+               
+                
+                
+                //r.setId(rs.getInt(1));
+                r.setId(rs.getInt("id_res"));
+                
+              // Client c =new Client();
+                
+              //  c.setFirstname(rs.getString("c.firstname"));
+//                r.setNb_place(rs.getInt(2));
+//                r.setPrice(rs.getDouble(3));
+                 r.setNb_place(rs.getInt("nb_place"));
+                //r.setPrice(rs.getDouble("price"));
+                r.setDateres(rs.getDate("dateres"));
+                r.setEvent(eventService.readById(rs.getInt("id_event")));
+                r.setClient(clientService.getClientbyusername(LoginArtisteController.usernameArtiste));
+              // r.getEvent().setId(rs.getInt("id_event"));
+                
+                
+                
+               
+                
+             
+            }
             
             
            
@@ -232,7 +306,7 @@ try {
         Double totalPrixReservation=0.0 ;
         try {
             //String sql = "SELECT  SUM(E.prix * R.nb_place) AS total from `Reservation` as R , `evemt` As E where r.id_event  = "+r+"  and R.id_event = E.id";
-            String sql = "SELECT  SUM(E.prix * R.nb_place) AS total from `Reservation` as R JOIN `evemt` As E JOIN `client` as C on  R.id_event =E.id AND R.id_client =C.id  WHERE R.id_client= "+id_client ;
+            String sql = "SELECT  SUM(E.prix * R.nb_place) AS total from `Reservation` as R JOIN `evemt` As E JOIN `client` as C on  R.id_event =E.id AND R.id_client =C.id_client  WHERE R.id_client= "+id_client ;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {

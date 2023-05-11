@@ -1,5 +1,6 @@
 package miaouigui;
 
+import GUIissaAli.EvenementController;
 import com.stripe.Stripe;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -29,6 +30,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.Node;
 import pidevAuth.LoginFXMLController;
 import services.ClientService;
 
@@ -128,6 +130,7 @@ public class PanierController implements Initializable {
 
                     //System.out.println(item.getArticle().getImage());
                     Image img = new Image("C:/xampp/htdocs/img/" + item.getArticle().getImage());
+                    System.out.println(item.getArticle().getImage()+" ------------------------------------------------------------------------------------------");
                     imageViewArticle.setFitHeight(300);
                     imageViewArticle.setFitWidth(300);
                     imageViewArticle.setImage(img);
@@ -178,8 +181,10 @@ public class PanierController implements Initializable {
     void ViderPanierActionforuser(ActionEvent event) throws SQLException {
         PanierService p = new PanierService();
         Ligne_PanierService lps = new Ligne_PanierService();
-        int id_panier = listView.getFocusModel().getFocusedItem().getId(); //bel get focus mesh najmo nfaskho sans selectionne w select tebda auto ala awel index w tantque id panier kolhom kifi fi list view
-        lps.deleteAllFromLigne_panier(id_panier);
+        int id_user = clientService.getidclientbyusername(LoginFXMLController.usernamewelcome);
+        int id_panieruser= p.getPanierIdByIDUser(id_user);
+        //int id_panier = listView.getFocusModel().getFocusedItem().getId(); //bel get focus mesh najmo nfaskho sans selectionne w select tebda auto ala awel index w tantque id panier kolhom kifi fi list view
+        lps.deleteAllFromLigne_panier(id_panieruser);
         ShowcartAction(event);
         alertDialog("Panier vidé !");
     }
@@ -229,16 +234,17 @@ public class PanierController implements Initializable {
     }
 
     @FXML
-    void commandeAction(ActionEvent event) {
-        System.out.println(listView.getFocusModel().getFocusedItem().getId()+"5555555555555555555");
+    void commandeAction(ActionEvent event) throws SQLException {
+        
       
         
         Ligne_PanierService lps = new Ligne_PanierService();
         
-        int selectidpanierfocus = listView.getFocusModel().getFocusedItem().getId(); //me8ir manselectionni
-        System.out.println(listView.getFocusModel().getFocusedItem().getId()+"77777777777");
+        //int selectidpanierfocus = listView.getFocusModel().getFocusedItem().getId(); //me8ir manselectionni
+       int id_user = clientService.getidclientbyusername(LoginFXMLController.usernamewelcome);
+       int id_panieruser= p.getPanierIdByIDUser(id_user);
         //len panier vide
-        if (lps.readelementPanierbyidpanier(selectidpanierfocus).isEmpty()) {
+        if (lps.readelementPanierbyidpanier(id_panieruser).isEmpty()) {
             System.out.println("Panier est vide");
             alertDialog("Votre Panier est vide !");
             //ken panier fiha elements net3adew lel formulaire commande
@@ -285,8 +291,16 @@ public class PanierController implements Initializable {
     }
 
     @FXML
-    void HomeAction(MouseEvent event) {
-        alertDialog("done");
+    void HomeAction(MouseEvent event) throws IOException {
+        FXMLLoader loader= new FXMLLoader(getClass().getResource("../GUIissaAli/View_Evemt.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show(); 
+       
+        
 
     }
 
@@ -320,38 +334,29 @@ public class PanierController implements Initializable {
         }
 
     }
-    /*static class XCell extends ListCell<String> {
-        HBox hbox = new HBox();
-        Label label = new Label("(empty)");
-        Pane pane = new Pane();
-        Button button = new Button("(>)");
-        String lastItem;
+    
+        
+   
 
-        public XCell() {
-            super();
-            hbox.getChildren().addAll(label, pane, button);
-            HBox.setHgrow(pane, Priority.ALWAYS);
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    System.out.println(lastItem + " : " + event);
-                }
-            });
-        }
+    @FXML
+    private void gotoenchere(MouseEvent event) {
+    }
 
-        @Override
-        protected void updateItem(String item, boolean empty) {
-            super.updateItem(item, empty);
-            setText(null);  // No text in label of super class
-            if (empty) {
-                lastItem = null;
-                setGraphic(null);
-            } else {
-                lastItem = item;
-                label.setText(item!=null ? item : "<null>");
-                setGraphic(button);
-            }
+    @FXML
+    private void gotoevent(MouseEvent event) {
+         try {
+            //bonPlanService.update(bonPlanService.readById(selectedId));
+            FXMLLoader loader= new FXMLLoader(getClass().getResource("./View_Evemt.fxml"));
+            Parent view_2=loader.load();
+            
+            Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(view_2);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(EvenementController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+        
+    }
 
 }

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="766.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIissaAli.EvenementController">
+   <children>
+      <Button layoutX="377.0" layoutY="672.0" mnemonicParsing="false" onAction="#enregistrer" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #DFC583; -fx-background-radius: 25;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Text fill="#7b6a3f" layoutX="215.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Theme" textAlignment="JUSTIFY">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <TextField fx:id="name" layoutX="432.0" layoutY="212.0" prefHeight="31.0" prefWidth="314.0" promptText="Enter the theme of the event" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="218.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <Text fill="#7b6a3f" layoutX="216.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start hour">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <TextField fx:id="start_hour" layoutX="432.0" layoutY="297.0" prefHeight="31.0" prefWidth="314.0" promptText="enter the start hour" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="218.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finish hour">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <TextField fx:id="finish_hour" layoutX="429.0" layoutY="341.0" prefHeight="31.0" prefWidth="314.0" promptText="enter the ending hour" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="219.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <TextField fx:id="capacity" layoutX="432.0" layoutY="395.0" prefHeight="31.0" prefWidth="314.0" promptText="capacity" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="217.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <TextField fx:id="description" layoutX="429.0" layoutY="447.0" prefHeight="31.0" prefWidth="314.0" promptText="description" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Bauhaus 93" size="15.0" />
+         </font></TextField>
+      <Text fill="#7b6a3f" layoutX="218.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <Text fill="#7b6a3f" layoutX="217.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localtion">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <TextField fx:id="location" layoutX="429.0" layoutY="532.0" prefHeight="31.0" prefWidth="314.0" promptText="Localisation" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+         </font></TextField>
+      <Button layoutX="429.0" layoutY="491.0" mnemonicParsing="false" onAction="#image" prefHeight="31.0" prefWidth="111.0" text="choose an image" />
+      <TextField fx:id="imagee" layoutX="567.0" layoutY="494.0" prefHeight="26.0" prefWidth="171.0" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css" />
+      <Button layoutX="511.0" layoutY="672.0" mnemonicParsing="false" onAction="#afficher" prefHeight="39.0" prefWidth="94.0" style="-fx-background-color: #DFC583; -fx-background-radius: 25;" text="View" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <DatePicker fx:id="date_evemt" layoutX="432.0" layoutY="257.0" prefHeight="26.0" prefWidth="314.0" promptText="Saisie la date de l'evenement" />
+      <ImageView fx:id="imageview" fitHeight="150.0" fitWidth="200.0" layoutX="779.0" layoutY="418.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fill="#7b6a3f" layoutX="217.0" layoutY="601.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font></Text>
+      <TextField fx:id="prix" layoutX="425.0" layoutY="580.0" prefHeight="26.0" prefWidth="314.0" promptText="Price" styleClass="text-inputlogin" stylesheets="@../CSS/yasser.css" />
+      <AnchorPane prefHeight="122.0" prefWidth="1000.0" style="-fx-background-color: #DFC583;">
+         <children>
+            <Text fill="WHITE" layoutX="296.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please create an event">
+               <font>
+                  <Font name="System Bold" size="39.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

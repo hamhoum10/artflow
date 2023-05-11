@@ -20,7 +20,7 @@ public class livraisonService implements livraisonInterface {
     public void addlivraison(livraison s) {
         try {
 
-            String req = "INSERT INTO `livraison`(`name_produit`, `artiste`,`addres`, `id_commende`,`user_name`) VALUES (?,?,?,?,?)";
+            String req = "INSERT INTO `livraison`(`name_produit`, `artiste`,`addres`, `id_commende_id`,`user_name`) VALUES (?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, s.getName());
             ps.setString(2, s.getArtiste());
@@ -48,11 +48,11 @@ public class livraisonService implements livraisonInterface {
                 livraison s = new livraison();
                 Commande c = new Commande();
                 s.setId(rs.getInt(1));
-                s.setName(rs.getString(2));
-                s.setUser_name(rs.getString("User_name"));
-                s.setAddres(rs.getString(4));
+                s.setName(rs.getString(3));
+                s.setUser_name(rs.getString("user_name"));
+                s.setAddres(rs.getString(5));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setDate_entr(rs.getDate("date_sort"));
 
 //                s.setId_commende(rs.getInt("id_commende"));
@@ -72,7 +72,7 @@ public class livraisonService implements livraisonInterface {
     @Override
     public void updateAlllivraison(livraison s) { try {
 
-        String req = "UPDATE `livraison` SET `name_produit`=?,`artiste`=?,`addres`=?,`id_commende`=?,`user_name`=? WHERE id = ?; ";
+        String req = "UPDATE `livraison` SET `name_produit`=?,`artiste`=?,`addres`=?,`id_commende_id`=?,`user_name`=? WHERE id = ?; ";
 
         PreparedStatement ps = cnx.prepareStatement(req);
 
@@ -117,7 +117,7 @@ public class livraisonService implements livraisonInterface {
         List<livraison> livraisons=new ArrayList<>();
         Commande c = new Commande();
         try {
-            String req = "select * FROM `livraison` where `id_commende` = "+cmd;
+            String req = "select * FROM `livraison` where `id_commende_id` = "+cmd;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
@@ -126,7 +126,7 @@ public class livraisonService implements livraisonInterface {
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
                 c.setId(rs.getInt("id"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 livraisons.add(s);
             }
 
@@ -167,7 +167,7 @@ public class livraisonService implements livraisonInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
 
                 livraisons.add(s);
             }
@@ -192,7 +192,7 @@ public class livraisonService implements livraisonInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 livraisons.add(s);
             }
 
@@ -216,7 +216,7 @@ public class livraisonService implements livraisonInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setAddres(rs.getString("addres"));
                 s.setUser_name(rs.getString("user_name"));
                 s.setDate_entr(rs.getDate("date_sort"));
@@ -244,7 +244,7 @@ public class livraisonService implements livraisonInterface {
                 s.setId(rs.getInt(1));
                 s.setName(rs.getString(2));
                 s.setArtiste(rs.getString("artiste"));
-                s.setId_commende(rs.getInt("id_commende"));
+                s.setId_commende(rs.getInt("id_commende_id"));
                 s.setAddres(rs.getString("addres"));
                 s.setUser_name(rs.getString("user_name"));
                 s.setDate_entr(rs.getDate("date_sort"));

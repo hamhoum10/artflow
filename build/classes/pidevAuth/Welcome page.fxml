@@ -38,7 +38,7 @@
                   </Button>
                   <HBox prefHeight="60.0" prefWidth="286.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="71.0" prefWidth="286.0" style="-fx-background-color: #DFC583;" styleClass="sidebar" stylesheets="@fxml.css" text="Events" textFill="WHITE">
+                        <Button mnemonicParsing="false" onAction="#goEventb" prefHeight="71.0" prefWidth="286.0" style="-fx-background-color: #DFC583;" styleClass="sidebar" stylesheets="@fxml.css" text="Reservation" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="19.0" />
                            </font>

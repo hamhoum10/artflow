@@ -131,7 +131,7 @@ public class AfficherStockController implements Initializable  {
         l.setAddres(lst.getSelectionModel().getSelectedItem().getAddres());
         l.setArtiste(lst.getSelectionModel().getSelectedItem().getArtiste());
         l.setDate_entr(lst.getSelectionModel().getSelectedItem().getDate_entr());
-        ll.SmsNotification(l.getId_commende());
+       ll.SmsNotification(l.getId_commende()); 
         ss.moveToLivraison(l);
         afficher(event);
 

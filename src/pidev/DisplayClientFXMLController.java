@@ -76,9 +76,9 @@ Connection cnx = MyConnection.getInstance().getCnx();
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-public String displayId(String Client){
+public String displayId(String client){
         //labelartist.setText("hello  "+ Artiste);
-        return "client";
+        return "[\""+ client +"\"]";
     }
     @FXML
     private void saveClient(ActionEvent event) throws IOException, SQLException {
@@ -120,10 +120,12 @@ public String displayId(String Client){
         
             String password = id_password.getText();
     String encryptedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-    PreparedStatement a1 = cnx.prepareStatement("INSERT INTO `user`(`username`, `password`,`type`) VALUES (?,?,?)");
+    PreparedStatement a1 = cnx.prepareStatement("INSERT INTO `user`(`username`,`roles`,`password`,`email`) VALUES (?,?,?,?)");
     a1.setString(1, id_Username.getText());
-    a1.setString(2, encryptedPassword);
-    a1.setString(3, displayId("client"));
+    a1.setString(2, displayId("client"));
+    a1.setString(4, encryptedPassword);
+    a1.setString(3, id_Email.getText());
+
     a1.executeUpdate();
     
         System.out.println("0000");

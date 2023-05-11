@@ -45,23 +45,24 @@ public class ArticleService implements ArticleInterface {
         try {
             System.out.println("a"+a);
 //            String req = "INSERT INTO `article`(`id_client`,`id_artiste`,`Nom_article`,`price`, `type`, `image`, `description`, `quantity`,`id_categorie`) VALUES (?,?,?,?,?,?,?,?,?)";
-                       String req = "INSERT INTO `article`(`id_artiste`,`Nom_article`,`price`, `type`, `image`, `description`, `quantity`,`id_categorie`) VALUES (?,?,?,?,?,?,?,?)";
+                       String req = "INSERT INTO `article`(`id_categorie`,`Nom_article`,`price`, `type`, `image`, `description`, `quantity`,`idArtiste`) VALUES (?,?,?,?,?,?,?,?)";
 
             PreparedStatement ps = cnx.prepareStatement(req);
             ArtisteService as =new ArtisteService();
             
 ////            ps.setInt(1,a.getArtiste().getId());
 //            if(LoginAdminController.usernameAdmin==null)
-                ps.setString(1,LoginArtisteController.usernameArtiste);
 //            else
 //                ps.setString(1,LoginAdminController.usernameAdmin);
+            ps.setInt(1, a.getCategorie().getId_categorie());
             ps.setString(2, a.getNom_article());
             ps.setDouble(3, a.getPrice());
             ps.setString(4, a.getType());
             ps.setString(5,a.getImage());
             ps.setString(6, a.getDescription());
             ps.setInt(7, a.getQuantity());
-            ps.setInt(8, a.getCategorie().getId_categorie());
+            ps.setInt(8,as.fetchArtisteByName(LoginArtisteController.usernameArtiste).getId());
+
                         System.out.println("id t3adet");
 
             ps.executeUpdate();
@@ -76,22 +77,23 @@ public class ArticleService implements ArticleInterface {
     @Override
     public void ModifyArticle(Article t) {
         try {    
-            String req = "update `article`  set `id_artiste`=?,`Nom_article`=?,`Price`=?, `Type`=?,`Image`=?, `Description`=?,`Quantity`=? , `id_categorie`=? where `id_article`= ? ";
+            String req = "update `article`  set  `id_categorie`=?,`Nom_article`=?,`Price`=?, `Type`=?,`Image`=?, `Description`=?,`Quantity`=? ,`idArtiste`=? where `id_article`= ? ";
             PreparedStatement ps = cnx.prepareStatement(req);
                      ArtisteService as =new ArtisteService();
 
 //            if(LoginAdminController.usernameAdmin==null)
-                ps.setString(1,LoginArtisteController.usernameArtiste);
 //            else
 //                ps.setString(1,LoginAdminController.usernameAdmin);
+           
+            ps.setInt(1, t.getCategorie().getId_categorie());
             ps.setString(2, t.getNom_article());
-
             ps.setDouble(3, t.getPrice());
             ps.setString(4, t.getType());
             ps.setString(5,t.getImage());
             ps.setString(6, t.getDescription());
             ps.setInt(7, t.getQuantity());
-            ps.setInt(8, t.getCategorie().getId_categorie());
+            System.out.println(as.fetchArtisteByName(LoginArtisteController.usernameArtiste).getId());
+            ps.setInt(8,as.fetchArtisteByName(LoginArtisteController.usernameArtiste).getId());
             ps.setInt(9, t.getId_article());
             
 
@@ -122,7 +124,7 @@ public class ArticleService implements ArticleInterface {
        List<Article> Articles = new ArrayList<>();
         try {
             
-          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username";
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.idArtiste=r.id";
 //String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
 //          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
 
@@ -180,7 +182,7 @@ public class ArticleService implements ArticleInterface {
        List<Article> Articles = new ArrayList<>();
         try {
             
-          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username";
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.idArtiste = r.id";
 //String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
 //          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
 
@@ -234,7 +236,7 @@ public class ArticleService implements ArticleInterface {
 
         try {
             
-            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username and price between "+min +" and "+max ;
+            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.idArtiste= r.id and price between "+min +" and "+max ;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
@@ -279,7 +281,7 @@ public class ArticleService implements ArticleInterface {
      List<Article> Articles = new ArrayList<>();
         try {
             
-            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username and Id_article = "+id;
+            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.idArtiste = r.id and Id_article = "+id;
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
@@ -318,7 +320,7 @@ public class ArticleService implements ArticleInterface {
      List<Article> Articles = new ArrayList<>();
         try {
             
-            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username and (`a`.`Nom_article`like '%"+c+"%' or `a`.`type` like '%"+c+"%'or `a`.`description` like '%"+c+"%')";
+            String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.idArtiste = r.id and (`a`.`Nom_article`like '%"+c+"%' or `a`.`type` like '%"+c+"%'or `a`.`description` like '%"+c+"%')";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {                
@@ -395,7 +397,7 @@ List<Article> Articles = new ArrayList<>();
        List<Article> Articles = new ArrayList<>();
         try {
             
-          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username ORDER BY Price ";
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.idArtiste = r.id ORDER BY Price ";
 //String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
 //          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
 
@@ -437,7 +439,7 @@ List<Article> Articles = new ArrayList<>();
  List<Article> Articles = new ArrayList<>();
         try {
             
-          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username ORDER BY Nom_article ";
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.idArtiste = r.id ORDER BY Nom_article ";
 //String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
 //          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
 
@@ -484,7 +486,7 @@ List<Article> Articles = new ArrayList<>();
      List<Article> Articles = new ArrayList<>();
         try {
             
-          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.Id_artiste = r.username ORDER BY a.Id_categorie ";
+          String req = "SELECT * FROM `article` as a,`categorie` as c , `artiste` as r where a.Id_categorie=c.Id_categorie and a.idArtiste = r.id ORDER BY a.Id_categorie ";
 //String req="select e.Id_article,e.Id_client,e.Id_artiste,e.Nom_article,e.Price,e.Type,e.Description,e.Quantity,e.Id_categorie,d.Id_categorie,d.Name_categorie,d.Description from `categorie` d inner join `article`e on e.Id_categorie=d.Id_categorie";
 //          String req="select * from `article`e inner join `categorie` d on e.Id_categorie=d.Id_categorie";
 

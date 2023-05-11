@@ -14,7 +14,7 @@ import java.sql.Date;
 public class Reservation {
     private int id;
     private Evenement event;
-    private int id_client;
+    private Client client;
     private int nb_place;
     //private double price;
     private Date dateres;
@@ -27,13 +27,21 @@ public class Reservation {
     
     }
 
-    public Reservation(int id, Evenement event, int nb_place, Date dateres,int id_client) {
+    public Reservation(int id, Evenement event, int nb_place, Date dateres,Client client) {
         this.id = id;
         this.event = event;
         this.nb_place = nb_place;
         this.dateres = dateres;
-        this.id_client=id_client;
+        this.client=client;
     }
+       public Reservation( Evenement event, int nb_place, Date dateres,Client client) {
+        
+        this.event = event;
+        this.nb_place = nb_place;
+        this.dateres = dateres;
+        this.client=client;
+    }
+
 
    
 
@@ -47,12 +55,12 @@ public class Reservation {
         this.id = id;
     }
 
-    public int getId_client() {
-        return id_client;
+    public Client getClient() {
+        return client;
     }
 
-    public void setId_client(int id_client) {
-        this.id_client = id_client;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     
@@ -84,11 +92,18 @@ public class Reservation {
         this.dateres = dateres;
     }
 
-    @Override
+//    @Override
+//    public String toString() {
+//        return "Reservation{" + "id=" + id + ", event=" + event + ", client=" + client + ", nb_place=" + nb_place + ", dateres=" + dateres + '}';
+//    }
+
+     @Override
     public String toString() {
-        return  "nb_place : " + nb_place +System.lineSeparator()+
-                  "dateres : " + dateres +System.lineSeparator();
+        return  "nb_place='" + nb_place +System.lineSeparator()+
+                  "dateres='" + dateres +System.lineSeparator();
     }
+
+
 
    
     

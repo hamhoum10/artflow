@@ -305,7 +305,7 @@ public class EnchereService implements EnchereParticipantInterface {
                 System.out.println("This auction still open!");
             } else {
                 int idp = rs.getInt("idp");
-                int id = clientService.getidclientbyusername(LoginFXMLController.usernamewelcome);
+                int id = rs.getInt("id");
                 String firstname = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                  String address = rs.getString("address");

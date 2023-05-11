@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,  minimum-scale=1, maximum-scale=1"
+    />
+
+    <title>maps</title>
+  </head>
+  <body>
+    <div class="app-wrapper">
+      <div class="app-content">
+        <div id="googleMap" style="width: 100%; height: 900px"></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCodvr4TmsTJdYPjs_5PWLPTNLA9uA4iq8&amp;callback=googleMap"></script>
+
+        <script>
+          function calcCrow(lat1, lon1, lat2, lon2) {
+            var R = 6371; // km
+            var dLat = toRad(lat2 - lat1);
+            var dLon = toRad(lon2 - lon1);
+            var lat1 = toRad(lat1);
+            var lat2 = toRad(lat2);
+
+            var a =
+              Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.sin(dLon / 2) *
+                Math.sin(dLon / 2) *
+                Math.cos(lat1) *
+                Math.cos(lat2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c;
+            return d;
+          }
+
+          // Converts numeric degrees to radians
+          function toRad(Value) {
+            return (Value * Math.PI) / 180;
+          }
+        </script>
+        <script>
+          var xx;
+          var yy;
+
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+              alert("Geolocation is not supported by this browser.");
+            }
+          }
+
+          function showPosition(position) {
+            xx = position.coords.latitude;
+            yy = position.coords.longitude;
+            initMap(xx, yy);
+          }
+
+          const chicago = {
+            lat: 41.85,
+            lon: -87.65,
+          };
+
+          function CenterControl(controlDiv, map) {
+            // Set CSS for the control border.
+            const controlUI = document.createElement("div");
+
+            controlUI.style.backgroundColor = "#fff";
+            controlUI.style.border = "2px solid #fff";
+            controlUI.style.borderRadius = "3px";
+            controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+            controlUI.style.cursor = "pointer";
+            controlUI.style.marginTop = "8px";
+            controlUI.style.marginBottom = "22px";
+            controlUI.style.textAlign = "center";
+            controlUI.title = "Click to recenter the map";
+            controlDiv.appendChild(controlUI);
+
+            // Set CSS for the control interior.
+            const controlText = document.createElement("div");
+
+            controlText.style.color = "rgb(25,25,25)";
+            controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+            controlText.style.fontSize = "16px";
+            controlText.style.lineHeight = "38px";
+            controlText.style.paddingLeft = "5px";
+            controlText.style.paddingRight = "5px";
+            controlText.innerHTML = "Refresh";
+            controlUI.appendChild(controlText);
+            // Setup the click event listeners: simply set the map to Chicago.
+            controlUI.addEventListener("click", () => {
+              alert("test");
+            });
+          }
+        </script>
+        <script async type="text/javascript">
+          function toset(d) {
+            d = d
+              .slice()
+              .reverse()
+              .filter(
+                (v, i, a) =>
+                  a.findIndex((t) => t.matricule === v.matricule) === i
+              )
+              .reverse();
+
+            return d;
+          }
+
+          var pos = {
+            url: "images/marker.png",
+            scaledSize: new google.maps.Size(45, 45),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(25, 50),
+          };
+          var truck = {
+            url: "images/truck.png",
+            scaledSize: new google.maps.Size(45, 45),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(25, 50),
+          };
+
+          // On initialise la latitude et la longitude de Tunis (centre de la carte)
+          var x = xx;
+          var y = yy;
+          var map = null;
+          // Fonction d'initialisation de la carte
+          function initMap(x, y) {
+            map = new google.maps.Map(document.getElementById("googleMap"), {
+              center: new google.maps.LatLon(x, y),
+              zoom: 11,
+              //mapTypeId: "satellite",
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              mapTypeControl: true,
+              scrollwheel: false,
+              mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+              },
+              navigationControl: true,
+              navigationControlOptions: {
+                style: google.maps.NavigationControlStyle.ZOOM_PAN,
+              },
+            });
+
+            const centerControlDiv = document.createElement("div");
+            centerControlDiv.innerHTML = "Refresh";
+
+            //CenterControl(centerControlDiv, map);
+            map.controls[google.maps.ControlPosition.TOP_CENTER].push(
+              centerControlDiv
+            );
+
+            var marker = new google.maps.Marker({
+              position: {
+                lat: x,
+                lon: y,
+              },
+              title: "your position",
+              icon: pos,
+              map: map,
+            });
+
+            var lineCoordinates = [];
+
+            $.ajax({
+              // On pointe vers le fichier selectData.php
+              //url: "http://192.168.233.229:3000/conducteurs",
+            }).done(function (json) {
+              // Si on obtient une réponse, elle est stockée dans la variable json
+              console.log(json);
+              // On construit l'objet villes à partir de la variable json
+              //var positions = JSON.parse(json);
+              // console.log(positions);
+              // On parcourt l'objet villes
+
+              //   json = toset(json);
+
+              for (position in json) {
+                var d = calcCrow(x, y, json[position].x, json[position].y);
+                var t = d * 1.5;
+                vv = new google.maps.LatLng(json[position].x, json[position].y);
+
+                lineCoordinates.push(vv);
+
+                var marker = new google.maps.Marker({
+                  // parseFloat nous permet de transformer la latitude et la longitude en nombre décimal
+                  position: {
+                    lat: parseFloat(json[position].x),
+                    lon: parseFloat(json[position].y),
+                  },
+                  title: json[position].matricule,
+                  icon: truck,
+                  map: map,
+                });
+
+                d = d.toFixed(2);
+                t = t.toFixed(2);
+
+                const contentString =
+                  `
+                 <div style='float:left'><img  height='100px' width='100px' src='images/truck.png'></div>
+                 <div style='float:right; padding: 10px;'><b> ` +
+                  json[position].cellnumber +
+                  json[position].username +
+                  json[position].immatricule +
+                  `
+                   
+                   
+                   </div>
+                 `;
+
+                const infowindow = new google.maps.InfoWindow({
+                  content: contentString,
+                });
+
+                /*
+                  const infowindow = new google.maps.InfoWindow({
+              content: contentString,
+          });
+          */
+
+                marker.addListener("click", function () {
+                  infowindow.open(map, this);
+                });
+
+                // assuming you also want to hide the infowindow when user mouses-out
+                map.addListener("click", function () {
+                  infowindow.close();
+                });
+              }
+
+              /*
+             const flightPath = new google.maps.Polyline({
+                 path: lineCoordinates,
+                 geodesic: true,
+                 strokeColor: "#FF0000",
+                 strokeOpacity: 1.0,
+                 strokeWeight: 6,
+               });
+             
+               flightPath.setMap(map);
+             */
+            });
+          }
+
+          window.onload = function () {
+            // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+            getLocation();
+          };
+        </script>
+      </div>
+      <!--#app-content-->
+    </div>
+    <!--#app-wrapper-->
+  </body>
+</html>

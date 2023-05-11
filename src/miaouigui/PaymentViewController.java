@@ -49,10 +49,16 @@ public class PaymentViewController implements Initializable {
     @FXML
     private Button validate;
     CommandeService cs =new CommandeService();
+    
 
     @FXML
-    void cancelOnaction(ActionEvent event) {
+    void cancelOnaction(ActionEvent event) throws SQLException {
         CommandeService commandeService =new CommandeService();
+        ClientService cs = new ClientService();
+        PanierService p = new PanierService();
+        int id_user = cs.getidclientbyusername(LoginFXMLController.usernamewelcome);
+        int id_panieruser= p.getPanierIdByIDUser(id_user);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("commandeView.fxml"));
         Parent root = null;
         try {
@@ -64,13 +70,18 @@ public class PaymentViewController implements Initializable {
         Stage stage = (Stage) cancel.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        commandeService.deleteCommande(PanierController.id_panierlistview); //static value of id_panier mel classe PanierController //where status = "en attente"
+        
+        commandeService.deleteCommande(id_panieruser); //delete commande eli en attenete
         alertDialog("You've canceled the Order");
     }
 
 
     @FXML
     void validateOnaction(ActionEvent event) throws SQLException {
+        ClientService cos = new ClientService();
+        PanierService p = new PanierService();
+        int id_user = cos.getidclientbyusername(LoginFXMLController.usernamewelcome);
+        int id_panieruser= p.getPanierIdByIDUser(id_user);
         if (namefield.getText().length() == 0 ||cvcfield.getText().length() == 0||expyearfield.getText().length() == 0||expmonthfield.getText().length() == 0||numberTextfield.getText().length()==0){
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -166,8 +177,8 @@ public class PaymentViewController implements Initializable {
                         //System.out.println(PanierController.id_panierlistview);
                         //commandeService.deleteCommande(PanierController.id_panierlistview); //4
                         //lps.deleteAllFromLigne_panier(PanierController.id_panierlistview);//4
-                        System.out.println(PanierController.id_panierlistview);
-                        cs.updateStauts(PanierController.id_panierlistview);
+                        //System.out.println(PanierController.id_panierlistview);
+                        cs.updateStauts(id_panieruser);
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("ComfirmerCommandeView.fxml"));
                         Parent root = null;
                         try {
@@ -190,8 +201,8 @@ public class PaymentViewController implements Initializable {
                     //System.out.println(PanierController.id_panierlistview);
                     //commandeService.deleteCommande(PanierController.id_panierlistview); //4
                     //lps.deleteAllFromLigne_panier(PanierController.id_panierlistview);//4
-                    System.out.println(PanierController.id_panierlistview);
-                    cs.updateStauts(PanierController.id_panierlistview);
+                    //System.out.println(PanierController.id_panierlistview);
+                    cs.updateStauts(id_panieruser);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("ComfirmerCommandeView.fxml"));
                     Parent root = null;
                     try {

@@ -6,7 +6,6 @@
 package models;
 
 
-import models.Artiste;
 import java.sql.Date;
 //import java.time.LocalDate;
 
@@ -27,6 +26,8 @@ public class Evenement {
     private Artiste artiste;
     private Date date_evemt;
     private Double prix;
+    private String username;
+   // private  Artiste id_artiste;
 
     public Evenement(String name, String start_hour, String finish_hour, String capacity, String description, String image, String location, Artiste artiste, Date date_evemt, Double prix) {
         this.name = name;
@@ -39,6 +40,7 @@ public class Evenement {
         this.artiste = artiste;
         this.date_evemt = date_evemt;
         this.prix = prix;
+        this.username=artiste.getUsername();
     }
   
    
@@ -64,6 +66,7 @@ public class Evenement {
         this.artiste = artiste;
         this.date_evemt = date_evemt;
         this.prix = prix;
+        this.username=artiste.getUsername();
     }
 
    
@@ -75,20 +78,6 @@ public class Evenement {
     public void setArtiste(Artiste artiste) {
         this.artiste = artiste;
     }
-
-   
-
-   
-    
-
-   
-
-   
-
-   
-    
-    
-
     public int getId() {
         return id;
     }
@@ -100,15 +89,6 @@ public class Evenement {
     public Date getDate_evemt() {
         return date_evemt;
     }
-
-    
-
-   
-
-   
-
-   
-
     public String getStart_hour() {
         return start_hour;
     }
@@ -124,6 +104,16 @@ public class Evenement {
     public String getDescription() {
         return description;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
+    
 
     public String getImage() {
         return image;
@@ -179,37 +169,45 @@ public class Evenement {
         this.prix = prix;
     }
 
+   
     
-    @Override
-    public String toString() {
-         //"Evenement{" + "id=" + id + 
-              return  //"id=" + id +
-                "name : " + name +System.lineSeparator()+
-                //+ "name='" + name + System.lineSeparator()+
-                "start_hour: " + start_hour +System.lineSeparator()+
-               // + "start_hour=" + start_hour + 
-                "finish_hour: " + finish_hour +System.lineSeparator()+
-                //+ "finish_hour=" + finish_hour + 
-                "capacity: " + capacity +System.lineSeparator()+
-                "description: " + description +System.lineSeparator()+
-                "image: " + image +System.lineSeparator()+
-                "location: " + location +System.lineSeparator()+
-                "artiste: " + artiste.getFirstname() +System.lineSeparator()+
-                "date_evemt: " + date_evemt +System.lineSeparator()+
-                  "prix: " + prix +System.lineSeparator();
-                
-                
-                             
+
     
-               
-         }  
+    
 //
 //    @Override
 //    public String toString() {
 //        return "Evenement{" + "id=" + id + ", name=" + name + ", start_hour=" + start_hour + ", finish_hour=" + finish_hour + ", capacity=" + capacity + ", description=" + description + ", image=" + image + ", location=" + location + ", artiste=" + artiste + ", date_evemt=" + date_evemt + '}';
 //    }
 
-   
+//    @Override
+//    public String toString() {
+//        return "Evenement{" + "id=" + id + ", name=" + name + ", start_hour=" + start_hour + ", finish_hour=" + finish_hour + ", capacity=" + capacity + ", description=" + description + ", image=" + image + ", location=" + location + ", artiste=" + artiste + ", date_evemt=" + date_evemt + ", prix=" + prix + ", username=" + username + '}';
+//    }
+
+   @Override
+    public String toString() {
+         //"Evenement{" + "id=" + id + 
+              return  //"id=" + id +
+                "name:" + name +System.lineSeparator()+
+                //+ "name='" + name + System.lineSeparator()+
+                "start_hour:" + start_hour +System.lineSeparator()+
+               // + "start_hour=" + start_hour + 
+                "finish_hour:" + finish_hour +System.lineSeparator()+
+                //+ "finish_hour=" + finish_hour + 
+                "capacity:" + capacity +System.lineSeparator()+
+                "description:" + description +System.lineSeparator()+
+             //   "image='" + image +System.lineSeparator()+
+                "location:" + location +System.lineSeparator()+
+              //  "artiste=" + artiste +System.lineSeparator()+
+                "date_evemt:" + date_evemt +System.lineSeparator()+
+                  "prix:" + prix +System.lineSeparator();
+                
+                
+                             
+    
+               
+         }  
 
    
 
